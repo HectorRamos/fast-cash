@@ -1,5 +1,5 @@
 
-    </div>
+        </div>
     	<!-- END wrapper -->
 
         <script src="<?= base_url() ?>plantilla/js/modernizr.min.js"></script>
@@ -62,8 +62,14 @@
                 });
             });
         </script>
+        <script src="<?= base_url() ?>plantilla/js/tilt.jquery.min.js"></script>
+		<script >
+			$('.js-tilt').tilt({
+				scale: 1.0
+			})
+		</script>
 	    <footer class="footer text-right">
-	        2015 © Moltran.
+	        Copyright © <?php echo date('Y');?> Moltran.
 	    </footer>
     </body>
 </html>

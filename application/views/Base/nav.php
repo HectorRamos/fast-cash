@@ -1,7 +1,4 @@
-    <body class="fixed-left">
-        
-        <!-- Begin page -->
-        <div id="wrapper">
+
         
             <!-- Top Bar Start -->
             <div class="topbar">
