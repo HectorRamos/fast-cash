@@ -1,5 +1,3 @@
-
-        
             <!-- Top Bar Start -->
             <div class="topbar">
                 <!-- LOGO -->
@@ -128,15 +126,13 @@
                             <li>
                                 <a href="" class="waves-effect active"><i class="md md-home"></i><span> Inicio </span></a>
                             </li>
-
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-accessibility"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="email-compose.html">Buscar cliente</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Buscar cliente</a></li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="calendar.html" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
                             </li>
