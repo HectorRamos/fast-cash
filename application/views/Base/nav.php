@@ -126,15 +126,14 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
+                                <a href="" class="waves-effect active"><i class="md md-home"></i><span> Inicio </span></a>
                             </li>
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Mail </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="md md-accessibility"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="inbox.html">Inbox</a></li>
-                                    <li><a href="email-compose.html">Compose Mail</a></li>
-                                    <li><a href="email-read.html">View Mail</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
+                                    <li><a href="email-compose.html">Buscar cliente</a></li>
                                 </ul>
                             </li>
 
