@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
--- https://www.phpmyadmin.net/
+-- version 4.2.12deb2+deb8u2
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Sep 19, 2018 at 04:59 PM
--- Server version: 10.1.26-MariaDB-0+deb9u1
--- PHP Version: 7.0.30-0+deb9u1
+-- Host: localhost
+-- Generation Time: Sep 19, 2018 at 05:44 PM
+-- Server version: 5.5.52-0+deb8u1
+-- PHP Version: 5.6.30-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `db_fastcash`
@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_Clientes`
 --
 
-CREATE TABLE `tbl_Clientes` (
+CREATE TABLE IF NOT EXISTS `tbl_Clientes` (
+`Id_Cliente` int(11) NOT NULL,
   `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -45,7 +46,14 @@ CREATE TABLE `tbl_Clientes` (
   `Profesion_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL,
   `Fk_Id_Municipio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `tbl_Clientes`
+--
+
+INSERT INTO `tbl_Clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Condicion_Actual_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `Fecha_Registro_Cliente`, `Observaciones_Cliente`, `Profesion_Cliente`, `Fk_Id_Departamento`, `Fk_Id_Municipio`) VALUES
+(2, '000123', 'Melvin ', 'Flores', 'Activo', 'Soltero/a', '', '', '60117845', 'colonia la cueva', '1990-04-12', '', '5545454-88', '44444-777', '2018-09-17', 'Sin observaciones', 'Ingeniero', 12, 94);
 
 -- --------------------------------------------------------
 
@@ -53,7 +61,7 @@ CREATE TABLE `tbl_Clientes` (
 -- Table structure for table `tbl_Datos_Laborales`
 --
 
-CREATE TABLE `tbl_Datos_Laborales` (
+CREATE TABLE IF NOT EXISTS `tbl_Datos_Laborales` (
   `Cargo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Empresa` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -70,10 +78,10 @@ CREATE TABLE `tbl_Datos_Laborales` (
 -- Table structure for table `tbl_Departamentos`
 --
 
-CREATE TABLE `tbl_Departamentos` (
-  `Id_Departamento` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbl_Departamentos` (
+`Id_Departamento` int(11) NOT NULL,
   `Nombre_Departamento` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `tbl_Departamentos`
@@ -101,11 +109,11 @@ INSERT INTO `tbl_Departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUE
 -- Table structure for table `tbl_Municipios`
 --
 
-CREATE TABLE `tbl_Municipios` (
-  `Id_Municipio` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tbl_Municipios` (
+`Id_Municipio` int(11) NOT NULL,
   `Nombre_Municipio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=525 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `tbl_Municipios`
@@ -202,7 +210,7 @@ INSERT INTO `tbl_Municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (88, 'Corinto', 12),
 (89, 'Delicias de Concepción', 12),
 (90, 'El Divisadero', 12),
-(91, 'El Rosario (\'razán)', 12),
+(91, 'El Rosario (''razán)', 12),
 (92, 'Gualococti', 12),
 (93, 'Guatajiagua', 12),
 (94, 'Joateca', 12),
@@ -464,7 +472,7 @@ INSERT INTO `tbl_Municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (350, 'Corinto', 12),
 (351, 'Delicias de Concepción', 12),
 (352, 'El Divisadero', 12),
-(353, 'El Rosario (\'razán)', 12),
+(353, 'El Rosario (''razán)', 12),
 (354, 'Gualococti', 12),
 (355, 'Guatajiagua', 12),
 (356, 'Joateca', 12),
@@ -645,43 +653,45 @@ INSERT INTO `tbl_Municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 -- Indexes for table `tbl_Clientes`
 --
 ALTER TABLE `tbl_Clientes`
-  ADD PRIMARY KEY (`Codigo_Cliente`),
-  ADD UNIQUE KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
+ ADD PRIMARY KEY (`Id_Cliente`), ADD UNIQUE KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
 
 --
 -- Indexes for table `tbl_Datos_Laborales`
 --
 ALTER TABLE `tbl_Datos_Laborales`
-  ADD KEY `FK_Codigo_Cliente` (`FK_Codigo_Cliente`);
+ ADD KEY `FK_Codigo_Cliente` (`FK_Codigo_Cliente`);
 
 --
 -- Indexes for table `tbl_Departamentos`
 --
 ALTER TABLE `tbl_Departamentos`
-  ADD PRIMARY KEY (`Id_Departamento`);
+ ADD PRIMARY KEY (`Id_Departamento`);
 
 --
 -- Indexes for table `tbl_Municipios`
 --
 ALTER TABLE `tbl_Municipios`
-  ADD PRIMARY KEY (`Id_Municipio`),
-  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
+ ADD PRIMARY KEY (`Id_Municipio`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_Clientes`
+--
+ALTER TABLE `tbl_Clientes`
+MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `tbl_Departamentos`
 --
 ALTER TABLE `tbl_Departamentos`
-  MODIFY `Id_Departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+MODIFY `Id_Departamento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbl_Municipios`
 --
 ALTER TABLE `tbl_Municipios`
-  MODIFY `Id_Municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=525;
+MODIFY `Id_Municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=525;
 --
 -- Constraints for dumped tables
 --
@@ -690,20 +700,14 @@ ALTER TABLE `tbl_Municipios`
 -- Constraints for table `tbl_Clientes`
 --
 ALTER TABLE `tbl_Clientes`
-  ADD CONSTRAINT `tbl_Clientes_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_Departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_Clientes_ibfk_2` FOREIGN KEY (`Fk_Id_Municipio`) REFERENCES `tbl_Municipios` (`Id_Municipio`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tbl_Datos_Laborales`
---
-ALTER TABLE `tbl_Datos_Laborales`
-  ADD CONSTRAINT `tbl_Datos_Laborales_ibfk_1` FOREIGN KEY (`FK_Codigo_Cliente`) REFERENCES `tbl_Clientes` (`Codigo_Cliente`);
+ADD CONSTRAINT `tbl_Clientes_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_Departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `tbl_Clientes_ibfk_2` FOREIGN KEY (`Fk_Id_Municipio`) REFERENCES `tbl_Municipios` (`Id_Municipio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_Municipios`
 --
 ALTER TABLE `tbl_Municipios`
-  ADD CONSTRAINT `tbl_Municipios_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_Departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `tbl_Municipios_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_Departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
