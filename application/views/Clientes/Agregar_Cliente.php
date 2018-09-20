@@ -151,7 +151,7 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 <script type="text/javascript">
 /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 
@@ -161,7 +161,6 @@ $(document).ready(function(){
       $('#cbbMunicipios').each(function(){
           $('#cbbMunicipios option').remove();
       })
-
 
 
       $.ajax({

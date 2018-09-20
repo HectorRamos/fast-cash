@@ -24,14 +24,21 @@
         <!-- Waves-effect -->
         <link href="<?= base_url() ?>plantilla/css/waves-effect.css" rel="stylesheet">
 
+        <!-- Modal-Effect -->
+        <link href="<?= base_url() ?>plantilla/assets/modal-effect/css/component.css" rel="stylesheet">
+
+        <!-- Notifications -->
+        <link href="<?= base_url() ?>plantilla/assets/notifications/notification.css" rel="stylesheet" />
+
         <!-- sweet alerts -->
         <link href="<?= base_url() ?>plantilla/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
 
         <!-- Custom Files -->
         <link href="<?= base_url() ?>plantilla/css/helper.css" rel="stylesheet" type="text/css" />
         <link href="<?= base_url() ?>plantilla/css/style.css" rel="stylesheet" type="text/css" />
-
         
+        <script src="<?= base_url() ?>plantilla/js/modernizr.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
     </head>
         <body class="fixed-left nicescroll">
         

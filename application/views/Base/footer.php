@@ -2,13 +2,12 @@
         </div>
     	<!-- END wrapper -->
 
-        <script src="<?= base_url() ?>plantilla/js/modernizr.min.js"></script>
         <script>
             var resizefunc = [];
         </script>
 
         <!-- jQuery  -->
-        <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
+
         <script src="<?= base_url() ?>plantilla/js/bootstrap.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/waves.js"></script>
         <script src="<?= base_url() ?>plantilla/js/wow.min.js"></script>
@@ -38,6 +37,15 @@
         <!-- Counter-up -->
         <script src="<?= base_url() ?>plantilla/assets/counterup/waypoints.min.js" type="text/javascript"></script>
         <script src="<?= base_url() ?>plantilla/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+
+        <!-- Modal-Effect -->
+        <script src="<?= base_url() ?>plantilla/assets/modal-effect/js/classie.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/modal-effect/js/modalEffects.js"></script>
+
+        <!-- Notifications -->
+        <script src="<?= base_url() ?>assets/notifications/notify.min.js"></script>
+        <script src="<?= base_url() ?>assets/notifications/notify-metro.js"></script>
+        <script src="<?= base_url() ?>assets/notifications/notifications.js"></script>
         
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>

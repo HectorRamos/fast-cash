@@ -47,7 +47,7 @@
                                     <div class="col-sm-6 bordr-right">
                                         <form action="<?= base_url() ?>Home/main">
 
-                                            <h3 class="h3-title-login"> <label class="label-title-login">IIniciar sesión</label> </h3>
+                                            <h3 class="h3-title-login"> <label class="label-title-login">Iniciar sesión</label> </h3>
 
                                             <div class="row m-t-40">
                                                 <div class="col-md-12">
