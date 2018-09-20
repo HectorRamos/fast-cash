@@ -43,9 +43,9 @@
         <script src="<?= base_url() ?>plantilla/assets/modal-effect/js/modalEffects.js"></script>
 
         <!-- Notifications -->
-        <script src="<?= base_url() ?>assets/notifications/notify.min.js"></script>
-        <script src="<?= base_url() ?>assets/notifications/notify-metro.js"></script>
-        <script src="<?= base_url() ?>assets/notifications/notifications.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/notifications/notify.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/notifications/notify-metro.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/notifications/notifications.js"></script>
         
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>
