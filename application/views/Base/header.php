@@ -23,6 +23,8 @@
 
         <!-- Waves-effect -->
         <link href="<?= base_url() ?>plantilla/css/waves-effect.css" rel="stylesheet">
+        <!-- DataTables -->
+        <link href="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Modal-Effect -->
         <link href="<?= base_url() ?>plantilla/assets/modal-effect/css/component.css" rel="stylesheet">

@@ -2,6 +2,13 @@
 foreach ($cliente->result() as $datos_cliente) {
 }
 ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -166,7 +173,7 @@ foreach ($cliente->result() as $datos_cliente) {
                                           value="<?= $datos_cliente->Observaciones_Cliente?>"><?= $datos_cliente->Observaciones_Cliente?></textarea>
                                     </div>
                               </div>
-                              <button type="submit" class="btn btn-primary">Siguiente</button>
+                              <button type="submit" class="btn btn-primary" onclick="hh()">Siguiente</button>
                             </form>
                        </div>   <!-- row -->    
 
