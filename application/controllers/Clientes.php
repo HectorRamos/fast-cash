@@ -162,8 +162,39 @@ class Clientes extends CI_Controller {
 				self.location ="'.base_url().'Clientes/gestionarCliente"
 				</script>';
 		}
+	}
+	public function EditarDatosNegocio(){
+		$datos=$this->input->POST();
+		$this->load->model("Clientes_Model");
+		$bool=$this->Clientes_Model->EditarDatosNegocio($datos);
+		if($bool){
+			echo '<script type="text/javascript">
+				alert("FIN");
+				self.location ="'.base_url().'Clientes/gestionarCliente"
+				</script>';
+		}
+		else{
+			echo '<script type="text/javascript">
+				alert("Error al modificar la informacion");
+				self.location ="'.base_url().'Clientes/gestionarCliente"
+				</script>';
+		}
+	}
+	public function obtenerInfoCliente(){
 
+		if($this->input->is_ajax_request())
+		{
+			$id = $this->input->POST("ID");
+			$tipo = $this->input->POST("tipo");
+			$this->load->model("Clientes_Model");
+			$datos = $this->Clientes_Model->obtenerInfoCliente($id, $tipo);
+			echo json_encode($datos);
+		}
+		else
+		{
+			echo "error";
+		}
 
 	}
-
 }
+?>

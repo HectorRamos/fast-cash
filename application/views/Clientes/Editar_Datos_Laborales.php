@@ -76,7 +76,7 @@ else
 	}
 	else if($datos->Tipo_Cliente=="Empresario"){?>
 	<h1>Editar datos del negocio del cliente</h1>
-            <form method="POST" action="<?= base_url()?>Clientes/datosLaborales">
+            <form method="POST" action="<?= base_url()?>Clientes/EditarDatosNegocio">
                        	<div class="form-row">
 	                       	<div class="form-group col-md-6">
 	                            <label for="">Codigo del cliente: <?=  $datos->Codigo_Cliente?></label>

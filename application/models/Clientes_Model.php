@@ -135,7 +135,6 @@ class Clientes_Model extends CI_Model{
 			else{
 				return  false;
 			}
-
 		}
 	}
 	public function EditarDatosLaborales($datos=null){
@@ -151,6 +150,36 @@ class Clientes_Model extends CI_Model{
 				return false;
 			}
 	}
+}
+public function EditarDatosNegocio($datos= null){
+	if($datos!=null){
+			$id = $datos['Fk_Id_Cliente'];
+			$this->db->where('Fk_Id_Cliente', $id);
+			if($this->db->update('tbl_Datos_Negocio', $datos))
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+	}
+}
+public function obtenerInfoCliente($id, $tipo){
+
+	if($tipo=="Empresario"){
+		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_Datos_Negocio AS n INNER JOIN tbl_Clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_Municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$info = $this->db->query($sql);
+		return $info->result();
+	}
+
+	else
+	{
+		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_Datos_Laborales AS n INNER JOIN tbl_Clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_Municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$info = $this->db->query($sql);
+		return $info->result();
+
+	}
+
 }
 }
 
