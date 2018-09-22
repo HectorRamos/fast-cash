@@ -22,17 +22,21 @@ class Clientes extends CI_Controller {
 		$bool=$this->Clientes_Model->Insertar($datos);
 		if($bool){
 
-			echo '<script type="text/javascript">
-				alert("Registro insertado correctamente");
-				self.location ="'.base_url().'Clientes/gestionarCliente"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("Registro insertado correctamente");
+			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
+			// 	</script>';
+				$this->session->set_flashdata("succes","Registro insertado correctamente.");
+				redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("Registro insertado correctamente");
-				self.location ="'.base_url().'Clientes/"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("Registro insertado correctamente");
+			// 	self.location ="'.base_url().'Clientes/"
+			// 	</script>';
+				$this->session->set_flashdata("errorr","Error al insertar la información.");
+				redirect(base_url()."Clientes/");
 		}
 
 	}
@@ -52,7 +56,7 @@ class Clientes extends CI_Controller {
 	}
 	public function gestionarCliente(){
 		$this->load->model('Clientes_Model');
-		$registro=$this->Clientes_Model->CargarClientes();
+		$registro = $this->Clientes_Model->CargarClientes();
 		$data = array('registro'=>$registro);
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
@@ -60,23 +64,30 @@ class Clientes extends CI_Controller {
 		$this->load->view('Base/footer');
 	}
 	public function Eliminar(){
-		$id = $this->input->get('id');
+		if(isset($_GET["id"])){ 
+            $id=(int)$_GET["id"];
+        }
+		// $id = $this->input->get('id');
 		$this->load->model("Clientes_Model");
 		//echo $id;
 		$bool=$this->Clientes_Model->Eliminar($id);
 		if ($bool) {
-			echo '<script type="text/javascript">
-				alert("El cliente a sido eliminado de la base de datos");
-				self.location ="'.base_url().'Clientes/gestionarCliente"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("El cliente a sido eliminado de la base de datos");
+			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
+			// 	</script>';
+				$this->session->set_flashdata("succes","El cliente a sido eliminado de la base de datos.");
+				redirect(base_url()."Clientes/gestionarCliente");
 			
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("NO, se pudo eliminar el registro");
-				self.location ="'.base_url().'Clientes/gestionarCliente"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("NO, se pudo eliminar el registro");
+			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
+			// 	</script>';
+				$this->session->set_flashdata("errorr","NO, se pudo eliminar el registro.");
+				redirect(base_url()."Clientes/gestionarCliente");
 		}
 
 
@@ -98,17 +109,21 @@ class Clientes extends CI_Controller {
 		$bool=$this->Clientes_Model->Editar($datos);
 		if($bool){
 
-			echo '<script type="text/javascript">
-				alert("Registro editado con exito");
-				self.location ="'.base_url().'Clientes/gestionarCliente"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("Registro editado con exito");
+			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
+			// 	</script>';
+				$this->session->set_flashdata("succes","Registro editado con exito.");
+				redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("Error al modificar la informacion");
-				self.location ="'.base_url().'Clientes/"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("Error al modificar la informacion");
+			// 	self.location ="'.base_url().'Clientes/"
+			// 	</script>';
+				$this->session->set_flashdata("errorr","Error al modificar la información.");
+				redirect(base_url()."Clientes/");
 		}
 	}
 

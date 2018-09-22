@@ -50,6 +50,15 @@
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>
 
+        <!-- Data table -->
+        <script src="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/datatables/dataTables.bootstrap.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable();
+            } );
+        </script>
+
         <!-- Dashboard -->
         <script src="<?= base_url() ?>plantilla/js/jquery.dashboard.js"></script>
 

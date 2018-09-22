@@ -15,13 +15,13 @@ $.notify.addStyle("metro", {
         },
         error: {
             "color": "#fafafa !important",
-            "background-color": "rgba(239, 83, 80, 0.8)",
-            "border": "1px solid #ef5350"
+            "background-color": "rgba(213, 11, 0, 0.9)",
+            "border": "1px solid rgba(144, 8, 0, 0.9)"
         },
         success: {
             "color": "#fafafa !important",
-            "background-color": "rgba(51, 184, 108, 0.8)",
-            "border": "1px solid #33b86c"
+            "background-color": "rgba(0, 117, 0, 0.9)",
+            "border": "1px solid rgba(0, 90, 0, 0.9)"
         },
         info: {
             "color": "#fafafa !important",
