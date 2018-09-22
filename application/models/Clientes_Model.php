@@ -34,10 +34,14 @@ class Clientes_Model extends CI_Model{
 				'Observaciones_Cliente'=>$datos['Observaciones'],
 				'Profesion_Cliente'=>$datos['Profesion_Cliente'],
 				'Fk_Id_Departamento'=>$datos['cbbDepartamentos'],
-				'Fk_Id_Municipio'=>$datos['cbbMunicipios']
+				'Fk_Id_Municipio'=>$datos['cbbMunicipios'],
+				'Tipo_Cliente'=>$datos['Tipo_Cliente']
+
 				);
 			if($this->db->insert('tbl_Clientes', $data)){
-				return true;
+				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_Clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_Clientes)";
+				$id=$this->db->query($sql2);
+				return $id;
 			}
 			else{
 				return false;
@@ -86,18 +90,68 @@ class Clientes_Model extends CI_Model{
 				'Observaciones_Cliente'=>$datos['Observaciones'],
 				'Profesion_Cliente'=>$datos['Profesion_Cliente'],
 				'Fk_Id_Departamento'=>$datos['departamento'],
-				'Fk_Id_Municipio'=>$datos['municipio']
+				'Fk_Id_Municipio'=>$datos['municipio'],
+				'Tipo_Cliente'=>$datos['Tipo_Cliente']
 				);
 			$this->db->where('Id_Cliente', $id);
-			if($this->db->update('tbl_Clientes', $data)){
-				return true;
+			if($this->db->update('tbl_Clientes', $data))
+			{
+				if($datos['Tipo_Cliente']=="Empleado"){
+						$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_Datos_Laborales as l INNER JOIN  tbl_Clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
+						$info = $this->db->query($sql);
+						return $info;
+				}
+				else if($datos['Tipo_Cliente']=="Empresario")
+				{
+					$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_Datos_Negocio as l INNER JOIN  tbl_Clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
+						$info = $this->db->query($sql);
+						return $info;
+
+				}
+				
 			}
 			else{
 				return false;
 			}
 		}
 	}
-}
 
+	public function InsertarDatosLaborales($datos =null){
+		if($datos!=null){
+			if($this->db->insert('tbl_Datos_Laborales', $datos)){
+				return true;
+			}
+			else{
+				return  false;
+			}
+		}
+	}
+
+	public function InsertarDatosNegocio($datos =null){
+		if($datos!=null){
+			if($this->db->insert('tbl_Datos_Negocio', $datos)){
+				return true;
+			}
+			else{
+				return  false;
+			}
+
+		}
+	}
+	public function EditarDatosLaborales($datos=null){
+		if($datos!=null){
+			$id = $datos['Fk_Id_Cliente'];
+			$this->db->where('Fk_Id_Cliente', $id);
+			if($this->db->update('tbl_Datos_Laborales', $datos))
+			{
+				return true;
+
+			}
+			else{
+				return false;
+			}
+	}
+}
+}
 
 ?>

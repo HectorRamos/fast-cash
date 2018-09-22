@@ -19,6 +19,7 @@ foreach ($cliente->result() as $datos_cliente) {
                               <input type="hidden" name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
                               <input type="hidden" name="condicion" value="<?php echo $datos_cliente->Condicion_Actual_Cliente;?>">
                               <input type="hidden" name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
+                              <input type="hidden" name="Tipo_Cliente" id="Tipo_Cliente" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
                                           <label for="">Nombre</label>
@@ -36,7 +37,7 @@ foreach ($cliente->result() as $datos_cliente) {
                                     </div>
                                     <div class="form-group col-md-6">
                                           <label for="">Municipio</label>
-										  <input type="text" class="form-control" id="Municipio" name="Departamento" value="<?= $datos_cliente->Nombre_Municipio?>"">
+										                      <input type="text" class="form-control" id="Municipio" name="Departamento" value="<?= $datos_cliente->Nombre_Municipio?>"">
                                     </div>
                               </div> 
 
@@ -135,15 +136,18 @@ foreach ($cliente->result() as $datos_cliente) {
                                           <input type="text" class="form-control" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente" value="<?= $datos_cliente->Fecha_Registro_Cliente?>">
                                     </div>
                               </div>
-
                               <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                           <label for="">Profesión</label>
                                           <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente" value="<?= $datos_cliente->Profesion_Cliente?>">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                          <label for="">Tipo de cliente</label>
-                                          <select id="Tipo_Cliente" name="Tipo_Cliente" class="form-control">
+                                    <div class="form-group col-md-4">
+                                          <label for="">Tipo de Cliente</label>
+                                          <input type="text" class="form-control" placeholder="Tipo del cliente vacio" value="<?= $datos_cliente->Tipo_Cliente?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                          <label for="">Cambiar Tipo de cliente</label>
+                                          <select onchange="javascript:document.all('Tipo_Cliente').value=this.value;"  class="form-control">
                                             <option value="Empleado">Empleado</option>
                                             <option value="Empresario">Empresario</option>
                                           </select>

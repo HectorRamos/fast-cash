@@ -8,6 +8,7 @@
                     <div class="container">
 
                        <div class="row">
+                       <h1>Registro de Clientes</h1>
                            <form method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
                               <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -27,9 +28,7 @@
                                           <select id="cbbDepartamentos" name="cbbDepartamentos" class="form-control">
                                             <option value=""></option>
                                           <?php 
-                                            foreach ($datos->result() as $departamentos) {
-                                            
-                                            
+                                            foreach ($datos->result() as $departamentos) { 
                                           ?>
 
                                             <option value="<?= $departamentos->Id_Departamento ?>"><?= $departamentos->Nombre_Departamento ?></option>
@@ -68,8 +67,8 @@
                                     <div class="form-group col-md-6">
                                           <label for="">Genero</label>
                                           <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
-                                            <option value="">Masculino</option>
-                                            <option value="">Femenino</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
                                           </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -93,8 +92,8 @@
                                     <div class="form-group col-md-6">
                                           <label for="">Zona</label>
                                           <select id="Zona" name="Zona" class="form-control">
-                                            <option value="">Rural</option>
-                                            <option value="">Urbana</option>
+                                            <option value="Rural">Rural</option>
+                                            <option value="Urbana">Urbana</option>
                                           </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -109,6 +108,7 @@
                                           <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente">
                                     </div>
                                     <div class="form-group col-md-6">
+
                                           <label for="">Fecha de registro</label>
                                           <input type="text" class="form-control" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente">
                                     </div>
