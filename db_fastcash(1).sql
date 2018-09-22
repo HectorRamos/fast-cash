@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2018 at 05:44 PM
+-- Generation Time: Sep 22, 2018 at 05:45 PM
 -- Server version: 5.5.52-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
 
@@ -45,15 +45,37 @@ CREATE TABLE IF NOT EXISTS `tbl_Clientes` (
   `Observaciones_Cliente` text COLLATE utf8_spanish_ci NOT NULL,
   `Profesion_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL,
-  `Fk_Id_Municipio` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `Fk_Id_Municipio` int(11) NOT NULL,
+  `Tipo_Cliente` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `tbl_Clientes`
 --
 
-INSERT INTO `tbl_Clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Condicion_Actual_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `Fecha_Registro_Cliente`, `Observaciones_Cliente`, `Profesion_Cliente`, `Fk_Id_Departamento`, `Fk_Id_Municipio`) VALUES
-(2, '000123', 'Melvin ', 'Flores', 'Activo', 'Soltero/a', '', '', '60117845', 'colonia la cueva', '1990-04-12', '', '5545454-88', '44444-777', '2018-09-17', 'Sin observaciones', 'Ingeniero', 12, 94);
+INSERT INTO `tbl_Clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Condicion_Actual_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `Fecha_Registro_Cliente`, `Observaciones_Cliente`, `Profesion_Cliente`, `Fk_Id_Departamento`, `Fk_Id_Municipio`, `Tipo_Cliente`) VALUES
+(32, '000123', 'Juan', 'Perez', 'Activo', 'Soltero/a', 'Masculino', '777-777', '22222', 'aaaa', '0000-00-00', 'Rural', '546546', '33333344', '0000-00-00', 'aaaaaaaa', 'albañil', 10, 250, ''),
+(33, '000123', 'Luiz', 'Aguilar', 'Activo', 'Soltero/a', 'Masculino', '111112', '121212', 'ssss', '2012-12-12', 'Rural', '555555', '445-455-8888-7', '0000-00-00', 'ssss', 'Empleado', 1, 1, 'Empleado'),
+(35, '000123', 'sdsd', 'sdsd', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, NULL),
+(36, '000123', 'Juana', 'Pere', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
+(38, '000123', 'MAria', 'Perez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
+(39, '000123', 'Rosa', 'Munguia', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(40, '000123', 'Maria', 'Paiz', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 9, 241, 'Empresario'),
+(41, '000123', 'LOpez', 'SPSPS', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(42, '000123', 'jose', 'mlvin', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(43, '000123', 'Hector Javier', 'Paiz Ramos', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 13, 65, 'Empleado'),
+(44, '000123', 'Maria', 'Lopez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
+(45, '000123', 'uana', 'sjsj', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(46, '000123', 'JUan', 'perez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
+(48, '000123', 'Juan', 'Ramos', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 3, 26, 'Empleado'),
+(49, '000123', 'Mario', 'Belloso', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', 'Empleado', 2, 13, 'Empleado'),
+(50, '000123', 'juana', 'ahahah', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(51, '000123', 'juana8', 'hshs', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empresario'),
+(52, '000123', 'javier', 'paiz', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
+(53, '000123', 'juan ', 'lopez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empresario'),
+(54, '000123', 'frnacisco', 'Flores', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empresario'),
+(55, '000123', 'jose', 'robles', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', 'Empleado', 1, 1, 'Empresario'),
+(57, '000123', '', '', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado');
 
 -- --------------------------------------------------------
 
@@ -69,8 +91,41 @@ CREATE TABLE IF NOT EXISTS `tbl_Datos_Laborales` (
   `Rubro` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Ingreso_Mensual` float NOT NULL,
   `Observaciones` text COLLATE utf8_spanish_ci NOT NULL,
-  `FK_Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+  `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `Fk_Id_Cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `tbl_Datos_Laborales`
+--
+
+INSERT INTO `tbl_Datos_Laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Codigo_Cliente`, `Fk_Id_Cliente`) VALUES
+('Gerente', 'Arrocera San Fnacisco', 'San Miguel', '4444', 'Alimentos', 600, 'sin observaciones.', '000123', 49);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_Datos_Negocio`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_Datos_Negocio` (
+`Id_Negocio` int(11) NOT NULL,
+  `Fk_Id_Cliente` int(11) NOT NULL,
+  `Nombre_Negocio` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
+  `NIT` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `NRC` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `Giro` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `Direccion_Negocio` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
+  `Ingreso_Mensual` double NOT NULL,
+  `Tipo_Factura` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_Datos_Negocio`
+--
+
+INSERT INTO `tbl_Datos_Negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`, `NIT`, `NRC`, `Giro`, `Direccion_Negocio`, `Ingreso_Mensual`, `Tipo_Factura`) VALUES
+(1, 55, 'ajjaja', 'jsjjj', 'jajajaj', 'jsjsjsj', 'jajaja', 4000, 'Credito fiscal');
 
 -- --------------------------------------------------------
 
@@ -423,7 +478,6 @@ INSERT INTO `tbl_Municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (301, 'Santo Domingo de Guzmán', 3),
 (302, 'Sonsonate', 3),
 (303, 'Sonzacate', 3),
-(304, 'Alegría', 11),
 (305, 'Berlín', 11),
 (306, 'California', 11),
 (307, 'Concepción Batres', 11),
@@ -653,13 +707,19 @@ INSERT INTO `tbl_Municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 -- Indexes for table `tbl_Clientes`
 --
 ALTER TABLE `tbl_Clientes`
- ADD PRIMARY KEY (`Id_Cliente`), ADD UNIQUE KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
+ ADD PRIMARY KEY (`Id_Cliente`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
 
 --
 -- Indexes for table `tbl_Datos_Laborales`
 --
 ALTER TABLE `tbl_Datos_Laborales`
- ADD KEY `FK_Codigo_Cliente` (`FK_Codigo_Cliente`);
+ ADD KEY `FK_Codigo_Cliente` (`Codigo_Cliente`), ADD KEY `FK_Codigo_Cliente_2` (`Codigo_Cliente`), ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`), ADD KEY `Fk_Id_Cliente_2` (`Fk_Id_Cliente`);
+
+--
+-- Indexes for table `tbl_Datos_Negocio`
+--
+ALTER TABLE `tbl_Datos_Negocio`
+ ADD PRIMARY KEY (`Id_Negocio`), ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
 
 --
 -- Indexes for table `tbl_Departamentos`
@@ -681,7 +741,12 @@ ALTER TABLE `tbl_Municipios`
 -- AUTO_INCREMENT for table `tbl_Clientes`
 --
 ALTER TABLE `tbl_Clientes`
-MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT for table `tbl_Datos_Negocio`
+--
+ALTER TABLE `tbl_Datos_Negocio`
+MODIFY `Id_Negocio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_Departamentos`
 --
@@ -701,7 +766,19 @@ MODIFY `Id_Municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=525;
 --
 ALTER TABLE `tbl_Clientes`
 ADD CONSTRAINT `tbl_Clientes_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_Departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `tbl_Clientes_ibfk_2` FOREIGN KEY (`Fk_Id_Municipio`) REFERENCES `tbl_Municipios` (`Id_Municipio`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `tbl_Clientes_ibfk_2` FOREIGN KEY (`Fk_Id_Municipio`) REFERENCES `tbl_Municipios` (`Id_Municipio`);
+
+--
+-- Constraints for table `tbl_Datos_Laborales`
+--
+ALTER TABLE `tbl_Datos_Laborales`
+ADD CONSTRAINT `tbl_Datos_Laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_Clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_Datos_Negocio`
+--
+ALTER TABLE `tbl_Datos_Negocio`
+ADD CONSTRAINT `tbl_Datos_Negocio_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_Clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_Municipios`
