@@ -199,7 +199,17 @@ function($) {
 
     //initializing tooltip
     MoltranApp.prototype.initTooltipPlugin = function() {
-        $.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
+        // $.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="modal"]').tooltip({ trigger: "hover" });
+      $('[data-toggle="modal"]').tooltip().click(function () {
+              $('[data-toggle="modal"]').tooltip("hide");
+      });
+
+      $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
+      $('[data-toggle="tooltip"]').tooltip().click(function () {
+              $('[data-toggle="tooltip"]').tooltip("hide");
+      });
+
     }, 
 
     //initializing popover

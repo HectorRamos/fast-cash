@@ -33,7 +33,7 @@
                 <!-- Top Bar End -->
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <div class="panel panel-color panel-primary panel-pages">
+                        <div class="panel panel-color panel-primary panel-pages bord">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-6">

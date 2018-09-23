@@ -35,34 +35,47 @@
                             <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Registro de clientes</h3>
+                                        <!-- <h3 class="panel-title">Registro de clientes</h3> -->
+						              <div class="table-title">
+						                <div class="row">
+						                  <div class="col-sm-5">
+						                    <h3 class="panel-title">Registro de clientes</h3>
+						                  </div>
+						                  <div class="col-sm-7">
+						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
+						                  </div>
+						                </div>
+						              </div>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
 							                    <table id="datatable" class="table">
-												  <thead class="thead-dark">
-												    <tr>
-												      <th scope="col">Código Cliente</th>
-												      <th scope="col">Nombre</th>
-												      <th scope="col">Apellido</th>
-												      <th scope="col">Estado</th>
-												      <th>Acción</th>
+												  <thead class="thead-dark thead thead1">
+												    <tr class="tr tr1">
+												      <th class="th th1" scope="col">Código Cliente</th>
+												      <th class="th th1" scope="col">Nombre</th>
+												      <th class="th th1" scope="col">Apellido</th>
+												      <th class="th th1" scope="col">Estado</th>
+												      <th class="th th1">Acción</th>
 												    </tr>
 												  </thead>
-												  <tbody>
+												  <tbody class="tbody tbody1">
 												  <?php
 												  foreach ($registro->result() as $clientes) {
 												  ?>
-												    <tr>
-												      <th scope="row"><?= $clientes->Id_Cliente?></th>
-												      <td><?= $clientes->Nombre_Cliente?></td>
-												      <td><?= $clientes->Apellido_Cliente?></td>
-												      <td><?= $clientes->Condicion_Actual_Cliente?></td>
+												    <tr class="tr tr1">
+												      <td class="td td1" width="150"><b><?= $clientes->Id_Cliente?></b></td>
+												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
+												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
+												      <td class="td td1" width="100"><?= $clientes->Condicion_Actual_Cliente?></td>
 												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
-												      <td><a class="btn btn-danger waves-effect waves-light" data-id="<?= $clientes->Id_Cliente?>"  data-nombre="<?= $clientes->Nombre_Cliente?> <?= $clientes->Apellido_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente">Eliminar</a>
-												      <a href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="btn btn-warning">Editar</a>
-												      <a class="btn btn-primary">Ver historial</a></td>
+												      <td class="td td1"><a title="Ver historial" data-toggle="tooltip" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
+
+												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+
+												      <a title="Eliminar" class=" waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-nombre="<?= $clientes->Nombre_Cliente?> <?= $clientes->Apellido_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
+												      </td>
 												    </tr>
 												    <?php
 														}
@@ -79,11 +92,7 @@
                     </div>
                 </div>
             </div>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#datatable').dataTable();
-            } );
-        </script>
+
 <!-- <script type="text/javascript"> -->
 <!-- 	function confirmar (val) {
   //alert("confirmar");
@@ -99,7 +108,7 @@
 		} -->
 <!-- </script> -->
 	    <div class="modal fade modal_eliminar_cliente" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-	        <div class="modal-dialog ">
+	        <div class="modal-dialog modal-sm">
 	            <div class="modal-content">
 	                <form name="frmeliminarcliente" action="<?= base_url();?>Clientes/Eliminar/" id="frmeliminarcliente" method="GET">
 	                <div class="modal-header">
@@ -111,11 +120,12 @@
 	                </div>
 	                <div class="modal-body">
 	                  <input type="hidden" name='id'>
-	                  ¿Está seguro de que desea eliminar el registro?
+	                  <!-- ¿Está seguro de que desea eliminar el registro? -->
+	                  <p align="center">¿Está seguro de eliminar el registro?</p>
 	                </div>
-	                <div align="center">
-	                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-	                    <button type="submit" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+	                <div  align="center">
+	                    <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+	                    <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
 	                </div>
 	                </form>
 	            </div><!-- /.modal-content -->
@@ -130,16 +140,3 @@
 		            
 		      });
 		</script>
-	    <style type="text/css">
-	      	  .style,.style:hover, .style:focus{
-			    border: none;
-			    cursor: default;
-			    background: transparent;
-			    -webkit-box-shadow: none;
-			    -moz-box-shadow: none;
-			    box-shadow: none;
-			  }
-			  input.style[readonly]{
-			    background-color: transparent;
-			  }
-	      </style>

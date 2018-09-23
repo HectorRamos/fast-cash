@@ -85,8 +85,25 @@
 				scale: 1.0
 			})
 		</script>
-	    <footer class="footer text-right">
-	        Copyright © <?php echo date('Y');?> Moltran.
-	    </footer>
+
+        <footer class="footer text-right">
+           Copyright © <?php echo date('Y');?> Moltran.
+        </footer>
+        <script type="text/javascript">
+            footer = function(){ 
+                $alto_navegador= $(window).height(); /*el alto que tiene el navegador*/
+                $alto_documento= $(document).height(); /*el alto que tiene el contenido de la pagina*/
+                if ($alto_documento > $alto_navegador){ /*aqui condicionamos si el alto del contenido es mayor que el alto del navegador*/
+                    /* si es mayor es que tiene un contenido mas largo que el alto del navegador y entonces lo dejamos a relativo*/
+                    $("footer").css({"position":"relative"})
+                    console.log("relative");
+                }else {
+                    /* si el alto del contenido es menor que el alto del navegador es que tenemos espacio vacio y le mandamos abajo*/
+                    $("footer").css({"position":"fixed"})
+                    console.log("fixed");
+                } 
+            }
+            footer();
+        </script>
     </body>
 </html>

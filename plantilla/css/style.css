@@ -133,9 +133,11 @@ a:focus {
   margin-right: auto;
   margin-left: auto;
 }
+
+
 .footer {
   color: #58666e;
-  /*position: relative;*/
+  /*position: absolute;*/
   /*position: fixed;*/
   width: 100%;
   bottom: 0px;
@@ -232,11 +234,11 @@ a:focus {
 /* 2.1 panels*/
 .panel{
   border: none;
-  border-radius: 0px;
+  border-radius: 5px;
   margin-bottom: 20px;
-  -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
 }
 .panel .panel-body{
   padding: 20px;
@@ -254,11 +256,13 @@ a:focus {
 }
 .panel-default>.panel-heading {
   color: #797979;
-  background-color: #fafafa;
-  border-bottom: none;
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  /*border-bottom: none;*/
 }
 .panel-title {
-  font-size: 14px;
+  font-size: 25px;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0;
@@ -586,19 +590,19 @@ a:focus {
   background-color: #fafafa;
   color: rgba(0,0,0,0.6);
   font-size: 14px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
+  /*border: 1px solid #eee;*/
   box-shadow: none;
 }
 .form-control:focus {
-  border: 1px solid #e0e0e0;
+  /*border: 1px solid #e0e0e0;*/
   background: #FFF;
-  box-shadow: none;
+  /*box-shadow: none;*/
 }
 
 /* 2.7 Labels */
@@ -895,13 +899,14 @@ a:focus {
   -moz-box-shadow: none;
   box-shadow: none;
   border-color: #DDDDDD;
-  padding: 30px;
-  border-radius: 2px;
+  padding: 20px;
+  border-radius: 1px;
 }
 .modal .modal-dialog .modal-content .modal-header {
   margin: 0;
   padding: 0;
-  border-bottom-width: 2px;
+  /*border-bottom-width: 2px;*/
+  border-bottom: none;
   padding-bottom: 15px;
 }
 .modal .modal-dialog .modal-content .modal-body {
@@ -910,6 +915,7 @@ a:focus {
 .modal .modal-dialog .modal-content .modal-footer {
   padding: 0;
   padding-top: 15px;
+  border-top: none;
 }
 .modal-full {
   width: 98%;
@@ -976,8 +982,11 @@ a:focus {
   box-shadow: none !important;
 }
 .input-group-addon {
-  border: 1px solid #eee;
-  border-radius: 2px;
+  /*border-bottom: 2px solid #00838F;*/
+  /*background: #CACFD2;*/
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
 }
 
 
@@ -3209,6 +3218,9 @@ div.dataTables_info {
 .panel-pages .panel-body{
   padding: 30px;
 }
+.bord{
+  border: none;
+}
 .panel-pages {
   border-radius: 6px;
   -webkit-box-shadow: 0px 5px 14px -3px rgba(0,0,0,0.75);
@@ -3419,5 +3431,167 @@ div.dataTables_info {
   width: 100%;
   margin: 0 auto; 
   margin-top: 120px;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
+}
+@media(max-width: 500px){
+  .limiter {
+    margin-bottom: 35px;
+  }
+}
+/****************************************
+TABLAS
+*************************************************/
+  .table-title .btn {
+    float: right;
+  }
+  .table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+  }
+  .table-title .btn span {
+    float: left;
+    margin-top: 2px;
+  }
+  .table > thead > tr > th {
+    border-bottom: 1px solid #F5F5F5 !important;
+  }
+  table.table td a.ver {
+    color: #29b6f6;
+  }
+
+  .ver i.fa:hover, .editar i.fa:hover, .eliminar i.fa:hover {
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  }
+  .ver i.fa, .editar i.fa, .eliminar i.fa {
+    font-size: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .btn.ver:focus, .btn.ver:active,
+  .btn.editar:focus, .btn.editar:active,
+  .btn.eliminar:focus, .btn.eliminar:active {
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none;
+    box-shadow: none !important;
+    background: transparent;
+
+  }
+  .btn.ver:hover,
+  .btn.editar:hover,
+  .btn.eliminar:hover {
+    outline: 0 !important;
+  }
+  table.table td a.editar {
+        color: #FFB300;
+  }
+    table.table td a.eliminar {
+        color: #F44336;
+    }
+    .text-success {
+        color: #10c469;
+    }
+    .text-info {
+        color: #62c9e8;
+    }
+    .text-warning {
+        color: #FFC107;
+    }
+    .text-danger {
+        color: #ff5b5b;
+    }
+    .pagination {
+        float: right;
+        margin: 0 0 5px;
+    }
+    .pagination li a {
+        border: none;
+        font-size: 13px;
+        min-width: 30px;
+        min-height: 30px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 2px !important;
+        text-align: center;
+        padding: 0 6px;
+    }
+    .pagination li a:hover {
+        color: #666;
+    } 
+    .pagination li.active a, .pagination li.active a.page-link {
+        background: #03A9F4;
+    }
+    .pagination li.active a:hover {        
+        background: #0397d6;
+    }
+  .pagination li.disabled i {
+        color: #ccc;
+    }
+    .pagination li i {
+        font-size: 16px;
+        padding-top: 6px
+    }
+    .hint-text {
+        float: left;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+ /*==================== ESTILO DE TABLAS =======================*/
+ .thead1 .tr1 .th1:last-child {
+  text-align: right;
+}
+
+.tbody1 .tr1 .td1:last-child {
+  text-align: right;
+}
+
+@media screen and (max-width: 800px) {
+  .table .thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .table .tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  .table .td {
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  .table .td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  
+  .table .td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.style,.style:hover, .style:focus{
+  border: none;
+  cursor: default;
+  background: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+input.style[readonly]{
+  background-color: transparent;
 }
