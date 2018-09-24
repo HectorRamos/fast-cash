@@ -23,6 +23,10 @@
 
         <!-- Waves-effect -->
         <link href="<?= base_url() ?>plantilla/css/waves-effect.css" rel="stylesheet">
+
+        <!--Form Wizard-->
+        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>plantilla/assets/form-wizard/jquery.steps.css" />
+        
         <!-- DataTables -->
         <link href="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 

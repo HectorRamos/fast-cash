@@ -50,6 +50,16 @@
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>
 
+                <!--Form Validation-->
+        <script src="assets/form-wizard/bootstrap-validator.min.js" type="text/javascript"></script>
+
+        <!--Form Wizard-->
+        <script src="<?= base_url() ?>plantilla/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>
+
+        <!--wizard initialization-->
+        <script src="<?= base_url() ?>plantilla/assets/form-wizard/wizard-init.js" type="text/javascript"></script>
+
         <!-- Data table -->
         <script src="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/datatables/dataTables.bootstrap.js"></script>
