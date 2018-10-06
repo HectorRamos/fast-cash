@@ -26,7 +26,13 @@
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
+<<<<<<< HEAD
+                                        <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
+                                        <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="md md-settings-power"></i> Cerrar Sesion</a></li>
+=======
                                         <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+>>>>>>> 6b44ffed5e810e6cac89afa7b1ba634af1f4a2ad
                                     </ul>
                                 </li>
                             </ul>
@@ -49,14 +55,18 @@
 
                         <div class="user-info">
                             <div class="dropdown">
+<<<<<<< HEAD
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?><span class="caret"></span></a>
+=======
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">User Name<span class="caret"></span></a>
+>>>>>>> 6b44ffed5e810e6cac89afa7b1ba634af1f4a2ad
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
                                     <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
                                 </ul>
                             </div>
                             
-                            <p class="text-muted m-0">Administrador</p>
+                            <p class="text-muted m-0"><?php echo $this->session->userdata("tipoAcceso");?></p>
                         </div>
                     </div>
                     <!--- Divider -->

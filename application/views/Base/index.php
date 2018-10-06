@@ -1,3 +1,12 @@
+<!-- Script para mensaje de error Login -->
+<?php if($this->session->flashdata("error")){?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.Notification.autoHideNotify('error', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("error")?>');
+      });
+    </script>
+  <?php } ?>
+<!-- fin script -->
 <!--     <body class="nicescroll">
          -->
             <!-- <div class="container wrapper-page"> -->
@@ -45,7 +54,7 @@
                                         </div> 
                                     </div>
                                     <div class="col-sm-6 bordr-right">
-                                        <form action="<?= base_url() ?>Home/main">
+                                        <form action="<?= base_url() ?>Home/validarLogin" method="post">
 
                                             <h3 class="h3-title-login"> <label class="label-title-login">Iniciar sesión</label> </h3>
 
@@ -54,13 +63,13 @@
                                                     <div class="form-group ">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-                                                            <input class="form-control input-lg" type="text" required="" placeholder="Usuario">
+                                                            <input class="form-control input-lg" type="text" name="user" id="user" required="" placeholder="Usuario">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-                                                            <input class="form-control input-lg" type="password" required="" placeholder="Contraseña">
+                                                            <input class="form-control input-lg" type="password" name="pass" id="pass" required="" placeholder="Contraseña">
                                                         </div>
                                                     </div>
                                                 </div>
