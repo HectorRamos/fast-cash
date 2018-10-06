@@ -32,7 +32,7 @@ Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
 
 .select2-container .select2-choice {
     display: block;
-    padding: 5px 0 5px 8px;
+    padding: 2px 0 2px 8px;
     overflow: hidden;
     position: relative;
     font-size: 13px;
@@ -43,12 +43,12 @@ Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
     color: #444;
     text-decoration: none;
 
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
 
     background-clip: padding-box;
-    background-color: #fff;
+    background-color: #F8F9F9;
 
     -webkit-touch-callout: none;
       -webkit-user-select: none;

@@ -16,9 +16,9 @@ foreach ($cliente->result() as $datos_cliente) {
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
-                    <h3>EDITAR INFORMACION DEL CLIENTE CODIGO <?= $datos_cliente->Codigo_Cliente?></h3>
+                    <h3>EDITAR INFORMACIÓN DEL CLIENTE CODIGO <?= $datos_cliente->Codigo_Cliente?></h3>
                        <div class="row">
-                           <form method="POST" action="<?= base_url()?>Clientes/editarCliente">
+                           <form id="FormEditarCliente" method="POST" action="<?= base_url()?>Clientes/editarCliente" autocomplete="off">
                               <div class="form-row">
                               <!--*******************************CAMPOS OCULTOS**********************************-->
                               <input type="hidden" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente; ?>">
@@ -29,30 +29,30 @@ foreach ($cliente->result() as $datos_cliente) {
                               <input type="hidden" name="Tipo_Cliente" id="Tipo_Cliente" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
-                                          <label for="">Nombre</label>
+                                          <label for="Nombre_Cliente">Nombre</label>
                                           <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" value="<?= $datos_cliente->Nombre_Cliente ?>" placeholder="Nombre del cliente">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Apellido</label>
+                                          <label for="Apellido_Cliente">Apellido</label>
                                           <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" value="<?= $datos_cliente->Apellido_Cliente ?>" placeholder="Apellido del cliente">
                                     </div>
                               </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Departamento</label>
+                                          <label for="Departamento">Departamento</label>
                                           <input type="text" class="form-control" id="Departamento" name="Departamento" value="<?= $datos_cliente->Nombre_Departamento?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Municipio</label>
-										                      <input type="text" class="form-control" id="Municipio" name="Departamento" value="<?= $datos_cliente->Nombre_Municipio?>"">
+                                          <label for="Municipio">Municipio</label>
+										                      <input type="text" class="form-control" id="Municipio" name="Municipio" value="<?= $datos_cliente->Nombre_Municipio?>"">
                                     </div>
                               </div> 
 
 
                             <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Cambiar Departamento</label>
-                                          <select id="cbbDepartamentos" name="cbbDepartamentos" class="form-control" onchange="javascript:document.all('departamento').value=this.value;">
+                                          <label for="cbbDepartamentos">Cambiar Departamento</label>
+                                          <select id="cbbDepartamentos" name="cbbDepartamentos" class="select" onchange="javascript:document.all('departamento').value=this.value;" data-placeholder="Elige un Departamento ...">
                                             <option value=""></option>
                                           <?php 
                                             foreach ($datos->result() as $departamentos) {
@@ -63,8 +63,8 @@ foreach ($cliente->result() as $datos_cliente) {
                                           </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for=""> Cambiar Municipio</label>
-                                          <select id="cbbMunicipios" name="cbbMunicipios" class="form-control" onchange="javascript:document.all('municipio').value=this.value;">
+                                          <label for="cbbMunicipios">Cambiar Municipio</label>
+                                          <select id="cbbMunicipios" name="cbbMunicipios" class="select" onchange="javascript:document.all('municipio').value=this.value;" data-placeholder="...">
                                             <option value="">...</option>
                                           </select>
                                     </div>
@@ -72,25 +72,25 @@ foreach ($cliente->result() as $datos_cliente) {
 
                                <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Condición actual</label>
-                                          <input type="text"  name="" value="<?= $datos_cliente->Condicion_Actual_Cliente;?>" class="form-control">
+                                          <label for="condic">Condición actual</label>
+                                          <input type="text" id="condic" name="" value="<?= $datos_cliente->Condicion_Actual_Cliente;?>" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Estado civil</label>
-                                          <input type="text"  name="" value="<?= $datos_cliente->Estado_Civil_Cliente;?>" class="form-control">
+                                          <label for="estad">Estado civil</label>
+                                          <input type="text" id="estad" name="" value="<?= $datos_cliente->Estado_Civil_Cliente;?>" class="form-control">
                                     </div>
                               </div>
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Cambiar Condición actual</label>
+                                          <label for="Condicion_Cliente">Cambiar Condición actual</label>
                                           <select onchange="javascript:document.all('condicion').value=this.value;" id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
                                             <option value="Activo">Activo</option>
                                             <option value="Inactivo">Inactivo</option>
                                           </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Cambiar Estado civil</label>
+                                          <label for="Estado_Cliente">Cambiar Estado civil</label>
                                           <select onchange="javascript:document.all('estado_civil').value=this.value;" id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                             <option value="Soltero/a">Soltero/a</option>
                                             <option value="Casado/a">Casado/a</option>
@@ -101,60 +101,60 @@ foreach ($cliente->result() as $datos_cliente) {
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Genero</label>
-                                          <input type="text" name="Genero_Cliente" class="form-control" value="<?= $datos_cliente->Genero_Cliente?>">
+                                          <label for="Genero_Cliente">Genero</label>
+                                          <input type="text" id="Genero_Cliente" name="Genero_Cliente" class="form-control" value="<?= $datos_cliente->Genero_Cliente?>">
                                          
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Teléfono fijo</label>
-                                          <input type="text" class="form-control" id="Telefono_Cliente" name="Telefono_Cliente" placeholder="Teléfono móvil" value="<?= $datos_cliente->Telefono_Fijo_Cliente?>">
+                                          <label for="Telefono_Cliente">Teléfono fijo</label>
+                                          <input type="text" class="form-control" id="Telefono_Cliente" name="Telefono_Cliente" placeholder="Teléfono móvil" value="<?= $datos_cliente->Telefono_Fijo_Cliente?>" data-mask="(999) 9999-9999? x99999">
                                     </div>
                               </div>
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Teléfono celular</label>
-                                          <input type="text" class="form-control" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular" value="<?= $datos_cliente->Telefono_Celular_Cliente?>">
+                                          <label for="Celular_Cliente">Teléfono celular</label>
+                                          <input type="text" class="form-control" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular" value="<?= $datos_cliente->Telefono_Celular_Cliente?>" data-mask="(999) 9999-9999? x99999">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Fecha de nacimiento</label>
-                                          <input type="text" class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" value="<?= $datos_cliente->Fecha_Nacimiento_Cliente?>">
+                                          <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
+                                          <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" value="<?= $datos_cliente->Fecha_Nacimiento_Cliente?>" data-mask="9999/99/99">
                                     </div>
                               </div>
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Zona</label>
-                                          <input type="text" name="Zona" class="form-control" value="<?= $datos_cliente->Zona_Cliente?>">
+                                          <label for="Zona">Zona</label>
+                                          <input type="text" id="Zona" name="Zona" class="form-control" value="<?= $datos_cliente->Zona_Cliente?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">DUI</label>
-                                          <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" value="<?= $datos_cliente->DUI_Cliente?>">
+                                          <label for="Dui_Cliente">DUI</label>
+                                          <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" value="<?= $datos_cliente->DUI_Cliente?>" data-mask="99999999-9">
                                     </div>
                               </div>
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">NIT</label>
-                                          <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente" value="<?= $datos_cliente->NIT_Cliente?>">
+                                          <label for="Nit_Cliente">NIT</label>
+                                          <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente" value="<?= $datos_cliente->NIT_Cliente?>" data-mask="9999-999999-999-9">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Fecha de registro</label>
-                                          <input type="text" class="form-control" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente" value="<?= $datos_cliente->Fecha_Registro_Cliente?>">
+                                          <label for="Fecha_Registro">Fecha de registro</label>
+                                          <input type="text" class="form-control DateTime" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente" value="<?= $datos_cliente->Fecha_Registro_Cliente?>" data-mask="9999/99/99">
                                     </div>
                               </div>
                               <div class="form-row">
                                     <div class="form-group col-md-4">
-                                          <label for="">Profesión</label>
-                                          <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente" value="<?= $datos_cliente->Profesion_Cliente?>">
+                                          <label for="Profesion_Cliente">Profesión</label>
+                                          <input type="text" class="form-control" id="Profesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente" value="<?= $datos_cliente->Profesion_Cliente?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                          <label for="">Tipo de Cliente</label>
-                                          <input type="text" class="form-control" placeholder="Tipo del cliente vacio" value="<?= $datos_cliente->Tipo_Cliente?>">
+                                          <label for="Cliente_ti">Tipo de Cliente</label>
+                                          <input type="text" id="Cliente_ti" class="form-control" placeholder="Tipo del cliente vacio" value="<?= $datos_cliente->Tipo_Cliente?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                          <label for="">Cambiar Tipo de cliente</label>
-                                          <select onchange="javascript:document.all('Tipo_Cliente').value=this.value;"  class="form-control">
+                                          <label for="Tipo_Clien">Cambiar Tipo de cliente</label>
+                                          <select id="Tipo_Clien" onchange="javascript:document.all('Tipo_Cliente').value=this.value;"  class="form-control">
                                             <option value="Empleado">Empleado</option>
                                             <option value="Empresario">Empresario</option>
                                           </select>
@@ -163,13 +163,13 @@ foreach ($cliente->result() as $datos_cliente) {
 
                                <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Domicilio</label>
-                                          <textarea id="Domicilio_Cliente" name="Domicilio_Cliente" class="form-control"
+                                          <label for="Domicilio_Cliente">Domicilio</label>
+                                          <textarea id="Domicilio_Cliente" rows="3" name="Domicilio_Cliente" class="form-control resize"
                                           value="<?= $datos_cliente->Domicilio_Cliente?>"><?= $datos_cliente->Domicilio_Cliente?></textarea>
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Observaciones</label>
-                                          <textarea id="Observaciones" name="Observaciones" class="form-control"
+                                          <label for="Observaciones">Observaciones</label>
+                                          <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"
                                           value="<?= $datos_cliente->Observaciones_Cliente?>"><?= $datos_cliente->Observaciones_Cliente?></textarea>
                                     </div>
                               </div>
