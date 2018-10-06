@@ -173,7 +173,7 @@
                        
                          <div class="form-row">
                          <!--*******************************CAMPOS OCULTOS**********************************-->
-                              <input type="text"  id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
+                              <input type="text" hidden id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
                               
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">

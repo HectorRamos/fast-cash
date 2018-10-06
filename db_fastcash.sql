@@ -115,7 +115,6 @@ CREATE TABLE `tbl_datos_laborales` (
   `Rubro` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Ingreso_Mensual` float NOT NULL,
   `Observaciones` text COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -123,8 +122,8 @@ CREATE TABLE `tbl_datos_laborales` (
 -- Volcado de datos para la tabla `tbl_datos_laborales`
 --
 
-INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Codigo_Cliente`, `Fk_Id_Cliente`) VALUES
-('Gerente', 'Arrocera San Fnacisco', 'San Miguel', '4444', 'Alimentos', 600, 'sin observaciones.', '000123', 49);
+INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Fk_Id_Cliente`) VALUES
+('Gerente', 'Arrocera San Fnacisco', 'San Miguel', '4444', 'Alimentos', 600, 'sin observaciones.', 49);
 
 -- --------------------------------------------------------
 

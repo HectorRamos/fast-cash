@@ -13,7 +13,6 @@
                 <div class="content">
                     <div class="container">
 
-<<<<<<< HEAD
                        <div class="row">
                        <h1>Registro de Clientes</h1>
                            <form method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
@@ -147,7 +146,7 @@
                               <button type="submit" class="btn btn-primary">Siguiente</button>
                             </form>
                        </div>   <!-- row -->    
-=======
+
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
@@ -308,7 +307,7 @@
                                 </div>
                             </div>
                         </div> <!-- End Row -->  
->>>>>>> 6b44ffed5e810e6cac89afa7b1ba634af1f4a2ad
+
 
                     </div> <!-- container -->
                                
