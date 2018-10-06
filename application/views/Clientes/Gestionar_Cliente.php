@@ -116,8 +116,107 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title" id="myLargeModalLabel">Informacion</h4>
                     </div>
-                        <div class="modal-body" id="divInfo">
-                        <input type="text" name='nombre' id="id" class="style" readonly='readonly'>
+                        <div class="modal-body" >
+                        <div id="divInfo">
+                            <input type="text" name='nombre' id="id" class="style" readonly='readonly'>
+                        </div>
+                        <div id="DivEmpleado" style="display:none;">
+                        <form method="POST" action="<?= base_url()?>Clientes/datosLaborales">
+                        
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
+                              <input type="hidden"  id="Fk_Id_Cliente" name="Fk_Id_Cliente" value="<?php //echo $dato->Id_Cliente; ?>">
+                              
+                              <!--FIN DE CAMPOS OCULTOS-->
+                                    <div class="form-group col-md-6">
+                                          <label for="">Nombre de la empresa</label>
+                                          <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" placeholder="Nombre de la empresa">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Cargo que desempeña</label>
+                                          <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña">
+                                    </div>
+                              </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Direccion de la empresa</label>
+                                          <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Direccion">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Telefono</label>
+                                          <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Rubro de la empresa que en que trabaja</label>
+                                          <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Nombre del cliente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                         <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                          <label for="">Observaciones</label>
+                                           <textarea id="Observaciones" name="Observaciones" class="form-control"></textarea>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </form>
+                            </div>
+                            <div id="DivEmpresario" style="display:none;">
+                            <form method="POST" action="<?= base_url()?>Clientes/datosNegocio">
+                       
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
+                              <input type="text"  id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
+                              
+                              <!--FIN DE CAMPOS OCULTOS-->
+                                    <div class="form-group col-md-6">
+                                          <label for="">Nombre del negocio</label>
+                                          <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">NIT</label>
+                                          <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT">
+                                    </div>
+                              </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Numero de Registro del Contribuyente(NRC)</label>
+                                          <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Numero de Registro del Contibuyente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Giro</label>
+                                          <input type="text" class="form-control" id="Giro" name="Giro" placeholder="Giro del negocio">
+                                    </div>
+                        </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Direccio del negocio</label>
+                                          <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Direccion del negocio">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                         <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                          <label for="">Tipo de factura</label>
+                                          <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </form>
+                       </div>
+
+                       </div>
+                        
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -163,11 +262,12 @@
 	    <script type="text/javascript">
 		//funcion para cargar los datos en modal con ajax
 		function MostrarInfo(id, TipoCliente){
+
+                    document.getElementById('divInfo').innerHTML= "";
 			//alert(TipoCliente);
 			if(TipoCliente==""){
-				html="<div class='alert alert-danger'>Este cliente tiene su registro de negocio o datos laborales incompleto por favor ir a la seccion de editar y verificars</div>";
+				html="<div class='alert alert-danger'>El registro de este cliente esta incompleto no selecciono un tipo usted puede seleccionar entre Empleado o Empresario para corregir este problema vaya a la seccion de editar informacion del cliente y asigne un tipo</div>";
 				document.getElementById('divInfo').innerHTML=html;
-
 			}
 			else{
 			var html ="<div class='row'><h4>Informacion del Cliente</h4>";
@@ -240,15 +340,34 @@
 
                     		html +="<div class='col-xs-6'><label>Direccion del negocio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div>";
                     		html +="<div class='col-xs-6'><label>Ingreso Mensual: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
-                    		html+="</div>"
+                    		html+="</div>";
+                           
                     	}
+                         document.getElementById('DivEmpleado').style.display='none';
+                            document.getElementById('DivEmpresario').style.display='none';
 
                     	//document.getElementById('divInfo').innerHTML= html;
                     }
                     else {
-                    	html="<div class='alert alert-danger'>Error al realizar la peticion de informacion</div>";
+
+                    	html="<div class='alert alert-danger'><p>El cliente no tiene completa su informacion de: "+TipoCliente+" complear en el siguiente formulario</p></div>";
+                        if (TipoCliente=="Empleado") {
+                            document.getElementById('DivEmpleado').style.display='block';
+                            document.getElementById('DivEmpresario').style.display='none';
+                            ;
+                        }
+                        else if(TipoCliente=="Empresario"){
+                            document.getElementById('DivEmpleado').style.display='none';
+                            document.getElementById('DivEmpresario').style.display='block';
+                            document.getElementById('Fk_Id_Cliente2').value=id;
+
+                        }
                     }
+                    document.getElementById('Fk_Id_Cliente').value=id
+
                     document.getElementById('divInfo').innerHTML= html;
+                    
+
 
                 }
              }); 

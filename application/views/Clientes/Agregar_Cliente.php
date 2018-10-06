@@ -16,7 +16,7 @@
                        <div class="row">
                        <h1>Registro de Clientes</h1>
                            <form method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
-                              <div class="form-row">
+                             <!-- <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Nombre</label>
                                           <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente">
@@ -26,8 +26,8 @@
                                           <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente">
                                     </div>
                               </div>
-
-
+                              -->
+<!--
                             <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Departamento</label>
@@ -48,10 +48,10 @@
                                             <option value="">...</option>
                                           </select>
                                     </div>
-                              </div> 
+                              </div> -->
 
 
-                              <div class="form-row">
+                            <!--  <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Condición actual</label>
                                           <select id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
@@ -59,7 +59,7 @@
                                             <option value="Inactivo">Inactivo</option>
                                           </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                      <div class="form-group col-md-6">
                                           <label for="">Estado civil</label>
                                           <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                             <option value="Soltero/a">Soltero/a</option>
@@ -69,7 +69,7 @@
                                     </div>
                               </div>
 
-                              <div class="form-row">
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Genero</label>
                                           <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
@@ -77,7 +77,7 @@
                                             <option value="Femenino">Femenino</option>
                                           </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                  <div class="form-group col-md-6">
                                           <label for="">Teléfono fijo</label>
                                           <input type="text" class="form-control" id="Telefono_Cliente" name="Telefono_Cliente" placeholder="Teléfono móvil">
                                     </div>
@@ -91,10 +91,10 @@
                                     <div class="form-group col-md-6">
                                           <label for="">Fecha de nacimiento</label>
                                           <input type="text" class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento">
-                                    </div>
+                                    </div>-->
                               </div>
 
-                              <div class="form-row">
+                              <!--  <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Zona</label>
                                           <select id="Zona" name="Zona" class="form-control">
@@ -102,7 +102,7 @@
                                             <option value="Urbana">Urbana</option>
                                           </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                  <div class="form-group col-md-6">
                                           <label for="">DUI</label>
                                           <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente">
                                     </div>
@@ -112,7 +112,7 @@
                                     <div class="form-group col-md-6">
                                           <label for="">NIT</label>
                                           <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente">
-                                    </div>
+                                    </div>-->
                                     <div class="form-group col-md-6">
 
                                           <label for="">Fecha de registro</label>
@@ -120,7 +120,7 @@
                                     </div>
                               </div>
 
-                              <div class="form-row">
+                             <!-- <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Profesión</label>
                                           <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
@@ -133,12 +133,11 @@
                                           </select>
                                     </div>
                               </div>
-
                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="">Domicilio</label>
                                           <textarea id="Domicilio_Cliente" name="Domicilio_Cliente" class="form-control"></textarea>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group col-md-6">
                                           <label for="">Observaciones</label>
                                           <textarea id="Observaciones" name="Observaciones" class="form-control"></textarea>

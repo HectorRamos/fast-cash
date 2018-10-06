@@ -10,7 +10,7 @@ class Clientes extends CI_Controller {
 		$data = array('datos' => $datos);
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
-		$this->load->view('Clientes/Agregar_Cliente', $data);
+		$this->load->view('Clientes/InsertarCliente', $data);
 		$this->load->view('Base/footer');
 	}
 	public function InsertarCliente(){

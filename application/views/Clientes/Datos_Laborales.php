@@ -1,8 +1,4 @@
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->                      
-            <div class="content-page">
+<div class="content-page">
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
@@ -67,7 +63,6 @@
                        <?php	
                        }
                        else{
-
                        	?>
                        	<h2>Ingrese los datos del negocio</h2>
                        		<form method="POST" action="<?= base_url()?>Clientes/datosNegocio">
@@ -135,3 +130,4 @@
                     </div>
                 </div>
             </div>
+            
