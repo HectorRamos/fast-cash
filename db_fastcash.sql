@@ -2,17 +2,17 @@
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
+
 -- Host: localhost:3306
 -- Generation Time: Oct 07, 2018 at 04:33 PM
 -- Server version: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.30-0+deb9u1
-=======
+
 -- Host: localhost
 -- Generation Time: Oct 07, 2018 at 02:19 PM
 -- Server version: 5.5.52-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
->>>>>>> 78e0b003b08d44354c375bf8d602f0001cd7c023
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -623,9 +623,9 @@ ALTER TABLE `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_plazos_prestamos`
   MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
+
 MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
->>>>>>> 78e0b003b08d44354c375bf8d602f0001cd7c023
+
 --
 -- Constraints for dumped tables
 --
