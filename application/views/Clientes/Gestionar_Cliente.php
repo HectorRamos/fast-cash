@@ -57,6 +57,7 @@
 												      <th class="th th1" scope="col">Nombre</th>
 												      <th class="th th1" scope="col">Apellido</th>
 												      <th class="th th1" scope="col">Estado</th>
+                              <th class="th th1" scope="col">Tipo</th>
 												      <th class="th th1">Acción</th>
 												  </thead>
 												  <tbody class="tbody tbody1">
@@ -69,12 +70,12 @@
 												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
 												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
 												      <td class="td td1" width="100"><?= $clientes->Condicion_Actual_Cliente?></td>
+                              <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
 												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
 												      <td class="td td1">
 												      	<a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="MostrarInfo(<?= $clientes->Id_Cliente?>, <?php echo $tipo;?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
 												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
-
 												      <a title="Eliminar" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-nombre="<?= $clientes->Nombre_Cliente?> <?= $clientes->Apellido_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
 												      </td>
                               </tr>
@@ -381,7 +382,6 @@
                             document.getElementById('DivEmpleado').style.display='none';
                             document.getElementById('DivEmpresario').style.display='block';
                             document.getElementById('Fk_Id_Cliente2').value=id;
-
                         }
 
                     	//html="<div class='alert alert-danger'></div>";

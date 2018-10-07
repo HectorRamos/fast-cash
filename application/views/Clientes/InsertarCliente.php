@@ -11,10 +11,43 @@
                                         <h3 class="panel-title">Registro de clientes</h3> 
                                     </div> 
                                     <div class="panel-body"> 
-                                        <form id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
-                                            <div>
-                                                <h3>Informacion personal</h3>
-                                                <section>
+                                        <form id="basic-form" method="POST" action="">
+                                           
+                                        </form> 
+                                    
+                         <!-- Basic Form Wizard -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                    <div class="wizard">
+                                        <!-- <div class="wizard-inner"> -->
+                                            <!-- <div class="connecting-line"></div> -->
+                                            <ul class="nav nav-tabs" role="tablist">
+
+                                                <li class="active">
+                                                    <a href="#step1" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1"> Informacion personal
+                                                    </a>
+                                                </li>
+
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step2" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2"> Documentos y Domicilio
+                                                    </a>
+                                                </li>
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step3" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3"> Profesion u oficio
+                                                    </a>
+                                                </li>
+                                                <li role="presentation" class="disabled">
+                                                    <a href="#step4" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step3" role="tab" title="Step 4"> Otra informacion
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        <!-- </div> -->
+
+                                        <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                                <br>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                         <div class="form-group clearfix">
@@ -70,7 +103,7 @@
                                                         <div class="form-group col-md-6">
                                                                <div class="form-group clearfix">
 
-                                                                    <label class="col-lg-2 control-label" for="name">Estado_Civil </label>
+                                                                    <label class="col-lg-2 control-label" for="name">Estado Civil </label>
                                                                     <div class="col-lg-10">
                                                                         <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                                                             <option value="Soltero/a">Soltero/a</option>
@@ -82,11 +115,13 @@
                                                        </div>
                                                   </div>
 
-
-
-                                                </section>
-                                                <h3>Documentos y Domicilio</h3>
-                                                <section>
+                                                    <ul class="list-inline pull-right">
+                                                        <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                                                    </ul>
+                                                </div>
+                                                <!--Tab Panel 2-->
+                                                <div class="tab-pane" role="tabpanel" id="step2">
+                                                <br>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                         <div class="form-group clearfix">
@@ -163,10 +198,14 @@
                                                         </div>
                                                   </div>
                                   
-                                                </section>
-                                                <h3>Profesion u oficio</h3>
-                                                <section>
-
+                                                    <ul class="list-inline pull-right">
+                                                        <li><button type="button" class="btn btn-default prev-step">Atras</button>
+                                                        <button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                                                    </ul>
+                                                </div>
+                                                <!--TAB PANEL 3-->
+                                                <div class="tab-pane" role="tabpanel" id="step3">
+                                                <br>
                                                     <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                             <div class="form-group clearfix">
@@ -215,10 +254,13 @@
                                                                   
                                                             </div>
                                                         </div>
-                                                    
-                                                </section>
-                                                <h3>Otra informacion</h3>
-                                                <section>
+                                                    <ul class="list-inline pull-right">
+                                                        <li><button type="button" class="btn btn-default prev-step">Atras</button>
+                                                        <button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-pane" role="tabpanel" id="step4">
+                                                <br>
                                                     <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                             <div class="form-group clearfix">
@@ -240,81 +282,23 @@
                                                                    <input type="text" class="form-control" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente">
                                                                 </div>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Siguiente</button> 
+                                                          
                                                                   
                                                             </div>
                                                         </div>
-                                                </section>
-                                            </div>
-                                        </form> 
-                                    </div>  <!-- End panel-body -->
-                                </div> <!-- End panel -->
-
-                            </div> <!-- end col -->
-
-                        </div> <!-- End row -->
-                         <!-- Basic Form Wizard -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"> 
-                                        <h3 class="panel-title">Wizard Tabs</h3> 
-                                    </div> 
-                                    <div class="panel-body"> 
-                                    <div class="wizard">
-                                        <!-- <div class="wizard-inner"> -->
-                                            <!-- <div class="connecting-line"></div> -->
-                                            <ul class="nav nav-tabs" role="tablist">
-
-                                                <li class="active">
-                                                    <a href="#step1" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1"> Cliente
-                                                    </a>
-                                                </li>
-
-                                                <li role="presentation" class="disabled">
-                                                    <a href="#step2" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2"> Empleado
-                                                    </a>
-                                                </li>
-                                                <li role="presentation" class="disabled">
-                                                    <a href="#step3" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3"> Empresario
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        <!-- </div> -->
-
-                                        <form role="form">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" role="tabpanel" id="step1">
-                                                    <h3>Step 1</h3>
-                                                    <p>This is step 1</p>
-                                                    <ul class="list-inline pull-right">
-                                                        <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane" role="tabpanel" id="step2">
-                                                    <h3>Step 2</h3>
-                                                    <p>This is step 2</p>
                                                     <ul class="list-inline pull-right">
                                                         <li><button type="button" class="btn btn-default prev-step">Atras</button>
-                                                        <button type="button" class="btn btn-primary next-step">Siguiente</button></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="tab-pane" role="tabpanel" id="step3">
-                                                    <h3>Step 3</h3>
-                                                    <p>This is step 3</p>
-                                                    <ul class="list-inline pull-right">
-                                                        <li><button type="button" class="btn btn-default prev-step">Atras</button>
-                                                        <button type="button" class="btn btn-success btn-info-full next-step">Guardar</button></li>
+                                                        <button type="submit" class="btn btn-success btn-info-full next-step">Guardar</button></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </form>
                                     </div>
-                                </section>
+                      
                                     </div>  <!-- End panel-body -->
                                 </div> <!-- End panel -->
-
+                                </div>
                             </div> <!-- end col -->
 
                         </div> <!-- End row -->
