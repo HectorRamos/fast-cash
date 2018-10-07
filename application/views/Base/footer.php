@@ -97,7 +97,7 @@
 		</script>
 
         <footer class="footer text-right">
-           Copyright © <?php echo date('Y');?> Moltran.
+           Copyright © <?php echo date('Y');?> <font color="#0080FF">JIREH</font>.
         </footer>
         <script type="text/javascript">
             footer = function(){ 
