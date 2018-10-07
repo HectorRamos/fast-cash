@@ -3595,3 +3595,8 @@ TABLAS
 input.style[readonly]{
   background-color: transparent;
 }
+
+.resize{
+  resize: vertical;
+  min-height: 35px;
+}

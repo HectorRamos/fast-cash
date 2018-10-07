@@ -25,7 +25,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Clientes</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Inicio</a></li>
+                                    <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
                                     <li class="active">Registro de clientes</li>
                                 </ol>
                             </div>
@@ -109,19 +109,22 @@
 <!-- </script> -->
 
         <!--MODAL PARA MOSTRAR LA INFORMACION COMPLETA-->
-         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title" id="myLargeModalLabel">Informacion</h4>
+                        <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-list-alt fa-lg"></i> Información</h4>
                     </div>
-                        <div class="modal-body" id="divInfo">
-                        <input type="text" name='nombre' id="id" class="style" readonly='readonly'>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    <div class="modal-body" id="divInfo">
+                        <input type="text" name='nombre' id="id" class="" readonly='readonly'>
+                    </div>
+                    <div  align="center">
+	                    <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+	                </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <!--FIN DEL MODAL PARA MOSTRAR DATOS-->
 	    <div class="modal fade modal_eliminar_cliente" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
@@ -131,7 +134,7 @@
 	                <div class="modal-header">
 	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	                    <h4 class="modal-title" id="mySmallModalLabel">
-	                    	<i class="fa fa-trash-o fa-lg"></i> 
+	                    	<i class="fa fa-warning fa-lg"></i> 
 	                    	<input type="text" name='nombre' class="style" readonly='readonly'>
 	                    </h4>
 	                </div>
@@ -170,7 +173,7 @@
 
 			}
 			else{
-			var html ="<div class='row'><h4>Informacion del Cliente</h4>";
+			var html ="<div class='row'><div class='col-sm-12'><ul><h5><b>Información del Cliente</b></h5><ol>";
 			 $.ajax({
              url: "obtenerInfoCliente",
              type: "POST",
@@ -179,74 +182,75 @@
                 var registro = eval(respuesta);
                     if (registro.length > 0)
                     {
-                    	html +="<div class='col-xs-6'><label>Nombre: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Apellido: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Apellido_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Apellido:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Apellido_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Condicion actual: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Condicion actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Estado civil: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Estado civil:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Genero: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Genero_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Genero:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Genero_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Telefono Fijo: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono_Fijo_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Telefono Fijo:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono_Fijo_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Telefono Celular:  </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono_Celular_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Telefono Celular:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono_Celular_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Domicilio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Domicilio_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Domicilio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Domicilio_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Fecha de nacimiento: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Fecha_Nacimiento_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Fecha de nacimiento:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Fecha_Nacimiento_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Zona: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Zona_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Zona:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Zona_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>DUI: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['DUI_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>DUI:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['DUI_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>NIT: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>NIT:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Fecha de ingreso al sistema: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Fecha_Registro_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Fecha de ingreso al sistema:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Fecha_Registro_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Departamento: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Departamento']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Departamento:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Departamento']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Municipio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Municipio']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Municipio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Municipio']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Profesion u Oficio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Profesion_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Profesion u Oficio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Profesion_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Tipo de cliente: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Cliente']+"'></div>";
+                    	html +="<div class='col-xs-6'><label>Tipo de cliente:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Cliente']+"'></div>";
 
-                    	html +="<div class='col-xs-6'><label>Observaciones: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones']+"'></div>";
-                    	html+="</div>"
+                    	html +="<div class='col-xs-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones_Cliente']+"'></div>";
+                    	html+="</ol></ul></div></div>";
+                    	html+="<hr>"
 
                     	if(registro[0]['Tipo_Cliente']=="Empleado"){
-                    		html+="<div class='row'><h4>Informacion Laboral</h4>";
-                    		html +="<div class='col-xs-6'><label>Nombre de la empresa: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Empresa']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Cargo: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Cargo']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Direccion: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Telefono: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Rubro: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Igreso Mensual: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
-                    		html+="</div>"
+                    		html+="<div class='row'><div class='col-sm-12'><ul><h5><b>Información Laboral</b></h5><ol>";
+                    		html +="<div class='col-xs-6'><label>Nombre de la empresa:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Empresa']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Cargo:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Cargo']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Direccion:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Telefono:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Rubro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Igreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
+                    		html+="</ol></ul></div></div>"
                     	}
                     	else if(registro[0]['Tipo_Cliente']=="Empresario"){
-                    		html+="<div class='row'><h4>Informacion del Negocio propio</h4>";
+                    		html+="<div class='row'><div class='col-sm-12'><ul><h5><b>Información del Negocio propio</b></h5><ol>";
 
-                    		html +="<div class='col-xs-6'><label>Nombre del Negocio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Negocio']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Nombre del Negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Negocio']+"'></div>";
 
-                    		html +="<div class='col-xs-6'><label>NIT: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>NIT:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT']+"'></div>";
 
-                    		html +="<div class='col-xs-6'><label>NRC: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NRC']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>NRC:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NRC']+"'></div>";
 
-                    		html +="<div class='col-xs-6'><label>Tipo de factura emitida: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Factura']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Giro: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Tipo de factura emitida:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Factura']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
 
-                    		html +="<div class='col-xs-6'><label>Direccion del negocio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div>";
-                    		html +="<div class='col-xs-6'><label>Ingreso Mensual: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
-                    		html+="</div>"
+                    		html +="<div class='col-xs-6'><label>Direccion del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
+                    		html+="</ol></ul></div></div>"
                     	}
 
                     	//document.getElementById('divInfo').innerHTML= html;
                     }
                     else {
-                    	html="<div class='alert alert-danger'>Error al realizar la peticion de informacion</div>";
+                    	html="<div class='alert alert-danger'>Error al realizar la peticion de información</div>";
                     }
                     document.getElementById('divInfo').innerHTML= html;
 

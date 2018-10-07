@@ -7,7 +7,7 @@
         </script>
 
         <!-- jQuery  -->
-
+        <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/bootstrap.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/waves.js"></script>
         <script src="<?= base_url() ?>plantilla/js/wow.min.js"></script>
@@ -50,12 +50,17 @@
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>
 
-                <!--Form Validation-->
-        <script src="assets/form-wizard/bootstrap-validator.min.js" type="text/javascript"></script>
+        <script src="<?= base_url() ?>plantilla/assets/timepicker/bootstrap-datepicker.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/select2/select2.min.js" type="text/javascript"></script>
+        
+        <script src="<?= base_url() ?>plantilla/assets/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+
+        <!--form validation-->
+        <script src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/jquery.validate/form-validation-init.js"></script>
 
         <!--Form Wizard-->
-        <script src="<?= base_url() ?>plantilla/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>l
 
         <!--wizard initialization-->
         <script src="<?= base_url() ?>plantilla/assets/form-wizard/wizard-init.js" type="text/javascript"></script>
@@ -69,14 +74,6 @@
             } );
         </script>
 
-        <!-- Dashboard -->
-        <script src="<?= base_url() ?>plantilla/js/jquery.dashboard.js"></script>
-
-        <!-- Chat -->
-        <script src="<?= base_url() ?>plantilla/js/jquery.chat.js"></script>
-
-        <!-- Todo -->
-        <script src="<?= base_url() ?>plantilla/js/jquery.todo.js"></script>
 
         <script type="text/javascript">
             /* ==============================================
@@ -117,3 +114,34 @@
         </script>
     </body>
 </html>
+
+
+<script>
+    jQuery(document).ready(function() {
+        !function(a){a.fn.datepicker.dates.es={
+              days:["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+              daysShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab","Dom"],
+              daysMin:["Do","Lu","Ma","Mi","Ju","Vi","Sa","Do"],
+              months:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+              monthsShort:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
+              today:"Hoy",
+              clear:"Borrar",
+              weekStart:1,
+              format:"yyyy/mm/dd"
+              }
+        }(jQuery);
+
+        // Date Picker
+        jQuery('.DateTime').datepicker({
+              format: 'yyyy/mm/dd',
+              todayHighlight: true,
+              autoclose: true,
+              language: 'es'
+        });
+
+        // Select2
+        jQuery(".select").select2({
+            width: '100%'
+        });
+    });
+</script>
