@@ -177,24 +177,26 @@
   $('#fecha_apertura').datepicker({
         format: 'yyyy-mm-dd',
         language:'es',
-        
+
       });
   }
 
   function agregarCliente()
   {
     separador = " ";
-    cliente = $(this).val();
-    datos = cliente.split(separador);
-    id_cliente = datos[0];
+    cliente = $(this).val(); //Obteniendo el valor
+    datos = cliente.split(separador); // Convirtiendolo en arreglo
+    id_cliente = datos[0]; // Capturando el primer elemento del arreglo que es el id del cliente
 
-    datos.splice(0,1);
+    datos.splice(0,1); // Eliminando la primera posicion del arreglo que es el id para que queden solo las posiciones del nombre
 
+    // Obteniendo el nombre en una cadena
     nombre_cliente = ""
     for (var i = 0; i < datos.length; i++)
     {
       nombre_cliente = nombre_cliente + " " + datos[i];
     }
+    // Fin del proceso
 
     $("#nombre_cliente").attr("value", nombre_cliente);
     $("#id_cliente").attr("value", id_cliente);
