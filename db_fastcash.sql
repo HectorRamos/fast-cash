@@ -2,10 +2,17 @@
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- Host: localhost:3306
 -- Generation Time: Oct 07, 2018 at 04:33 PM
 -- Server version: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.30-0+deb9u1
+=======
+-- Host: localhost
+-- Generation Time: Oct 07, 2018 at 02:19 PM
+-- Server version: 5.5.52-0+deb8u1
+-- PHP Version: 5.6.30-0+deb8u1
+>>>>>>> 78e0b003b08d44354c375bf8d602f0001cd7c023
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -218,8 +225,18 @@ INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`,
 CREATE TABLE `tbl_estados_solicitud` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `fecha_registro` date NOT NULL,
+  `visible` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_estados_solicitud`
+--
+
+INSERT INTO `tbl_estados_solicitud` (`id_estado`, `estado`, `fecha_registro`, `visible`) VALUES
+(1, 'Nueva', '2018-10-07', 2),
+(2, 'Recibida', '2018-10-07', 1),
+(4, 'En proceso', '2018-10-07', 1);
 
 -- --------------------------------------------------------
 
@@ -599,12 +616,16 @@ ALTER TABLE `tbl_plazos_prestamos`
 -- AUTO_INCREMENT for table `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
+<<<<<<< HEAD
   MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_plazos_prestamos`
 --
 ALTER TABLE `tbl_plazos_prestamos`
   MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+>>>>>>> 78e0b003b08d44354c375bf8d602f0001cd7c023
 --
 -- Constraints for dumped tables
 --
