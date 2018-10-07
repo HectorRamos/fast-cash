@@ -21,7 +21,7 @@ else
 	{
 	?>
 	<h1>Editar datos laborales del cliente</h1>
-            <form method="POST" action="<?= base_url()?>Clientes/EditardatosLaborales">
+            <form id="FormEditarClienteEmpresario" method="POST" action="<?= base_url()?>Clientes/EditardatosLaborales" autocomplete="off">
                        	<div class="form-row">
 	                       	<div class="form-group col-md-6">
 	                            <label for="">Codigo del cliente: <?=  $datos->Codigo_Cliente?></label>
@@ -36,37 +36,37 @@ else
 
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
-                                          <label for="">Nombre de la empresa</label>
+                                          <label for="Nombre_Empresa">Nombre de la empresa</label>
                                           <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" value="<?= $datos->Nombre_Empresa?>" placeholder="Nombre de la empresa">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Cargo que desempeña</label>
+                                          <label for="Cargo">Cargo que desempeña</label>
                                           <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña" value="<?= $datos->Cargo?>">
                                     </div>
                               </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Direccion de la empresa</label>
-                                          <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Direccion" value="<?= $datos->Direccion?>">
+                                          <label for="Direccion">Dirección de la empresa</label>
+                                          <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Dirección de empresa" value="<?= $datos->Direccion?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Telefono</label>
-                                          <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Apellido del cliente" value="<?= $datos->Telefono?>">
+                                          <label for="Telefono">Teléfono</label>
+                                          <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" value="<?= $datos->Telefono?>" data-mask="(999) 9999-9999? x99999">
                                 	</div>
                         </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Rubro de la empresa que en que trabaja</label>
-                                          <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Nombre del cliente" value="<?= $datos->Rubro?>">
+                                          <label for="Rubro">Rubro de la empresa que en que trabaja</label>
+                                          <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Rubro de la empresa" value="<?= $datos->Rubro?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Ingreso Mensual</label>
-                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente" value="<?= $datos->Ingreso_Mensual?>">
+                                          <label for="Ingreso_Mensual">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual" value="<?= $datos->Ingreso_Mensual?>">
                                     </div>
                         </div>
                          <div class="form-row">
                                     <div class="form-group col-md-12">
-                                          <label for="">Observaciones</label>
+                                          <label for="Observaciones">Observaciones</label>
                                            <textarea id="Observaciones" name="Observaciones" class="form-control"><?= $datos->Observaciones?></textarea>
                                     </div>
                         </div>
@@ -76,7 +76,7 @@ else
 	}
 	else if($datos->Tipo_Cliente=="Empresario"){?>
 	<h1>Editar datos del negocio del cliente</h1>
-            <form method="POST" action="<?= base_url()?>Clientes/EditarDatosNegocio">
+            <form id="FormEditarClienteEmpleado" method="POST" action="<?= base_url()?>Clientes/EditarDatosNegocio" autocomplete="off">
                        	<div class="form-row">
 	                       	<div class="form-group col-md-6">
 	                            <label for="">Codigo del cliente: <?=  $datos->Codigo_Cliente?></label>
@@ -90,38 +90,38 @@ else
                               <input type="hidden" name="Fk_Id_Cliente" value="<?= $datos->Id_Cliente; ?>">
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
-                                          <label for="">Nombre del negocio</label>
+                                          <label for="Nombre_Empresa">Nombre del negocio</label>
                                           <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio" value="<?= $datos->Nombre_Negocio?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">NIT</label>
-                                          <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT" value="<?= $datos->NIT?>">
+                                          <label for="NIT">NIT</label>
+                                          <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT" value="<?= $datos->NIT?>" data-mask="9999-999999-999-9">
                                     </div>
                               </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Numero de Registro del Contribuyente(NRC)</label>
-                                          <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Numero de Registro del Contibuyente" value="<?= $datos->NRC?>">
+                                          <label for="NRC">Número de Registro del Contribuyente(NRC)</label>
+                                          <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Número de Registro del Contibuyente" value="<?= $datos->NRC?>" data-mask="9999-999999-999-9">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Giro</label>
+                                          <label for="Giro">Giro</label>
                                           <input type="text" class="form-control" id="Giro" name="Giro" placeholder="Giro del negocio" value="<?= $datos->Giro?>">
                                 	</div>
                         </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
-                                          <label for="">Direccio del negocio</label>
-                                          <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Direccion del negocio" value="<?= $datos->Direccion_Negocio?>">
+                                          <label for="Direccion_Negocio">Direccio del negocio</label>
+                                          <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Dirección del negocio" value="<?= $datos->Direccion_Negocio?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                          <label for="">Ingreso Mensual</label>
-                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente" value="<?= $datos->Ingreso_Mensual?>">
+                                          <label for="Ingreso_Mensual">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual" value="<?= $datos->Ingreso_Mensual?>">
                                     </div>
                         </div>
                          <div class="form-row">
                          			<div class="form-group col-md-6">
-                                          <label for="">Tipo de factura</label>
-                                          <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Apellido del cliente" value="<?= $datos->Tipo_Factura?>">
+                                          <label for="Tipo_Factura">Tipo de factura</label>
+                                          <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Tipo factura" value="<?= $datos->Tipo_Factura?>">
                                     </div>
                         </div>
                         <div class="form-row">

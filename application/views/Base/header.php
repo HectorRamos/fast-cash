@@ -14,7 +14,7 @@
         <link href="<?= base_url() ?>plantilla/css/bootstrap.min.css" rel="stylesheet" />
 
         <!-- Font Icons -->
-        <link href="<?= base_url() ?>plantilla/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="<?= base_url() ?>plantilla/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link href="<?= base_url() ?>plantilla/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
         <link href="<?= base_url() ?>plantilla/css/material-design-iconic-font.min.css" rel="stylesheet">
 
@@ -29,6 +29,10 @@
         
         <!-- DataTables -->
         <link href="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Plugins css-->
+        <link href="<?= base_url() ?>plantilla/assets/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+        <link href="<?= base_url() ?>plantilla/assets/select2/select2.css" rel="stylesheet" type="text/css" />
 
         <!-- Modal-Effect -->
         <link href="<?= base_url() ?>plantilla/assets/modal-effect/css/component.css" rel="stylesheet">

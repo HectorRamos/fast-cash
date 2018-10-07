@@ -19,63 +19,6 @@
                                 <span class="clearfix"></span>
                             </div>
                             <ul class="nav navbar-nav navbar-right pull-right">
-                                <li class="dropdown hidden-xs">
-                                    <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">3</span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-lg">
-                                        <li class="text-center notifi-title">Notification</li>
-                                        <li class="list-group">
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left">
-                                                    <em class="fa fa-user-plus fa-2x text-info"></em>
-                                                 </div>
-                                                 <div class="media-body clearfix">
-                                                    <div class="media-heading">New user registered</div>
-                                                    <p class="m-0">
-                                                       <small>You have 10 unread messages</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-                                           <!-- list item-->
-                                            <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                 </div>
-                                                 <div class="media-body clearfix">
-                                                    <div class="media-heading">New settings</div>
-                                                    <p class="m-0">
-                                                       <small>There are new settings available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                            </a>
-                                            <!-- list item-->
-                                            <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left">
-                                                    <em class="fa fa-bell-o fa-2x text-danger"></em>
-                                                 </div>
-                                                 <div class="media-body clearfix">
-                                                    <div class="media-heading">Updates</div>
-                                                    <p class="m-0">
-                                                       <small>There are
-                                                          <span class="text-primary">2</span> new updates available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                            </a>
-                                           <!-- last list item -->
-                                            <a href="javascript:void(0);" class="list-group-item">
-                                              <small>See all notifications</small>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
                                 </li>
@@ -83,9 +26,13 @@
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
+<<<<<<< HEAD
                                         <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                                         <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                         <li><a href="<?php echo base_url();?>Home/loginOut"><i class="md md-settings-power"></i> Cerrar Sesion</a></li>
+=======
+                                        <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+>>>>>>> 6b44ffed5e810e6cac89afa7b1ba634af1f4a2ad
                                     </ul>
                                 </li>
                             </ul>
@@ -108,11 +55,13 @@
 
                         <div class="user-info">
                             <div class="dropdown">
+<<<<<<< HEAD
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?><span class="caret"></span></a>
+=======
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">User Name<span class="caret"></span></a>
+>>>>>>> 6b44ffed5e810e6cac89afa7b1ba634af1f4a2ad
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                                     <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -124,21 +73,21 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="" class="waves-effect active"><i class="md md-home"></i><span> Inicio </span></a>
+                                <a href="<?= base_url() ?>Home/main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-accessibility"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
                                     <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Buscar cliente</a></li>
                                 </ul>
                             </li>
-                            <li>
+<!--                             <li>
                                 <a href="calendar.html" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
-                            </li>
+                            </li> -->
 
 
-                            <li class="has_sub">
+<!--                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="md md-share"></i><span>Multi Level </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul>
                                     <li class="has_sub">
@@ -153,7 +102,7 @@
                                         <a href="javascript:void(0);"><span>Menu Level 1.2</span></a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                         <div class="clearfix"></div>
                     </div>
