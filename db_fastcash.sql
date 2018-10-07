@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2+deb8u2
--- http://www.phpmyadmin.net
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 07, 2018 at 02:42 AM
--- Server version: 5.5.52-0+deb8u1
--- PHP Version: 5.6.30-0+deb8u1
+-- Host: localhost:3306
+-- Generation Time: Oct 07, 2018 at 04:33 PM
+-- Server version: 10.1.26-MariaDB-0+deb9u1
+-- PHP Version: 7.0.30-0+deb9u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_fastcash`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_accesos`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_accesos` (
+CREATE TABLE `tbl_accesos` (
   `idAcceso` int(11) NOT NULL,
   `tipoAcceso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -48,7 +48,7 @@ INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `f
 -- Table structure for table `tbl_clientes`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_clientes` (
+CREATE TABLE `tbl_clientes` (
   `Id_Cliente` int(11) NOT NULL,
   `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -105,7 +105,7 @@ INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `A
 -- Table structure for table `tbl_datos_laborales`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_datos_laborales` (
+CREATE TABLE `tbl_datos_laborales` (
   `Cargo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Empresa` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -129,7 +129,7 @@ INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Tele
 -- Table structure for table `tbl_datos_negocio`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_datos_negocio` (
+CREATE TABLE `tbl_datos_negocio` (
   `Id_Negocio` int(11) NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL,
   `Nombre_Negocio` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
@@ -154,7 +154,7 @@ INSERT INTO `tbl_datos_negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`
 -- Table structure for table `tbl_departamentos`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_departamentos` (
+CREATE TABLE `tbl_departamentos` (
   `Id_Departamento` int(11) NOT NULL,
   `Nombre_Departamento` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -185,7 +185,7 @@ INSERT INTO `tbl_departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUE
 -- Table structure for table `tbl_empleados`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_empleados` (
+CREATE TABLE `tbl_empleados` (
   `idEmpleado` int(11) NOT NULL,
   `nombreEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellidoEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -215,8 +215,8 @@ INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`,
 -- Table structure for table `tbl_estados_solicitud`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_estados_solicitud` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `tbl_estados_solicitud` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_registro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `tbl_estados_solicitud` (
 -- Table structure for table `tbl_municipios`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_municipios` (
+CREATE TABLE `tbl_municipios` (
   `Id_Municipio` int(11) NOT NULL,
   `Nombre_Municipio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL
@@ -328,7 +328,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (88, 'Corinto', 12),
 (89, 'Delicias de Concepción', 12),
 (90, 'El Divisadero', 12),
-(91, 'El Rosario (''razán)', 12),
+(91, 'El Rosario (\'razán)', 12),
 (92, 'Gualococti', 12),
 (93, 'Guatajiagua', 12),
 (94, 'Joateca', 12),
@@ -499,268 +499,31 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (259, 'Santo Domingo', 10),
 (260, 'Tecoluca', 10),
 (261, 'Tepetitán', 10),
-(262, 'Verapaz', 10),
-(263, 'Ahuachapán', 1),
-(264, 'Jujutla', 1),
-(265, 'Atiquizaya', 1),
-(266, 'Concepción de Ataco', 1),
-(267, 'El Refugio', 1),
-(268, 'Guaymango', 1),
-(269, 'Apaneca', 1),
-(270, 'San Francisco Menéndez', 1),
-(271, 'San Lorenzo', 1),
-(272, 'San Pedro Puxtla', 1),
-(273, 'Tacuba', 1),
-(274, 'Turín', 1),
-(275, 'Candelaria de la Frontera', 2),
-(276, 'Chalchuapa', 2),
-(277, 'Coatepeque', 2),
-(278, 'El Congo', 2),
-(279, 'El Porvenir', 2),
-(280, 'Masahuat', 2),
-(281, 'Metapán', 2),
-(282, 'San Antonio Pajonal', 2),
-(283, 'San Sebastián Salitrillo', 2),
-(284, 'Santa Ana', 2),
-(285, 'Santa Rosa Guachipilín', 2),
-(286, 'Santiago de la Frontera', 2),
-(287, 'Texistepeque', 2),
-(288, 'Acajutla', 3),
-(289, 'Armenia', 3),
-(290, 'Caluco', 3),
-(291, 'Cuisnahuat', 3),
-(292, 'Izalco', 3),
-(293, 'Juayúa', 3),
-(294, 'Nahuizalco', 3),
-(295, 'Nahulingo', 3),
-(296, 'Salcoatitán', 3),
-(297, 'San Antonio del Monte', 3),
-(298, 'San Julián', 3),
-(299, 'Santa Catarina Masahuat', 3),
-(300, 'Santa Isabel Ishuatán', 3),
-(301, 'Santo Domingo de Guzmán', 3),
-(302, 'Sonsonate', 3),
-(303, 'Sonzacate', 3),
-(305, 'Berlín', 11),
-(306, 'California', 11),
-(307, 'Concepción Batres', 11),
-(308, 'El Triunfo', 11),
-(309, 'Ereguayquín', 11),
-(310, 'Estanzuelas', 11),
-(311, 'Jiquilisco', 11),
-(312, 'Jucuapa', 11),
-(313, 'Jucuarán', 11),
-(314, 'Mercedes Umaña', 11),
-(315, 'Nueva Granada', 11),
-(316, 'Ozatlán', 11),
-(317, 'Puerto El Triunfo', 11),
-(318, 'San Agustín', 11),
-(319, 'San Buenaventura', 11),
-(320, 'San Dionisio', 11),
-(321, 'San Francisco Javier', 11),
-(322, 'Santa Elena', 11),
-(323, 'Santa María', 11),
-(324, 'Santiago de María', 11),
-(325, 'Tecapán', 11),
-(326, 'Usulután', 11),
-(327, 'Carolina', 13),
-(328, 'Chapeltique', 13),
-(329, 'Chinameca', 13),
-(330, 'Chirilagua', 13),
-(331, 'Ciudad Barrios', 13),
-(332, 'Comacarán', 13),
-(333, 'El Tránsito', 13),
-(334, 'Lolotique', 13),
-(335, 'Moncagua', 13),
-(336, 'Nueva Guadalupe', 13),
-(337, 'Nuevo Edén de San Juan', 13),
-(338, 'Quelepa', 13),
-(339, 'San Antonio del Mosco', 13),
-(340, 'San Gerardo', 13),
-(341, 'San Jorge', 13),
-(342, 'San Luis de la Reina', 13),
-(343, 'San Miguel', 13),
-(344, 'San Rafael Oriente', 13),
-(345, 'Sesori', 13),
-(346, 'Uluazapa', 13),
-(347, 'Arambala', 12),
-(348, 'Cacaopera', 12),
-(349, 'Chilanga', 12),
-(350, 'Corinto', 12),
-(351, 'Delicias de Concepción', 12),
-(352, 'El Divisadero', 12),
-(353, 'El Rosario (''razán)', 12),
-(354, 'Gualococti', 12),
-(355, 'Guatajiagua', 12),
-(356, 'Joateca', 12),
-(357, 'Jocoaitique', 12),
-(358, 'Jocoro', 12),
-(359, 'Lolotiquillo', 12),
-(360, 'Meanguera', 12),
-(361, 'Osicala', 12),
-(362, 'Perquín', 12),
-(363, 'San Carlos', 12),
-(364, 'San Fernando (Morazán)', 12),
-(365, 'San Francisco Gotera', 12),
-(366, 'San Isidro (Morazán)', 12),
-(367, 'San Simón', 12),
-(368, 'Sensembra', 12),
-(369, 'Sociedad', 12),
-(370, 'Torola', 12),
-(371, 'Yamabal', 12),
-(372, 'Yoloaiquín', 12),
-(373, 'La Unión', 14),
-(374, 'San Alejo', 14),
-(375, 'Yucuaiquín', 14),
-(376, 'Conchagua', 14),
-(377, 'Intipucá', 14),
-(378, 'San José', 14),
-(379, 'El Carmen (La Unión)', 14),
-(380, 'Yayantique', 14),
-(381, 'Bolívar', 14),
-(382, 'Meanguera del Golfo', 14),
-(383, 'Santa Rosa de Lima', 14),
-(384, 'Pasaquina', 14),
-(385, 'Anamoros', 14),
-(386, 'Nueva Esparta', 14),
-(387, 'El Sauce', 14),
-(388, 'Concepción de Oriente', 14),
-(389, 'Polorós', 14),
-(390, 'Lislique', 14),
-(391, 'Antiguo Cuscatlán', 4),
-(392, 'Chiltiupán', 4),
-(393, 'Ciudad Arce', 4),
-(394, 'Colón', 4),
-(395, 'Comasagua', 4),
-(396, 'Huizúcar', 4),
-(397, 'Jayaque', 4),
-(398, 'Jicalapa', 4),
-(399, 'La Libertad', 4),
-(400, 'Santa Tecla', 4),
-(401, 'Nuevo Cuscatlán', 4),
-(402, 'San Juan Opico', 4),
-(403, 'Quezaltepeque', 4),
-(404, 'Sacacoyo', 4),
-(405, 'San José Villanueva', 4),
-(406, 'San Matías', 4),
-(407, 'San Pablo Tacachico', 4),
-(408, 'Talnique', 4),
-(409, 'Tamanique', 4),
-(410, 'Teotepeque', 4),
-(411, 'Tepecoyo', 4),
-(412, 'Zaragoza', 4),
-(413, 'Agua Caliente', 5),
-(414, 'Arcatao', 5),
-(415, 'Azacualpa', 5),
-(416, 'Cancasque', 5),
-(417, 'Chalatenango', 5),
-(418, 'Citalá', 5),
-(419, 'Comapala', 5),
-(420, 'Concepción Quezaltepeque', 5),
-(421, 'Dulce Nombre de María', 5),
-(422, 'El Carrizal', 5),
-(423, 'El Paraíso', 5),
-(424, 'La Laguna', 5),
-(425, 'La Palma', 5),
-(426, 'La Reina', 5),
-(427, 'Las Vueltas', 5),
-(428, 'Nueva Concepción', 5),
-(429, 'Nueva Trinidad', 5),
-(430, 'Nombre de Jesús', 5),
-(431, 'Ojos de Agua', 5),
-(432, 'Potonico', 5),
-(433, 'San Antonio de la Cruz', 5),
-(434, 'San Antonio Los Ranchos', 5),
-(435, 'San Fernando (Chalatenango)', 5),
-(436, 'San Francisco Lempa', 5),
-(437, 'San Francisco Morazán', 5),
-(438, 'San Ignacio', 5),
-(439, 'San Isidro Labrador', 5),
-(440, 'Las Flores', 5),
-(441, 'San Luis del Carmen', 5),
-(442, 'San Miguel de Mercedes', 5),
-(443, 'San Rafael', 5),
-(444, 'Santa Rita', 5),
-(445, 'Tejutla', 5),
-(446, 'Cojutepeque', 7),
-(447, 'Candelaria', 7),
-(448, 'El Carmen (Cuscatlán)', 7),
-(449, 'El Rosario (Cuscatlán)', 7),
-(450, 'Monte San Juan', 7),
-(451, 'Oratorio de Concepción', 7),
-(452, 'San Bartolomé Perulapía', 7),
-(453, 'San Cristóbal', 7),
-(454, 'San José Guayabal', 7),
-(455, 'San Pedro Perulapán', 7),
-(456, 'San Rafael Cedros', 7),
-(457, 'San Ramón', 7),
-(458, 'Santa Cruz Analquito', 7),
-(459, 'Santa Cruz Michapa', 7),
-(460, 'Suchitoto', 7),
-(461, 'Tenancingo', 7),
-(462, 'Aguilares', 6),
-(463, 'Apopa', 6),
-(464, 'Ayutuxtepeque', 6),
-(465, 'Cuscatancingo', 6),
-(466, 'Ciudad Delgado', 6),
-(467, 'El Paisnal', 6),
-(468, 'Guazapa', 6),
-(469, 'Ilopango', 6),
-(470, 'Mejicanos', 6),
-(471, 'Nejapa', 6),
-(472, 'Panchimalco', 6),
-(473, 'Rosario de Mora', 6),
-(474, 'San Marcos', 6),
-(475, 'San Martín', 6),
-(476, 'San Salvador', 6),
-(477, 'Santiago Texacuangos', 6),
-(478, 'Santo Tomás', 6),
-(479, 'Soyapango', 6),
-(480, 'Tonacatepeque', 6),
-(481, 'Zacatecoluca', 8),
-(482, 'Cuyultitán', 8),
-(483, 'El Rosario (La Paz)', 8),
-(484, 'Jerusalén', 8),
-(485, 'Mercedes La Ceiba', 8),
-(486, 'Olocuilta', 8),
-(487, 'Paraíso de Osorio', 8),
-(488, 'San Antonio Masahuat', 8),
-(489, 'San Emigdio', 8),
-(490, 'San Francisco Chinameca', 8),
-(491, 'San Pedro Masahuat', 8),
-(492, 'San Juan Nonualco', 8),
-(493, 'San Juan Talpa', 8),
-(494, 'San Juan Tepezontes', 8),
-(495, 'San Luis La Herradura', 8),
-(496, 'San Luis Talpa', 8),
-(497, 'San Miguel Tepezontes', 8),
-(498, 'San Pedro Nonualco', 8),
-(499, 'San Rafael Obrajuelo', 8),
-(500, 'Santa María Ostuma', 8),
-(501, 'Santiago Nonualco', 8),
-(502, 'Tapalhuaca', 8),
-(503, 'Cinquera', 9),
-(504, 'Dolores', 9),
-(505, 'Guacotecti', 9),
-(506, 'Ilobasco', 9),
-(507, 'Jutiapa', 9),
-(508, 'San Isidro (Cabañas)', 9),
-(509, 'Sensuntepeque', 9),
-(510, 'Tejutepeque', 9),
-(511, 'Victoria', 9),
-(512, 'Apastepeque', 10),
-(513, 'Guadalupe', 10),
-(514, 'San Cayetano Istepeque', 10),
-(515, 'San Esteban Catarina', 10),
-(516, 'San Ildefonso', 10),
-(517, 'San Lorenzo', 10),
-(518, 'San Sebastián', 10),
-(519, 'San Vicente', 10),
-(520, 'Santa Clara', 10),
-(521, 'Santo Domingo', 10),
-(522, 'Tecoluca', 10),
-(523, 'Tepetitán', 10),
-(524, 'Verapaz', 10);
+(262, 'Verapaz', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_plazos_prestamos`
+--
+
+CREATE TABLE `tbl_plazos_prestamos` (
+  `id_plazo` int(11) NOT NULL,
+  `tiempo_plazo` int(11) NOT NULL,
+  `fecha_creacion` date NOT NULL,
+  `estado_plazo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `tbl_plazos_prestamos`
+--
+
+INSERT INTO `tbl_plazos_prestamos` (`id_plazo`, `tiempo_plazo`, `fecha_creacion`, `estado_plazo`) VALUES
+(1, 30, '2018-10-06', 1),
+(2, 60, '2018-10-06', 1),
+(3, 90, '2018-10-07', 1),
+(4, 120, '2018-10-07', 1),
+(5, 150, '2018-10-07', 1);
 
 -- --------------------------------------------------------
 
@@ -768,7 +531,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 -- Table structure for table `tbl_users`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_users` (
+CREATE TABLE `tbl_users` (
   `idUser` int(11) NOT NULL,
   `user` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -794,25 +557,39 @@ INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `es
 -- Indexes for table `tbl_accesos`
 --
 ALTER TABLE `tbl_accesos`
- ADD PRIMARY KEY (`idAcceso`);
+  ADD PRIMARY KEY (`idAcceso`);
 
 --
 -- Indexes for table `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
- ADD PRIMARY KEY (`Id_Cliente`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
+  ADD PRIMARY KEY (`Id_Cliente`),
+  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`),
+  ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`),
+  ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
 
 --
 -- Indexes for table `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
- ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
+  ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
 
 --
 -- Indexes for table `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indexes for table `tbl_plazos_prestamos`
+--
+ALTER TABLE `tbl_plazos_prestamos`
+  ADD PRIMARY KEY (`id_plazo`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -822,7 +599,12 @@ ALTER TABLE `tbl_estados_solicitud`
 -- AUTO_INCREMENT for table `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_plazos_prestamos`
+--
+ALTER TABLE `tbl_plazos_prestamos`
+  MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -831,7 +613,7 @@ MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 -- Constraints for table `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
-ADD CONSTRAINT `tbl_datos_laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_datos_laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
