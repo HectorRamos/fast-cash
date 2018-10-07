@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 07, 2018 at 02:42 AM
+-- Generation Time: Oct 07, 2018 at 02:19 PM
 -- Server version: 5.5.52-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
 
@@ -218,8 +218,18 @@ INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`,
 CREATE TABLE IF NOT EXISTS `tbl_estados_solicitud` (
 `id_estado` int(11) NOT NULL,
   `estado` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
-  `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `fecha_registro` date NOT NULL,
+  `visible` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_estados_solicitud`
+--
+
+INSERT INTO `tbl_estados_solicitud` (`id_estado`, `estado`, `fecha_registro`, `visible`) VALUES
+(1, 'Nueva', '2018-10-07', 2),
+(2, 'Recibida', '2018-10-07', 1),
+(4, 'En proceso', '2018-10-07', 1);
 
 -- --------------------------------------------------------
 
@@ -822,7 +832,7 @@ ALTER TABLE `tbl_estados_solicitud`
 -- AUTO_INCREMENT for table `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

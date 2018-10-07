@@ -89,6 +89,13 @@
                                     <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informacion de clientes</a></li>
                                 </ul>
                             </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span> Configuracion </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                         <div class="clearfix"></div>
                     </div>
