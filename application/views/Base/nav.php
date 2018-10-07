@@ -89,6 +89,18 @@
                                     <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informacion de clientes</a></li>
                                 </ul>
                             </li>
+<<<<<<< HEAD
+                             <!--Agregando nuevos item pertenecientes al modulo de solicitud-->
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="md md-book"></i><span> Solicitud </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>Solicitud/">Crear solicitud</a></li>
+                                    <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
+                                </ul>
+                            </li>
+                            <!--Fin del modulo de solicitud-->
+                            
+=======
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span> Configuracion </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
@@ -96,6 +108,7 @@
                                 </ul>
                             </li>
 
+>>>>>>> 78e0b003b08d44354c375bf8d602f0001cd7c023
                         </ul>
                         <div class="clearfix"></div>
                     </div>
