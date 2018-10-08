@@ -2,12 +2,15 @@
 <!-- Start content -->
     <div class="content">
         <div class="container">
-            <div class="row"><?php
+            <div class="row">
+<?php
 if (sizeof($DatosLaborales->result())==0)
 {
-	?>
-
-<div class="alert alert-danger"><h3>Este cliente no posee registro Laboral ni de Negocio</h3></div>
+?>
+<div class="alert alert-danger"><h3>Este cliente no posee registro Laboral ni de Negocio</h3>
+<p>Para agrear la informacion pertinente ir a la seccion de gestionar clientes y clic en ver informacion.</p>
+<a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-success">Ir</a>
+</div>
 
 <?php
 }
@@ -138,9 +141,6 @@ else
 }
 
 ?>
-
-
-            
 
 <?php
 } 

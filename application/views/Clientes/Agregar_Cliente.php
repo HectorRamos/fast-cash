@@ -13,6 +13,140 @@
                 <div class="content">
                     <div class="container">
 
+                       <div class="row">
+                       <h1>Registro de Clientes</h1>
+                           <form method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
+                             <!-- <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Nombre</label>
+                                          <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Apellido</label>
+                                          <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente">
+                                    </div>
+                              </div>
+                              -->
+<!--
+                            <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Departamento</label>
+                                          <select id="cbbDepartamentos" name="cbbDepartamentos" class="form-control">
+                                            <option value=""></option>
+                                          <?php 
+                                            foreach ($datos->result() as $departamentos) { 
+                                          ?>
+
+                                            <option value="<?= $departamentos->Id_Departamento ?>"><?= $departamentos->Nombre_Departamento ?></option>
+
+                                          <?php  } ?>
+                                          </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Municipio</label>
+                                          <select id="cbbMunicipios" name="cbbMunicipios" class="form-control">
+                                            <option value="">...</option>
+                                          </select>
+                                    </div>
+                              </div> -->
+
+
+                            <!--  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Condición actual</label>
+                                          <select id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                          </select>
+                                    </div>
+                                      <div class="form-group col-md-6">
+                                          <label for="">Estado civil</label>
+                                          <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
+                                            <option value="Soltero/a">Soltero/a</option>
+                                            <option value="Casado/a">Casado/a</option>
+                                            <option value="Divorsiado/a">Divorciado/a</option>
+                                          </select>
+                                    </div>
+                              </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Genero</label>
+                                          <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                          </select>
+                                    </div>
+                                  <div class="form-group col-md-6">
+                                          <label for="">Teléfono fijo</label>
+                                          <input type="text" class="form-control" id="Telefono_Cliente" name="Telefono_Cliente" placeholder="Teléfono móvil">
+                                    </div>
+                              </div>
+
+                              <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Teléfono celular</label>
+                                          <input type="text" class="form-control" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Fecha de nacimiento</label>
+                                          <input type="text" class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento">
+                                    </div>-->
+                              </div>
+
+                              <!--  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Zona</label>
+                                          <select id="Zona" name="Zona" class="form-control">
+                                            <option value="Rural">Rural</option>
+                                            <option value="Urbana">Urbana</option>
+                                          </select>
+                                    </div>
+                                  <div class="form-group col-md-6">
+                                          <label for="">DUI</label>
+                                          <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente">
+                                    </div>
+                              </div>
+
+                              <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">NIT</label>
+                                          <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente">
+                                    </div>-->
+                                    <div class="form-group col-md-6">
+
+                                          <label for="">Fecha de registro</label>
+                                          <input type="text" class="form-control" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente">
+                                    </div>
+                              </div>
+
+                             <!-- <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Profesión</label>
+                                          <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Tipo de cliente</label>
+                                          <select id="Tipo_Cliente" name="Tipo_Cliente" class="form-control">
+                                            <option value="Empleado">Empleado</option>
+                                            <option value="Empresario">Empresario</option>
+                                          </select>
+                                    </div>
+                              </div>
+                               <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Domicilio</label>
+                                          <textarea id="Domicilio_Cliente" name="Domicilio_Cliente" class="form-control"></textarea>
+                                    </div>-->
+                                    <div class="form-group col-md-6">
+                                          <label for="">Observaciones</label>
+                                          <textarea id="Observaciones" name="Observaciones" class="form-control"></textarea>
+                                    </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Siguiente</button>
+                            </form>
+                       </div>   <!-- row -->    
+
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
@@ -110,7 +244,7 @@
                                                                 <input type="text" class="form-control" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular" data-mask="(999) 9999-9999? x99999">
                                                           </div>
                                                           <div class="form-group col-sm-6">
-                                                                <label for="Fecha de nacimiento">Fecha de nacimiento</label>
+                                                                <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
                                                                 <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
                                                           </div>
                                                     </div>
@@ -173,6 +307,7 @@
                                 </div>
                             </div>
                         </div> <!-- End Row -->  
+
 
                     </div> <!-- container -->
                                

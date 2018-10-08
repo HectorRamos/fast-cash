@@ -25,7 +25,9 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
+
                                         <li><a href="<?php echo base_url();?>Home/loginOut"><i class="md md-settings-power"></i> Cerrar Sesión</a></li>
+
                                     </ul>
                                 </li>
                             </ul>
@@ -49,6 +51,10 @@
                         <div class="user-info">
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?><span class="caret"></span></a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
+                                    <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
                                 </ul>
                             </div>
                             
@@ -65,9 +71,29 @@
                                 <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Buscar cliente</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informacion de clientes</a></li>
                                 </ul>
                             </li>
+
+                             <!--Agregando nuevos item pertenecientes al modulo de solicitud-->
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="md md-book"></i><span> Solicitud </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>Solicitud/">Crear solicitud</a></li>
+                                    <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
+                                </ul>
+                            </li>
+                            <!--Fin del modulo de solicitud-->
+                            
+
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span> Configuracion </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
+                                </ul>
+                            </li>
+
+
                         </ul>
                         <div class="clearfix"></div>
                     </div>

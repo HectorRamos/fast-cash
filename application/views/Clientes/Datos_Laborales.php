@@ -1,29 +1,33 @@
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->                      
-            <div class="content-page">
+          <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
-                       <div class="row">
-                       <?php
-                       foreach ($id->result() as $dato) {
-                       }
-                       if($dato->Tipo_Cliente=="Empleado"){
-                       	?>
-                       	<h1>Ingrese los datos laborales del cliente</h1>
-                       	<form id="FormNuevoClienteEmpresario" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
-                       	<div class="form-row">
-	                       	<div class="form-group col-md-6">
-	                            <label for="">Cliente: <?= $dato->Nombre_Cliente." ".$dato->Apellido_Cliente ?></label>
-	                         </div>
-	                         	<div class="form-group col-md-6">
-	                            <label for="">Tipo de cliente: <?= $dato->Tipo_Cliente;?></label>
-	                            </div>
-                       	</div>
-                       	 <div class="form-row">
-                       	 <!--*******************************CAMPOS OCULTOS**********************************-->
+                      <!-- Basic Form Wizard -->
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"> 
+                                        <h3 class="panel-title">Registro de clientes</h3> 
+                                    </div> 
+                                    <div class="panel-body">
+
+                                    <?php
+                                     foreach ($id->result() as $dato) {
+                                     }
+                                     if($dato->Tipo_Cliente=="Empleado"){
+                                      ?>
+                                      <form id="FormNuevoClienteEmpresario" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="">Cliente: <?= $dato->Nombre_Cliente." ".$dato->Apellido_Cliente ?></label>
+                           </div>
+                            <div class="form-group col-md-6">
+                              <label for="">Tipo de cliente: <?= $dato->Tipo_Cliente;?></label>
+                              </div>
+                        </div>
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
                               <input type="hidden" name="Fk_Id_Cliente" value="<?php echo $dato->Id_Cliente; ?>">
                               <input type="hidden" name="Codigo_cliente" value="<?php echo $dato->Codigo_Cliente; ?>">
                               <!--FIN DE CAMPOS OCULTOS-->
@@ -44,7 +48,7 @@
                                     <div class="form-group col-md-6">
                                           <label for="Telefono">Teléfono</label>
                                           <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" data-mask="(999) 9999-9999? x99999">
-                                	</div>
+                                  </div>
                         </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -62,25 +66,25 @@
                                            <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
                                     </div>
                         </div>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
-                       	</form>
-                       <?php	
+                        <div class="row">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                        </div>
+                        
+                        </form>
+                          <?php  
                        }
                        else{
-
-                       	?>
-                       	<h2>Ingrese los datos del negocio</h2>
-                       		<form id="FormNuevoClienteEmpleado" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
-                       	<div class="form-row">
-	                       	<div class="form-group col-md-6">
-	                            <label>Cliente: <?= $dato->Nombre_Cliente." ".$dato->Apellido_Cliente ?></label>
-	                         </div>
-	                         	<div class="form-group col-md-6">
-	                            <label>Tipo de cliente: <?= $dato->Tipo_Cliente;?></label>
-	                            </div>
-                       	</div>
-                       	 <div class="form-row">
-                       	 <!--*******************************CAMPOS OCULTOS**********************************-->
+                        ?><form id="FormNuevoClienteEmpleado" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label>Cliente: <?= $dato->Nombre_Cliente." ".$dato->Apellido_Cliente ?></label>
+                           </div>
+                            <div class="form-group col-md-6">
+                              <label>Tipo de cliente: <?= $dato->Tipo_Cliente;?></label>
+                              </div>
+                        </div>
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
                               <input type="hidden" name="Fk_Id_Cliente" value="<?php echo $dato->Id_Cliente; ?>">
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
@@ -100,7 +104,7 @@
                                     <div class="form-group col-md-6">
                                           <label for="Giro">Giro</label>
                                           <input type="text" class="form-control" id="Giro" name="Giro" placeholder="Giro del negocio">
-                                	</div>
+                                  </div>
                         </div>
                         <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -113,25 +117,50 @@
                                     </div>
                         </div>
                          <div class="form-row">
-                         			<div class="form-group col-md-6">
+                              <div class="form-group col-md-6">
                                           <label for="Tipo_Factura">Tipo de factura</label>
                                           <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Tipo factura">
                                     </div>
                         </div>
                         <div class="form-row">
-                        	<div class="form-group col-md-12">
+                          <div class="form-group col-md-12">
 
-                        		<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
-                        	</div>
-                        	 
+                            <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                          </div>
+                           
                         </div>
                         
-                       	</form>
-                       	<?php
+                        </form>
+                        
+
+                        <?php
                        }
                        ?>
 
-                       </div>
+                                    </div>  <!-- End panel-body -->
+                                </div> <!-- End panel -->
+
+                            </div> <!-- end col -->
+
+                        </div>
                     </div>
-                </div>
-            </div>
+              </div>
+            
+
+
+
+                                    
+                       
+
+                        
+
+                     
+                    
+                          
+
+
+
+
+
+
+            

@@ -4,13 +4,13 @@ class Clientes_Model extends CI_Model{
 
 	public function obtenerDepartamentos()
 	{
-		$departamentos= $this->db->get("tbl_Departamentos");
+		$departamentos= $this->db->get("tbl_departamentos");
 		return $departamentos;
 	}
 
 	public function obtenerMunicipios($id)
 	{
-		$sql = "SELECT * from tbl_Municipios WHERE Fk_Id_Departamento='$id'";
+		$sql = "SELECT * from tbl_municipios WHERE Fk_Id_Departamento='$id'";
 		$municipios = $this->db->query($sql);
 		return $municipios->result();
 	}
@@ -38,8 +38,8 @@ class Clientes_Model extends CI_Model{
 				'Tipo_Cliente'=>$datos['Tipo_Cliente']
 
 				);
-			if($this->db->insert('tbl_Clientes', $data)){
-				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_Clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_Clientes)";
+			if($this->db->insert('tbl_clientes', $data)){
+				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_clientes)";
 				$id=$this->db->query($sql2);
 				return $id;
 			}
@@ -49,17 +49,17 @@ class Clientes_Model extends CI_Model{
 		}
 	}
 	public function CargarClientes(){
-		$sql = "SELECT * FROM tbl_Clientes";
+		$sql = "SELECT * FROM tbl_clientes";
 		$datos=$this->db->query($sql);
 		return $datos;
 	}
 	public function Cliente($id){
-		$sql = "SELECT c.*, d.Nombre_Departamento, m.Nombre_Municipio FROM tbl_Clientes AS c INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento=d.Id_Departamento INNER JOIN tbl_Municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE Id_Cliente = '$id'";
+		$sql = "SELECT c.*, d.Nombre_Departamento, m.Nombre_Municipio FROM tbl_clientes AS c INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento=d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE Id_Cliente = '$id'";
 		$respuesta = $this->db->query($sql);
 		return $respuesta;
 	}
 	public function Eliminar($id){
-		$sql ="DELETE  FROM tbl_Clientes WHERE Id_Cliente='$id'";
+		$sql ="DELETE  FROM tbl_clientes WHERE Id_Cliente='$id'";
 		if($this->db->query($sql)){
 			return true;
 		}
@@ -94,19 +94,18 @@ class Clientes_Model extends CI_Model{
 				'Tipo_Cliente'=>$datos['Tipo_Cliente']
 				);
 			$this->db->where('Id_Cliente', $id);
-			if($this->db->update('tbl_Clientes', $data))
+			if($this->db->update('tbl_clientes', $data))
 			{
 				if($datos['Tipo_Cliente']=="Empleado"){
-						$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_Datos_Laborales as l INNER JOIN  tbl_Clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
+						$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_datos_laborales as l INNER JOIN  tbl_clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
 						$info = $this->db->query($sql);
 						return $info;
 				}
 				else if($datos['Tipo_Cliente']=="Empresario")
 				{
-					$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_Datos_Negocio as l INNER JOIN  tbl_Clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
+					$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_datos_negocio as l INNER JOIN  tbl_clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
 						$info = $this->db->query($sql);
 						return $info;
-
 				}
 				
 			}
@@ -118,7 +117,7 @@ class Clientes_Model extends CI_Model{
 
 	public function InsertarDatosLaborales($datos =null){
 		if($datos!=null){
-			if($this->db->insert('tbl_Datos_Laborales', $datos)){
+			if($this->db->insert('tbl_datos_laborales', $datos)){
 				return true;
 			}
 			else{
@@ -129,7 +128,7 @@ class Clientes_Model extends CI_Model{
 
 	public function InsertarDatosNegocio($datos =null){
 		if($datos!=null){
-			if($this->db->insert('tbl_Datos_Negocio', $datos)){
+			if($this->db->insert('tbl_datos_negocio', $datos)){
 				return true;
 			}
 			else{
@@ -141,7 +140,7 @@ class Clientes_Model extends CI_Model{
 		if($datos!=null){
 			$id = $datos['Fk_Id_Cliente'];
 			$this->db->where('Fk_Id_Cliente', $id);
-			if($this->db->update('tbl_Datos_Laborales', $datos))
+			if($this->db->update('tbl_datos_laborales', $datos))
 			{
 				return true;
 
@@ -155,7 +154,7 @@ public function EditarDatosNegocio($datos= null){
 	if($datos!=null){
 			$id = $datos['Fk_Id_Cliente'];
 			$this->db->where('Fk_Id_Cliente', $id);
-			if($this->db->update('tbl_Datos_Negocio', $datos))
+			if($this->db->update('tbl_datos_Negocio', $datos))
 			{
 				return true;
 			}
@@ -167,19 +166,23 @@ public function EditarDatosNegocio($datos= null){
 public function obtenerInfoCliente($id, $tipo){
 
 	if($tipo=="Empresario"){
-		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_Datos_Negocio AS n INNER JOIN tbl_Clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_Municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_negocio AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
 		$info = $this->db->query($sql);
 		return $info->result();
 	}
-
 	else
 	{
-		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_Datos_Laborales AS n INNER JOIN tbl_Clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_Municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_laborales AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
 		$info = $this->db->query($sql);
 		return $info->result();
 
 	}
 
+}
+public function dCliente(){
+	$sql="SELECT * FROM tbl_clientes";
+	$d = $this->db->query();
+	return $d;
 }
 }
 

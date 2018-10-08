@@ -23,10 +23,10 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Clientes</h4>
+                                <!-- <h4 class="pull-left page-title">Clientes</h4> -->
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
-                                    <li class="active">Registro de clientes</li>
+                                    <li class="active">Gestión de clientes</li>
                                 </ol>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
 						                    <h3 class="panel-title">Registro de clientes</h3>
 						                  </div>
 						                  <div class="col-sm-7">
-						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
+						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-success"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
 						                  </div>
 						                </div>
 						              </div>
@@ -57,6 +57,7 @@
 												      <th class="th th1" scope="col">Nombre</th>
 												      <th class="th th1" scope="col">Apellido</th>
 												      <th class="th th1" scope="col">Estado</th>
+                              <th class="th th1" scope="col">Tipo</th>
 												      <th class="th th1">Acción</th>
 												  </thead>
 												  <tbody class="tbody tbody1">
@@ -69,14 +70,15 @@
 												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
 												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
 												      <td class="td td1" width="100"><?= $clientes->Condicion_Actual_Cliente?></td>
+                              <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
 												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
 												      <td class="td td1">
 												      	<a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="MostrarInfo(<?= $clientes->Id_Cliente?>, <?php echo $tipo;?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
 												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
-
 												      <a title="Eliminar" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-nombre="<?= $clientes->Nombre_Cliente?> <?= $clientes->Apellido_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
 												      </td>
+                              </tr>
 												    <?php
 														}
 												    ?>
@@ -116,6 +118,113 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-list-alt fa-lg"></i> Información</h4>
                     </div>
+
+                        <div class="modal-body" >
+                        <div id="divInfo">
+                            <input type="text" name='nombre' id="id" class="style" readonly='readonly'>
+                        </div>
+                        <div id="DivEmpleado" style="display:none;">
+                        <form method="POST" action="<?= base_url()?>Clientes/datosLaborales">
+                        
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
+                              <input type="hidden"  id="Fk_Id_Cliente" name="Fk_Id_Cliente" value="<?php //echo $dato->Id_Cliente; ?>">
+                              
+                              <!--FIN DE CAMPOS OCULTOS-->
+                                    <div class="form-group col-md-6">
+                                          <label for="">Nombre de la empresa</label>
+                                          <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" placeholder="Nombre de la empresa">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Cargo que desempeña</label>
+                                          <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña">
+                                    </div>
+                              </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Direccion de la empresa</label>
+                                          <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Direccion">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Telefono</label>
+                                          <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Rubro de la empresa que en que trabaja</label>
+                                          <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Nombre del cliente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                         <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                          <label for="">Observaciones</label>
+                                           <textarea id="Observaciones" name="Observaciones" class="form-control"></textarea>
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </form>
+                            </div>
+                            <div id="DivEmpresario" style="display:none;">
+                            <form method="POST" action="<?= base_url()?>Clientes/datosNegocio">
+                       
+                         <div class="form-row">
+                         <!--*******************************CAMPOS OCULTOS**********************************-->
+                              <input type="text" hidden id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
+                              
+                              <!--FIN DE CAMPOS OCULTOS-->
+                                    <div class="form-group col-md-6">
+                                          <label for="">Nombre del negocio</label>
+                                          <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">NIT</label>
+                                          <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT">
+                                    </div>
+                              </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Numero de Registro del Contribuyente(NRC)</label>
+                                          <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Numero de Registro del Contibuyente">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Giro</label>
+                                          <input type="text" class="form-control" id="Giro" name="Giro" placeholder="Giro del negocio">
+                                    </div>
+                        </div>
+                        <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label for="">Direccio del negocio</label>
+                                          <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Direccion del negocio">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                          <label for="">Ingreso Mensual</label>
+                                          <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                         <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                          <label for="">Tipo de factura</label>
+                                          <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Apellido del cliente">
+                                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </form>
+                       </div>
+
+                       </div>
+                        
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
                     <div class="modal-body" id="divInfo">
                         <input type="text" name='nombre' id="id" class="" readonly='readonly'>
                     </div>
@@ -125,6 +234,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
 
         <!--FIN DEL MODAL PARA MOSTRAR DATOS-->
 	    <div class="modal fade modal_eliminar_cliente" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
@@ -166,11 +276,12 @@
 	    <script type="text/javascript">
 		//funcion para cargar los datos en modal con ajax
 		function MostrarInfo(id, TipoCliente){
+
+                    document.getElementById('divInfo').innerHTML= "";
 			//alert(TipoCliente);
 			if(TipoCliente==""){
-				html="<div class='alert alert-danger'>Este cliente tiene su registro de negocio o datos laborales incompleto por favor ir a la seccion de editar y verificars</div>";
+				html="<div class='alert alert-danger'>El registro de este cliente esta incompleto no selecciono un tipo usted puede seleccionar entre Empleado o Empresario para corregir este problema vaya a la seccion de editar informacion del cliente y asigne un tipo</div>";
 				document.getElementById('divInfo').innerHTML=html;
-
 			}
 			else{
 			var html ="<div class='row'><div class='col-sm-12'><ul><h5><b>Información del Cliente</b></h5><ol>";
@@ -242,18 +353,44 @@
                     		html +="<div class='col-xs-6'><label>Tipo de factura emitida:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Factura']+"'></div>";
                     		html +="<div class='col-xs-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
 
+
+                    		html +="<div class='col-xs-6'><label>Direccion del negocio: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div>";
+                    		html +="<div class='col-xs-6'><label>Ingreso Mensual: </label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
+                    		html+="</div>";
+                           
+
                     		html +="<div class='col-xs-6'><label>Direccion del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div>";
                     		html +="<div class='col-xs-6'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div>";
                     		html+="</ol></ul></div></div>"
+
                     	}
+                         document.getElementById('DivEmpleado').style.display='none';
+                            document.getElementById('DivEmpresario').style.display='none';
 
                     	//document.getElementById('divInfo').innerHTML= html;
                     }
                     else {
-                    	html="<div class='alert alert-danger'>Error al realizar la peticion de información</div>";
-                    }
-                    document.getElementById('divInfo').innerHTML= html;
 
+
+                    	html="<div class='alert alert-danger'><p>El cliente no tiene completa su informacion de: "+TipoCliente+" complear en el siguiente formulario</p></div>";
+                        if (TipoCliente=="Empleado") {
+                            document.getElementById('DivEmpleado').style.display='block';
+                            document.getElementById('DivEmpresario').style.display='none';
+                            ;
+                        }
+                        else if(TipoCliente=="Empresario"){
+                            document.getElementById('DivEmpleado').style.display='none';
+                            document.getElementById('DivEmpresario').style.display='block';
+                            document.getElementById('Fk_Id_Cliente2').value=id;
+                        }
+
+                    	//html="<div class='alert alert-danger'></div>";
+
+                    }
+                    document.getElementById('Fk_Id_Cliente').value=id
+
+                    document.getElementById('divInfo').innerHTML= html;
+                    
                 }
              }); 
 		}
