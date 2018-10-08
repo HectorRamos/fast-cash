@@ -107,37 +107,27 @@
                                         <h3 class="panel-title">Wizard Tabs</h3> 
                                     </div> 
                                     <div class="panel-body"> 
-                                    <div class="wizard">
-                                        <!-- <div class="wizard-inner"> -->
-                                            <!-- <div class="connecting-line"></div> -->
-                                            <ul class="nav nav-tabs" role="tablist">
+                                        <div class="wizard">
+                                          <div role="tabpanel">
+                                          <!-- Nav tabs -->
+                                          <ul class="nav nav-tabs nav-justified nav-tabs-dropdown" role="tablist">
+                                            <li role="presentation" class="active"><a href="#home" class="btn-block waves-effect waves-light" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                                            <li role="presentation" class="disabled"><a href="#profile" class="btn-block waves-effect waves-light" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                                            <li role="presentation" class="disabled"><a href="#messages" class="btn-block waves-effect waves-light" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                                            <div class="clearfix"></div>
+                                          </ul>
 
-                                                <li class="active">
-                                                    <a href="#step1" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1"> Cliente
-                                                    </a>
-                                                </li>
-
-                                                <li role="presentation" class="disabled">
-                                                    <a href="#step2" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2"> Empleado
-                                                    </a>
-                                                </li>
-                                                <li role="presentation" class="disabled">
-                                                    <a href="#step3" class="btn btn-block btn-lg btn-primary waves-effect waves-light" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3"> Empresario
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        <!-- </div> -->
-
-                                        <form role="form">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                          <!-- Tab panes --> 
+                                          <form role="form">
+                                              <div class="tab-content margn">
+                                                <div role="tabpanel" class="tab-pane active" id="home">
                                                     <h3>Step 1</h3>
                                                     <p>This is step 1</p>
                                                     <ul class="list-inline pull-right">
                                                         <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
                                                     </ul>
                                                 </div>
-                                                <div class="tab-pane" role="tabpanel" id="step2">
+                                                <div role="tabpanel" class="tab-pane" id="profile">
                                                     <h3>Step 2</h3>
                                                     <p>This is step 2</p>
                                                     <ul class="list-inline pull-right">
@@ -145,164 +135,198 @@
                                                         <button type="button" class="btn btn-primary next-step">Siguiente</button></li>
                                                     </ul>
                                                 </div>
-                                                <div class="tab-pane" role="tabpanel" id="step3">
+                                                <div role="tabpanel" class="tab-pane" id="messages">
                                                     <h3>Step 3</h3>
                                                     <p>This is step 3</p>
-                                                    <ul class="list-inline pull-right">
+                                                    <ul class=" pull-right">
                                                         <li><button type="button" class="btn btn-default prev-step">Atras</button>
                                                         <button type="button" class="btn btn-success btn-info-full next-step">Guardar</button></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix"></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </section>
+                                              </div>
+                                          </form>
+                                         </div>
+                                        </div>
                                     </div>  <!-- End panel-body -->
                                 </div> <!-- End panel -->
 
                             </div> <!-- end col -->
 
                         </div> <!-- End row -->
+
+
    <style type="text/css">
-.wizard {
-    margin: 30px auto;
-    background: #fff;
-}
 
-/*    .wizard .nav-tabs {
-        position: relative;
-        margin: 40px auto;
-        margin-bottom: 0;
-        border-bottom-color: #e0e0e0;
-    }
-
-    .wizard > div.wizard-inner {
-        position: relative;
-    }*/
-
-/*.connecting-line {
-    height: 2px;
-    background: #e0e0e0;
-    position: absolute;
-    width: 80%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 50%;
-    z-index: 1;
-}
-*/
-.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
-    background: blue;
-}
-.active a{
-    color: red
-}
-
-/*span.round-tab {
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
-    display: inline-block;
-    border-radius: 100px;
-    background: #fff;
-    border: 2px solid #e0e0e0;
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    text-align: center;
-    font-size: 25px;
-}
-span.round-tab i{
-    color:#555555;
-}
-.wizard li.active span.round-tab {
-    background: #fff;
-    border: 2px solid #5bc0de;
-    
-}
-.wizard li.active span.round-tab i{
-    color: #5bc0de;
-}
-
-span.round-tab:hover {
-    color: #333;
-    border: 2px solid #333;
-}*/
-
-/*.wizard .nav-tabs > li {
-    width: 25%;
-}
-
-.wizard li:after {
-    content: " ";
-    position: absolute;
-    left: 46%;
-    opacity: 0;
-    margin: 0 auto;
-    bottom: 0px;
-    border: 5px solid transparent;
-    border-bottom-color: #5bc0de;
-    transition: 0.1s ease-in-out;
-}*/
-
-/*.wizard li.active {*/
-    /*background: #000;*/
-    /*color: #fff;*/
-/*    content: " ";
-    position: absolute;*/
-    /*left: 46%;*/
-    /*opacity: 1;*/
-/*    margin: 0 auto;
-    bottom: 0px;
-    border: 10px solid transparent;*/
-    /*border-bottom-color: #5bc0de;*/
-/*}*/
-
-.wizard .nav-tabs > li a {
+.nav-tabs-dropdown {
     background: #eee;
+    color: #fff;
+    display: block;
+    /*font-size: 12px;*/
+    line-height: 1em;
+    margin: 0;
+    padding: 5px 110px;
+    /*position: fixed;*/
+    border: 1px solid #eee;
+    border-radius: 10px;
+    /*top: 2px;*/
+    /*right: -100px;*/
+    text-align: center;
+    text-decoration: none;
+    /*transform: rotate(45deg);*/
 }
 
-    .wizard .nav-tabs > li a:hover {
-        background: gray;
+
+/*.nav-tabs-dropdown {
+  display: block;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  overflow: hidden; }*/
+/*ggggggggggggggggg*/
+
+.margn{
+    padding: 10px;
+    margin-top: 10px;
+      border: 1px solid #eee;
+      border-radius: 10px;
+}
+/*   .nav-tabs-dropdown:after {
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      top: 8px;
+      right: 15px;
+      z-index: 2;
+      pointer-events: none;
+   }*/
+/*   .nav-tabs-dropdown:after {
+      content: "☰";
+      position: absolute;
+      top: 8px;
+      right: 15px;
+      z-index: 2;
+      pointer-events: none;
+   }*/
+/*   .nav-tabs-dropdown .open a {
+      position: relative;
+      display: block;
     }
-/*.wizard .tab-pane {
-    position: relative;
-    padding-top: 50px;
-}*/
+    .nav-tabs-dropdown .open > li.active > a {
+      background-color: #eeeeee;
+    }*/
+   .nav-tabs-dropdown li {
+      display: block;
+      padding: 0;
+      vertical-align: bottom;
+   }
+   .nav-tabs-dropdown > li > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      border-color: transparent;
+   }
+   .nav-tabs-dropdown li a:focus, 
+   .nav-tabs-dropdown li a:hover,
+   .nav-tabs-dropdown li a:active {
+      border-color: transparent;
+      /*background: gray;*/
+      /*color: #fff;*/
+   }
 
-/*.wizard h3 {
-    margin-top: 0;
-}*/
+   .nav-tabs-dropdown > li.active > a {
+      border-radius: 10px;
+      display:block;
+      border-color: transparent;
+      position: relative;
+      z-index: 1;
+      background: #000;       
+    }
+   .nav-tabs-dropdown > li.active > a:focus, 
+   .nav-tabs-dropdown > li.active > a:hover,
+   .nav-tabs-dropdown > li.active > a:active {
+      border-color: transparent;
+           /*background: #000; */
+   }
 
-/*@media( max-width : 585px ) {
 
-    .wizard {
-        width: 90%;
-        height: auto !important;
+/*.nav-tabs.nav-tabs-dropdown,
+.nav-tabs-dropdown {
+ @media (max-width: 767px) {*/
+/*      border: 1px solid #dddddd;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;*/
+
+/*      &::after {
+        content: "☰";
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        z-index: 2;
+        pointer-events: none;
+      }*/
+
+/*      &.open {
+        a {
+          position: relative;
+          display: block;
+        }
+
+        > li.active > a {
+          background-color: #eeeeee;
+        }
+      }*/
+
+
+/*    li {
+      display: block;
+      padding: 0;
+      vertical-align: bottom;
     }*/
 
-/*    span.round-tab {
-        font-size: 16px;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-    }
-*/
-/*    .wizard .nav-tabs > li a {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-    }
+/*    > li > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      border-color: transparent;
 
-    .wizard li.active:after {
-        content: " ";
-        position: absolute;
-        left: 35%;
-    }
-}*/
-   </style>
+      &:focus,
+      &:hover,
+      &:active {
+        border-color: transparent;
+      }
+    }*/
+
+/*    > li.active > a {
+      display:block;
+      border-color: transparent;
+      position: relative;
+      z-index: 1;
+      background: #fff;
+
+      &:focus,
+      &:hover,
+      &:active {
+        border-color: transparent;
+      }
+       
+    }*/
+/*  }
+}*/   </style>
    <script type="text/javascript">
        $(document).ready(function () {
     //Initialize tooltips

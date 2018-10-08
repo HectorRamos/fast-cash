@@ -1,34 +1,32 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
--- https://www.phpmyadmin.net/
+-- version 4.2.12deb2+deb8u2
+-- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2018 a las 06:57:18
--- Versión del servidor: 10.1.33-MariaDB
--- Versión de PHP: 7.2.6
+-- Host: localhost
+-- Generation Time: Oct 07, 2018 at 02:19 PM
+-- Server version: 5.5.52-0+deb8u1
+-- PHP Version: 5.6.30-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `db_fastcash`
+-- Database: `db_fastcash`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_accesos`
+-- Table structure for table `tbl_accesos`
 --
 
-CREATE TABLE `tbl_accesos` (
+CREATE TABLE IF NOT EXISTS `tbl_accesos` (
   `idAcceso` int(11) NOT NULL,
   `tipoAcceso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -37,7 +35,7 @@ CREATE TABLE `tbl_accesos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla para el manejo de accesos';
 
 --
--- Volcado de datos para la tabla `tbl_accesos`
+-- Dumping data for table `tbl_accesos`
 --
 
 INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `fechaRegistro`) VALUES
@@ -47,10 +45,10 @@ INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `f
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_clientes`
+-- Table structure for table `tbl_clientes`
 --
 
-CREATE TABLE `tbl_clientes` (
+CREATE TABLE IF NOT EXISTS `tbl_clientes` (
   `Id_Cliente` int(11) NOT NULL,
   `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -74,11 +72,11 @@ CREATE TABLE `tbl_clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tbl_clientes`
+-- Dumping data for table `tbl_clientes`
 --
 
 INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Condicion_Actual_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `Fecha_Registro_Cliente`, `Observaciones_Cliente`, `Profesion_Cliente`, `Fk_Id_Departamento`, `Fk_Id_Municipio`, `Tipo_Cliente`) VALUES
-(32, '000123', 'Juan', 'Perez', 'Activo', 'Soltero/a', 'Masculino', '777-777', '22222', 'aaaa', '0000-00-00', 'Rural', '546546', '33333344', '0000-00-00', 'aaaaaaaa', 'albañil', 10, 250, ''),
+(32, '000123', 'Juan', 'Perez', 'Activo', 'Soltero/a', 'Masculino', '777-777', '22222', 'aaaa', '0000-00-00', 'Rural', '546546', '33333344', '0000-00-00', 'aaaaaaaa', 'albañil', 2, 250, 'Empresario'),
 (33, '000123', 'Luiz', 'Aguilar', 'Activo', 'Soltero/a', 'Masculino', '111112', '121212', 'ssss', '2012-12-12', 'Rural', '555555', '445-455-8888-7', '0000-00-00', 'ssss', 'Empleado', 1, 1, 'Empleado'),
 (35, '000123', 'sdsd', 'sdsd', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, NULL),
 (36, '000123', 'Juana', 'Pere', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
@@ -92,8 +90,8 @@ INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `A
 (45, '000123', 'uana', 'sjsj', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
 (46, '000123', 'JUan', 'perez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
 (48, '000123', 'Juan', 'Ramos', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 3, 26, 'Empleado'),
-(49, '000123', 'Mario', 'Belloso', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', 'Empleado', 2, 13, 'Empleado'),
-(50, '000123', 'juana', 'ahahah', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empleado'),
+(49, '000123', 'Mario', 'Belloso', 'Activo', 'Soltero/a', 'Masculino', '', '(545) 4545', '', '1900-12-07', 'Rural', '44444444-4', '4444-444444-444-4', '0000-00-00', '', 'Empleado', 2, 13, 'Empleado'),
+(50, '000123', 'juana', 'ahahah', 'Activo', 'Soltero/a', 'Masculino', '', '(555) 5555', '', '0000-00-00', 'Rural', '44444444-4', '', '0000-00-00', '', 'Inge', 2, 13, 'Empleado'),
 (51, '000123', 'juana8', 'hshs', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empresario'),
 (52, '000123', 'javier', 'paiz', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 1, 1, 'Empleado'),
 (53, '000123', 'juan ', 'lopez', 'Activo', 'Soltero/a', 'Masculino', '', '', '', '0000-00-00', 'Rural', '', '', '0000-00-00', '', '', 2, 13, 'Empresario'),
@@ -104,10 +102,10 @@ INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `A
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_datos_laborales`
+-- Table structure for table `tbl_datos_laborales`
 --
 
-CREATE TABLE `tbl_datos_laborales` (
+CREATE TABLE IF NOT EXISTS `tbl_datos_laborales` (
   `Cargo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Empresa` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -115,24 +113,23 @@ CREATE TABLE `tbl_datos_laborales` (
   `Rubro` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Ingreso_Mensual` float NOT NULL,
   `Observaciones` text COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tbl_datos_laborales`
+-- Dumping data for table `tbl_datos_laborales`
 --
 
-INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Codigo_Cliente`, `Fk_Id_Cliente`) VALUES
-('Gerente', 'Arrocera San Fnacisco', 'San Miguel', '4444', 'Alimentos', 600, 'sin observaciones.', '000123', 49);
+INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Fk_Id_Cliente`) VALUES
+('Gerente', 'Arrocera San Fnacisco', 'San Miguel', '4444', 'Alimentos', 600, 'sin observaciones.', 49);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_datos_negocio`
+-- Table structure for table `tbl_datos_negocio`
 --
 
-CREATE TABLE `tbl_datos_negocio` (
+CREATE TABLE IF NOT EXISTS `tbl_datos_negocio` (
   `Id_Negocio` int(11) NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL,
   `Nombre_Negocio` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
@@ -145,7 +142,7 @@ CREATE TABLE `tbl_datos_negocio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `tbl_datos_negocio`
+-- Dumping data for table `tbl_datos_negocio`
 --
 
 INSERT INTO `tbl_datos_negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`, `NIT`, `NRC`, `Giro`, `Direccion_Negocio`, `Ingreso_Mensual`, `Tipo_Factura`) VALUES
@@ -154,16 +151,16 @@ INSERT INTO `tbl_datos_negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_departamentos`
+-- Table structure for table `tbl_departamentos`
 --
 
-CREATE TABLE `tbl_departamentos` (
+CREATE TABLE IF NOT EXISTS `tbl_departamentos` (
   `Id_Departamento` int(11) NOT NULL,
   `Nombre_Departamento` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tbl_departamentos`
+-- Dumping data for table `tbl_departamentos`
 --
 
 INSERT INTO `tbl_departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUES
@@ -185,10 +182,10 @@ INSERT INTO `tbl_departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_empleados`
+-- Table structure for table `tbl_empleados`
 --
 
-CREATE TABLE `tbl_empleados` (
+CREATE TABLE IF NOT EXISTS `tbl_empleados` (
   `idEmpleado` int(11) NOT NULL,
   `nombreEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellidoEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -205,7 +202,7 @@ CREATE TABLE `tbl_empleados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tbl_empleados`
+-- Dumping data for table `tbl_empleados`
 --
 
 INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`, `fechaNacimientoEmpleado`, `genero`, `dui`, `nit`, `direccion`, `telefono`, `email`, `profesion`, `estado`, `fechaRegistroEmpleado`) VALUES
@@ -215,17 +212,39 @@ INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_municipios`
+-- Table structure for table `tbl_estados_solicitud`
 --
 
-CREATE TABLE `tbl_municipios` (
+CREATE TABLE IF NOT EXISTS `tbl_estados_solicitud` (
+`id_estado` int(11) NOT NULL,
+  `estado` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_registro` date NOT NULL,
+  `visible` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Dumping data for table `tbl_estados_solicitud`
+--
+
+INSERT INTO `tbl_estados_solicitud` (`id_estado`, `estado`, `fecha_registro`, `visible`) VALUES
+(1, 'Nueva', '2018-10-07', 2),
+(2, 'Recibida', '2018-10-07', 1),
+(4, 'En proceso', '2018-10-07', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_municipios`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_municipios` (
   `Id_Municipio` int(11) NOT NULL,
   `Nombre_Municipio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tbl_municipios`
+-- Dumping data for table `tbl_municipios`
 --
 
 INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departamento`) VALUES
@@ -319,7 +338,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (88, 'Corinto', 12),
 (89, 'Delicias de Concepción', 12),
 (90, 'El Divisadero', 12),
-(91, 'El Rosario (\'razán)', 12),
+(91, 'El Rosario (''razán)', 12),
 (92, 'Gualococti', 12),
 (93, 'Guatajiagua', 12),
 (94, 'Joateca', 12),
@@ -580,7 +599,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (350, 'Corinto', 12),
 (351, 'Delicias de Concepción', 12),
 (352, 'El Divisadero', 12),
-(353, 'El Rosario (\'razán)', 12),
+(353, 'El Rosario (''razán)', 12),
 (354, 'Gualococti', 12),
 (355, 'Guatajiagua', 12),
 (356, 'Joateca', 12),
@@ -756,10 +775,10 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_users`
+-- Table structure for table `tbl_users`
 --
 
-CREATE TABLE `tbl_users` (
+CREATE TABLE IF NOT EXISTS `tbl_users` (
   `idUser` int(11) NOT NULL,
   `user` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -770,7 +789,7 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='usuarios del sistema';
 
 --
--- Volcado de datos para la tabla `tbl_users`
+-- Dumping data for table `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `estado`, `fechaRegistroUser`) VALUES
@@ -778,154 +797,51 @@ INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `es
 (2, 'base', 'base', 2, 2, 1, '2018-10-06 00:00:00');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `tbl_accesos`
+-- Indexes for table `tbl_accesos`
 --
 ALTER TABLE `tbl_accesos`
-  ADD PRIMARY KEY (`idAcceso`);
+ ADD PRIMARY KEY (`idAcceso`);
 
 --
--- Indices de la tabla `tbl_clientes`
+-- Indexes for table `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
-  ADD PRIMARY KEY (`Id_Cliente`),
-  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`),
-  ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`),
-  ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`),
-  ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
+ ADD PRIMARY KEY (`Id_Cliente`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
 
 --
--- Indices de la tabla `tbl_datos_laborales`
+-- Indexes for table `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
-  ADD KEY `FK_Codigo_Cliente` (`Codigo_Cliente`),
-  ADD KEY `FK_Codigo_Cliente_2` (`Codigo_Cliente`),
-  ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`),
-  ADD KEY `Fk_Id_Cliente_2` (`Fk_Id_Cliente`);
+ ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
 
 --
--- Indices de la tabla `tbl_datos_negocio`
+-- Indexes for table `tbl_estados_solicitud`
 --
-ALTER TABLE `tbl_datos_negocio`
-  ADD PRIMARY KEY (`Id_Negocio`),
-  ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
+ALTER TABLE `tbl_estados_solicitud`
+ ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `tbl_departamentos`
---
-ALTER TABLE `tbl_departamentos`
-  ADD PRIMARY KEY (`Id_Departamento`);
-
---
--- Indices de la tabla `tbl_empleados`
---
-ALTER TABLE `tbl_empleados`
-  ADD PRIMARY KEY (`idEmpleado`);
-
---
--- Indices de la tabla `tbl_municipios`
---
-ALTER TABLE `tbl_municipios`
-  ADD PRIMARY KEY (`Id_Municipio`),
-  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`);
-
---
--- Indices de la tabla `tbl_users`
---
-ALTER TABLE `tbl_users`
-  ADD PRIMARY KEY (`idUser`),
-  ADD KEY `idAcceso` (`idAcceso`),
-  ADD KEY `idEmpleado` (`idEmpleado`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `tbl_accesos`
+-- AUTO_INCREMENT for table `tbl_estados_solicitud`
 --
-ALTER TABLE `tbl_accesos`
-  MODIFY `idAcceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+ALTER TABLE `tbl_estados_solicitud`
+MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `tbl_clientes`
---
-ALTER TABLE `tbl_clientes`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
---
--- AUTO_INCREMENT de la tabla `tbl_datos_negocio`
---
-ALTER TABLE `tbl_datos_negocio`
-  MODIFY `Id_Negocio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `tbl_departamentos`
---
-ALTER TABLE `tbl_departamentos`
-  MODIFY `Id_Departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT de la tabla `tbl_empleados`
---
-ALTER TABLE `tbl_empleados`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `tbl_municipios`
---
-ALTER TABLE `tbl_municipios`
-  MODIFY `Id_Municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=525;
-
---
--- AUTO_INCREMENT de la tabla `tbl_users`
---
-ALTER TABLE `tbl_users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `tbl_clientes`
---
-ALTER TABLE `tbl_clientes`
-  ADD CONSTRAINT `tbl_Clientes_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_Clientes_ibfk_2` FOREIGN KEY (`Fk_Id_Municipio`) REFERENCES `tbl_municipios` (`Id_Municipio`);
-
---
--- Filtros para la tabla `tbl_datos_laborales`
+-- Constraints for table `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
-  ADD CONSTRAINT `tbl_Datos_Laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tbl_datos_negocio`
---
-ALTER TABLE `tbl_datos_negocio`
-  ADD CONSTRAINT `tbl_Datos_Negocio_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tbl_municipios`
---
-ALTER TABLE `tbl_municipios`
-  ADD CONSTRAINT `tbl_Municipios_ibfk_1` FOREIGN KEY (`Fk_Id_Departamento`) REFERENCES `tbl_departamentos` (`Id_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tbl_users`
---
-ALTER TABLE `tbl_users`
-  ADD CONSTRAINT `tbl_users_ibfk_1` FOREIGN KEY (`idAcceso`) REFERENCES `tbl_accesos` (`idAcceso`),
-  ADD CONSTRAINT `tbl_users_ibfk_2` FOREIGN KEY (`idEmpleado`) REFERENCES `tbl_empleados` (`idEmpleado`);
-COMMIT;
+ADD CONSTRAINT `tbl_datos_laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
