@@ -616,15 +616,15 @@ ALTER TABLE `tbl_plazos_prestamos`
 -- AUTO_INCREMENT for table `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
-<<<<<<< HEAD
+
   MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_plazos_prestamos`
 --
 ALTER TABLE `tbl_plazos_prestamos`
-  MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT;
 
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+
 
 --
 -- Constraints for dumped tables
