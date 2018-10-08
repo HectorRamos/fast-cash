@@ -37,23 +37,13 @@ foreach ($cliente->result() as $datos_cliente) {
                                           <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" value="<?= $datos_cliente->Apellido_Cliente ?>" placeholder="Apellido del cliente">
                                     </div>
                               </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                          <label for="Departamento">Departamento</label>
-                                          <input type="text" class="form-control" id="Departamento" name="Departamento" value="<?= $datos_cliente->Nombre_Departamento?>">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                          <label for="Municipio">Municipio</label>
-										                      <input type="text" class="form-control" id="Municipio" name="Municipio" value="<?= $datos_cliente->Nombre_Municipio?>"">
-                                    </div>
-                              </div> 
 
 
                             <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="cbbDepartamentos">Cambiar Departamento</label>
                                           <select id="cbbDepartamentos" name="cbbDepartamentos" class="select" onchange="javascript:document.all('departamento').value=this.value;" data-placeholder="Elige un Departamento ...">
-                                            <option value=""></option>
+                                            <option style="background-color:red; color:white;" value="<?= $datos_cliente->Fk_Id_Departamento;?>"><?= $datos_cliente->Nombre_Departamento?></option>
                                           <?php 
                                             foreach ($datos->result() as $departamentos) {
                                           ?>
@@ -65,26 +55,18 @@ foreach ($cliente->result() as $datos_cliente) {
                                     <div class="form-group col-md-6">
                                           <label for="cbbMunicipios">Cambiar Municipio</label>
                                           <select id="cbbMunicipios" name="cbbMunicipios" class="select" onchange="javascript:document.all('municipio').value=this.value;" data-placeholder="...">
-                                            <option value="">...</option>
+                                            <option style="background-color:red; color:white;" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>"><?= $datos_cliente->Nombre_Municipio?></option>
                                           </select>
                                     </div>
                               </div> 
 
-                               <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                          <label for="condic">Condición actual</label>
-                                          <input type="text" id="condic" name="" value="<?= $datos_cliente->Condicion_Actual_Cliente;?>" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                          <label for="estad">Estado civil</label>
-                                          <input type="text" id="estad" name="" value="<?= $datos_cliente->Estado_Civil_Cliente;?>" class="form-control">
-                                    </div>
-                              </div>
+                              
 
                               <div class="form-row">
                                     <div class="form-group col-md-6">
                                           <label for="Condicion_Cliente">Cambiar Condición actual</label>
                                           <select onchange="javascript:document.all('condicion').value=this.value;" id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
+                                            <option style="background-color:red; color:white;" value="<?php echo $datos_cliente->Condicion_Actual_Cliente;?>"><?php echo $datos_cliente->Condicion_Actual_Cliente;?></option>
                                             <option value="Activo">Activo</option>
                                             <option value="Inactivo">Inactivo</option>
                                           </select>
@@ -92,6 +74,7 @@ foreach ($cliente->result() as $datos_cliente) {
                                     <div class="form-group col-md-6">
                                           <label for="Estado_Cliente">Cambiar Estado civil</label>
                                           <select onchange="javascript:document.all('estado_civil').value=this.value;" id="Estado_Cliente" name="Estado_Cliente" class="form-control">
+                                          <option style="background-color:red; color:white;" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>"><?php echo $datos_cliente->Estado_Civil_Cliente;?></option>
                                             <option value="Soltero/a">Soltero/a</option>
                                             <option value="Casado/a">Casado/a</option>
                                             <option value="Divorsiado/a">Divorciado/a</option>
@@ -144,17 +127,14 @@ foreach ($cliente->result() as $datos_cliente) {
                                     </div>
                               </div>
                               <div class="form-row">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                           <label for="Profesion_Cliente">Profesión</label>
                                           <input type="text" class="form-control" id="Profesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente" value="<?= $datos_cliente->Profesion_Cliente?>">
                                     </div>
-                                    <div class="form-group col-md-4">
-                                          <label for="Cliente_ti">Tipo de Cliente</label>
-                                          <input type="text" id="Cliente_ti" class="form-control" placeholder="Tipo del cliente vacio" value="<?= $datos_cliente->Tipo_Cliente?>">
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                           <label for="Tipo_Clien">Cambiar Tipo de cliente</label>
                                           <select id="Tipo_Clien" onchange="javascript:document.all('Tipo_Cliente').value=this.value;"  class="form-control">
+                                            <option style="background-color:red; color:white;" value="<?php echo $datos_cliente->Tipo_Cliente;?>"><?php echo $datos_cliente->Tipo_Cliente;?></option>
                                             <option value="Empleado">Empleado</option>
                                             <option value="Empresario">Empresario</option>
                                           </select>
