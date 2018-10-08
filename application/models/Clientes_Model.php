@@ -39,7 +39,7 @@ class Clientes_Model extends CI_Model{
 
 				);
 			if($this->db->insert('tbl_clientes', $data)){
-				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_Clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_Clientes)";
+				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_clientes)";
 				$id=$this->db->query($sql2);
 				return $id;
 			}
@@ -172,7 +172,7 @@ public function obtenerInfoCliente($id, $tipo){
 	}
 	else
 	{
-		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_laborales AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_Departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_laborales AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
 		$info = $this->db->query($sql);
 		return $info->result();
 

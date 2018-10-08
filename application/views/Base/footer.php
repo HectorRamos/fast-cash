@@ -11,6 +11,7 @@
         <script src="<?= base_url() ?>plantilla/js/bootstrap.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/waves.js"></script>
         <script src="<?= base_url() ?>plantilla/js/wow.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/js/datatables.js"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.nicescroll.js" type="text/javascript"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.scrollTo.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/chat/moment-2.2.1.js"></script>
