@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LoginModelo extends CI_Model
+class LoginModel extends CI_Model
 {		
 	public function Login($user, $pass)
 	{

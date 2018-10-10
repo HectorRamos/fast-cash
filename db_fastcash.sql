@@ -1,32 +1,34 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2+deb8u2
--- http://www.phpmyadmin.net
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 07, 2018 at 02:19 PM
--- Server version: 5.5.52-0+deb8u1
--- PHP Version: 5.6.30-0+deb8u1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-10-2018 a las 08:56:06
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_fastcash`
+-- Base de datos: `db_fastcash`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_accesos`
+-- Estructura de tabla para la tabla `tbl_accesos`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_accesos` (
+CREATE TABLE `tbl_accesos` (
   `idAcceso` int(11) NOT NULL,
   `tipoAcceso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `tbl_accesos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Tabla para el manejo de accesos';
 
 --
--- Dumping data for table `tbl_accesos`
+-- Volcado de datos para la tabla `tbl_accesos`
 --
 
 INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `fechaRegistro`) VALUES
@@ -45,10 +47,10 @@ INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `f
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_clientes`
+-- Estructura de tabla para la tabla `tbl_clientes`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_clientes` (
+CREATE TABLE `tbl_clientes` (
   `Id_Cliente` int(11) NOT NULL,
   `Codigo_Cliente` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Cliente` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `tbl_clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_clientes`
+-- Volcado de datos para la tabla `tbl_clientes`
 --
 
 INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Condicion_Actual_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `Fecha_Registro_Cliente`, `Observaciones_Cliente`, `Profesion_Cliente`, `Fk_Id_Departamento`, `Fk_Id_Municipio`, `Tipo_Cliente`) VALUES
@@ -102,10 +104,10 @@ INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `A
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_datos_laborales`
+-- Estructura de tabla para la tabla `tbl_datos_laborales`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_datos_laborales` (
+CREATE TABLE `tbl_datos_laborales` (
   `Cargo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre_Empresa` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -117,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `tbl_datos_laborales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_datos_laborales`
+-- Volcado de datos para la tabla `tbl_datos_laborales`
 --
 
 INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Ingreso_Mensual`, `Observaciones`, `Fk_Id_Cliente`) VALUES
@@ -126,10 +128,10 @@ INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Tele
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_datos_negocio`
+-- Estructura de tabla para la tabla `tbl_datos_negocio`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_datos_negocio` (
+CREATE TABLE `tbl_datos_negocio` (
   `Id_Negocio` int(11) NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL,
   `Nombre_Negocio` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
@@ -142,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `tbl_datos_negocio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `tbl_datos_negocio`
+-- Volcado de datos para la tabla `tbl_datos_negocio`
 --
 
 INSERT INTO `tbl_datos_negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`, `NIT`, `NRC`, `Giro`, `Direccion_Negocio`, `Ingreso_Mensual`, `Tipo_Factura`) VALUES
@@ -151,16 +153,16 @@ INSERT INTO `tbl_datos_negocio` (`Id_Negocio`, `Fk_Id_Cliente`, `Nombre_Negocio`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_departamentos`
+-- Estructura de tabla para la tabla `tbl_departamentos`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_departamentos` (
+CREATE TABLE `tbl_departamentos` (
   `Id_Departamento` int(11) NOT NULL,
   `Nombre_Departamento` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_departamentos`
+-- Volcado de datos para la tabla `tbl_departamentos`
 --
 
 INSERT INTO `tbl_departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUES
@@ -182,10 +184,10 @@ INSERT INTO `tbl_departamentos` (`Id_Departamento`, `Nombre_Departamento`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_empleados`
+-- Estructura de tabla para la tabla `tbl_empleados`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_empleados` (
+CREATE TABLE `tbl_empleados` (
   `idEmpleado` int(11) NOT NULL,
   `nombreEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellidoEmpleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -197,33 +199,34 @@ CREATE TABLE IF NOT EXISTS `tbl_empleados` (
   `telefono` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `profesion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `cargo` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL,
   `fechaRegistroEmpleado` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_empleados`
+-- Volcado de datos para la tabla `tbl_empleados`
 --
 
-INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`, `fechaNacimientoEmpleado`, `genero`, `dui`, `nit`, `direccion`, `telefono`, `email`, `profesion`, `estado`, `fechaRegistroEmpleado`) VALUES
-(1, 'Melvin', 'Flores', '2018-03-05', 'Masculino', '87549659-2', '1254-253658-124-1', 'San Miguel', '7898-5868', 'melvin@gmail.com', 'Tecnico', 1, '2018-10-06 06:10:26'),
-(2, 'Misael', 'Guevara', '2017-08-09', 'Masculino', '87586525-9', '1254-895865-421-5', 'San Francisco Gotera', '7852-6985', 'misa@gmail.com', 'tecnico', 1, '2018-10-24 00:00:00');
+INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`, `fechaNacimientoEmpleado`, `genero`, `dui`, `nit`, `direccion`, `telefono`, `email`, `profesion`, `cargo`, `estado`, `fechaRegistroEmpleado`) VALUES
+(1, 'Melvin', 'Flores', '2018-03-05', 'Masculino', '87549659-2', '1254-253658-124-1', 'San Miguel', '7898-5868', 'melvin@gmail.com', 'Tecnico', 'Cajero', 1, '2018-10-06 06:10:26'),
+(2, 'Misael', 'Guevara', '2017-08-09', 'Masculino', '87586525-9', '1254-895865-421-5', 'San Francisco Gotera', '7852-6985', 'misa@gmail.com', 'tecnico', 'Gerente', 1, '2018-10-24 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_estados_solicitud`
+-- Estructura de tabla para la tabla `tbl_estados_solicitud`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_estados_solicitud` (
-`id_estado` int(11) NOT NULL,
+CREATE TABLE `tbl_estados_solicitud` (
+  `id_estado` int(11) NOT NULL,
   `estado` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_registro` date NOT NULL,
   `visible` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Dumping data for table `tbl_estados_solicitud`
+-- Volcado de datos para la tabla `tbl_estados_solicitud`
 --
 
 INSERT INTO `tbl_estados_solicitud` (`id_estado`, `estado`, `fecha_registro`, `visible`) VALUES
@@ -234,17 +237,17 @@ INSERT INTO `tbl_estados_solicitud` (`id_estado`, `estado`, `fecha_registro`, `v
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_municipios`
+-- Estructura de tabla para la tabla `tbl_municipios`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_municipios` (
+CREATE TABLE `tbl_municipios` (
   `Id_Municipio` int(11) NOT NULL,
   `Nombre_Municipio` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_municipios`
+-- Volcado de datos para la tabla `tbl_municipios`
 --
 
 INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departamento`) VALUES
@@ -338,7 +341,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (88, 'Corinto', 12),
 (89, 'Delicias de Concepción', 12),
 (90, 'El Divisadero', 12),
-(91, 'El Rosario (''razán)', 12),
+(91, 'El Rosario (\'razán)', 12),
 (92, 'Gualococti', 12),
 (93, 'Guatajiagua', 12),
 (94, 'Joateca', 12),
@@ -599,7 +602,7 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 (350, 'Corinto', 12),
 (351, 'Delicias de Concepción', 12),
 (352, 'El Divisadero', 12),
-(353, 'El Rosario (''razán)', 12),
+(353, 'El Rosario (\'razán)', 12),
 (354, 'Gualococti', 12),
 (355, 'Guatajiagua', 12),
 (356, 'Joateca', 12),
@@ -775,10 +778,10 @@ INSERT INTO `tbl_municipios` (`Id_Municipio`, `Nombre_Municipio`, `Fk_Id_Departa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users`
+-- Estructura de tabla para la tabla `tbl_users`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_users` (
+CREATE TABLE `tbl_users` (
   `idUser` int(11) NOT NULL,
   `user` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -789,7 +792,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='usuarios del sistema';
 
 --
--- Dumping data for table `tbl_users`
+-- Volcado de datos para la tabla `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `estado`, `fechaRegistroUser`) VALUES
@@ -797,51 +800,61 @@ INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `es
 (2, 'base', 'base', 2, 2, 1, '2018-10-06 00:00:00');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `tbl_accesos`
+-- Indices de la tabla `tbl_accesos`
 --
 ALTER TABLE `tbl_accesos`
- ADD PRIMARY KEY (`idAcceso`);
+  ADD PRIMARY KEY (`idAcceso`);
 
 --
--- Indexes for table `tbl_clientes`
+-- Indices de la tabla `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
- ADD PRIMARY KEY (`Id_Cliente`), ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`), ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`), ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
+  ADD PRIMARY KEY (`Id_Cliente`),
+  ADD KEY `Fk_Id_Departamento` (`Fk_Id_Departamento`),
+  ADD KEY `Fk_Id_Municipio` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_2` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_3` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Departamento_2` (`Fk_Id_Departamento`),
+  ADD KEY `Fk_Id_Municipio_4` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_5` (`Fk_Id_Municipio`),
+  ADD KEY `Fk_Id_Municipio_6` (`Fk_Id_Municipio`);
 
 --
--- Indexes for table `tbl_datos_laborales`
+-- Indices de la tabla `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
- ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
+  ADD KEY `Fk_Id_Cliente` (`Fk_Id_Cliente`);
 
 --
--- Indexes for table `tbl_estados_solicitud`
+-- Indices de la tabla `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
- ADD PRIMARY KEY (`id_estado`);
+  ADD PRIMARY KEY (`id_estado`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `tbl_estados_solicitud`
+-- AUTO_INCREMENT de la tabla `tbl_estados_solicitud`
 --
 ALTER TABLE `tbl_estados_solicitud`
-MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `tbl_datos_laborales`
+-- Filtros para la tabla `tbl_datos_laborales`
 --
 ALTER TABLE `tbl_datos_laborales`
-ADD CONSTRAINT `tbl_datos_laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_datos_laborales_ibfk_1` FOREIGN KEY (`Fk_Id_Cliente`) REFERENCES `tbl_clientes` (`Id_Cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

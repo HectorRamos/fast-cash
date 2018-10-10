@@ -2,13 +2,14 @@
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
+
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <!-- <h4 class="pull-left page-title">Gestion de los estados de la solicitud</h4> -->
+                                <!-- <h4 class="pull-left page-title">Gestion de los accesos al sistema</h4> -->
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
-                                    <li class="active">Gestion de los estados de la solicitud</li>
+                                    <li class="active">Gestion de los accesos al sistema</li>
                                 </ol>
                             </div>
                         </div>
@@ -19,10 +20,10 @@
                                     <div class="table-title">
                                         <div class="row">
                                           <div class="col-sm-6">
-                                            <h5 class="panel-title">Registro de estados de solicitud</h3>
+                                            <h5 class="panel-title">Accesos registrados</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo Estado de solicitud<span></a>
+                                              <a class="btn btn-success waves-effect waves-light" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo acceso<span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -37,27 +38,31 @@
                                                     <tr class="tr tr1">
                                                       <th class="th th1" scope="col">Id Estado</th>
                                                       <th class="th th1" scope="col">Estados</th>
+                                                      <th class="th th1" scope="col">Descrepcion</th>
                                                       <th class="th th1" >Acción</th>
-                                                    </tr>
+                                                      </tr>
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                   <?php
-                                                  foreach ($datos->result() as  $estado) {
-                                                    $estadoN="'".$estado->estado."'";
+                                                  foreach ($datos->result() as  $accesos) {
+                                                    $accesoN="'".$accesos->tipoAcceso."'";
+                                                    $descripcionN="'".$accesos->descripcion."'";
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                  <td class="td td1"  width="150"><b><?= $estado->id_estado?></b></td>
-                                                  <td class="td td1"  width="150"><?= $estado->estado?></td>
+                                                  <td class="td td1"  width="150"><b><?= $accesos->idAcceso?></b></td>
+                                                  <td class="td td1"><?= $accesos->tipoAcceso?></td>
+                                                  <td class="td td1"><?= $accesos->descripcion?></td>
                                                   <td class="td td1">
-                                                      <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                      <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
-                                                      <a onclick="del(<?= $estado->id_estado?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                      <a onclick="del(<?= $accesos->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
                                                   </tr>
                                                   <?php
                                                   }
-                                                  ?> 
+                                                  ?>
+                                                      
                                                   </tbody>
                                                 </table>
                                               </div>
@@ -79,19 +84,27 @@
                     <h4 class="modal-title" id="myModalLabel">Insertar un nuevo estado</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Guardar">
+            <form method="POST" action="<?= base_url()?>Accesos/Guardar">
               <div class="margn">
-                <div class="form-group">
-                    <label for="estado">Nombre del estado</label>
-                      <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="estado" placeholder="Estado">
+                <div class="row">
+                  <div class="form-group col-md-12">
+                    <label for="tipoAcceso">Tipo de acceso</label>
+                    <input type="text" required="No puede dejar este campo vacio" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" required="No puede dejar este campo vacio" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del nuevo tipo de acceso">
+                  </div>
                 </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
-              </div>
+            </div>
             </form>                                  
+            </div>
+            <div class="modal-footer">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -103,23 +116,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
+                    <h4 class="modal-title" id="myModalLabel">Editar información de acceso</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Editar">
-              <div class="margn">
-                <div class="form-group">
-                    <label for="estado1">Nombre del estado</label>
-                    <input type="hidden" name="id_estado" id="id_estado">
-                        <input type="text" class="form-control" id="estado1" name="estado" placeholder="Estado" required="No puede dejar este campo vacio">
-                </div>
+              <form method="POST" action="<?= base_url()?>Accesos/Editar">
+                <div class="margn">
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="name">Tipo de acceso</label>
+                        <input type="text" required="No puede dejar este campo vacio" class="form-control" id="tipoAcceso2" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
+                         <input type="hidden" required="No puede dejar este campo vacio" id="idAcceso" name="idAcceso">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="name">Descripción</label>
+                        <input type="text" required="No puede dejar este campo vacio" class="form-control" id="descripcion2" name="descripcion" placeholder="Descripción del nuevo tipo de acceso">
+                    </div>
+                  </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
-              </div>
-            </form>                                  
+                </div>
+              </form>                                  
             </div>
             <div class="modal-footer">
             </div>
@@ -127,19 +146,19 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal --> 
 
-<!--MODAL PARA ELIMINAR DATOS-->
+<!--MODAL PARA Eliminar DATOS-->
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form name="frmeliminarcliente" action="<?= base_url();?>EstadosSolicitud/Eliminar/" id="frmeliminarcliente" method="GET">
+            <form name="frmeliminarcliente" action="<?= base_url();?>Accesos/Eliminar/" id="frmeliminarcliente" method="GET">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
-                        <i class="fa fa-warning fa-lg text-danger"></i>
+                        <i class="fa fa-warning fa-lg text-danger"></i> 
                     </h4>
                 </div>
                     <div class="modal-body">
-                      <input type="hidden" id="id" name='id'>
+                      <input type="text" hidden id="id" name='id'>
                       <p align="center">¿Está seguro de eliminar el registro?</p>
                     </div>
                     <div  align="center">
@@ -152,14 +171,15 @@
         </div><!-- /.modal -->
 
 <script type="text/javascript">
-    function Edit(id, estado){
-        $('#estado1').val(estado);
-        $('#id_estado').val(id);
+    function Edit(id, estado, des){
+        $('#tipoAcceso2').val(estado);
+        $('#idAcceso').val(id);
+        $('#descripcion2').val(des);
     }
     function limpiar(){
-        $('#estado1').val("");
-        $('#estado').val("");
-        $('#id_estado').val("");
+        $('#tipoAcceso').val("");
+        $('#idAcceso').val("");
+        $('#descripcion').val("");
     }
    function del(id, estado){
         $('#id').val(id);

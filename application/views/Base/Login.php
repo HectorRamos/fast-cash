@@ -7,10 +7,6 @@
     </script>
   <?php } ?>
 <!-- fin script -->
-<!--     <body class="nicescroll">
-         -->
-            <!-- <div class="container wrapper-page"> -->
-
         <div class="limiter">
            <!-- <div class="container-login100"> -->
                 <!-- Top Bar Start -->
@@ -23,21 +19,11 @@
                             </span>
                         </div>
                     </div>
-                    <!-- Button mobile view to collapse sidebar menu -->
                     <div class="navbar navbar-default" role="navigation">
                         <div class="container">
-<!--                             <div class="">
-                                <ul class="nav navbar-nav navbar-right pull-right">
-                                    <li class="hidden-xs">
-                                        <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i> hchcchh</a>
-                                    </li>
-                                </ul>
-                            </div> -->
-                            <!--/.nav-collapse -->
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Top Bar End -->
                 <div class="row">
@@ -48,8 +34,6 @@
                                     <div class="col-sm-6">
                                         <div align="center" class="mar-logo-login js-tilt"> 
                                             <img src="<?= base_url() ?>plantilla/images/fc.png" class="img-responsive img-thumbnail imgwrapper" alt="Logo">
-
-                                            <!-- <h3 id="messageLabelrespon">Te da la Bienveniada!</h3> -->
                                             <h4 id="messageLabel"></h4>
                                         </div> 
                                     </div>

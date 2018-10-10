@@ -12,7 +12,7 @@
                                 <!-- <h4 class="pull-left page-title">Inicio</h4> -->
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestión de clientes</a></li>
-                                    <li class="active">Registro de clientes</li>
+                                    <li class="active">Nuevo cliente</li>
                                 </ol>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                             <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading"> 
-                                        <h3 class="panel-title">Registro de clientes</h3> 
+                                        <h3 class="panel-title">Nuevo cliente</h3> 
                                     </div> 
                                     <div class="panel-body"> 
                                         <form id="basic-form" method="POST" action="">
@@ -40,8 +40,7 @@
                                             </ul>
 
                                         <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente">
-                                            <div class="tab-content margn">
-
+                                            <div class="tab-content margn top">
                                                 <div class="tab-pane active" role="tabpanel" id="step1">
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
@@ -71,7 +70,7 @@
                                                         <div class="form-group col-md-6">
                                                             <label for="Estado_Cliente">Estado Civil</label>
                                                             <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
-                                                                <option value="">.:Seleccione:.</option>
+                                                                <option value="">.::Seleccionar::.</option>
                                                                 <option value="Soltero/a">Soltero/a</option>
                                                                 <option value="Casado/a">Casado/a</option>
                                                                 <option value="Divorsiado/a">Divorciado/a</option>
@@ -79,7 +78,7 @@
                                                         </div>
                                                     </div>
                                                     <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share"></i> Siguiente</button></li>
+                                                        <li><button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                     </ul>
                                                 </div>
 
@@ -88,11 +87,11 @@
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
                                                             <label for="Dui_Cliente">DUI</label>
-                                                            <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente">
+                                                            <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" data-mask="9999999-9">
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="Nit_Cliente">NIT</label>
-                                                            <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente">
+                                                            <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente" data-mask="9999-999999-999-9">
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -116,7 +115,7 @@
                                                         <div class="form-group col-md-4">
                                                             <label for="Zona">Zona </label>
                                                             <select id="Zona" name="Zona" class="form-control">
-                                                            <option value="">.:Seleccione:.</option>
+                                                            <option value="">.::Seleccionar::.</option>
                                                             <option value="Rural">Rural</option>
                                                             <option value="Urbana">Urbana</option>
                                                             </select>
@@ -129,8 +128,8 @@
                                                         </div>
                                                     </div>
                                                     <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply"></i> Atras</button>
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share"></i> Siguiente</button></li>
+                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                     </ul>
                                                 </div>
 
@@ -144,7 +143,7 @@
                                                         <div class="form-group col-md-4">
                                                             <label for="Tipo_Cliente">Tipo de cliente</label>
                                                             <select id="Tipo_Cliente" name="Tipo_Cliente" class="form-control">
-                                                            <option value="">.:Seleccione:.</option>
+                                                            <option value="">.::Seleccionar::.</option>
                                                             <option value="Empleado">Empleado</option>
                                                             <option value="Empresario">Empresario</option>
                                                             </select>
@@ -152,7 +151,7 @@
                                                         <div class="form-group col-md-4">
                                                             <label for="Genero_Cliente">Genero</label>
                                                             <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
-                                                            <option value="">.:Seleccione:.</option>
+                                                            <option value="">.::Seleccionar::.</option>
                                                             <option value="Masculino">Masculino</option>
                                                             <option value="Femenino">Femenino</option>
                                                             </select>
@@ -165,8 +164,8 @@
                                                         </div>
                                                     </div>
                                                     <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply"></i> Atras</button>
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share"></i> Siguiente</button></li>
+                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                     </ul>
                                                 </div>
 
@@ -176,7 +175,7 @@
                                                         <div class="form-group col-md-6">
                                                             <label for="name">Condición actual</label>
                                                             <select id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
-                                                            <option value="">.:Seleccione:.</option>
+                                                            <option value="">.::Seleccionar::.</option>
                                                             <option value="Activo">Activo</option>
                                                             <option value="Inactivo">Inactivo</option>
                                                             </select>
@@ -187,8 +186,9 @@
                                                         </div>
                                                     </div>
                                                     <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply"></i> Atras</button>
-                                                        <button type="submit" class="btn btn-success waves-effect waves-light btn-info-full next-step"><i class="fa fa-floppy-o"></i> Guardar</button></li>
+                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
+                                                        <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                                                        <button type="submit" class="btn btn-success waves-effect waves-light btn-info-full next-step"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix"></div>

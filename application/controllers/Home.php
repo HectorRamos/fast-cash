@@ -6,13 +6,13 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("LoginModelo");
+		$this->load->model("LoginModel");
 	}
 
 	public function index()
 	{
 		$this->load->view('Base/header');
-		$this->load->view('Base/index');
+		$this->load->view('Base/Login');
 		$this->load->view('Base/footer');
 	}
 
@@ -36,7 +36,7 @@ class Home extends CI_Controller
 	{
 		$user = $this->input->post("user");		
 		$pass = $this->input->post("pass");
-		$respuesta = $this->LoginModelo->login($user, $pass);
+		$respuesta = $this->LoginModel->login($user, $pass);
 		if($respuesta)
 		{
 			$login  = array(
