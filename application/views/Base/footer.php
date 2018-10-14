@@ -60,12 +60,6 @@
         <script src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/jquery.validate/form-validation-init.js"></script>
 
-        <!--Form Wizard-->
-        <script src="<?= base_url() ?>plantilla/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>l
-
-        <!--wizard initialization-->
-        <script src="<?= base_url() ?>plantilla/assets/form-wizard/wizard-init.js" type="text/javascript"></script>
-
         <!-- Data table -->
         <script src="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/datatables/dataTables.bootstrap.js"></script>
@@ -121,29 +115,21 @@
 $(document).ready(function () {
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();
-    
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-
         var $target = $(e.target);
-    
         if ($target.parent().hasClass('disabled')) {
             return false;
         }
     });
-
     $(".next-step").click(function (e) {
-
         var $active = $('.wizard .nav-tabs li.active');
         $active.next().removeClass('disabled');
         nextTab($active);
-
     });
     $(".prev-step").click(function (e) {
-
         var $active = $('.wizard .nav-tabs li.active');
         prevTab($active);
-
     });
 });
 
