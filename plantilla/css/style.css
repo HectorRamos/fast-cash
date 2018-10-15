@@ -3666,3 +3666,49 @@ ul li {
   border-radius: 2px;
   background: #A3E4D7; 
 }
+
+/******************************* NOMBRE DE USUARO EN NAVBAR ************************************/
+.margen_nombe_nav{
+  margin-top: 15px;
+  color:#fff;
+  max-width: 400px;
+  width:auto;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+.nombre_nav{
+    font-weight: bold; 
+    color: #fff; 
+    font-size: 15px;
+}
+.tipo_nav{
+    font-weight: bold; 
+    color: #ddd;
+}
+.margen_nombe_nav1{
+  /*margin-top: 15px;*/
+  /*color: #000;*/
+  max-width: 200px;
+  width:auto;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+.nombre_nav1{
+    font-weight: bold; 
+    color: #000; 
+    font-size: 15px;
+}
+.tipo_nav1{
+    font-weight: bold; 
+    color: gray;
+}
+.oculto_margen_nombe_nav1{
+    display: none;
+}
+@media(max-width: 767px){
+    .oculto_margen_nombe_nav1{
+        display: block;
+    }
+}

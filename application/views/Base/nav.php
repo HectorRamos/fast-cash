@@ -22,12 +22,20 @@
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
                                 </li>
+                                <li class="hidden-xs">
+                                    <div class="margen_nombe_nav">
+                                        <div class="nombre_nav">
+                                            <?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?>
+                                        </div>
+                                        <div class="tipo_nav">
+                                            <?php echo $this->session->userdata("tipoAcceso");?>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-
                                         <li><a href="<?php echo base_url();?>Home/loginOut"><i class="md md-settings-power"></i> Cerrar Sesión</a></li>
-
                                     </ul>
                                 </li>
                             </ul>
@@ -43,22 +51,14 @@
 
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
-                    <div class="user-details">
-                        <div class="pull-left">
-                            <img src="<?= base_url() ?>plantilla/images/user.png" alt="" class="thumb-md img-circle">
-                        </div>
-
-                        <div class="user-info">
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?><span class="caret"></span></a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
-                                    <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
-                                </ul>
+                    <div class="user-details oculto_margen_nombe_nav1">
+                        <div class="pull-left margen_nombe_nav1">
+                            <div class="nombre_nav1">
+                                <?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido");?>
                             </div>
-                            
-                            <p class="text-muted m-0"><?php echo $this->session->userdata("tipoAcceso");?></p>
+                            <div class="tipo_nav1">
+                                <?php echo $this->session->userdata("tipoAcceso");?>
+                            </div>
                         </div>
                     </div>
                     <!--- Divider -->
@@ -84,7 +84,6 @@
                                 </ul>
                             </li>
                             <!--Fin del modulo de solicitud-->
-                            
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fa fa-user-plus fa-lg" ></i><span> Empleados </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
