@@ -189,6 +189,7 @@
                                                                 <option value="">.::Seleccionar::.</option>
                                                                 <option value="Masculino">Masculino</option>
                                                                 <option value="Femenino">Femenino</option>
+                                                                <option value="Otro">Otro</option>
                                                                 </select>
                                                             </div>
                                                         </div>

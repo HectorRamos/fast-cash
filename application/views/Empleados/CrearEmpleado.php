@@ -4,7 +4,7 @@
     <div class="container">
       <!-- Page-Title -->
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-12">
           <ol class="breadcrumb pull-right">
             <li><a href="<?= base_url() ?>EmpleadosController/Index">Gestión de Empleados</a></li>
             <li class="active">Nuevo Empleado</li>
@@ -18,7 +18,7 @@
             <div class="panel-heading">
               <div class="table-title">
                 <div class="row">
-                  <div class="col-sm-5">
+                  <div class="col-md-5">
                     <h3 class="panel-title">Nuevo Empleado</h3>                 
                   </div>
                 </div>
@@ -28,21 +28,21 @@
               <form method="post" action="">
                 <div class="margn">
                   <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="txtNombre">Nombre</label>
                       <input type="text" class="form-control" name="txtNombre" id="txtNombre" placeholder="Nombre del empleado">
                     </div>
-                     <div class="form-group col-sm-6">
+                     <div class="form-group col-md-6">
                       <label for="txtApellido">Apellido</label>
-                      <input type="text" class="form-control" name="txtApellido" id="txtApellido" placeholder="Apellido el empleado">
+                      <input type="text" class="form-control" name="txtApellido" id="txtApellido" placeholder="Apellido del empleado">
                     </div>                 
                   </div>
                   <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="txtFechaNacimiento">Fecha de Nacimiento</label>
                       <input type="text" class="form-control DateTime" name="txtFechaNacimiento" id="txtFechaNacimiento" placeholder="Fecha de Nacimiento" data-mask="9999/99/99">
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="cboGenero">Genero</label>
                       <select class="form-control" name="cboGenero">
                         <option value="select">..::Selecionar::..</option>
@@ -53,37 +53,37 @@
                     </div>
                   </div>
                   <div class="row">
-                     <div class="form-group col-sm-6">
+                     <div class="form-group col-md-6">
                       <label for="txtDui">DUI</label>
                       <input type="text" class="form-control" name="txtDui" id="txtDui" placeholder="DUI del empleado" data-mask="99999999-9">
                     </div>                  
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="txtNit">NIT</label>
                       <input type="text" class="form-control" name="txtNit" id="txtNit" placeholder="NIT del empleado" data-mask="9999-999999-999-9">
                     </div>
                   </div>
                   <div class="row">
-                     <div class="form-group col-sm-6">
+                     <div class="form-group col-md-6">
                       <label for="txtCargo">Cargo</label>
                       <input type="text" class="form-control" name="txtCargo" id="txtCargo" placeholder=" Cargo del empleado">
                     </div>                  
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="txtProfesion">Profesión</label>
                       <input type="text" class="form-control" name="txtProfesion" id="txtProfesion" placeholder="Profesión del empleado">
                     </div>
                   </div>
                     <div class="row">
-                     <div class="form-group col-sm-6">
+                     <div class="form-group col-md-6">
                       <label for="txtTelefono">Teléfono</label>
                       <input type="text" class="form-control" name="txtTelefono" id="txtTelefono" placeholder="Teléfono">
                     </div>                  
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-md-6">
                       <label for="txtEmail">Email</label>
                       <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email del empleado">
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-sm-12">
+                    <div class="form-group col-md-12">
                       <label for="txtDireccion">Dirección</label>
                       <textarea class="form-control resize" name="txtDireccion" id="txtDireccion" rows="3"></textarea>
                     </div>

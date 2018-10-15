@@ -1,30 +1,48 @@
-
-<!-- ============================================================== -->
-<!-- Start right Content here -->
-<!-- ============================================================== -->                      
+<!-- contenedor -->
 <div class="content-page">
-<!-- Start content -->
-<div class="content">
+  <div class="content">
     <div class="container">
-       <h3 class="text-center">Solicitud de prestamo</h3>
-          <form method="post" action="" >
-                <div class="form-row">
+      <!-- Page-Title -->
+      <div class="row">
+        <div class="col-md-12">
+          <ol class="breadcrumb pull-right">
+            <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+            <li class="active">Gestión de Solicitud de prestamo</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-md-5">
+                    <h3 class="panel-title">Solicitud de prestamo</h3>                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <form method="post" action="">
+                <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-2">
-                            <label for="">Número de solicitud</label>
+                            <label for="numero_solicitud">Número de solicitud</label>
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
                       </div>
                       <div class="form-group col-md-6">
-                      <label for="">Cliente</label>
+                      <label for="nombre_cliente">Cliente</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente">
-                          <a title="Agregar cliente" class="input-group-addon btn btn-success" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-plus"></i></a>
+                          <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombre del cliente">
+                          <a title="Agregar cliente" class="input-group-addon btn btn-primary" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-user-plus fa-lg"></i></a>
                         </div>
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="">Linea</label>
-                              <select class="form-control" id="tipo_prestamo" name="tipo_prestamo">
+                            <label for="tipo_prestamo">Linea</label>
+                              <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-placeholder="Seleccione un tipo de prestamo">
                                 <option value="">Seleccione un tipo de prestamo</option>
                                 <?php 
                                     foreach ($plazos->result() as $plazos)
@@ -40,19 +58,19 @@
                     <!-- Segunda Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-3">
-                            <label for="">Fecha Recibida</label>
-                            <input type="text" class="form-control" id="fecha_recibido" name="fecha_recibido" placeholder="Fecha de recibido del prestamo">
+                            <label for="fecha_recibido">Fecha Recibida</label>
+                            <input type="text" class="form-control DateTime" id="fecha_recibido" name="fecha_recibido" placeholder="Fecha de recibido del prestamo" data-mask="9999/99/99">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Fecha Apertura</label>
-                            <input type="text" class="form-control" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de apertura del prestamo">
+                            <label for="fecha_apertura">Fecha Apertura</label>
+                            <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de apertura del prestamo" data-mask="9999/99/99">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Tasa de interes</label>
+                            <label for="tasa_interes">Tasa de interes</label>
                             <input type="text" class="form-control" id="tasa_interes" name="tasa_interes" placeholder="Tasa de interes del prestamo">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Monto de dinero</label>
+                            <label for="monto_dinero">Monto de dinero</label>
                             <input type="text" class="form-control" id="monto_dinero" name="monto_dinero" placeholder="Monto de dinero">
                       </div>
                     </div>
@@ -61,19 +79,19 @@
                      <!-- Tercera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-3">
-                            <label for="">Plazo(meses)</label>
-                            <input type="text" class="form-control" id="" name="" placeholder="Plazo de tiempo">
+                            <label for="plazo">Plazo(meses)</label>
+                            <input type="text" class="form-control" id="plazo" name="" placeholder="Plazo de tiempo">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Fecha de vencimiento</label>
-                            <input type="text" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha de vencimiento del prestamo">
+                            <label for="fecha_vencimiento">Fecha de vencimiento</label>
+                            <input type="text" class="form-control DateTime" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha de vencimiento del prestamo" data-mask="9999/99/99">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Capital e intereses + IVA</label>
+                            <label for="capital_intereses">Capital e intereses + IVA</label>
                             <input type="text" class="form-control" id="capital_intereses" name="capital_intereses" placeholder="Capital e intereses + IVA">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="">Interes diario</label>
+                            <label for="interes_diario">Interes diario</label>
                             <input type="text" class="form-control" id="interes_diario" name="interes_diario" placeholder="Interes diario">
                       </div>
                     </div>
@@ -82,30 +100,34 @@
                     <!-- Cuarta Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-10">
-                            <label for="">Observaciones</label>
-                            <textarea class="form-control" rows="5" id="observaciones" name="observaciones"></textarea>
+                            <label for="observaciones">Observaciones</label>
+                            <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones"></textarea>
                       </div>
-                      <div class="form-group col-md-2">
-                            <label for="">Cobrar mora</label><br>
-                            <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                      <div class="form-group col-md-2" align="center">
+                            <label for="cobra_mora">Cobrar mora</label><br>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                                <label for="cobra_mora">Cobrar</label>
+                            </div>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
-
                     <div class="row">
                       <div class="form-group col-md-12">
-                            <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label>
-                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
+                            <!-- <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label> -->
+                            <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
                       </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Guardar Solicitud</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-save fa-lg"></i> Guardar</button>
                </div>
-          </form>
-    </div> <!-- container -->
-               
-</div> <!-- content -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Row -->
 
+    </div>
+  </div>
 </div>
 <!-- ============================================================== -->
 <!-- End Right content here -->
@@ -123,27 +145,27 @@
           <h4 class="modal-title">Clientes Existentes</h4>
         </div>
         <div class="modal-body">
-          <table id="datatable" class="table table-bordered">
+          <table id="datatable" class="table">
             <thead class="thead-dark thead thead1">
-              <tr>
-                <th class="text-center">CODIGO CLIENTE</th>
-                <th class="text-center">NOMBRE CLIENTE</th>
-                <th class="text-center">AGREGAR</th>
+              <tr class="tr tr1">
+                <th class="th th1" scope="col">Código</th>
+                <th class="th th1" scope="col">Nombre del Cliente</th>
+                <th class="th th1" scope="col">Agregar</th>
               </tr>
             </thead>
-            <tbody class="thead-dark thead thead1">
+            <tbody class="tbody tbody1">
               <?php 
                 foreach ($clientes->result() as $cliente)
                 {
                   $datosCliente = $cliente->Id_Cliente." ".$cliente->Nombre_Cliente." ". $cliente->Apellido_Cliente;
               ?>
-              <tr>
-                <td class="text-center"><?= $cliente->Codigo_Cliente ?></td>
-                <td class="text-center"><?= $cliente->Nombre_Cliente. " ".$cliente->Apellido_Cliente ?></td>
-                <td class="text-center">
-                  <button type="button" class="btn btn-success btn-sm seleccionarCliente" 
+              <tr class="tr tr1">
+                <td class="td td1"  width="300"><b><?= $cliente->Codigo_Cliente ?></b></td>
+                <td class="td td1"><?= $cliente->Nombre_Cliente. " ".$cliente->Apellido_Cliente ?></td>
+                <td class="td td1">
+                  <button type="button" class="btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente" 
                         value="<?=$datosCliente;?>" data-dismiss="modal">
-                    <i class="fa fa-plus close" ></i>
+                    <i class="fa fa-user-plus fa-lg"></i>
                   </button>
                 </td>
               </tr>
@@ -151,8 +173,8 @@
             </tbody>
           </table>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+        <div align="center">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
         </div>
       </div>
     </div>
@@ -166,19 +188,6 @@
   function main()
   {
     $(".seleccionarCliente").on("click", agregarCliente);
-
-    $.fn.datepicker.dates['es'] = {
-                days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
-                daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
-                daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
-                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-        };
-  $('#fecha_apertura').datepicker({
-        format: 'yyyy-mm-dd',
-        language:'es',
-
-      });
   }
 
   function agregarCliente()

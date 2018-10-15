@@ -126,8 +126,15 @@
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
                                                             <label for="Nombre_Cliente">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente">
+                                                            <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" >
                                                         </div>
+                                                        <script type="text/javascript">
+                                                            $("#Nombre_Cliente").keypress( function (e){
+                                                              telefo = (document.all) ? e.keyCode : e.which;
+                                                              telefo = String.fromCharCode(telefo)
+                                                              return /^[0-9\(+)-]+$/.test(telefo);
+                                                            });
+                                                        </script>
                                                         <div class="form-group col-md-6">
                                                             <label for="Apellido_Cliente">Apellido</label>
                                                             <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente">

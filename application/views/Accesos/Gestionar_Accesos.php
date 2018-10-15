@@ -8,8 +8,8 @@
                             <div class="col-sm-12">
                                 <!-- <h4 class="pull-left page-title">Gestion de los accesos al sistema</h4> -->
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
-                                    <li class="active">Gestion de los accesos al sistema</li>
+                                    <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+                                    <li class="active">Gestión de los accesos al sistema</li>
                                 </ol>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                                     <tr class="tr tr1">
                                                       <th class="th th1" scope="col">Id Estado</th>
                                                       <th class="th th1" scope="col">Estados</th>
-                                                      <th class="th th1" scope="col">Descrepcion</th>
+                                                      <th class="th th1" scope="col">Descripción</th>
                                                       <th class="th th1" >Acción</th>
                                                       </tr>
                                                   </thead>
@@ -134,7 +134,6 @@
                   </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
                 </div>

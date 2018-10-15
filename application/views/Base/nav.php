@@ -4,7 +4,7 @@
                 <div class="topbar-left">
                     <div class="text-center">
                         <span class="margin-logo">
-                       <a href="<?= base_url() ?>Home/main" class="logo"><i><img src="<?= base_url() ?>plantilla/images/fc_logo.png" width="48" alt="Logo"></i> <span><img src="<?= base_url() ?>plantilla/images/fast_cash.png" width="120" alt="Logo"></span></a>
+                       <a href="<?= base_url() ?>Home/Main" class="logo"><i><img src="<?= base_url() ?>plantilla/images/fc_logo.png" width="48" alt="Logo"></i> <span><img src="<?= base_url() ?>plantilla/images/fast_cash.png" width="120" alt="Logo"></span></a>
                         </span>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="md md-settings-power"></i> Cerrar Sesión</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -65,19 +65,19 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="<?= base_url() ?>Home/main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
+                                <a href="<?= base_url() ?>Home/Main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span> Clientes </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span>Clientes</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informacion de clientes</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar información de clientes</a></li>
                                 </ul>
                             </li>
 
                              <!--Agregando nuevos item pertenecientes al modulo de solicitud-->
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-book"></i><span> Solicitud </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="md md-book"></i><span>Solicitud</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Solicitud/">Crear solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
@@ -86,14 +86,14 @@
                             <!--Fin del modulo de solicitud-->
 
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-user-plus fa-lg" ></i><span> Empleados </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-user-plus fa-lg" ></i><span>Empleados</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Empleados/">Agregar nuevo empleado</a></li>
                                     <li><a href="<?= base_url() ?>EmpleadosController/Index">Gestionar Empleado</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span> Configuracion </span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuración</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>

@@ -64,20 +64,23 @@ class Solicitud extends CI_Controller {
 		}
 	}
 
-	public function eliminarPlazo($i)
+	public function eliminarPlazo()
 	{
+		$datos=$this->input->GET('id');
 		$this->load->model('Solicitud_Model');
-		$bool = $this->Solicitud_Model->eliminarPlazo($i);
-		if ($bool == false)
-		{
-			echo '<script type="text/javascript">alert("Error al eliminar el plazo")</script>';
-		}
-		else
-		{
+		$bool = $this->Solicitud_Model->eliminarPlazo($datos);
+		if($bool){
 			echo '<script type="text/javascript">
-				alert("El plazo fue eliminado con exito !!!");
+				
 				self.location ="'.base_url().'Solicitud/gestionarPlazos"
 				</script>';
+		}
+		else{
+			echo '<script type="text/javascript">
+				alert("Error al insertar la informacion");
+				self.location ="'.base_url().'Solicitud/gestionarPlazos"
+				</script>';
+
 		}
 	}
 }
