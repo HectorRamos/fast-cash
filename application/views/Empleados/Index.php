@@ -23,7 +23,7 @@
                     <h3 class="panel-title">Registro de Empleados</h3>
                   </div>
                   <div class="col-sm-7">
-                    <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>EmpleadosController/FormCrearEmpleado" class="btn btn-success"><i class="fa fa-plus-circle"></i> <span>Nuevo Empleado<span></a>
+                    <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Empleados/ViewInsertarEmpleados" class="btn btn-success"><i class="fa fa-plus-circle"></i> <span>Nuevo Empleado<span></a>
                   </div>
                 </div>
               </div>

@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class EmpleadosController extends CI_Controller 
+class Empleados extends CI_Controller 
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("EmpleadosModel");
+		$this->load->model("Empleados_Model");
 	}
 
 	public function Index()
 	{
-		$registros=$this->EmpleadosModel->ListaEmpleados();
+		$registros=$this->Empleados_Model->ListaEmpleados();
 		$datos = array('registros'=>$registros);
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
@@ -18,20 +18,28 @@ class EmpleadosController extends CI_Controller
 		$this->load->view('Base/footer');
 	}
 
-	public function FormCrearEmpleado()
+	public function ViewInsertarEmpleados()
 	{
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
-		$this->load->view('Empleados/CrearEmpleado');
+		$this->load->view('Empleados/ViewInsertarEmpleados');
 		$this->load->view('Base/footer');
 	}
 
-	public function CrearEmpleado()
+	public function InsertarEmpleados()
 	{
-		$this->load->view('Base/header');
-		$this->load->view('Base/nav');
-		$this->load->view('Empleados/nuevoEmpleado');
-		$this->load->view('Base/footer');
+		$datos = $this->input->POST();
+		$bool = $this->Empleados_Model->InsertarEmleados($datos);
+		if($bool)
+		{
+			redirect('Empleados/Index');
+		}
+		else
+		{
+			echo '<script type="text/javascript">
+				alert("No se pudo insertar");
+				</script>';
+		}
 	}
 
 	public function DetalleEmpleado()
@@ -39,7 +47,7 @@ class EmpleadosController extends CI_Controller
 		if($this->input->is_ajax_request())
 		{
 			$id = $this->input->POST("id");
-			$datos = $this->EmpleadosModel->DetalleEmpleado($id);
+			$datos = $this->Empleados_Model->DetalleEmpleado($id);
 			echo json_encode($datos);
 		}
 		else
