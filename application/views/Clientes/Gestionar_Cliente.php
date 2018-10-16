@@ -25,7 +25,7 @@
                             <div class="col-sm-12">
                                 <!-- <h4 class="pull-left page-title">Clientes</h4> -->
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
+                                    <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
                                     <li class="active">Gestión de clientes</li>
                                 </ol>
                             </div>

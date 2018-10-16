@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-sm-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Home/main">Inicio</a></li>
+            <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
             <li class="active">Gestión de Empleados</li>
           </ol>
         </div>
