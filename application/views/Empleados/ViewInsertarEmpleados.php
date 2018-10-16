@@ -25,7 +25,8 @@
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" action="">
+              <!-- Formulario del empleado  -->
+              <form method="post" action="<?= base_url()?>Empleados/InsertarEmpleados">
                 <div class="margn">
                   <div class="row">
                     <div class="form-group col-md-6">
@@ -92,6 +93,7 @@
                   <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                 </div>
               </form>
+              <!-- Fin formulario Empleado -->
             </div>
           </div>
         </div>
