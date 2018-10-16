@@ -378,15 +378,6 @@ $(document).ready(function(){
     <script type="text/javascript">
 
         $( function() {
-            // $("#select").change( function() {
-            //     if ($(this).val() === "Empleado") {
-            //         $("#btn").prop("disabled", false);
-            //     } else if ($(this).val() === "Empresario") {
-            //         $("#btn").prop("disabled", false);
-            //     } else {
-            //         $("#btn").prop("disabled", true);
-            //     }
-            // });
             $("#select").change( function() {
                 if ($(this).val() === "") {
                     $(".siguiente1").hide();
@@ -438,30 +429,7 @@ $(document).ready(function(){
                 if ($r2 === "") {
                     $(".cliente3").show();
                 }
-            });
-
-            // $("#atras1").click( function() {
-            //     var $r1 = $("#select").val();
-            //     if ($r1 === "Empleado") {
-            //         $(".empleado").hide();
-            //         $(".cliente3").show();
-            //     }
-            //     if ($r1 === "Empresario") {
-            //         $(".empresario").hide();
-            //         $(".cliente3").show();
-            //     }
-            // });
-            // $("#atras2").click( function() {
-            //     var $r2 = $("#select").val();
-            //     if ($r2 === "Empleado") {
-            //         $(".empleado").hide();
-            //         $(".cliente3").show();
-            //     }
-            //     if ($r2 === "Empresario") {
-            //         $(".empresario").hide();
-            //         $(".cliente3").show();
-            //     }
-            // });
+            }); 
 
             $("#btnTabsEmpleado").click( function() {
                 var $r3 = $("#select").val();

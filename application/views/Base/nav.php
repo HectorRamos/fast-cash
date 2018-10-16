@@ -88,8 +88,8 @@
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fa fa-user-plus fa-lg" ></i><span>Empleados</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Empleados/">Agregar nuevo empleado</a></li>
-                                    <li><a href="<?= base_url() ?>EmpleadosController/Index">Gestionar Empleado</a></li>
+                                    <li><a href="<?= base_url() ?>Empleados/ViewInsertarEmpleados">Agregar nuevo empleado</a></li>
+                                    <li><a href="<?= base_url() ?>Empleados/Index">Gestionar Empleado</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">

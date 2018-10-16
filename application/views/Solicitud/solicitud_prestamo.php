@@ -163,8 +163,8 @@
                 <td class="td td1"  width="300"><b><?= $cliente->Codigo_Cliente ?></b></td>
                 <td class="td td1"><?= $cliente->Nombre_Cliente. " ".$cliente->Apellido_Cliente ?></td>
                 <td class="td td1">
-                  <button type="button" class="btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente" 
-                        value="<?=$datosCliente;?>" data-dismiss="modal">
+                  <button type="button" title="Agregar" class="btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente" 
+                        value="<?=$datosCliente;?>" data-toggle="tooltip" data-dismiss="modal">
                     <i class="fa fa-user-plus fa-lg"></i>
                   </button>
                 </td>

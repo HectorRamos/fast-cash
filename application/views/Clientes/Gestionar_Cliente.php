@@ -1,7 +1,7 @@
             <?php if($this->session->flashdata("succes")):?>
             	<script type="text/javascript">
             		$(document).ready(function(){
-            		$.Notification.autoHideNotify('success', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("succes")?>');
+            		$.Notification.autoHideNotify('info', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("succes")?>');
             		});
             	</script>
             <?php endif; ?>

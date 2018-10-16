@@ -95,15 +95,20 @@ class Clientes extends CI_Controller {
 		$this->load->view('Base/footer');
 	}
 	public function Eliminar(){
-		$id = $this->input->get('id');
+		if(isset($_GET["id"])){ 
+            $id=(int)$_GET["id"];
+        }
+		// $id = $this->input->get('id');
 		$this->load->model("Clientes_Model");
 		//echo $id;
 		$bool=$this->Clientes_Model->Eliminar($id);
 		if ($bool) {
-		echo '<script type="text/javascript">
-				alert("Registro eliminado exitosamente");
-				self.location ="'.base_url().'Clientes/gestionarCliente"
-				</script>';
+		// echo '<script type="text/javascript">
+		// 		alert("Registro eliminado exitosamente");
+		// 		self.location ="'.base_url().'Clientes/gestionarCliente"
+		// 		</script>';
+				$this->session->set_flashdata("succes","El cliente a sido eliminado de la base de datos.");
+				redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
