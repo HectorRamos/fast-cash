@@ -1,14 +1,28 @@
-            <?php if($this->session->flashdata("succes")):?>
+            <?php if($this->session->flashdata("informa")):?>
             	<script type="text/javascript">
             		$(document).ready(function(){
-            		$.Notification.autoHideNotify('info', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("succes")?>');
+            		$.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
             		});
             	</script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
             <?php endif; ?>
             <?php if($this->session->flashdata("errorr")):?>
               <script type="text/javascript">
                 $(document).ready(function(){
-                $.Notification.autoHideNotify('error', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
                 });
               </script>
             <?php endif; ?>
@@ -42,7 +56,7 @@
             						                    <h3 class="panel-title">Registro de clientes</h3>
             						                  </div>
             						                  <div class="col-sm-7">
-            						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-success"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
+            						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
             						                  </div>
             						                </div>
                                       </div>
@@ -102,7 +116,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar1()">×</button>
                         <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-list-alt fa-lg"></i> Información</h4>
                     </div>
 
@@ -151,9 +165,9 @@
                                 </div>
                               </div>
                               <div  align="center">
-                                <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                                <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                                <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                                <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar2()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                               </div>
                             </div>
                           </form>
@@ -165,8 +179,8 @@
                               <div class="row">
                                 <input type="hidden" id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
                                 <div class="form-group col-md-6">
-                                  <label for="Nombre_Empresa">Nombre del negocio</label>
-                                  <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio">
+                                  <label for="Nombre_Negocio">Nombre del negocio</label>
+                                  <input type="text" class="form-control" id="Nombre_Negocio" name="Nombre_Negocio" placeholder="Nombre del negocio">
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="NIT">NIT</label>
@@ -191,8 +205,8 @@
                               </div>
                               <div class="row">
                                 <div class="form-group col-md-6">
-                                  <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                  <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
+                                  <label for="Ingreso_Mensual_Negocio">Ingreso Mensual</label>
+                                  <input type="text" class="form-control" id="Ingreso_Mensual_Negocio" name="Ingreso_Mensual" placeholder="Ingreso mensual">
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="Tipo_Factura">Tipo de factura</label>
@@ -200,9 +214,9 @@
                                 </div>
                               </div>
                               <div align="center">
-                                <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                                <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                                <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                                <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar3()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                               </div>
                             </div>
                           </form>
@@ -233,8 +247,8 @@
 	                  <p align="center">¿Está seguro de eliminar el registro?</p>
 	                </div>
 	                <div align="center">
-	                    <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-	                    <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+	                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+	                    <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
 	                </div>
 	                </form>
 	            </div><!-- /.modal-content -->
@@ -324,7 +338,7 @@
                     		html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
                         html+="</ul>"
                       }
-                      html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
+                      html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light m-b-5' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
                         document.getElementById('DivEmpleado').style.display='none';
                         document.getElementById('DivEmpresario').style.display='none';
                       //document.getElementById('divInfo').innerHTML= html;
@@ -349,6 +363,41 @@
              }); 
     }
   }
+    function limpiar1(){
+        $('#Nombre_Empresa').val("");
+        $('#Cargo').val("");
+        $('#Direccion').val("");
+        $('#Telefono').val("");
+        $('#Rubro').val("");
+        $('#Ingreso_Mensual').val("");
+        $('#Observaciones').val("");
+
+        $('#Nombre_Negocio').val("");
+        $('#NIT').val("");
+        $('#NRC').val("");
+        $('#Giro').val("");
+        $('#Direccion_Negocio').val("");
+        $('#Ingreso_Mensual_Negocio').val("");
+        $('#Tipo_Factura').val("");
+    }
+    function limpiar2(){
+        $('#Nombre_Empresa').val("");
+        $('#Cargo').val("");
+        $('#Direccion').val("");
+        $('#Telefono').val("");
+        $('#Rubro').val("");
+        $('#Ingreso_Mensual').val("");
+        $('#Observaciones').val("");
+    }
+    function limpiar3(){
+        $('#Nombre_Negocio').val("");
+        $('#NIT').val("");
+        $('#NRC').val("");
+        $('#Giro').val("");
+        $('#Direccion_Negocio').val("");
+        $('#Ingreso_Mensual_Negocio').val("");
+        $('#Tipo_Factura').val("");
+    }
 </script>
     <!-- FIN DEL SCRIPT DEL MODAL PARA MOSTRAR DATOS-->
 

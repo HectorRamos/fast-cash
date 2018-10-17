@@ -1,3 +1,10 @@
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
           <div class="content-page">
                 <!-- Start content -->
                 <div class="content">

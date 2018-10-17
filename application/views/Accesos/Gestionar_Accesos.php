@@ -1,3 +1,31 @@
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?> 
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -23,7 +51,7 @@
                                             <h5 class="panel-title">Accesos registrados</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-success waves-effect waves-light" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo acceso<span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo acceso<span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -97,9 +125,9 @@
                   </div>
                 </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
             </div>
             </form>                                  
@@ -133,8 +161,8 @@
                     </div>
                   </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
                 </div>
               </form>                                  
@@ -161,8 +189,8 @@
                       <p align="center">¿Está seguro de eliminar el registro?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                        <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                        <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

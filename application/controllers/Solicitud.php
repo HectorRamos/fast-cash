@@ -33,16 +33,20 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->guardarPlazo($datos);
-		if ($bool == false)
+		if ($bool)
 		{
-			echo '<script type="text/javascript">alert("Error al insertar el plazo")</script>';
+		    $this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+			redirect(base_url()."Solicitud/gestionarPlazos");
+			// echo '<script type="text/javascript">alert("Error al insertar el plazo")</script>';
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("El nuevo plazo fue agregado con exito !!!");
-				self.location ="'.base_url().'Solicitud/gestionarPlazos"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("El nuevo plazo fue agregado con exito !!!");
+			// 	self.location ="'.base_url().'Solicitud/gestionarPlazos"
+			// 	</script>';
+			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			redirect(base_url()."Solicitud/gestionarPlazos");
 		}
 	}
 
@@ -51,16 +55,20 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->actualizarPlazo($datos);
-		if ($bool == false)
+		if ($bool)
 		{
-			echo '<script type="text/javascript">alert("Error al actualizar el plazo")</script>';
+			// echo '<script type="text/javascript">alert("Error al actualizar el plazo")</script>';
+				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+				redirect(base_url()."Solicitud/gestionarPlazos");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("El plazo fue actualizado con exito !!!");
-				self.location ="'.base_url().'Solicitud/gestionarPlazos"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("El plazo fue actualizado con exito !!!");
+			// 	self.location ="'.base_url().'Solicitud/gestionarPlazos"
+			// 	</script>';
+				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+				redirect(base_url()."Solicitud/gestionarPlazos");
 		}
 	}
 
@@ -70,16 +78,20 @@ class Solicitud extends CI_Controller {
 		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->eliminarPlazo($datos);
 		if($bool){
-			echo '<script type="text/javascript">
+			// echo '<script type="text/javascript">
 				
-				self.location ="'.base_url().'Solicitud/gestionarPlazos"
-				</script>';
+			// 	self.location ="'.base_url().'Solicitud/gestionarPlazos"
+			// 	</script>';
+				$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+				redirect(base_url()."Solicitud/gestionarPlazos"); 
 		}
 		else{
-			echo '<script type="text/javascript">
-				alert("Error al insertar la informacion");
-				self.location ="'.base_url().'Solicitud/gestionarPlazos"
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("Error al insertar la informacion");
+			// 	self.location ="'.base_url().'Solicitud/gestionarPlazos"
+			// 	</script>';
+			$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
+			redirect(base_url()."Solicitud/gestionarPlazos");
 
 		}
 	}

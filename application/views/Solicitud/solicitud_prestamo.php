@@ -33,6 +33,19 @@
                             <label for="numero_solicitud">Número de solicitud</label>
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
                       </div>
+                      <div class="form-group col-md-8">
+                      </div>
+                      <div class="form-group col-md-2" align="center">
+                        <div class="mar_che_cobrar">
+                            <label for="cobra_mora">Cobrar mora</label><br>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                                <label for="cobra_mora">Cobrar</label>
+                            </div>
+                        </div>  
+                      </div>
+                    </div>
+                    <div class="row">
                       <div class="form-group col-md-6">
                       <label for="nombre_cliente">Cliente</label>
                         <div class="input-group">
@@ -40,7 +53,10 @@
                           <a title="Agregar cliente" class="input-group-addon btn btn-primary" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-user-plus fa-lg"></i></a>
                         </div>
                       </div>
-                      <div class="form-group col-md-4">
+<!--                     </div>                    
+                    <div class="row"> -->
+
+                      <div class="form-group col-md-6">
                             <label for="tipo_prestamo">Linea</label>
                               <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-placeholder="Seleccione un tipo de prestamo">
                                 <option value="">Seleccione un tipo de prestamo</option>
@@ -99,16 +115,9 @@
 
                     <!-- Cuarta Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-10">
+                      <div class="form-group col-md-12">
                             <label for="observaciones">Observaciones</label>
                             <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones"></textarea>
-                      </div>
-                      <div class="form-group col-md-2" align="center">
-                            <label for="cobra_mora">Cobrar mora</label><br>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
-                                <label for="cobra_mora">Cobrar</label>
-                            </div>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
@@ -118,7 +127,9 @@
                             <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                     <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                     <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                </div>
               </form>
             </div>
@@ -174,7 +185,7 @@
           </table>
         </div>
         <div align="center">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
         </div>
       </div>
     </div>

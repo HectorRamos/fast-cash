@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>EmpleadosController/Index">Gestión de Empleados</a></li>
+            <li><a href="<?= base_url() ?>Empleados/Index">Gestión de Empleados</a></li>
             <li class="active">Nuevo Empleado</li>
           </ol>
         </div>
@@ -89,8 +89,9 @@
                       <textarea class="form-control resize" name="txtDireccion" id="txtDireccion" rows="3"></textarea>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <a href="<?= base_url() ?>Empleados/Index" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                 </div>
               </form>
               <!-- Fin formulario Empleado -->
