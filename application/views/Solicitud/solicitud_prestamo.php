@@ -224,3 +224,34 @@
   }
 </script>
 
+<script>
+// Funcion para calcular Intereses, IVA y toal a pagar, Funcion nueva esta en proceso aun
+
+function calcularIntereses()
+{
+  tipoPrestamo = $("#tipo_prestamo").val();
+  tasaInteres = $("#tasa_interes").val();
+  montoDinero = $(this).val();
+
+  numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
+
+  totalInteresesAPagar = montoDinero * tasaInteres;
+  totalIvaAPagar = totalInteresesAPagar * 0.13;
+  totalAPagar = parseFloat(totalIvaAPagar) + parseFloat(totalInteresesAPagar) + parseFloat(montoDinero);
+  cuotaDiaria = totalAPagar/numeroDePagos
+
+  // Probando calculos
+  totalPagoConCuotas = cuotaDiaria.toFixed(2)*26;
+  $("#totalP").attr("value", totalAPagar.toFixed(2));
+  $("#totalPP").attr("value", totalPagoConCuotas.toFixed(2) );
+
+  //faltante
+  faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
+  $("#ajusteP").attr("value", faltante.toFixed(2));
+
+  $("#total_pagar").attr("value",  cuotaDiaria.toFixed(2));
+  $("#IVA_Pagar").attr("value", totalIvaAPagar.toFixed(2));
+  $("#interes_total_pagar").attr("value", totalInteresesAPagar.toFixed(2));
+  //alert(cuotaDiaria.toFixed(2));
+}
+</script>
