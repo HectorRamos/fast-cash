@@ -56,10 +56,12 @@ Date: Jun 2015
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
 
 /******** 1. General ********/
-html, body {
-    height: 100%;
-}
+/*html {
+  height: 100%;
+}*/
 body {
+  /*min-height: 100%;*/
+  
   background: #f5f5f5;
   margin: 0;
   -webkit-text-size-adjust: 100%;
@@ -133,15 +135,16 @@ a:focus {
   margin-left: auto;
 }
 
-footer {
+.footer {
+  z-index: 1;
   color: #58666e;
   /*position: absolute;*/
-  /*position: fixed;*/
+  position: fixed;
   width: 100%;
   bottom: 0px;
-  padding: 20px 30px;
-  background-color: #f9f9f9;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 8px 30px;
+  background-color: #D5D8DC;
+  border-top: 1px solid #ABEBC6;
 }
 #wrapper {
   width: 100%;
