@@ -81,9 +81,9 @@
                           <td class="td td1">
                             <a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="DetalleEmpleado(<?= $datos->idEmpleado?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
-                            <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $datos->idEmpleado?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                            <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Empleados/ViewActualizarEmpleado?id=<?= $datos->idEmpleado?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
-                            <a title="Eliminar" class="waves-effect waves-light eliminar" data-id="<?= $datos->idEmpleado?>" data-nombre="<?= $datos->nombreEmpleado?> <?= $datos->apellidoEmpleado?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
+                            <a title="Eliminar" onclick="Delete(<?= $datos->idEmpleado?>)" class="waves-effect waves-light eliminar" data-toggle="modal" data-target=".modal_eliminar"><i class="fa fa-times-circle"></i></a>
                           </td>
                         </tr>
                         <?php } ?>
@@ -115,8 +115,44 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- script para cargar datos en el modal de detalles -->
+
+<!--MODAL PARA ELIMINAR DATOS-->
+<div class="modal fade modal_eliminar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+          <form name="frmEliminar" action="<?= base_url();?>Empleados/EliminarEmpleados/" id="frmEliminar" method="GET">
+            <div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="mySmallModalLabel">
+                  <i class="fa fa-warning fa-lg text-danger"></i> 
+                </h4>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name='id'>
+              <p align="center">¿Está seguro de eliminar el registro?</p>
+            </div>
+            <div align="center">
+                <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+            </div>
+          </form>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- script para cargar datos en el modal de detalles y eliminar -->
 <script type="text/javascript">
+  //paso del id ha eliminar
+  function Delete(id)
+  {
+    document.frmEliminar.id.value = id; 
+  }
+  //$('.modal_eliminar').on('show.bs.modal', function(e) {
+      //var ID = $(e.relatedTarget).data('id');   
+      
+      //alert("ID: " + id);
+     // document.frmEliminar.id.value = ID;       
+  //});
   function DetalleEmpleado(id)
   {
     var html ="<div class='margn'><ul><h5><b>Información del Empleado</b></h5><ol>";
