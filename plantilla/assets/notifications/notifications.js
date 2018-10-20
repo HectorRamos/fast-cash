@@ -16,11 +16,11 @@
         if(style == "error"){
             icon = "fa fa-exclamation";
         }else if(style == "warning"){
-            icon = "fa fa-warning";
+            icon = "fa fa-pencil-square-o";
         }else if(style == "success"){
             icon = "fa fa-check";
         }else if(style == "info"){
-            icon = "fa fa-question";
+            icon = "fa fa-info-circle";
         }else{
             icon = "fa fa-adjust";
         }
@@ -46,11 +46,11 @@
         if(style == "error"){
             icon = "fa fa-exclamation";
         }else if(style == "warning"){
-            icon = "fa fa-warning";
+            icon = "fa fa-pencil-square-o";
         }else if(style == "success"){
             icon = "fa fa-check";
         }else if(style == "info"){
-            icon = "fa fa-question";
+            icon = "fa fa-info-circle";
         }else{
             icon = "fa fa-adjust";
         }   
@@ -76,11 +76,11 @@
         if(style == "error"){
             icon = "fa fa-exclamation";
         }else if(style == "warning"){
-            icon = "fa fa-warning";
+            icon = "fa fa-pencil-square-o";
         }else if(style == "success"){
             icon = "fa fa-check";
         }else if(style == "info"){
-            icon = "fa fa-question";
+            icon = "fa fa-info-circle";
         }else{
             icon = "fa fa-adjust";
         }   

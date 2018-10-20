@@ -1,3 +1,31 @@
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -22,7 +50,7 @@
                                             <h3 class="panel-title">Registro de plazos</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#agregarPlazo"><i class="fa fa-plus-circle"></i> <span>Nuevo plazo</span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#agregarPlazo"><i class="fa fa-plus-circle"></i> <span>Nuevo plazo</span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -99,8 +127,8 @@
                </div>
         </div>
         <div align="center">
-          <button type="submit" class="btn btn-success"><i class="fa fa-save fa-lg"></i> Guardar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+          <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cancelar</button>
         </div>
         </form>
       </div>
@@ -142,8 +170,8 @@
             </div>
         </div>
         <div align="center">
-          <button type="submit" class="btn btn-warning"><i class="fa fa-save fa-lg"></i> Actualizar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+          <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
         </div>
         </form>
       </div>
@@ -170,8 +198,8 @@
                       <p align="center">¿Está seguro de eliminar el registro?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                        <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                        <button type="submit" class="btn btn-danger block wwaves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

@@ -1,3 +1,31 @@
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -22,7 +50,7 @@
                                             <h3 class="panel-title">Registro de estados de solicitud</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo Estado de solicitud</span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-d-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo Estado de solicitud</span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -47,8 +75,8 @@
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                      <td class="td td1"  width="300"><b><?= $estado->id_estado?></b></td>
-                                                      <td class="td td1"  ><?= $estado->estado?></td>
+                                                      <td class="td td1" width="300"><b><?= $estado->id_estado?></b></td>
+                                                      <td class="td td1" ><?= $estado->estado?></td>
                                                       <td class="td td1">
                                                       <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
@@ -76,7 +104,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar()">×</button>
                     <h4 class="modal-title" id="myModalLabel">Insertar un nuevo estado</h4>
             </div>
             <div class="modal-body">
@@ -87,9 +115,9 @@
                       <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="estado" placeholder="Estado">
                 </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="reset" class="btn btn-default waves-effect waves-light"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
               </div>
             </form>                                  
@@ -115,8 +143,8 @@
                     <input type="text" class="form-control" id="estado1" name="estado" placeholder="Estado" required="No puede dejar este campo vacio">
                 </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
               </div>
             </form>                                  
@@ -143,8 +171,8 @@
                       <p align="center">¿Está seguro de eliminar el registro?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                        <button type="submit" class="btn btn-danger block waves-effect waves-light"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                        <button type="submit" class="btn btn-danger block waves-effect waves-light m-d-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

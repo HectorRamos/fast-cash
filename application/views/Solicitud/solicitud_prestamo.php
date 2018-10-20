@@ -33,6 +33,19 @@
                             <label for="numero_solicitud">Número de solicitud</label>
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
                       </div>
+                      <div class="form-group col-md-8">
+                      </div>
+                      <div class="form-group col-md-2" align="center">
+                        <div class="mar_che_cobrar">
+                            <label for="cobra_mora">Cobrar mora</label><br>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                                <label for="cobra_mora">Cobrar</label>
+                            </div>
+                        </div>  
+                      </div>
+                    </div>
+                    <div class="row">
                       <div class="form-group col-md-6">
                       <label for="nombre_cliente">Cliente</label>
                         <div class="input-group">
@@ -40,7 +53,10 @@
                           <a title="Agregar cliente" class="input-group-addon btn btn-primary" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-user-plus fa-lg"></i></a>
                         </div>
                       </div>
-                      <div class="form-group col-md-4">
+<!--                     </div>                    
+                    <div class="row"> -->
+
+                      <div class="form-group col-md-6">
                             <label for="tipo_prestamo">Linea</label>
                               <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-placeholder="Seleccione un tipo de prestamo">
                                 <option value="">Seleccione un tipo de prestamo</option>
@@ -57,21 +73,17 @@
 
                     <!-- Segunda Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                             <label for="fecha_recibido">Fecha Recibida</label>
                             <input type="text" class="form-control DateTime" id="fecha_recibido" name="fecha_recibido" placeholder="Fecha de recibido del prestamo" data-mask="9999/99/99">
                       </div>
-                      <div class="form-group col-md-3">
-                            <label for="fecha_apertura">Fecha Apertura</label>
-                            <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de apertura del prestamo" data-mask="9999/99/99">
-                      </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                             <label for="tasa_interes">Tasa de interes</label>
                             <input type="text" class="form-control" id="tasa_interes" name="tasa_interes" placeholder="Tasa de interes del prestamo">
                       </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                             <label for="monto_dinero">Monto de dinero</label>
-                            <input type="text" class="form-control" id="monto_dinero" name="monto_dinero" placeholder="Monto de dinero">
+                            <input type="text" value="0" class="form-control" id="monto_dinero" name="monto_dinero" placeholder="Monto de dinero">
                       </div>
                     </div>
                     <!-- Fin de la segunda Linea del formulario-->
@@ -79,36 +91,29 @@
                      <!-- Tercera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-3">
-                            <label for="plazo">Plazo(meses)</label>
-                            <input type="text" class="form-control" id="plazo" name="" placeholder="Plazo de tiempo">
+                            <label for="">IVA a pagar</label>
+                            <input type="text" class="form-control" id="IVA_Pagar" name="IVA_Pagar" placeholder="Plazo de tiempo">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="fecha_vencimiento">Fecha de vencimiento</label>
-                            <input type="text" class="form-control DateTime" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha de vencimiento del prestamo" data-mask="9999/99/99">
+                            <label for="">Intereses a pagar</label>
+                            <input type="text" class="form-control" id="interes_total_pagar" name="interes_total_pagar" placeholder="Plazo de tiempo">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="capital_intereses">Capital e intereses + IVA</label>
-                            <input type="text" class="form-control" id="capital_intereses" name="capital_intereses" placeholder="Capital e intereses + IVA">
+                            <label for="">Cuota diaria</label>
+                            <input type="text" class="form-control" id="cuota_diaria" name="interes_diario" placeholder="Interes diario">
                       </div>
                       <div class="form-group col-md-3">
-                            <label for="interes_diario">Interes diario</label>
-                            <input type="text" class="form-control" id="interes_diario" name="interes_diario" placeholder="Interes diario">
+                            <label for="">Total a pagar</label>
+                            <input type="text" class="form-control" id="total_pagar" name="total_pagar" placeholder="Capital e intereses + IVA">
                       </div>
                     </div>
                     <!-- Fin de la tercera Linea del formulario-->
 
                     <!-- Cuarta Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-10">
+                      <div class="form-group col-md-12">
                             <label for="observaciones">Observaciones</label>
                             <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones"></textarea>
-                      </div>
-                      <div class="form-group col-md-2" align="center">
-                            <label for="cobra_mora">Cobrar mora</label><br>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
-                                <label for="cobra_mora">Cobrar</label>
-                            </div>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
@@ -118,7 +123,9 @@
                             <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                     <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                     <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                </div>
               </form>
             </div>
@@ -174,7 +181,7 @@
           </table>
         </div>
         <div align="center">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
         </div>
       </div>
     </div>
@@ -188,6 +195,11 @@
   function main()
   {
     $(".seleccionarCliente").on("click", agregarCliente);
+    $("#tasa_interes").prop('disabled', true);
+    $("#monto_dinero").prop('disabled', true);
+    $("#tipo_prestamo").on('change', activarIP);
+    $("#monto_dinero").on('change', calcularIntereses);
+    $("#tasa_interes").on('change', calcularIntereses);
   }
 
   function agregarCliente()
@@ -211,5 +223,42 @@
     $("#id_cliente").attr("value", id_cliente);
 
   }
-</script>
 
+// Funcion para calcular Intereses, IVA y toal a pagar, Funcion nueva esta en proceso aun
+
+// Funcion para desbloquear cajas de text para ingresar interes y monto de dinero
+function activarIP()
+{
+  $("#tasa_interes").removeAttr("disabled");
+  $("#monto_dinero").removeAttr("disabled");
+}
+function calcularIntereses()
+{
+  tipoPrestamo = $("#tipo_prestamo").val();
+  tasaInteres = parseFloat($("#tasa_interes").val()) / 100;
+  montoDinero = $("#monto_dinero").val();
+
+
+  numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
+
+  totalInteresesAPagar = montoDinero * tasaInteres;
+  totalIvaAPagar = totalInteresesAPagar * 0.13;
+  totalAPagar = parseFloat(totalIvaAPagar) + parseFloat(totalInteresesAPagar) + parseFloat(montoDinero);
+  cuotaDiaria = totalAPagar/numeroDePagos
+
+  // Probando calculos
+  totalPagoConCuotas = cuotaDiaria.toFixed(2)*26;
+  $("#totalP").attr("value", totalAPagar.toFixed(2)); // Total a pagar multiplicando el numero de cuotas por el monto diario a pagar
+  $("#totalPP").attr("value", totalPagoConCuotas.toFixed(2)); // Valor real a pagar 
+
+  //faltante
+  faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
+  $("#ajusteP").attr("value", faltante.toFixed(2));
+
+  $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(2));
+  $("#IVA_Pagar").attr("value", totalIvaAPagar.toFixed(2));
+  $("#interes_total_pagar").attr("value", totalInteresesAPagar.toFixed(2));
+  $("#total_pagar").attr("value", totalAPagar.toFixed(2));
+  //alert(cuotaDiaria.toFixed(2));
+}
+</script>

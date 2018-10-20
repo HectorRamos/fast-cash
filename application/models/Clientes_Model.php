@@ -35,7 +35,7 @@ class Clientes_Model extends CI_Model{
 				'Profesion_Cliente'=>$datos['Profesion_Cliente'],
 				'Fk_Id_Departamento'=>$datos['cbbDepartamentos'],
 				'Fk_Id_Municipio'=>$datos['cbbMunicipios'],
-				'Tipo_Cliente'=>$datos['Tipo_Cliente']
+				// 'Tipo_Cliente'=>$datos['Tipo_Cliente']
 
 				);
 			if($this->db->insert('tbl_clientes', $data)){
@@ -59,7 +59,7 @@ class Clientes_Model extends CI_Model{
 		return $respuesta;
 	}
 	public function Eliminar($id){
-		$sql ="DELETE  FROM tbl_clientes WHERE Id_Cliente='$id'";
+		$sql ="DELETE FROM tbl_clientes WHERE Id_Cliente='$id'";
 		if($this->db->query($sql)){
 			return true;
 		}

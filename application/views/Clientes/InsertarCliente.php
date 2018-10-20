@@ -1,3 +1,17 @@
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
             <!-- ============================================================== -->
              <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -80,7 +94,7 @@
                                                             </div>
                                                         </div>
                                                         <ul class="pull-right">
-                                                            <li><button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
+                                                            <li><button type="button" class="btn btn-primary waves-effect waves-light m-b-5 next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                         </ul>
 
                                                     </div>
@@ -131,8 +145,8 @@
                                                             </div>
                                                         </div>
                                                         <ul class="pull-right">
-                                                            <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
-                                                            <button type="button" id="siguient0" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
+                                                            <li><button type="button" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
+                                                            <button type="button" id="siguient0" class="btn btn-primary waves-effect waves-light m-b-5 next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                         </ul>
                                                     </div>
 
@@ -200,9 +214,11 @@
                                                             </div>
                                                         </div>
                                                         <ul class="pull-right">
-                                                            <li><button type="button" id="atras0" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
-                                                                <button type="submit" class="btn btn-success btn-info-full guardar1"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                                                                <button type="submit" id="btn" class="btn btn-primary next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
+                                                            <li>
+                                                                <button type="button" id="atras0" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
+                                                                <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
+                                                                <button type="submit" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                                                                <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                         </ul>
                                                     </div>
                                                 </form>
@@ -257,8 +273,8 @@
                                                             </div>
                                                         </div>
                                                         <ul class="list-inline pull-right">
-                                                            <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                            <button type="button" class="btn btn-success btn-info-full"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button></li>
+                                                            <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
+                                                            <button type="button" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
                                                         </ul>
                                                 </form>
                                                     </div>
@@ -312,8 +328,8 @@
                                                             </div>
                                                         </div>
                                                         <ul class=" pull-right">
-                                                            <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                            <button type="button" class="btn btn-success btn-info-full"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button></li>
+                                                            <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
+                                                            <button type="button" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
                                                         </ul>
                                                 </form>
                                                     </div>

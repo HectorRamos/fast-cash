@@ -32,13 +32,17 @@ class Empleados extends CI_Controller
 		$bool = $this->Empleados_Model->InsertarEmleados($datos);
 		if($bool)
 		{
-			redirect('Empleados/Index');
+			// redirect('Empleados/Index');
+		    $this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+			redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("No se pudo insertar");
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("No se pudo insertar");
+			// 	</script>';
+			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			redirect(base_url()."Empleados/Index");
 		}
 	}
 

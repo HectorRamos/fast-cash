@@ -38,7 +38,7 @@
                                         </div> 
                                     </div>
                                     <div class="col-sm-6 bordr-right">
-                                        <form action="<?= base_url() ?>Home/validarLogin" method="post">
+                                        <form action="<?= base_url() ?>Home/validarLogin" method="post" autocomplete="off">
 
                                             <h3 class="h3-title-login"> <label class="label-title-login">Iniciar sesión</label> </h3>
 

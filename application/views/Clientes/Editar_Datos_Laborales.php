@@ -1,3 +1,10 @@
+<?php if($this->session->flashdata("actualizado")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+    });
+  </script>
+<?php endif; ?>
 <div class="content-page">
 <!-- Start content -->
     <div class="content">

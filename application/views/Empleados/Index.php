@@ -1,3 +1,31 @@
+<?php if($this->session->flashdata("informa")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("actualizado")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("errorr")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("guardar")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+    });
+  </script>
+<?php endif; ?>
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
@@ -23,7 +51,7 @@
                     <h3 class="panel-title">Registro de Empleados</h3>
                   </div>
                   <div class="col-sm-7">
-                    <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Empleados/ViewInsertarEmpleados" class="btn btn-success"><i class="fa fa-plus-circle"></i> <span>Nuevo Empleado<span></a>
+                    <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Empleados/ViewInsertarEmpleados" class="btn btn-primary waves-effect waves-light m-d-5"><i class="fa fa-plus-circle"></i> <span>Nuevo Empleado<span></a>
                   </div>
                 </div>
               </div>
@@ -155,7 +183,7 @@
               html +="<div class='row'><div class='col-sm-12'><label>Cargo:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['cargo']+"'></div></div>";
                html+="</ul>";
 
-              html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
+              html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light m-d-5' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
 
               document.getElementById('divInfo').innerHTML= html;
             }
