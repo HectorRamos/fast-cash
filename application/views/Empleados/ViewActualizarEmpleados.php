@@ -30,7 +30,7 @@
                 <div class="margn">
                   <div class="row">
                     <div class="form-group col-md-6">
-                      <input type="text" name="txtid" id="txtid" value="<?php echo $data->idEmpleado ?>">
+                      <input type="hidden" name="txtid" id="txtid" value="<?php echo $data->idEmpleado ?>">
                       <label for="txtNombre">Nombre</label>
                       <input type="text" class="form-control" name="txtNombre" id="txtNombre" value="<?php echo $data->nombreEmpleado; ?>" placeholder="Nombre del empleado">
                     </div>
