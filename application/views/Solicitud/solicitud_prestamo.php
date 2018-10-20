@@ -195,8 +195,8 @@
   function main()
   {
     $(".seleccionarCliente").on("click", agregarCliente);
-    $("#tasa_interes").prop('disabled', true);
-    $("#monto_dinero").prop('disabled', true);
+    $("#tasa_interes").prop('readonly', true);
+    $("#monto_dinero").prop('readonly', true);
     $("#tipo_prestamo").on('change', activarIP);
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);
@@ -229,8 +229,8 @@
 // Funcion para desbloquear cajas de text para ingresar interes y monto de dinero
 function activarIP()
 {
-  $("#tasa_interes").removeAttr("disabled");
-  $("#monto_dinero").removeAttr("disabled");
+  $("#tasa_interes").removeAttr("readonly");
+  $("#monto_dinero").removeAttr("readonly");
 }
 function calcularIntereses()
 {
