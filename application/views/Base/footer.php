@@ -69,7 +69,6 @@
             } );
         </script>
 
-
         <script type="text/javascript">
             /* ==============================================
             Counter Up
@@ -88,7 +87,7 @@
 			})
 		</script>
 
-        <footer class="text-right">
+        <footer class="footer text-right">
            Copyright © <?php echo date('Y');?> <font color="#0080FF">JIREH</font>.
         </footer>
     </body>

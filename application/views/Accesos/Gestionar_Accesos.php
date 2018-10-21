@@ -112,16 +112,16 @@
                     <h4 class="modal-title" id="myModalLabel">Insertar un nuevo estado</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>Accesos/Guardar">
+            <form method="POST" action="<?= base_url()?>Accesos/Guardar" autocomplete="off" id="FormNuevoAccesoSistema">
               <div class="margn">
                 <div class="row">
                   <div class="form-group col-md-12">
                     <label for="tipoAcceso">Tipo de acceso</label>
-                    <input type="text" required="No puede dejar este campo vacio" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
+                    <input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
                   </div>
                   <div class="form-group col-md-12">
                     <label for="descripcion">Descripción</label>
-                    <input type="text" required="No puede dejar este campo vacio" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del nuevo tipo de acceso">
+                    <textarea type="text" class="form-control resize" rows="3" id="descripcion" name="descripcion" placeholder="Descripción del nuevo tipo de acceso"></textarea>
                   </div>
                 </div>
                 <div  align="center">
@@ -147,17 +147,17 @@
                     <h4 class="modal-title" id="myModalLabel">Editar información de acceso</h4>
             </div>
             <div class="modal-body">
-              <form method="POST" action="<?= base_url()?>Accesos/Editar">
+              <form method="POST" action="<?= base_url()?>Accesos/Editar" autocomplete="off" id="FormEditarAccesoSistema">
                 <div class="margn">
                   <div class="row">
                     <div class="form-group col-md-12">
                         <label for="name">Tipo de acceso</label>
-                        <input type="text" required="No puede dejar este campo vacio" class="form-control" id="tipoAcceso2" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
-                         <input type="hidden" required="No puede dejar este campo vacio" id="idAcceso" name="idAcceso">
+                        <input type="text" class="form-control" id="tipoAcceso2" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
+                        <input type="hidden" id="idAcceso" name="idAcceso">
                     </div>
                     <div class="form-group col-md-12">
                         <label for="name">Descripción</label>
-                        <input type="text" required="No puede dejar este campo vacio" class="form-control" id="descripcion2" name="descripcion" placeholder="Descripción del nuevo tipo de acceso">
+                        <textarea type="text" class="form-control resize" rows="3" id="descripcion2" name="descripcion" placeholder="Descripción del nuevo tipo de acceso"></textarea>
                     </div>
                   </div>
                 <div  align="center">

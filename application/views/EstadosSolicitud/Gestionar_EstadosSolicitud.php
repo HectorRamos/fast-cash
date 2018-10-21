@@ -108,14 +108,14 @@
                     <h4 class="modal-title" id="myModalLabel">Insertar un nuevo estado</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Guardar">
+            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Guardar" autocomplete="off" id="FormNuevoEstadoSolicitud">
               <div class="margn">
                 <div class="form-group">
                     <label for="estado">Nombre del estado</label>
                       <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="estado" placeholder="Estado">
                 </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
@@ -135,7 +135,7 @@
                     <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Editar">
+            <form method="POST" action="<?= base_url()?>EstadosSolicitud/Editar" autocomplete="off" id="FormEditarEstadoSolicitud">
               <div class="margn">
                 <div class="form-group">
                     <label for="estado1">Nombre del estado</label>
@@ -143,7 +143,7 @@
                     <input type="text" class="form-control" id="estado1" name="estado" placeholder="Estado" required="No puede dejar este campo vacio">
                 </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
+                  <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
               </div>

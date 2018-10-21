@@ -117,7 +117,7 @@
           <button type="button" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
           <h4 class="modal-title">Nuevo plazo</h4>
         </div>
-        <form method="post" action="<?= base_url() ?>Solicitud/guardarPlazo" autocomplete="off">
+        <form method="post" action="<?= base_url() ?>Solicitud/guardarPlazo" autocomplete="off" id="FormNuevoPlazo">
         <div class="modal-body">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -149,7 +149,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Actualizar plazo</h4>
         </div>
-        <form method="post" action="<?= base_url() ?>Solicitud/actualizarPlazo" autocomplete="off">
+        <form method="post" action="<?= base_url() ?>Solicitud/actualizarPlazo" autocomplete="off" id="FormEditarPlazo">
         <div class="modal-body">
             <div class="row">
                   <div class="form-group col-md-6">
@@ -161,7 +161,7 @@
                         <input type="text" class="form-control" value="Activo" id="estado_plazo" name="estado_plazo" readonly="true">
                   </div>
                   <div class="form-group col-md-12">
-                        <label for="">Tiempo del plazo</label>
+                        <label for="plazo_tiempo">Tiempo del plazo</label>
                         <input type="text" class="form-control" id="plazo_tiempo" name="tiempo_plazo" placeholder="Plazo">
                   </div>
                   <div class="form-group col-md-12">
@@ -208,20 +208,26 @@
 
 <!-- ============= Inicio del Script================== -->
 <script type="text/javascript">
-
   // Funcion para poder actualizar los datos del plazo...  
-  function actualizarPlazo(idPlazo, tiempoPlazo, fechaPlazo)
-     {
+  function actualizarPlazo(idPlazo, tiempoPlazo, fechaPlazo){
         document.getElementById('id_plazo').value=idPlazo;
         document.getElementById('plazo_tiempo').value=tiempoPlazo;
         document.getElementById('fecha_plazo').value=fechaPlazo;
         document.getElementById('id_plazo').style.display = 'none';
-      }
+  }
+
   function limpiar(){
         $('#tiempo_plazo').val("");
-    }
+  }
+
   function eliminarPlazo(id){
         $('#id').val(id);
-   }
+  }
+
+  $("#tiempo_plazo, #plazo_tiempo").keypress( function (e){
+    ValidacionTiempoPlazo = (document.all) ? e.keyCode : e.which;
+    ValidacionTiempoPlazo = String.fromCharCode(ValidacionTiempoPlazo)
+    return /^[0-9]+$/.test(ValidacionTiempoPlazo);
+  });
 </script>
 <!-- ============= Fin del Script================== -->

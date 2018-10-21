@@ -1,15 +1,9 @@
 
-/**
-* Theme: Moltran Admin Template
-* Author: Coderthemes
-* Form Validator
-*/
-
 !function($) {
     "use strict";
 
     var FormValidator = function() {
-        //this could be any form, for example we are specifying the comment form
+        //####################### FORMULARIO DE CLIENTE #######################
         this.$FormNuevoCliente = $("#FormNuevoCliente");
         this.$FormNuevoClienteEmpleado = $("#FormNuevoClienteEmpleado");
         this.$FormNuevoClienteEmpresario = $("#FormNuevoClienteEmpresario");
@@ -17,15 +11,27 @@
         this.$FormEditarCliente = $("#FormEditarCliente");
         this.$FormEditarClienteEmpleado = $("#FormEditarClienteEmpleado");
         this.$FormEditarClienteEmpresario = $("#FormEditarClienteEmpresario");
+        //##################### FIN FORMULARIO DE CLIENTE #####################
+
+        //####################### FORMULARIO DE PLAZOS #######################
+        this.$FormNuevoPlazo = $("#FormNuevoPlazo");
+        this.$FormEditarPlazo = $("#FormEditarPlazo");
+        //##################### FIN FORMULARIO DE PLAZOS #####################
+
+        //####################### FORMULARIO DE GESTION DE ESTADO DE SOLICITUD #######################
+        this.$FormNuevoEstadoSolicitud = $("#FormNuevoEstadoSolicitud");
+        this.$FormEditarEstadoSolicitud = $("#FormEditarEstadoSolicitud");
+        //##################### FIN FORMULARIO DE GESTION DE ESTADO DE SOLICITUD #####################
+
+        //####################### FORMULARIO DE GESTION DE ACCESO AL SISTEMA #######################
+        this.$FormNuevoAccesoSistema = $("#FormNuevoAccesoSistema");
+        this.$FormEditarAccesoSistema = $("#FormEditarAccesoSistema");
+        //##################### FIN FORMULARIO DE GESTION DE ACCESO AL SISTEMA #####################
     };
 
     //init
     FormValidator.prototype.init = function() {
-        //validator plugin
-        // $.validator.setDefaults({
-        //     submitHandler: function() { alert("submitted!"); }
-        // });
-
+        //####################### FORMULARIO DE CLIENTE #######################
         // VALIDACION DE FORMULARIO NUEVO CLIENTE
         this.$FormNuevoCliente.validate({
             rules: {
@@ -173,6 +179,90 @@
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
+        //##################### FIN FORMULARIO DE CLIENTE #####################
+
+        //####################### FORMULARIO DE PLAZOS #######################
+        // VALIDACION DE FORMULARIO NUEVO PLAZO
+        this.$FormNuevoPlazo.validate({
+            rules: {
+                tiempo_plazo: "required",
+            },
+            messages: {
+                tiempo_plazo: "Por favor, digite un tiempo de plazo",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+
+        // VALIDACION DE FORMULARIO EDITAR PLAZO
+        this.$FormEditarPlazo.validate({
+            rules: {
+                tiempo_plazo: "required",
+            },
+            messages: {
+                tiempo_plazo: "Por favor, digite un tiempo de plazo",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+        //##################### FIN FORMULARIO DE PLAZOS #####################
+
+        //####################### FORMULARIO GESTION DE ESTADO DE SOLICITUD #######################
+        // VALIDACION DE FORMULARIO NUEVO ESTADO DE SOLICITUD
+        this.$FormNuevoEstadoSolicitud.validate({
+            rules: {
+                estado: "required",
+            },
+            messages: {
+                estado: "Por favor, escriba el nombre del estado de solicitud",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+
+        // VALIDACION DE FORMULARIO EDITAR ESTADO DE SOLICITUD
+        this.$FormEditarEstadoSolicitud.validate({
+            rules: {
+                estado: "required",
+            },
+            messages: {
+                estado: "Por favor, escriba el nombre del estado de solicitud",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+        //##################### FIN FORMULARIO GESTION DE ESTADO DE SOLICITUD #####################
+
+        //####################### FORMULARIO GESTION DE ACCESO AL SISTEMA #######################
+        // VALIDACION DE FORMULARIO NUEVO ACCESO AL SISTEMA
+        this.$FormNuevoAccesoSistema.validate({
+            rules: {
+                tipoAcceso: "required",
+                descripcion: "required",
+            },
+            messages: {
+                tipoAcceso: "Por favor, escriba el nombre de tipo de acceso",
+                descripcion: "Por favor, escriba una descripción",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+
+        // VALIDACION DE FORMULARIO EDITAR ACCESO AL SISTEMA
+        this.$FormEditarAccesoSistema.validate({
+            rules: {
+                tipoAcceso: "required",
+                descripcion: "required",
+            },
+            messages: {
+                tipoAcceso: "Por favor, escriba el nombre de tipo de acceso",
+                descripcion: "Por favor, escriba una descripción",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+        //##################### FIN FORMULARIO GESTION DE ACCESO AL SISTEMA #####################
+
     },
     //init
     $.FormValidator = new FormValidator, $.FormValidator.Constructor = FormValidator
