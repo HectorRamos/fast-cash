@@ -195,6 +195,7 @@
                                                                 <option value="">.::Seleccionar::.</option>
                                                                 <option value="Empleado">Empleado</option>
                                                                 <option value="Empresario">Empresario</option>
+                                                                <option value="Otro">Otro</option>
                                                                 </select>        
                                                             </div>
                                                             <div class="form-group col-md-4">
@@ -363,7 +364,6 @@ $(document).ready(function(){
           $('#cbbMunicipios option').remove();
       })
 
-
       $.ajax({
              url: "obtenerMunicipios",
              type: "GET",
@@ -381,8 +381,6 @@ $(document).ready(function(){
 
                             $("#cbbMunicipios").append(opciones);
                             //$("#cbbMunicipios").innerHTML=opciones;
-
-
                     }
                 }
              });
@@ -396,6 +394,10 @@ $(document).ready(function(){
         $( function() {
             $("#select").change( function() {
                 if ($(this).val() === "") {
+                    $(".siguiente1").hide();
+                    $(".guardar1").show();
+                }
+                if ($(this).val() === "Otro") {
                     $(".siguiente1").hide();
                     $(".guardar1").show();
                 }
@@ -432,17 +434,23 @@ $(document).ready(function(){
                 if ($r2 === "") {
                     $(".cliente3").hide();
                 }
+                if ($r2 === "Otro") {
+                    $(".cliente3").hide();
+                }
                 if ($r2 === "Empleado") {
                     $(".cliente3").hide();
                 }
                 if ($r2 === "Empresario") {
-                    $(".cliente").hide();
+                    $(".cliente3").hide();
                 }
             });
 
             $("#siguient0").click( function() {
                 var $r2 = $("#select").val();
                 if ($r2 === "") {
+                    $(".cliente3").show();
+                }
+                if ($r2 === "Otro") {
                     $(".cliente3").show();
                 }
             }); 

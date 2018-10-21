@@ -142,7 +142,7 @@ a:focus {
   position: fixed;
   width: 100%;
   bottom: 0px;
-  padding: 8px 30px;
+  padding: 3px 30px;
   background-color: #D5D8DC;
   border-top: 1px solid #ABEBC6;
 }
@@ -694,6 +694,7 @@ a:focus {
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
   background-color: #317eeb;
   border-color: #317eeb;
+  z-index: 0;
 }
 
 /* 2.10 Tabs-Accordions */
