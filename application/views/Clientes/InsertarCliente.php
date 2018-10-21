@@ -410,13 +410,12 @@ $(document).ready(function(){
    });   
 });
 /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-
 </script>
     <script type="text/javascript">
 
         $( function() {
             $("#select").change( function() {
-                if ($(this).val() === "Otro") {
+                if ($(this).val() === "") {
                     $(".siguiente1").hide();
                     $(".guardar1").show();
                 }
