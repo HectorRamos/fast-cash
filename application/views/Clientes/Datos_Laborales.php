@@ -36,7 +36,7 @@
                          <div class="form-row">
                          <!--*******************************CAMPOS OCULTOS**********************************-->
                               <input type="hidden" name="Fk_Id_Cliente" value="<?php echo $dato->Id_Cliente; ?>">
-                              <input type="hidden" name="Codigo_cliente" value="<?php echo $dato->Codigo_Cliente; ?>">
+                              
                               <!--FIN DE CAMPOS OCULTOS-->
                                     <div class="form-group col-md-6">
                                           <label for="Nombre_Empresa">Nombre de la empresa</label>

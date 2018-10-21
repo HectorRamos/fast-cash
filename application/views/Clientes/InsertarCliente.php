@@ -19,7 +19,6 @@
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
-
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
@@ -38,10 +37,7 @@
                                     <div class="panel-heading"> 
                                         <h3 class="panel-title">Nuevo cliente</h3> 
                                     </div> 
-                                    <div class="panel-body"> 
-                                        <form id="basic-form" method="POST" action="">
-                                           
-                                        </form> 
+                                    <div class="panel-body">
                                         <div class="wizard">
                                           <div role="tabpanel">
                                               <!-- Nav tabs -->
@@ -191,7 +187,7 @@
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="Tipo_Cliente">Tipo de cliente</label>
-                                                                <select id="select" name="select" class="form-control">
+                                                                <select id="select" name="Tipo_Cliente" class="form-control">
                                                                 <option value="">.::Seleccionar::.</option>
                                                                 <option value="Empleado">Empleado</option>
                                                                 <option value="Empresario">Empresario</option>
@@ -218,19 +214,25 @@
                                                             <li>
                                                                 <button type="button" id="atras0" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
                                                                 <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                                <button type="submit" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</button>
-                                                                <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
+                                                                <button  type="submit" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                                                                <a id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</a></li>
                                                         </ul>
                                                     </div>
                                                 </form>
+                                                <!--Final del formulario Para insertar-->
 
                                                 <!--Tab Panel 4-->
                                                 <!--Tab Panel 4.1-->
+
+                                                <!--FORMULARIO PARA INSERTAR DATOS LABORALES DEL CLIENTE-->
+
                                                     <div role="tabpanel" class="tab-pane empleado" style="display: none;">
-                                                <form role="form" method="POST" action="" autocomplete="off">
+                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
                                                         <div class="row">
                                                           <div class="form-group col-md-6">
                                                               <label>Cliente: <input type="text" id="NombreTipoClienteEmpleado" class="style" readonly="true"></label>
+                                                            <!--===============CAMPO OCULTO================-->
+                                                             <input type="text" hidden id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
                                                               <label>Tipo de cliente: <input type="text" id="TipoClienteEmpleado" class="style" readonly="true">
@@ -275,17 +277,20 @@
                                                         </div>
                                                         <ul class="list-inline pull-right">
                                                             <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                            <button type="button" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
+                                                            <button type="submit" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
                                                         </ul>
                                                 </form>
                                                     </div>
-
+                                                    <!--FINAL DEL FORMULARIO PARA INSERTAR DATOS LABORALES-->
                                                 <!--Tab Panel 4.2-->
+                                                <!--FORMULARIO PARA INSERTAR DATOS DEL NEGOCIO DEL CLIENTE-->
                                                     <div role="tabpanel" class="tab-pane empresario" style="display: none;">
-                                                <form role="form" method="POST" action="" autocomplete="off">
+                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
                                                         <div class="row">
                                                           <div class="form-group col-md-6">
                                                               <label>Cliente: <input type="text" id="NombreTipoClienteEmpresario" class="style" readonly="true"></label>
+                                                              <!--===============CAMPO OCULTO================-->
+                                                            <input type="text" hidden id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
                                                               <label>Tipo de cliente: <input type="text" id="TipoClienteEmpresario" class="style" readonly="true">
@@ -330,12 +335,12 @@
                                                         </div>
                                                         <ul class=" pull-right">
                                                             <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                            <button type="button" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
+                                                            <button type="submit" id="Guardar" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full"><i class="fa fa-save fa-lg"></i> Guardar</button></li>
                                                         </ul>
                                                 </form>
                                                     </div>
+                                                    <!--FINAL DEL FORMULARIO PARA INSERTAR DATOS DEL NEGOCIO DEL CLIENTE-->
                                                 <!-- Fin Tab Panel 4-->
-
                                                 <div class="clearfix"></div>
                                             </div>
                                          </div>
@@ -344,11 +349,8 @@
                                 </div> <!-- End panel -->
                             </div> <!-- end col -->
                         </div> <!-- End row -->
-
-                    </div> <!-- container -->
-                               
+                    </div> <!-- container -->           
                 </div> <!-- content -->
-
             </div>
             <!-- ============================================================== -->
             <!-- End Right content here -->
@@ -358,6 +360,26 @@
 /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 
 $(document).ready(function(){
+    //funcion para insertar los datos
+    $("#btn").on("click",function(){
+        //evnt.preventDefault();
+        alert('hola')
+        $.ajax({
+        url:"<?= base_url()?>Clientes/InsertarCliente",
+        type:"POST",
+        data:$('#basic-form').serialize(),
+        success:function(respuesta){
+            alert('hola');
+            var regi=eval(respuesta);
+            alert(regi[0]['Id_Cliente']);
+            $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
+            $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+
+        }
+            
+    });
+    });
+    //final de la funcion para insertar los datos
    $("#cbbDepartamentos").change(function () {
       
       $('#cbbMunicipios').each(function(){
@@ -388,12 +410,13 @@ $(document).ready(function(){
    });   
 });
 /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+
 </script>
     <script type="text/javascript">
 
         $( function() {
             $("#select").change( function() {
-                if ($(this).val() === "") {
+                if ($(this).val() === "Otro") {
                     $(".siguiente1").hide();
                     $(".guardar1").show();
                 }
