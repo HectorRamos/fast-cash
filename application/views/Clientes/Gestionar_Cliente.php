@@ -92,7 +92,7 @@
 
                         												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
-                        												      <a title="Eliminar" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
+                        												      <a title="Eliminar" onclick="Delete(<?= $clientes->Id_Cliente?>)" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
                       												      </td>
                                                     </tr>
                       												    <?php
@@ -243,7 +243,7 @@
 	                    </h4>
 	                </div>
 	                <div class="modal-body">
-	                  <input type="hidden" name='id'>
+	                  <input type="text" hidden id="Id" name='id'>
 	                  <p align="center">¿Está seguro de eliminar el registro?</p>
 	                </div>
 	                <div align="center">
@@ -255,10 +255,9 @@
 	        </div><!-- /.modal-dialog -->
 	    </div><!-- /.modal -->
       <script type="text/javascript">
-    $('.modal_eliminar_cliente').on('show.bs.modal', function(e) {
-              var bookIdCliente = $(e.relatedTarget).data('id');   
-              document.frmeliminarcliente.id.value = bookIdCliente;       
-          });
+    function Delete(id){
+      document.getElementById('Id').value=id;
+    }
     </script>
       <!-- FIN DEL MODAL PARA ELIMINAR DATOS-->
 
@@ -337,6 +336,9 @@
 
                     		html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
                         html+="</ul>"
+                      }
+                      else if(registro[0]['Tipo_Cliente']=="Otro"){
+                        html+="<div class='alert alert-success'><h4>Este cliente tiene otro tipo de ingresos el cual tienen un monto de: ..... aqui irian los ingresos nada mas</h4></div>"
                       }
                       html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light m-b-5' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
                         document.getElementById('DivEmpleado').style.display='none';

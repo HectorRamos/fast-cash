@@ -17,6 +17,7 @@ class Clientes_Model extends CI_Model{
 	public function Insertar($datos=null){
 		if($datos!=null){
 			$data =array(
+
 				'Codigo_Cliente'=> '000123',
 				'Nombre_Cliente' => $datos['Nombre_Cliente'],
 				'Apellido_Cliente' => $datos['Apellido_Cliente'],
@@ -35,13 +36,12 @@ class Clientes_Model extends CI_Model{
 				'Profesion_Cliente'=>$datos['Profesion_Cliente'],
 				'Fk_Id_Departamento'=>$datos['cbbDepartamentos'],
 				'Fk_Id_Municipio'=>$datos['cbbMunicipios'],
-				// 'Tipo_Cliente'=>$datos['Tipo_Cliente']
-
+				'Tipo_Cliente'=>$datos['Tipo_Cliente']
 				);
 			if($this->db->insert('tbl_clientes', $data)){
 				$sql2="SELECT Id_Cliente, Nombre_Cliente, Apellido_Cliente, Codigo_Cliente, Tipo_Cliente FROM tbl_clientes WHERE Id_Cliente IN (SELECT MAX(Id_Cliente) FROM tbl_clientes)";
 				$id=$this->db->query($sql2);
-				return $id;
+				return $id->result();
 			}
 			else{
 				return false;
@@ -114,7 +114,6 @@ class Clientes_Model extends CI_Model{
 			}
 		}
 	}
-
 	public function InsertarDatosLaborales($datos =null){
 		if($datos!=null){
 			if($this->db->insert('tbl_datos_laborales', $datos)){
@@ -164,9 +163,13 @@ public function EditarDatosNegocio($datos= null){
 	}
 }
 public function obtenerInfoCliente($id, $tipo){
-
 	if($tipo=="Empresario"){
 		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_negocio AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
+		$info = $this->db->query($sql);
+		return $info->result();
+	}
+	else if($tipo=="Otro"){
+		$sql="SELECT c.*, d.*, m.* FROM tbl_clientes AS c INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE Id_Cliente=$id";
 		$info = $this->db->query($sql);
 		return $info->result();
 	}
@@ -175,9 +178,7 @@ public function obtenerInfoCliente($id, $tipo){
 		$sql="SELECT n.*,c.*, d.*, m.* FROM tbl_datos_laborales AS n INNER JOIN tbl_clientes AS c ON n.Fk_Id_Cliente=c.Id_Cliente INNER JOIN tbl_departamentos AS d ON c.Fk_Id_Departamento= d.Id_Departamento INNER JOIN tbl_municipios AS m ON c.Fk_Id_Municipio = m.Id_Municipio WHERE n.Fk_Id_Cliente=$id";
 		$info = $this->db->query($sql);
 		return $info->result();
-
 	}
-
 }
 public function dCliente(){
 	$sql="SELECT * FROM tbl_clientes";

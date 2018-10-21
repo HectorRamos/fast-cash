@@ -22,11 +22,12 @@ class Clientes extends CI_Controller {
 			// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
 			// 	</script>';
 				$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
-				$data=array('id'=>$id);
-				$this->load->view('Base/header');
-				$this->load->view('Base/nav');
-				$this->load->view('Clientes/Datos_Laborales', $data);
-				$this->load->view('Base/footer');
+				$data=$id;
+				//$this->load->view('Base/header');
+				//$this->load->view('Base/nav');
+				//$this->load->view('Clientes/Datos_Laborales', $data);
+				echo json_encode($data);
+				//$this->load->view('Base/footer');
 		}
 		else
 		{
@@ -107,7 +108,7 @@ class Clientes extends CI_Controller {
 	}
 	public function Eliminar(){
 		if(isset($_GET["id"])){ 
-            $id=(int)$_GET["id"];
+            $id=(int)$_GET["id"]; 
         }
 		// $id = $this->input->get('id');
 		$this->load->model("Clientes_Model");

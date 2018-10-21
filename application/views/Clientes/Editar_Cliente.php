@@ -1,7 +1,7 @@
 <?php 
 foreach ($cliente->result() as $datos_cliente) {
 }
-?>
+?> 
             <?php if($this->session->flashdata("errorr")):?>
               <script type="text/javascript">
                 $(document).ready(function(){
@@ -9,6 +9,7 @@ foreach ($cliente->result() as $datos_cliente) {
                 });
               </script>
             <?php endif; ?>
+
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -16,7 +17,7 @@ foreach ($cliente->result() as $datos_cliente) {
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
-                    <h3>EDITAR INFORMACIÓN DEL CLIENTE CODIGO <?= $datos_cliente->Codigo_Cliente?></h3>
+                    <h3>EDITAR INFORMACIÓN DEL CLIENTE CODIGO <?php echo $datos_cliente->Codigo_Cliente?></h3>
                        <div class="row">
                            <form id="FormEditarCliente" method="POST" action="<?= base_url()?>Clientes/editarCliente" autocomplete="off">
                               <div class="form-row">
