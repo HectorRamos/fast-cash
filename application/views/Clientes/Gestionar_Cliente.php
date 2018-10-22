@@ -129,13 +129,17 @@
                             <div class="margn">
                               <div class="row">
                                 <input type="hidden" id="Fk_Id_Cliente" name="Fk_Id_Cliente" value="<?php //echo $dato->Id_Cliente; ?>">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                   <label for="Nombre_Empresa">Nombre de la empresa</label>
                                   <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" placeholder="Nombre de la empresa">
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                   <label for="Cargo">Cargo que desempeña</label>
                                   <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="Telefono">Teléfono</label>
+                                  <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono">
                                 </div>
                               </div>
                               <div class="row">
@@ -144,18 +148,8 @@
                                   <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Dirección de la empresa">
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="Telefono">Teléfono</label>
-                                  <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono">
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="form-group col-md-6">
                                   <label for="Rubro">Rubro de la empresa en que trabaja</label>
                                   <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Rubro de la empresa">
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                  <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
                                 </div>
                               </div>
                               <div class="row">
@@ -198,17 +192,11 @@
                                 </div>
                               </div>
                               <div class="row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-7">
                                   <label for="Direccion_Negocio">Dirección del negocio</label>
                                   <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Dirección del negocio">
                                 </div>
-                              </div>
-                              <div class="row">
-                                <div class="form-group col-md-6">
-                                  <label for="Ingreso_Mensual_Negocio">Ingreso Mensual</label>
-                                  <input type="text" class="form-control" id="Ingreso_Mensual_Negocio" name="Ingreso_Mensual" placeholder="Ingreso mensual">
-                                </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-5">
                                   <label for="Tipo_Factura">Tipo de factura</label>
                                   <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Tipo de factura">
                                 </div>
@@ -371,7 +359,6 @@
         $('#Direccion').val("");
         $('#Telefono').val("");
         $('#Rubro').val("");
-        $('#Ingreso_Mensual').val("");
         $('#Observaciones').val("");
 
         $('#Nombre_Negocio').val("");
@@ -379,7 +366,6 @@
         $('#NRC').val("");
         $('#Giro').val("");
         $('#Direccion_Negocio').val("");
-        $('#Ingreso_Mensual_Negocio').val("");
         $('#Tipo_Factura').val("");
     }
     function limpiar2(){
@@ -388,7 +374,6 @@
         $('#Direccion').val("");
         $('#Telefono').val("");
         $('#Rubro').val("");
-        $('#Ingreso_Mensual').val("");
         $('#Observaciones').val("");
     }
     function limpiar3(){
@@ -397,7 +382,6 @@
         $('#NRC').val("");
         $('#Giro').val("");
         $('#Direccion_Negocio').val("");
-        $('#Ingreso_Mensual_Negocio').val("");
         $('#Tipo_Factura').val("");
     }
 </script>

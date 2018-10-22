@@ -1,14 +1,14 @@
             <?php if($this->session->flashdata("errorr")):?>
               <script type="text/javascript">
                 $(document).ready(function(){
-                $.Notification.autoHideNotify('error', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
                 });
               </script>
             <?php endif; ?>
             <?php if($this->session->flashdata("guardar")):?>
               <script type="text/javascript">
                 $(document).ready(function(){
-                $.Notification.autoHideNotify('success', 'top right', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
                 });
               </script>
             <?php endif; ?>
@@ -75,11 +75,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
-                                                                <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
+                                                            <div class="form-group col-md-4">
+                                                                <label for="Ingreso_Mensual">Ingreso Mensual</label>
+                                                                <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
                                                             </div>
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Estado_Cliente">Estado Civil</label>
                                                                 <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                                                     <option value="">.::Seleccionar::.</option>
@@ -87,6 +87,10 @@
                                                                     <option value="Casado/a">Casado/a</option>
                                                                     <option value="Divorsiado/a">Divorciado/a</option>
                                                                 </select>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
+                                                                <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
                                                             </div>
                                                         </div>
                                                         <ul class="pull-right">
@@ -167,7 +171,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-4">
+                                                                <label for="Prpofesion_Cliente">Profesion</label>
+                                                                <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
+                                                            </div>
+                                                            <div class="form-group col-md-2">
                                                                 <label for="name">Condición actual</label>
                                                                 <select id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
                                                                 <option value="">.::Seleccionar::.</option>
@@ -175,17 +183,7 @@
                                                                 <option value="Inactivo">Inactivo</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Fecha_Registro">Fecha de registro</label>
-                                                                <input type="text" class="form-control DateTime" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente" data-mask="9999/99/99">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <label for="Prpofesion_Cliente">Profesion</label>
-                                                                <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
-                                                            </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-3">
                                                                 <label for="Tipo_Cliente">Tipo de cliente</label>
                                                                 <select id="select" name="Tipo_Cliente" class="form-control">
                                                                 <option value="">.::Seleccionar::.</option>
@@ -194,7 +192,7 @@
                                                                 <option value="Otro">Otro</option>
                                                                 </select>        
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-3">
                                                                 <label for="Genero_Cliente">Genero</label>
                                                                 <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
                                                                 <option value="">.::Seleccionar::.</option>
@@ -225,7 +223,6 @@
                                                 <!--Tab Panel 4.1-->
 
                                                 <!--FORMULARIO PARA INSERTAR DATOS LABORALES DEL CLIENTE-->
-
                                                     <div role="tabpanel" class="tab-pane empleado" style="display: none;">
                                                 <form role="form" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
                                                         <div class="row">
@@ -240,13 +237,17 @@
                                                               </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Nombre_Empresa">Nombre de la empresa</label>
                                                                 <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" placeholder="Nombre de la empresa">
                                                             </div>
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Cargo">Cargo que desempeña</label>
                                                                 <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="Telefono">Teléfono</label>
+                                                                <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" data-mask="(999) 9999-9999? x99999">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -255,18 +256,8 @@
                                                                 <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Dirección de empresa">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="Telefono">Teléfono</label>
-                                                                <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" data-mask="(999) 9999-9999? x99999">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Rubro">Rubro de la empresa que en que trabaja</label>
+                                                                <label for="Rubro">Rubro de la empresa en que trabaja</label>
                                                                 <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Rubro de la empresa">
-                                                            </div>
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                                <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
                                                             </div>
                                                         </div>
                                                          <div class="row">
@@ -318,17 +309,11 @@
                                                           </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-12">
+                                                            <div class="form-group col-md-7">
                                                                 <label for="Direccion_Negocio">Dirección del negocio</label>
                                                                 <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Dirección del negocio">
                                                             </div>
-                                                        </div>
-                                                         <div class="row">
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                                <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
-                                                            </div>
-                                                            <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-5">
                                                                 <label for="Tipo_Factura">Tipo de factura</label>
                                                                 <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Tipo factura">
                                                             </div>
