@@ -1,3 +1,31 @@
+<?php if($this->session->flashdata("informa")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("actualizado")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("errorr")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("guardar")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+    });
+  </script>
+<?php endif; ?>
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
@@ -26,7 +54,7 @@
             </div>
             <div class="panel-body">
               <!-- Formulario del empleado  -->
-              <form method="post" action="<?= base_url()?>Empleados/ActualizarEmpleados">
+              <form method="post" action="<?= base_url()?>Empleados/ActualizarEmpleados" autocomplete="off" id="FormEditarEmpleado">
                 <div class="margn">
                   <div class="row">
                     <div class="form-group col-md-6">
@@ -46,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="cboGenero">Genero</label>
-                      <select class="form-control" name="cboGenero">
+                      <select class="form-control" id="cboGenero" name="cboGenero">
                         <?php if($data->genero == "Femenino"){ ?>
                         <option value="Femenino" selected>Femenino</option>
                         <option value="Masculino">Masculino</option>
@@ -86,7 +114,7 @@
                     <div class="row">
                      <div class="form-group col-md-6">
                       <label for="txtTelefono">Teléfono</label>
-                      <input type="text" class="form-control" name="txtTelefono" id="txtTelefono" value="<?php echo $data->telefono; ?>" placeholder="Teléfono">
+                      <input type="text" class="form-control validaTel" name="txtTelefono" id="txtTelefono" value="<?php echo $data->telefono; ?>" placeholder="Teléfono">
                     </div>                  
                     <div class="form-group col-md-6">
                       <label for="txtEmail">Email</label>
