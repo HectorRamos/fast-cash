@@ -92,7 +92,13 @@
         </footer>
     </body>
 </html>
-
+<script type="text/javascript">
+    $(".validaTel").keypress( function (e){
+      telefo = (document.all) ? e.keyCode : e.which;
+      telefo = String.fromCharCode(telefo)
+      return /^[0-9\(+)-]+$/.test(telefo);
+    });
+</script>
 <!-- SCRIPT CALENDARIO -->
 <script type="text/javascript">
 $(document).ready(function () {

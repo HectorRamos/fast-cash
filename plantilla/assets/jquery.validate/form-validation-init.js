@@ -27,6 +27,11 @@
         this.$FormNuevoAccesoSistema = $("#FormNuevoAccesoSistema");
         this.$FormEditarAccesoSistema = $("#FormEditarAccesoSistema");
         //##################### FIN FORMULARIO DE GESTION DE ACCESO AL SISTEMA #####################
+
+        //####################### FORMULARIO DE GESTION DE EMPLEADOS #######################
+        this.$FormNuevoEmpleado = $("#FormNuevoEmpleado");
+        this.$FormEditarEmpleado = $("#FormEditarEmpleado");
+        //##################### FIN FORMULARIO DE GESTION DE EMPLEADOS #####################
     };
 
     //init
@@ -262,6 +267,68 @@
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
         //##################### FIN FORMULARIO GESTION DE ACCESO AL SISTEMA #####################
+
+        //####################### FORMULARIO GESTION DE EMPLEADOS AL SISTEMA #######################
+        // VALIDACION DE FORMULARIO NUEVO EMPLEADO AL SISTEMA
+        this.$FormNuevoEmpleado.validate({
+            rules: {
+                txtNombre: "required",
+                txtApellido: "required",
+                txtFechaNacimiento: "required",
+                cboGenero: "required",
+                txtDui: "required",
+                txtCargo: "required",
+                txtProfesion: "required",
+                txtTelefono: "required",
+                txtEmail: { email: true },
+                txtDireccion: "required",
+            },
+            messages: {
+                txtNombre: "Por favor, escriba el nombre del empleado",
+                txtApellido: "Por favor, escriba el apellido del empleado",
+                txtFechaNacimiento: "Por favor, digite la fecha de nacimiento del empleado",
+                cboGenero: "Por favor, seleccione un genero del empleado",
+                txtDui: "Por favor, digite el número de dui del empleado",
+                txtCargo: "Por favor, escriba el cargo del empleado",
+                txtProfesion: "Por favor, escriba la profesión del empleado",
+                txtTelefono: "Por favor, digite el número de teléfono del empleado",
+                txtEmail: "Por favor, escriba el email del empleado correctamente",
+                txtDireccion: "Por favor, escriba la dirección del empleado",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+
+        // VALIDACION DE FORMULARIO EDITAR EMPLEADO AL SISTEMA
+        this.$FormEditarEmpleado.validate({
+            rules: {
+                txtNombre: "required",
+                txtApellido: "required",
+                txtFechaNacimiento: "required",
+                cboGenero: "required",
+                txtDui: "required",
+                txtCargo: "required",
+                txtProfesion: "required",
+                txtTelefono: "required",
+                txtEmail: { email: true },
+                txtDireccion: "required",
+            },
+            messages: {
+                txtNombre: "Por favor, escriba el nombre del empleado",
+                txtApellido: "Por favor, escriba el apellido del empleado",
+                txtFechaNacimiento: "Por favor, digite la fecha de nacimiento del empleado",
+                cboGenero: "Por favor, seleccione un genero del empleado",
+                txtDui: "Por favor, digite el número de dui del empleado",
+                txtCargo: "Por favor, escriba el cargo del empleado",
+                txtProfesion: "Por favor, escriba la profesión del empleado",
+                txtTelefono: "Por favor, digite el número de teléfono del empleado",
+                txtEmail: "Por favor, escriba el email del empleado",
+                txtDireccion: "Por favor, escriba la dirección del empleado correctamente",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+        //##################### FIN FORMULARIO GESTION DE EMPLEADOS AL SISTEMA #####################
 
     },
     //init

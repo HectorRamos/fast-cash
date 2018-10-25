@@ -25,7 +25,7 @@
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" action="">
+              <form method="post" action="<?= base_url() ?>Solicitud/GuardarSolicitud">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
@@ -49,7 +49,7 @@
                       <div class="form-group col-md-6">
                       <label for="nombre_cliente">Cliente</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombre del cliente">
+                          <input type="text" class="form-control" id="nombre_cliente" name="" placeholder="Nombre del cliente">
                           <a title="Agregar cliente" class="input-group-addon btn btn-primary" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-user-plus fa-lg"></i></a>
                         </div>
                       </div>
@@ -63,10 +63,17 @@
                                 <?php 
                                     foreach ($plazos->result() as $plazos)
                                     {
+                                      if ($plazos->tiempo_plazo ==1)
+                                      {
+                                        echo '<option value="'.$plazos->id_plazo.'">Populares hasta '.$plazos->tiempo_plazo.' mes</option>';
+                                      }
+                                      else
+                                      {
                                 ?>
-                                <option value="<?= $plazos->id_plazo ?> ">Populares hasta <?= $plazos->tiempo_plazo ?> dias</option>
-                                <?php } ?>
+                                <option value="<?= $plazos->id_plazo ?>">Populares hasta <?= $plazos->tiempo_plazo ?> meses</option>
+                                <?php }} ?>
                               </select>
+                            <input type="text" class="form-control" id="numero_meses" name="numero_meses">
                       </div>
                     </div>
                     <!-- Fin de la primera Linea del formulario-->
@@ -79,7 +86,7 @@
                       </div>
                       <div class="form-group col-md-4">
                             <label for="tasa_interes">Tasa de interes</label>
-                            <input type="text" class="form-control" id="tasa_interes" name="tasa_interes" placeholder="Tasa de interes del prestamo">
+                            <input type="text" value="10" class="form-control" id="tasa_interes" name="tasa_interes" placeholder="Tasa de interes del prestamo">
                       </div>
                       <div class="form-group col-md-4">
                             <label for="monto_dinero">Monto de dinero</label>
@@ -92,15 +99,15 @@
                     <div class="row">
                       <div class="form-group col-md-3">
                             <label for="">IVA a pagar</label>
-                            <input type="text" class="form-control" id="IVA_Pagar" name="IVA_Pagar" placeholder="Plazo de tiempo">
+                            <input type="text" class="form-control" id="iva_pagar" name="iva_pagar" placeholder="Plazo de tiempo">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Intereses a pagar</label>
-                            <input type="text" class="form-control" id="interes_total_pagar" name="interes_total_pagar" placeholder="Plazo de tiempo">
+                            <input type="text" class="form-control" id="intereses_pagar" name="intereses_pagar" placeholder="Plazo de tiempo">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Cuota diaria</label>
-                            <input type="text" class="form-control" id="cuota_diaria" name="interes_diario" placeholder="Interes diario">
+                            <input type="text" class="form-control" id="cuota_diaria" name="cuota_diaria" placeholder="Interes diario">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Total a pagar</label>
@@ -120,7 +127,8 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                             <!-- <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label> -->
-                            <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
+                            <input type="hidden" value="1" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
+                            <input type="text" value="1" class="form-control" id="numero_cuotas" name="numero_cuotas" placeholder="">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
@@ -231,6 +239,26 @@ function activarIP()
 {
   $("#tasa_interes").removeAttr("readonly");
   $("#monto_dinero").removeAttr("readonly");
+
+  //Capturando valor del select para sacar el numero de meses
+  separador = " ";
+  indice = document.getElementById('tipo_prestamo').selectedIndex;
+  if (indice != "")
+  {
+    cadena = document.getElementById('tipo_prestamo').options[indice].text;
+    //cadena = document.getElementById('tipo_prestamo').options[document.getElementById('tipo_prestamo').selectedIndex].text;
+    datos = cadena.split(separador);
+
+    meses = datos[2]; // numero de meses
+  }
+  else
+  {
+    meses = "";
+  }
+
+    $("#numero_meses").attr("value", meses);
+
+
 }
 function calcularIntereses()
 {
@@ -238,27 +266,39 @@ function calcularIntereses()
   tasaInteres = parseFloat($("#tasa_interes").val()) / 100;
   montoDinero = $("#monto_dinero").val();
 
-
   numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
 
   totalInteresesAPagar = montoDinero * tasaInteres;
   totalIvaAPagar = totalInteresesAPagar * 0.13;
   totalAPagar = parseFloat(totalIvaAPagar) + parseFloat(totalInteresesAPagar) + parseFloat(montoDinero);
-  cuotaDiaria = totalAPagar/numeroDePagos
+  cuotaDiaria = redondeo2decimales(totalAPagar)/redondeo2decimales(numeroDePagos);
 
   // Probando calculos
-  totalPagoConCuotas = cuotaDiaria.toFixed(2)*26;
-  $("#totalP").attr("value", totalAPagar.toFixed(2)); // Total a pagar multiplicando el numero de cuotas por el monto diario a pagar
-  $("#totalPP").attr("value", totalPagoConCuotas.toFixed(2)); // Valor real a pagar 
+  
 
+  //totalPagoConCuotas = cuotaDiaria.toFixed(2)*26;
+  totalPagoConCuotas = cuotaDiaria*26;
+  //$("#totalP").attr("value", totalAPagar.toFixed(2)); // Total a pagar multiplicando el numero de cuotas por el monto diario a pagar
+  //$("#totalPP").attr("value", totalPagoConCuotas.toFixed(2)); // Valor real a pagar 
   //faltante
-  faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
-  $("#ajusteP").attr("value", faltante.toFixed(2));
+  //faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
+  //$("#ajusteP").attr("value", faltante.toFixed(2));
 
-  $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(2));
-  $("#IVA_Pagar").attr("value", totalIvaAPagar.toFixed(2));
-  $("#interes_total_pagar").attr("value", totalInteresesAPagar.toFixed(2));
-  $("#total_pagar").attr("value", totalAPagar.toFixed(2));
-  //alert(cuotaDiaria.toFixed(2));
+  $("#cuota_diaria").attr("value",  redondeo2decimales(cuotaDiaria));
+  $("#iva_pagar").attr("value", redondeo2decimales(totalIvaAPagar));
+  $("#intereses_pagar").attr("value", redondeo2decimales(totalInteresesAPagar));
+  $("#total_pagar").attr("value", redondeo2decimales(totalAPagar));
+  $("#numero_cuotas").attr("value", numeroDePagos);
+
 }
+
+//Redondeo a dos decimales
+function redondeo2decimales(numero)
+{
+  var flotante = parseFloat(numero);
+  var resultado = Math.round(flotante*100)/100;
+  return resultado;
+}
+
+
 </script>

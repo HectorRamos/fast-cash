@@ -63,13 +63,17 @@ class Empleados extends CI_Controller
 		$data=$this->input->POST();
 		$bool=$this->Empleados_Model->ActualizarEmleados($data);
 		if($bool){
-			redirect('Empleados/Index');
+			// redirect('Empleados/Index');
+				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+				redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("No se pudo Actualizar");
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("No se pudo Actualizar");
+			// 	</script>';
+				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+				redirect(base_url()."Empleados/Index");
 		}
 	}
 
@@ -78,13 +82,17 @@ class Empleados extends CI_Controller
 		$id=$this->input->GET('id');
 		$bool=$this->Empleados_Model->EliminarEmpleados($id);
 		if($bool){
-			redirect('Empleados/Index');
+			// redirect('Empleados/Index');
+				$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+				redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			echo '<script type="text/javascript">
-				alert("No se pudo Actualizar");
-				</script>';
+			// echo '<script type="text/javascript">
+			// 	alert("No se pudo Actualizar");
+			// 	</script>';
+				$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
+			    redirect(base_url()."Empleados/Index");
 		}
 	}
 

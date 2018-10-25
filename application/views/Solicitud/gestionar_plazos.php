@@ -76,11 +76,20 @@
                                                         {
                                                         $idPlazo = '"'.$plazo->id_plazo.'"';  // variable que se le pasara como parametro a las funciones de actualizar y eliminar...
                                                         $tiempoPlazo= '"'.$plazo->tiempo_plazo.'"'; // variable que se le pasara como parametro a la funcion actualizar...
-                                                        $fechaPlazo = '"'.$plazo->fecha_creacion.'"'; // variable que se le pasara como parametro a la funcion actualizar...
+                                                        $fechaPlazo = '"'.$plazo->fechaRegistro.'"'; // variable que se le pasara como parametro a la funcion actualizar...
                                                    ?>
                                                       <tr class="tr tr1">
                                                         <td class="td td1"  width="280"><b><?= $plazo->id_plazo ?></b></td>
-                                                        <td class="td td1">Populares hasta <?= $plazo->tiempo_plazo ?> dias</td>
+                                                        <?php 
+                                                            if ($plazo->tiempo_plazo == 1)
+                                                            {
+                                                              echo '<td class="td td1">Populares hasta '.$plazo->tiempo_plazo.' mes</td>';
+                                                            }
+                                                            else
+                                                            {
+                                                              echo '<td class="td td1">Populares hasta '.$plazo->tiempo_plazo.' meses</td>';
+                                                            }
+                                                        ?>
                                                         <td class="td td1">                                      
                                                           <?php 
                                                             echo "<a onclick='actualizarPlazo($idPlazo, $tiempoPlazo, $fechaPlazo)' title='Editar' data-toggle='modal' data-target='#actualizarPlazo' class='waves-effect waves-light editar'><i class='fa fa-pencil'></i></a>";

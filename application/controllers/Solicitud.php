@@ -95,4 +95,55 @@ class Solicitud extends CI_Controller {
 
 		}
 	}
+
+	public function GuardarSolicitud()
+	{
+		$solicitud = $this->input->post();
+		//var_dump($solicitud);
+
+
+		$datosSolicitud = array(
+					   'codigoSolicitud' => $solicitud['numero_solicitud'],
+					   'fechaRecibido' => $solicitud['fecha_recibido'],
+					   'observaciones' => $solicitud['observaciones'],
+					   'estado' => 1,
+					   'fechaRegistro' => null,
+					   'idCliente' => $solicitud['id_cliente'],
+					   'idLineaPlazo' => $solicitud['tipo_prestamo'],
+					   'idFiador' => null,
+					   'idGarantia' => null,
+					   'idEstadoSolicitud' => '1',
+					   'idDocumento' => null);
+
+
+		//echo json_encode($datosSolicitud);
+
+		$datosAmortizacion = array(
+					   'tasaInteres' => $solicitud['tasa_interes'],
+					   'capital' => $solicitud['monto_dinero'],
+					   'totalInteres' => $solicitud['intereses_pagar'],
+					   'totalIva' => $solicitud['iva_pagar'],
+					   'ivaInteresCapital' => $solicitud['total_pagar'],
+					   'plazoMeses' => $solicitud['numero_meses'],
+					   'pagoCuota' => $solicitud['cuota_diaria'],
+					   'cantidadCuota' => $solicitud['numero_cuotas'],
+					   'estado' => 1,
+					   'fechaRegistro' => null,
+					   'idSolicitud' => null,
+					   );
+		echo json_encode($datosSolicitud);
+		echo json_encode($datosAmortizacion);
+
+		/*$bool = $this->Solicitud_Model->GuardarSolicitud($datos);
+		if($bool){
+				$this->session->set_flashdata("informa","Se creo exitosamente la solicitud !!!");
+				redirect(base_url()."Solicitud/CrearSolicitud"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al crear la solicitud");
+			redirect(base_url()."Solicitud/CrearSolicitud");
+
+		}*/
+
+	}
 }
