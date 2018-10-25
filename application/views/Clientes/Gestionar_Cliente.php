@@ -71,7 +71,7 @@
                       												      <th class="th th1" scope="col">Código Cliente</th>
                       												      <th class="th th1" scope="col">Nombre</th>
                       												      <th class="th th1" scope="col">Apellido</th>
-                      												      <th class="th th1" scope="col">Estado</th>
+                      												      
                                                     <th class="th th1" scope="col">Tipo</th>
                       												      <th class="th th1">Acción</th>
                       												  </thead>
@@ -84,7 +84,7 @@
                       												      <td class="td td1" width="150"><b><?= $clientes->Id_Cliente?></b></td>
                       												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
                       												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
-                      												      <td class="td td1" width="100"><?= $clientes->Condicion_Actual_Cliente?></td>
+                      												     
                                                     <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
                       												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
                       												      <td class="td td1">
@@ -273,7 +273,7 @@
                     	html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Apellido:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Apellido_Cliente']+"'></div></div>";
 
-                    	html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
+                    	//html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Estado civil:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div></div>";
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Genero:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Genero_Cliente']+"'></div>";

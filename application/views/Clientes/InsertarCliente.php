@@ -348,7 +348,7 @@ $(document).ready(function(){
     //funcion para insertar los datos
     $("#btn").on("click",function(){
         //evnt.preventDefault();
-        alert('hola')
+        //alert('hola')
         $.ajax({
         url:"<?= base_url()?>Clientes/InsertarCliente",
         type:"POST",
