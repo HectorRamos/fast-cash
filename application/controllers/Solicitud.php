@@ -12,6 +12,16 @@ class Solicitud extends CI_Controller {
 
 	public function index()
 	{
+		$datos = $this->Solicitud_Model->ObtenerSolicitudes();
+		$data = array('datos' => $datos );
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$this->load->view('Solicitud/ver_solicitudes', $data);
+		$this->load->view('Base/footer');
+	}
+
+	public function CrearSolicitud()
+	{
 		$plazos = $this->Solicitud_Model->obtenerPlazos();
 		$clientes = $this->Solicitud_Model->obtenerClientes();
 		$data = array('plazos' => $plazos,'clientes' => $clientes);
@@ -111,6 +121,20 @@ class Solicitud extends CI_Controller {
 			redirect(base_url()."Solicitud/");
 
 		}
+	}
 
+	public function EliminarSolicitud()
+	{
+		$id = $_GET['id'];
+		$bool = $this->Solicitud_Model->EliminarSolicitud($id);
+		if($bool){
+				$this->session->set_flashdata("informa","Se elimino exitosamente la solicitud !!!");
+				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al eliminar la solicitud");
+			redirect(base_url()."Solicitud/");
+
+		}
 	}
 }

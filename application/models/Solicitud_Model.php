@@ -118,6 +118,37 @@ class Solicitud_Model extends CI_Model
 		}
 	}
 
+	public function ObtenerSolicitudes()
+	{
+		/*$datos= $this->db->get("tbl_solicitud");
+		return $datos;*/
+		$this->db->select('*');
+		$this->db->from('tbl_solicitudes');
+		$this->db->join('tbl_amortizaciones', 'tbl_amortizaciones.idSolicitud = tbl_solicitudes.idSolicitud');
+		$this->db->join('tbl_clientes', 'tbl_clientes.Id_Cliente = tbl_solicitudes.idCliente');
+		$this->db->join('tbl_plazos_prestamos', 'tbl_plazos_prestamos.id_plazo = tbl_solicitudes.idLineaPlazo');
+		$this->db->join('tbl_estados_solicitud', 'tbl_estados_solicitud.id_estado = tbl_solicitudes.idEstadoSolicitud');
+		$datos = $this->db->get();
+		return $datos;
+	}
+
+	public function EliminarSolicitud($id)
+	{
+		$sql1 = "UPDATE tbl_solicitudes SET estadoSoli='0' WHERE idSolicitud='$id'";
+		if ($this->db->query($sql1))
+		{
+			$sql2 = "UPDATE tbl_amortizaciones SET estado='0' WHERE idSolicitud='$id'";
+			if ($this->db->query($sql2))
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 
 ?>
