@@ -73,7 +73,7 @@
                                 <option value="<?= $plazos->id_plazo ?>">Populares hasta <?= $plazos->tiempo_plazo ?> meses</option>
                                 <?php }} ?>
                               </select>
-                            <input type="text" class="form-control" id="numero_meses" name="numero_meses">
+                            <input type="hidden" class="form-control" id="numero_meses" name="numero_meses">
                       </div>
                     </div>
                     <!-- Fin de la primera Linea del formulario-->
@@ -128,7 +128,7 @@
                       <div class="form-group col-md-12">
                             <!-- <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label> -->
                             <input type="hidden" value="1" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
-                            <input type="text" value="1" class="form-control" id="numero_cuotas" name="numero_cuotas" placeholder="">
+                            <input type="hidden" value="1" class="form-control" id="numero_cuotas" name="numero_cuotas" placeholder="">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
@@ -262,8 +262,9 @@ function activarIP()
 }
 function calcularIntereses()
 {
+  mesesD = $("#numero_meses").val();
   tipoPrestamo = $("#tipo_prestamo").val();
-  tasaInteres = parseFloat($("#tasa_interes").val()) / 100;
+  tasaInteres = (parseFloat($("#tasa_interes").val()) / 100) * mesesD;
   montoDinero = $("#monto_dinero").val();
 
   numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
@@ -271,7 +272,7 @@ function calcularIntereses()
   totalInteresesAPagar = montoDinero * tasaInteres;
   totalIvaAPagar = totalInteresesAPagar * 0.13;
   totalAPagar = parseFloat(totalIvaAPagar) + parseFloat(totalInteresesAPagar) + parseFloat(montoDinero);
-  cuotaDiaria = redondeo2decimales(totalAPagar)/redondeo2decimales(numeroDePagos);
+  cuotaDiaria = totalAPagar.toFixed(4)/numeroDePagos.toFixed();
 
   // Probando calculos
   
@@ -284,10 +285,10 @@ function calcularIntereses()
   //faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
   //$("#ajusteP").attr("value", faltante.toFixed(2));
 
-  $("#cuota_diaria").attr("value",  redondeo2decimales(cuotaDiaria));
-  $("#iva_pagar").attr("value", redondeo2decimales(totalIvaAPagar));
-  $("#intereses_pagar").attr("value", redondeo2decimales(totalInteresesAPagar));
-  $("#total_pagar").attr("value", redondeo2decimales(totalAPagar));
+  $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
+  $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
+  $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
+  $("#total_pagar").attr("value", totalAPagar.toFixed(4));
   $("#numero_cuotas").attr("value", numeroDePagos);
 
 }
