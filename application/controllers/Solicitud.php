@@ -3,9 +3,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Solicitud extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		//Leyendo el Modelo...
+		$this->load->model("Solicitud_Model");
+	}
+
 	public function index()
 	{
-		$this->load->model("Solicitud_Model");
+		$datos = $this->Solicitud_Model->ObtenerSolicitudes();
+		$data = array('datos' => $datos );
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$this->load->view('Solicitud/ver_solicitudes', $data);
+		$this->load->view('Base/footer');
+	}
+
+	public function CrearSolicitud()
+	{
 		$plazos = $this->Solicitud_Model->obtenerPlazos();
 		$clientes = $this->Solicitud_Model->obtenerClientes();
 		$data = array('plazos' => $plazos,'clientes' => $clientes);
@@ -18,7 +34,6 @@ class Solicitud extends CI_Controller {
 
 	public function gestionarPlazos()
 	{
-		$this->load->model("Solicitud_Model");
 		$plazos = $this->Solicitud_Model->obtenerPlazos();
 		$data = array('plazos' => $plazos );
 
@@ -31,7 +46,6 @@ class Solicitud extends CI_Controller {
 	public function guardarPlazo()
 	{
 		$datos = $this->input->post();
-		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->guardarPlazo($datos);
 		if ($bool)
 		{
@@ -53,7 +67,6 @@ class Solicitud extends CI_Controller {
 	public function actualizarPlazo()
 	{
 		$datos = $this->input->post();
-		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->actualizarPlazo($datos);
 		if ($bool)
 		{
@@ -75,7 +88,6 @@ class Solicitud extends CI_Controller {
 	public function eliminarPlazo()
 	{
 		$datos=$this->input->GET('id');
-		$this->load->model('Solicitud_Model');
 		$bool = $this->Solicitud_Model->eliminarPlazo($datos);
 		if($bool){
 			// echo '<script type="text/javascript">
@@ -98,52 +110,31 @@ class Solicitud extends CI_Controller {
 
 	public function GuardarSolicitud()
 	{
-		$solicitud = $this->input->post();
-		//var_dump($solicitud);
-
-
-		$datosSolicitud = array(
-					   'codigoSolicitud' => $solicitud['numero_solicitud'],
-					   'fechaRecibido' => $solicitud['fecha_recibido'],
-					   'observaciones' => $solicitud['observaciones'],
-					   'estado' => 1,
-					   'fechaRegistro' => null,
-					   'idCliente' => $solicitud['id_cliente'],
-					   'idLineaPlazo' => $solicitud['tipo_prestamo'],
-					   'idFiador' => null,
-					   'idGarantia' => null,
-					   'idEstadoSolicitud' => '1',
-					   'idDocumento' => null);
-
-
-		//echo json_encode($datosSolicitud);
-
-		$datosAmortizacion = array(
-					   'tasaInteres' => $solicitud['tasa_interes'],
-					   'capital' => $solicitud['monto_dinero'],
-					   'totalInteres' => $solicitud['intereses_pagar'],
-					   'totalIva' => $solicitud['iva_pagar'],
-					   'ivaInteresCapital' => $solicitud['total_pagar'],
-					   'plazoMeses' => $solicitud['numero_meses'],
-					   'pagoCuota' => $solicitud['cuota_diaria'],
-					   'cantidadCuota' => $solicitud['numero_cuotas'],
-					   'estado' => 1,
-					   'fechaRegistro' => null,
-					   'idSolicitud' => null,
-					   );
-		echo json_encode($datosSolicitud);
-		echo json_encode($datosAmortizacion);
-
-		/*$bool = $this->Solicitud_Model->GuardarSolicitud($datos);
+		$datos = $this->input->post();
+		$bool = $this->Solicitud_Model->GuardarSolicitud($datos);
 		if($bool){
 				$this->session->set_flashdata("informa","Se creo exitosamente la solicitud !!!");
-				redirect(base_url()."Solicitud/CrearSolicitud"); 
+				redirect(base_url()."Solicitud/"); 
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error al crear la solicitud");
-			redirect(base_url()."Solicitud/CrearSolicitud");
+			redirect(base_url()."Solicitud/");
 
-		}*/
+		}
+	}
 
+	public function EliminarSolicitud()
+	{
+		$id = $_GET['id'];
+		$bool = $this->Solicitud_Model->EliminarSolicitud($id);
+		if($bool){
+				$this->session->set_flashdata("informa","Se elimino exitosamente la solicitud !!!");
+				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al eliminar la solicitud");
+			redirect(base_url()."Solicitud/");
+
+		}
 	}
 }
