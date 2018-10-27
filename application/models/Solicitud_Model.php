@@ -134,10 +134,10 @@ class Solicitud_Model extends CI_Model
 
 	public function EliminarSolicitud($id)
 	{
-		$sql1 = "UPDATE tbl_solicitudes SET estadoSoli='0' WHERE idSolicitud='$id'";
+		$sql1 = "UPDATE tbl_solicitudes SET estadoSolicitud='0' WHERE idSolicitud='$id'";
 		if ($this->db->query($sql1))
 		{
-			$sql2 = "UPDATE tbl_amortizaciones SET estado='0' WHERE idSolicitud='$id'";
+			$sql2 = "UPDATE tbl_amortizaciones SET estadoAmortizacion='0' WHERE idSolicitud='$id'";
 			if ($this->db->query($sql2))
 			{
 				return true;

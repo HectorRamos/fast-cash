@@ -35,7 +35,7 @@
                                   	<?php 
                                   		foreach ($datos->result() as $solicitudes)
                                   		{
-                                        if ($solicitudes->estadoSoli != 0)
+                                        if ($solicitudes->estadoSolicitud != 0)
                                         {
                                         
                                         $idSolicitud = '"'.$solicitudes->idSolicitud.'"';
