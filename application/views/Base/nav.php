@@ -34,7 +34,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesiï¿½n</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -70,7 +70,7 @@
                                 <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span>Clientes</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar información de clientes</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informaciï¿½n de clientes</a></li>
                                 </ul>
                             </li>
 
@@ -93,7 +93,7 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuración</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuraciï¿½n</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>
@@ -112,7 +112,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
                         <i class="fa fa-th-large fa-lg text-success"></i>
                         Crear Solicitud
@@ -122,7 +122,7 @@
                         <div class="margn">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <a href="<?= base_url() ?>Solicitud/" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #117864; border-color: #117864;"><font style="color: #fff;"><i class="fa fa-file-text-o fa-lg"></i> Credito Popular</font></a>
+                                    <a href="<?= base_url() ?>Solicitud/CrearSolicitud" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #117864; border-color: #117864;"><font style="color: #fff;"><i class="fa fa-file-text-o fa-lg"></i> Credito Popular</font></a>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <a href="#" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #006064; border-color: #006064;"><font style="color: #fff;"><i class="fa fa-paste fa-lg"></i> Credito Falta Nombre</font></a>
