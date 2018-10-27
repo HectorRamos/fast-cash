@@ -78,7 +78,7 @@ class Clientes_Model extends CI_Model{
 				
 				'Nombre_Cliente' => $datos['Nombre_Cliente'],
 				'Apellido_Cliente' => $datos['Apellido_Cliente'],
-				'Condicion_Actual_Cliente' => $datos['condicion'],
+				//'Condicion_Actual_Cliente' => $datos['condicion'],
 				'Estado_Civil_Cliente'=>$datos['estado_civil'],
 				'Genero_Cliente'=>$datos['Genero_Cliente'],
 				'Telefono_Fijo_Cliente'=>$datos['Telefono_Cliente'],
@@ -88,7 +88,9 @@ class Clientes_Model extends CI_Model{
 				'Zona_Cliente'=>$datos['Zona'],
 				'DUI_Cliente'=>$datos['Dui_Cliente'],
 				'NIT_Cliente'=>$datos['Nit_Cliente'],
-				'Fecha_Registro_Cliente'=>$datos['Fecha_Registro'],
+				'ingreso'=>$datos['Ingreso_Mensual'],
+				//'Fecha_Registro_Cliente'=>$datos['Fecha_Registro'],
+
 				'Observaciones_Cliente'=>$datos['Observaciones'],
 				'Profesion_Cliente'=>$datos['Profesion_Cliente'],
 				'Fk_Id_Departamento'=>$datos['departamento'],

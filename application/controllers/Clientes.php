@@ -178,7 +178,7 @@ class Clientes extends CI_Controller {
 			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
 			// 	</script>';
 				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
-				redirect(base_url()."Clientes/gestionarCliente");
+				//redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else{
 			// echo '<script type="text/javascript">
@@ -186,7 +186,7 @@ class Clientes extends CI_Controller {
 			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
 			// 	</script>';
 				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
-				redirect(base_url()."Clientes/gestionarCliente");
+				//redirect(base_url()."Clientes/gestionarCliente");
 		}
 	}
 	public function EditarDatosNegocio(){

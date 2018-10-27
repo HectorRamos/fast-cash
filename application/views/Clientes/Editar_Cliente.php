@@ -63,7 +63,7 @@
                                                       <input type="hidden" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente; ?>">
                                                       <input type="hidden" name="departamento" value="<?= $datos_cliente->Fk_Id_Departamento;?>">
                                                       <input type="hidden" name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
-                                                      <input type="hidden" name="condicion" value="<?php echo $datos_cliente->Condicion_Actual_Cliente;?>">
+                                                     
                                                       <input type="hidden" name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
                                                       <input type="hidden" name="Tipo_Cliente" id="Tipo_Cliente" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                                                       <!--FIN DE CAMPOS OCULTOS-->
@@ -174,7 +174,7 @@
                                                             <div class="form-group col-md-2">
                                                                 <label for="Condicion_Cliente">Condición actual</label>
                                                                 <select onchange="javascript:document.all('condicion').value=this.value;" id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
-                                                                <option style="background-color:green; color:white;" value="<?php echo $datos_cliente->Condicion_Actual_Cliente;?>"><?php echo $datos_cliente->Condicion_Actual_Cliente;?></option>
+                                                                
                                                                 <option value="Activo">Activo</option>
                                                                 <option value="Inactivo">Inactivo</option>
                                                                 </select>
@@ -209,7 +209,7 @@
                                                             <li>
                                                                 <button type="button" id="atras0" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
                                                                 <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                                <button  type="submit" class="btn btn-warning waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+                                                                <a id="btnA" class="btn btn-warning waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Actualizar</a>
                                                                 <a id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</a></li>
                                                         </ul>
                                                     </div>
@@ -344,19 +344,19 @@
 
 $(document).ready(function(){
     //funcion para insertar los datos
-    $("#btn").on("click",function(){
+    $("#btnA").on("click",function(){
         //evnt.preventDefault();
         alert('hola')
         $.ajax({
-        url:"<?= base_url()?>Clientes/InsertarCliente",
+        url:"<?= base_url()?>Clientes/editarCliente",
         type:"POST",
         data:$('#basic-form').serialize(),
         success:function(respuesta){
-            alert('hola');
-            var regi=eval(respuesta);
-            alert(regi[0]['Id_Cliente']);
-            $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
-            $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+            alert('hola estamos en el success');
+            //var regi=eval(respuesta);
+            //alert(regi[0]['Id_Cliente']);
+            //$('#Id_Cliente1').val(regi[0]['Id_Cliente']);
+            //$('#Id_Cliente2').val(regi[0]['Id_Cliente']);
 
         }
             
@@ -397,6 +397,25 @@ $(document).ready(function(){
     <script type="text/javascript">
 
         $( function() {
+          //funcion para insertar los datos
+    $("#btnA").on("click",function(){
+        //evnt.preventDefault();
+        //alert('hola')
+        $.ajax({
+        url:"<?= base_url()?>Clientes/editarCliente",
+        type:"POST",
+        data:$('#basic-form').serialize(),
+        success:function(respuesta){
+            alert('hola');
+            var regi=eval(respuesta);
+            alert(regi[0]['Id_Cliente']);
+            $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
+            $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+
+        }
+            
+    });
+    });
             $("#select").change( function() {
                 if ($(this).val() === "") {
                     $(".siguiente1").hide();
@@ -407,8 +426,8 @@ $(document).ready(function(){
                     $(".guardar1").show();
                 }
                 if ($(this).val() === "Empleado") {
-                    $(".siguiente1").show();
-                    $(".guardar1").hide();
+                    $(".siguiente1").hide();
+                    $(".guardar1").show();
                 } 
                 if ($(this).val() === "Empresario") {
                     $(".siguiente1").show();
