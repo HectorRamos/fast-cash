@@ -76,8 +76,13 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'root',
 	'password' => '',
+=======
+	'username' => 'edwin',
+	'password' => '123456',
+>>>>>>> a050a84991e80ea71dcced87ad9b8fe9f8e1ade8
 	'database' => 'db_fastcash',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
