@@ -103,13 +103,13 @@ class Clientes_Model extends CI_Model{
 				if($datos['Tipo_Cliente']=="Empleado"){
 						$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_datos_laborales as l INNER JOIN  tbl_clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
 						$info = $this->db->query($sql);
-						return $info;
+						return $info->result();
 				}
 				else if($datos['Tipo_Cliente']=="Empresario")
 				{
 					$sql = "SELECT c.Id_Cliente, c.Codigo_Cliente, c.Tipo_Cliente, l.* FROM tbl_datos_negocio as l INNER JOIN  tbl_clientes AS c ON l.Fk_Id_Cliente = c.Id_Cliente WHERE l.Fk_Id_Cliente=$id";
 						$info = $this->db->query($sql);
-						return $info;
+						return $info->result();
 				}
 				
 			}
@@ -157,7 +157,7 @@ public function EditarDatosNegocio($datos= null){
 	if($datos!=null){
 			$id = $datos['Fk_Id_Cliente'];
 			$this->db->where('Fk_Id_Cliente', $id);
-			if($this->db->update('tbl_datos_Negocio', $datos))
+			if($this->db->update('tbl_datos_negocio', $datos))
 			{
 				return true;
 			}

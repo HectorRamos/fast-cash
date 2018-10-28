@@ -293,6 +293,7 @@
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Municipio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Municipio']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Profesión u Oficio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Profesion_Cliente']+"'></div></div>";
+                      html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['ingreso']+"'></div></div>";
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Tipo de cliente:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones_Cliente']+"'></div></div>";
@@ -308,7 +309,8 @@
                     		html +="<div class='col-sm-6'><label>Teléfono:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div></div>";
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Rubro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Rubro']+"'></div>";
-                    		html +="<div class='col-sm-6'><label>Igreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
+                        html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones']+"'></div></div>";
+                    		
                     		html+="</ol></ul>"
                     	}
                     	else if(registro[0]['Tipo_Cliente']=="Empresario"){
@@ -321,8 +323,9 @@
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
                     		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div></div>";
+                       
 
-                    		html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
+                    		
                         html+="</ul>"
                       }
                       else if(registro[0]['Tipo_Cliente']=="Otro"){

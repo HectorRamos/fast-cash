@@ -60,12 +60,12 @@
                                                 <div class="tab-pane active" role="tabpanel" id="cliente1">
                                                    <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/editarCliente" autocomplete="off">
                                                     <!--*******************************CAMPOS OCULTOS***************************-->
-                                                      <input type="hidden" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente; ?>">
+                                                      <input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente;?>">
                                                       <input type="hidden" name="departamento" value="<?= $datos_cliente->Fk_Id_Departamento;?>">
                                                       <input type="hidden" name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
                                                      
                                                       <input type="hidden" name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
-                                                      <input type="hidden" name="Tipo_Cliente" id="Tipo_Cliente" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
+                                                      
                                                       <!--FIN DE CAMPOS OCULTOS-->
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
@@ -90,7 +90,8 @@
                                                         <div class="row">
                                                             <div class="form-group col-md-4">
                                                                 <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                                <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
+                                                                <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual" 
+                                                                value="<?php echo $datos_cliente->ingreso;?>">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                   <label for="Estado_Cliente">Estado Civil</label>
@@ -181,7 +182,7 @@
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <label for="select">Tipo de cliente</label>
-                                                                <select id="select" onchange="javascript:document.all('Tipo_Cliente').value=this.value;" class="form-control">
+                                                                <select name="Tipo_Cliente" id="select" onchange="javascript:document.all('Tipo_Cliente').value=this.value;" class="form-control">
                                                                 <option style="background-color:green; color:white;" value="<?php echo $datos_cliente->Tipo_Cliente;?>"><?php echo $datos_cliente->Tipo_Cliente;?></option>
                                                                 <option value="Empleado">Empleado</option>
                                                                 <option value="Empresario">Empresario</option>
@@ -209,7 +210,7 @@
                                                             <li>
                                                                 <button type="button" id="atras0" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
                                                                 <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                                <a id="btnA" class="btn btn-warning waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Actualizar</a>
+                                                                <a id="btnA" class="btn btn-warning waves-effect waves-light m-b-5 btn-info-full guardar1 next-step siguiente1"><i class="fa fa-save fa-lg"></i> Actualizar</a>
                                                                 <a id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</a></li>
                                                         </ul>
                                                     </div>
@@ -222,12 +223,18 @@
                                                 <!--FORMULARIO PARA ACTUALIZAR DATOS LABORALES DEL CLIENTE-->
 
                                                     <div role="tabpanel" class="tab-pane empleado" style="display: none;">
-                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
+                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/EditardatosLaborales" autocomplete="off">
                                                         <div class="row">
+                                                        <div id="aler" class="alert alert-danger" role="alert" style="display:none;">
+                                                            <strong>Alerta!</strong> Por favor tener en cuenta la elección del Tipo de cliente.
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
                                                           <div class="form-group col-md-6">
                                                               <label>Cliente: <input type="text" id="NombreTipoClienteEmpleado" class="style" readonly="true"></label>
                                                             <!--===============CAMPO OCULTO================-->
                                                              <input type="text" hidden id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                             <input type="text" hidden id="Accion1" name="Accion" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
                                                               <label>Tipo de cliente: <input type="text" id="TipoClienteEmpleado" class="style" readonly="true">
@@ -274,12 +281,18 @@
                                                 <!--Tab Panel 4.2-->
                                                 <!--FORMULARIO PARA ACTUALIZAR DATOS DEL NEGOCIO DEL CLIENTE-->
                                                     <div role="tabpanel" class="tab-pane empresario" style="display: none;">
-                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
+                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/EditarDatosNegocio" autocomplete="off">
                                                         <div class="row">
+                                                        <div id="aler2" class="alert alert-danger" role="alert" style="display:none;">
+                                                            <strong>Alerta!</strong> Usted no registro la información o actualizo el tipo de cliente puede insertar dicha informacion en el siguiente formulario.
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
                                                           <div class="form-group col-md-6">
                                                               <label>Cliente: <input type="text" id="NombreTipoClienteEmpresario" class="style" readonly="true"></label>
                                                               <!--===============CAMPO OCULTO================-->
                                                             <input type="text" hidden id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                             <input type="text" id="Accion2" name="Accion" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
                                                               <label>Tipo de cliente: <input type="text" id="TipoClienteEmpresario" class="style" readonly="true">
@@ -343,23 +356,58 @@
 /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 
 $(document).ready(function(){
-    //funcion para insertar los datos
+    //funcion para editar los datos los datos
     $("#btnA").on("click",function(){
         //evnt.preventDefault();
-        alert('hola')
+        //alert('hola')
         $.ajax({
         url:"<?= base_url()?>Clientes/editarCliente",
         type:"POST",
         data:$('#basic-form').serialize(),
         success:function(respuesta){
-            alert('hola estamos en el success');
-            //var regi=eval(respuesta);
-            //alert(regi[0]['Id_Cliente']);
-            //$('#Id_Cliente1').val(regi[0]['Id_Cliente']);
-            //$('#Id_Cliente2').val(regi[0]['Id_Cliente']);
 
-        }
+            //alert('hola estamos en el success');
+            var regi=eval(respuesta);
+            if(regi.length>0){
+                //alert(regi[0]['Tipo_Cliente']);
+            if(regi[0]['Tipo_Cliente']=="Empleado"){
+
+                $("#Id_Cliente1").val($('#id_cliente').val());
+                $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+                $("#TipoClienteEmpleado").val($("#select").val());
+                $("#Nombre_Empresa").val(regi[0]['Nombre_Empresa']);
+                $("#Cargo").val(regi[0]['Cargo']);
+                $("#Telefono").val(regi[0]['Telefono']);
+                $("#Direccion").val(regi[0]['Direccion']);
+                $("#Rubro").val(regi[0]['Rubro']);
+                $("#Observaciones").val(regi[0]['Observaciones']);
+                $("#Accion1").val(1);
+                
+            }
+            if(regi[0]['Tipo_Cliente']=="Empresario"){
+                $("#Id_Cliente2").val($('#id_cliente').val());
+                $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
+                $("#TipoClienteEmpresario").val(regi[0]['Tipo_Cliente']);
+                $("#NIT").val(regi[0]['NIT']);
+                $("#NRC").val(regi[0]['NRC']);
+                $("#Giro").val(regi[0]['Giro']);
+                $("#Tipo_Factura").val(regi[0]['Tipo_Factura']);
+                $("#Accion2").val(1);
+            }
+            }
+            else{
+                //alert('nada');
+                $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+                $("#TipoClienteEmpleado").val($("#select").val());
+                $("#Id_Cliente1").val($('#id_cliente').val());
+                $("#Id_Cliente2").val($('#id_cliente').val());
+                document.getElementById('aler').style.display='block';
+                document.getElementById('aler2').style.display='block';
+                $("#Accion1").val(2);
+                $("#Accion2").val(2);
+            }
             
+        }     
     });
     });
     //final de la funcion para insertar los datos
@@ -368,7 +416,6 @@ $(document).ready(function(){
       $('#cbbMunicipios').each(function(){
           $('#cbbMunicipios option').remove();
       })
-
       $.ajax({
              url: "obtenerMunicipios",
              type: "GET",
@@ -383,40 +430,16 @@ $(document).ready(function(){
                             opciones += "<option value='"+ registro[i]["Id_Municipio"] +"'>"+ registro[i]["Nombre_Municipio"] +"</option>";
                         }
                             //alert(opciones);
-
                             $("#cbbMunicipios").append(opciones);
                             //$("#cbbMunicipios").innerHTML=opciones;
                     }
                 }
              });
-
    });   
 });
 /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-</script>
-    <script type="text/javascript">
-
         $( function() {
-          //funcion para insertar los datos
-    $("#btnA").on("click",function(){
-        //evnt.preventDefault();
-        //alert('hola')
-        $.ajax({
-        url:"<?= base_url()?>Clientes/editarCliente",
-        type:"POST",
-        data:$('#basic-form').serialize(),
-        success:function(respuesta){
-            alert('hola');
-            var regi=eval(respuesta);
-            alert(regi[0]['Id_Cliente']);
-            $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
-            $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
-
-        }
-            
-    });
-    });
-            $("#select").change( function() {
+           /* $("#select").change( function() {
                 if ($(this).val() === "") {
                     $(".siguiente1").hide();
                     $(".guardar1").show();
@@ -433,8 +456,7 @@ $(document).ready(function(){
                     $(".siguiente1").show();
                     $(".guardar1").hide();
                 }
-            });
-
+            });*/
             $("#btn").click( function() {
                 var $r = $("#select").val();
                 if ($r === "Empleado") {
@@ -445,7 +467,6 @@ $(document).ready(function(){
                     $(".cliente3").hide();
                     $(".empresario").show();
                 } 
-
                 $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
                 $("#TipoClienteEmpleado").val($("#select").val());
 
@@ -478,7 +499,6 @@ $(document).ready(function(){
                     $(".cliente3").show();
                 }
             }); 
-
             $("#btnTabsEmpleado").click( function() {
                 var $r3 = $("#select").val();
                 if ($r3 === "Empleado") {

@@ -93,6 +93,12 @@
                                                                 <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
                                                             </div>
                                                         </div>
+                                                        <div class="row">
+                                                            <a id="btnFoto" class="btn btn-success" data-toggle="modal" data-target="#myModalEdit">Tomar foto</a>
+
+
+                                                            
+                                                        </div>
                                                         <ul class="pull-right">
                                                             <li><button type="button" class="btn btn-primary waves-effect waves-light m-b-5 next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
                                                         </ul>
@@ -212,7 +218,7 @@
                                                             <li>
                                                                 <button type="button" id="atras0" class="btn btn-default waves-effect waves-light m-b-5 prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
                                                                 <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                                <button  type="submit" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                                                                <a  id="btnGuardar" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</a>
                                                                 <a id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</a></li>
                                                         </ul>
                                                     </div>
@@ -341,14 +347,47 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
+<!--MODAL PARA LA FOTO-->
+<!-- MODAL PARA EDITAR --> 
+<div id="myModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
+            </div>
+            <div class="modal-body">
+                <video id="video" height="300" width="300"></video>
+                <br>
+                <button id="boton">Tomar foto</button>
+                <a id="Cancel">cancelar</a>
+                <p id="estado"></p>
+                <canvas id="canvas" style="display: none;"></canvas>                                 
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--FINAL DEL MODAL-->
+
 <script type="text/javascript">
 /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 
 $(document).ready(function(){
     //funcion para insertar los datos
     $("#btn").on("click",function(){
-        //evnt.preventDefault();
-        //alert('hola')
+        
+        Guardar()
+        
+    });
+    $("#btnGuardar").on("click",function(){
+        
+        Guardar()
+        
+    });
+    function Guardar(){
         $.ajax({
         url:"<?= base_url()?>Clientes/InsertarCliente",
         type:"POST",
@@ -359,11 +398,17 @@ $(document).ready(function(){
             alert(regi[0]['Id_Cliente']);
             $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
             $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+            $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+            $("#TipoClienteEmpleado").val($("#select").val());
 
-        }
-            
+            $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
+            $("#TipoClienteEmpresario").val($("#select").val());
+            if(regi[0]['Tipo_Cliente']=="Otro" || regi[0]['Tipo_Cliente']==""){
+                self.location ="<?= base_url()?>Clientes/gestionarCliente";
+            }
+        }     
     });
-    });
+    }
     //final de la funcion para insertar los datos
    $("#cbbDepartamentos").change(function () {
       
@@ -395,10 +440,70 @@ $(document).ready(function(){
    });   
 });
 /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-</script>
-    <script type="text/javascript">
+/*FUNCION PARA TOMAR LA FOTO*/
 
+function tieneSoporteUserMedia() {
+    //VALIDAR EL NAVEGADOR Y SI ES COMPATIBLE
+    return !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+}
+function _getUserMedia() {
+    //USAR EL ELEMENTO MEDIA QUE ES PARA ACCEDER A LA CAMARA
+    return (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
+}
         $( function() {
+            $("#btnFoto").click(function(){
+                // Declaramos elementos del DOM
+            var $video = document.getElementById("video"),
+                $canvas = document.getElementById("canvas"),
+                $boton = document.getElementById("boton"),
+                $estado = document.getElementById("estado");
+            if (tieneSoporteUserMedia()) {
+            _getUserMedia(
+                {video: true},
+                function (stream) {
+                    console.log("Permiso concedido");
+                    //$video.src = window.URL.createObjectURL(stream);
+
+                    $video.srcObject=stream;
+                    $video.play();
+                    //Escuchar el click
+                    $boton.addEventListener("click", function(){
+                        //Pausar reproducción
+                        $video.pause();
+                        //Obtener contexto del canvas y dibujar sobre él
+                        var contexto = $canvas.getContext("2d");
+                        $canvas.width = $video.videoWidth;
+                        $canvas.height = $video.videoHeight;
+                        contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
+                        var foto = $canvas.toDataURL(); //Esta es la foto, en base 64
+                        $estado.innerHTML = "Enviando foto. Por favor, espera...";
+                        var xhr = new XMLHttpRequest();
+                        var dui="2222222";
+                        xhr.open("POST", "TomarFoto?dui="+dui, true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.send(encodeURIComponent(foto)); //Codificar y enviar
+                        xhr.onreadystatechange = function() {
+                            if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                                console.log("La foto fue enviada correctamente");
+                                console.log(xhr);
+                                $estado.innerHTML = "Foto guardada con éxito. Puedes verla <a target='_blank' href='./" + xhr.responseText + "'> aquí</a>";
+                                alert(xhr.responseText);//AQUI ESTA LA RUTA DE LA IMAGEN
+                                $video.pause();//PAUSAR EL VIDEO
+                                stream.stop();//CERRAR LA CAMARA
+                                //$video.src="";
+                                }
+                            }
+                            });
+                        }, 
+                        function (error) {
+                            console.log("Permiso denegado o error: ", error);
+                            $estado.innerHTML = "No se puede acceder a la cámara, o no diste permiso.";
+                        });
+                } else {
+                    alert("Lo siento. Tu navegador no soporta esta característica");
+                    $estado.innerHTML = "Parece que tu navegador no soporta esta característica. Intenta actualizarlo.";
+                }
+            });
             $("#select").change( function() {
                 if ($(this).val() === "") {
                     $(".siguiente1").hide();
