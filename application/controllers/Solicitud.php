@@ -137,4 +137,25 @@ class Solicitud extends CI_Controller {
 
 		}
 	}
+
+
+	public function DetalleSolicitud($id)
+	{
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$datos = $this->Solicitud_Model->DetalleSolicitud($id);
+		$data = array('datos' => $datos );
+		$this->load->view('Solicitud/detalle_solicitud', $data);
+		$this->load->view('Base/footer');
+	}
+
+	public function ActualizarSolicitud($id)
+	{
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$datos = $this->Solicitud_Model->DetalleSolicitud($id);
+		$data = array('datos' => $datos );
+		$this->load->view('Solicitud/actualizar_solicitud', $data);
+		$this->load->view('Base/footer');
+	}
 }

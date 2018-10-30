@@ -89,7 +89,7 @@ class Solicitud_Model extends CI_Model
 	   $estado = 1;
 
 	   // Guardando la solicitud
-	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estado, idCliente, idLineaPlazo, idEstadoSolicitud)
+	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estadoSolicitud, idCliente, idLineaPlazo, idEstadoSolicitud)
 	   		   VALUES('$codigoSolicitud', '$fechaRecibido', '$observaciones', '$estado', '$idCliente', '$idLineaPlazo', '$idEstadoSolicitud')";
 	    if ($this->db->query($sql))
 		{
@@ -102,7 +102,7 @@ class Solicitud_Model extends CI_Model
 			}
 
 			// Guardando datos de la amortizacion
-			$sql3 = "INSERT INTO tbl_amortizaciones(tasaInteres, capital, totalInteres, totalIva, ivaInteresCapital, plazoMeses, pagoCuota, cantidadCuota, estado, idSolicitud)
+			$sql3 = "INSERT INTO tbl_amortizaciones(tasaInteres, capital, totalInteres, totalIva, ivaInteresCapital, plazoMeses, pagoCuota, cantidadCuota, estadoAmortizacion, idSolicitud)
 			VALUES('$tasaInteres', '$capital', '$totalInteres', '$totalIva', '$ivaInteresCapital', '$plazoMeses', '$pagoCuota', '$cantidadCuota', '$estado', '$idSoli')";
 			if ($this->db->query($sql3))
 			{
@@ -147,6 +147,19 @@ class Solicitud_Model extends CI_Model
 		{
 			return false;
 		}
+	}
+
+	public function DetalleSolicitud($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_solicitudes');
+		$this->db->join('tbl_amortizaciones', 'tbl_amortizaciones.idSolicitud = tbl_solicitudes.idSolicitud');
+		$this->db->join('tbl_clientes', 'tbl_clientes.Id_Cliente = tbl_solicitudes.idCliente');
+		$this->db->join('tbl_plazos_prestamos', 'tbl_plazos_prestamos.id_plazo = tbl_solicitudes.idLineaPlazo');
+		$this->db->join('tbl_estados_solicitud', 'tbl_estados_solicitud.id_estado = tbl_solicitudes.idEstadoSolicitud');
+		$this->db->where('tbl_solicitudes.idSolicitud', $id);
+		$datos = $this->db->get();
+		return $datos;
 	}
 
 }
