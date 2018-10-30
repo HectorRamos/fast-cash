@@ -4,7 +4,7 @@
 
     var FormValidator = function() {
         //####################### FORMULARIO DE CLIENTE #######################
-        this.$FormNuevoCliente = $("#FormNuevoCliente");
+        this.$FormNuevoCliente1 = $("#basic-form");
         this.$FormNuevoClienteEmpleado = $("#FormNuevoClienteEmpleado");
         this.$FormNuevoClienteEmpresario = $("#FormNuevoClienteEmpresario");
 
@@ -38,7 +38,7 @@
     FormValidator.prototype.init = function() {
         //####################### FORMULARIO DE CLIENTE #######################
         // VALIDACION DE FORMULARIO NUEVO CLIENTE
-        this.$FormNuevoCliente.validate({
+        this.$FormNuevoCliente1.validate({
             rules: {
                 Nombre_Cliente: "required",
                 Apellido_Cliente: "required",
@@ -278,7 +278,6 @@
                 cboGenero: "required",
                 txtDui: "required",
                 txtCargo: "required",
-                txtProfesion: "required",
                 txtTelefono: "required",
                 txtEmail: { email: true },
                 txtDireccion: "required",
@@ -290,7 +289,6 @@
                 cboGenero: "Por favor, seleccione un genero del empleado",
                 txtDui: "Por favor, digite el número de dui del empleado",
                 txtCargo: "Por favor, escriba el cargo del empleado",
-                txtProfesion: "Por favor, escriba la profesión del empleado",
                 txtTelefono: "Por favor, digite el número de teléfono del empleado",
                 txtEmail: "Por favor, escriba el email del empleado correctamente",
                 txtDireccion: "Por favor, escriba la dirección del empleado",
@@ -308,7 +306,6 @@
                 cboGenero: "required",
                 txtDui: "required",
                 txtCargo: "required",
-                txtProfesion: "required",
                 txtTelefono: "required",
                 txtEmail: { email: true },
                 txtDireccion: "required",
@@ -320,10 +317,9 @@
                 cboGenero: "Por favor, seleccione un genero del empleado",
                 txtDui: "Por favor, digite el número de dui del empleado",
                 txtCargo: "Por favor, escriba el cargo del empleado",
-                txtProfesion: "Por favor, escriba la profesión del empleado",
                 txtTelefono: "Por favor, digite el número de teléfono del empleado",
-                txtEmail: "Por favor, escriba el email del empleado",
-                txtDireccion: "Por favor, escriba la dirección del empleado correctamente",
+                txtEmail: "Por favor, escriba el email del empleado correctamente",
+                txtDireccion: "Por favor, escriba la dirección del empleado",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }

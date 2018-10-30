@@ -59,6 +59,7 @@
         <!--form validation-->
         <script src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/jquery.validate/form-validation-init.js"></script>
+        <script src="<?= base_url() ?>plantilla/assets/jquery.validate/parsley.min.js"></script>
 
         <!-- Data table -->
         <script src="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.js"></script>
@@ -101,33 +102,32 @@
 </script>
 <!-- SCRIPT CALENDARIO -->
 <script type="text/javascript">
-$(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
+// $(document).ready(function () {
+    //Initialize toolti
     //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-        var $target = $(e.target);
-        if ($target.parent().hasClass('disabled')) {
-            return false;
-        }
-    });
-    $(".next-step").click(function (e) {
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
-    });
-    $(".prev-step").click(function (e) {
-        var $active = $('.wizard .nav-tabs li.active');
-        prevTab($active);
-    });
-});
+//     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+//         var $target = $(e.target);
+//         if ($target.parent().hasClass('disabled')) {
+//             return false;
+//         }
+//     });
+//     $(".next-step").click(function (e) {
+//         var $active = $('.wizard .nav-tabs li.active');
+//         $active.next().removeClass('disabled');
+//         nextTab($active);
+//     });
+//     $(".prev-step").click(function (e) {
+//         var $active = $('.wizard .nav-tabs li.active');
+//         prevTab($active);
+//     });
+// });
 
-function nextTab(elem) {
-    $(elem).next().find('a[data-toggle="tab"]').click();
-}
-function prevTab(elem) {
-    $(elem).prev().find('a[data-toggle="tab"]').click();
-}
+// function nextTab(elem) {
+//     $(elem).next().find('a[data-toggle="tab"]').click();
+// }
+// function prevTab(elem) {
+//     $(elem).prev().find('a[data-toggle="tab"]').click();
+// }
 </script>
 
 <!-- SCRIPT CALENDARIO -->

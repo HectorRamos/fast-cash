@@ -74,7 +74,7 @@
                     <div class="form-group col-md-6">
                       <label for="cboGenero">Genero</label>
                       <select class="form-control" id="cboGenero" name="cboGenero">
-                        <option value="select">..::Selecionar::..</option>
+                        <option value="">..::Selecionar::..</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Otros">Otro</option>

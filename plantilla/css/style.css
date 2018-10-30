@@ -3613,7 +3613,7 @@ input.style[readonly]{
   min-height: 35px;
 }
 
-/*************************** ESTILO DE TABS *************************************/
+/*************************** ESTILO DE TABS CLIENTES *************************************/
 .nav-tabs-dropdown {
     background: #ddd;
     display: block;
@@ -3643,6 +3643,12 @@ ul li {
       border-radius: 2px;
     }
 
+.nav-tabs > li > a, 
+.nav-tabs > li.active > a{
+    font-weight: bold; 
+    font-size: 18px;
+
+}
 .nav-tabs > li.active > a, 
 .nav-tabs > li > a:hover { 
 /*  border: none; */
@@ -3725,3 +3731,74 @@ ul li {
     border-radius: 10px;
     border: 1px solid #58D68D;
   }
+  .mar_che_cobrar1{
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*margin: 15px;*/
+    background-color: #D6EAF8;
+    border-radius: 10px;
+    border: 1px solid #7FB3D5;
+  }
+  .mar_che_cobrar2{
+    padding-top: 8px;
+    padding-bottom: -100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*position: relative;*/
+    margin-bottom: 15px;
+    background-color: #EAFAF1;
+    border-radius: 10px;
+    border: 1px solid #ABEBC6;
+  }
+  .mar_che_cobrar3{
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*position: relative;*/
+    margin-bottom: 15px;
+    background-color: #EAFAF1;
+    border-radius: 10px;
+    border: 1px solid #ABEBC6;
+  }
+  /*********************************Diseño de validacion********************************/
+.parsley-errors-list li.parsley-required {
+    /*padding: 10px;*/
+    color: red;
+}
+            
+select.parsley-success,
+textarea.parsley-success {
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+    /*margin-left: 50px;*/
+} 
