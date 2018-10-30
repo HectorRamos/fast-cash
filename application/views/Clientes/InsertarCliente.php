@@ -46,13 +46,13 @@
                                         <li role="presentation" class="disabled" id="tabsEmpleado"><a href="#empleado" id="btnTabsEmpleado" class="btn-block waves-effect waves-light" aria-controls="empleado" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Información tipo del Cliente</a></li>
                                     <div class="clearfix"></div>
                                   </ul>
-
                                   <!-- Tab panes --> 
                                   <div class="tab-content margn top">
                                     <!--Tab Panel 1-->
                                     <div class="tab-pane active" role="tabpanel" id="cliente1">
-                                       <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente" autocomplete="off">
-                                            <div class="mar_che_cobrar2">
+                                       <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente" class="demo-form" autocomplete="off">
+                                       <div class="row form-section">
+                                       <div class="mar_che_cobrar2">
                                                 <div class="row">
                                                     <div class="form-group col-md-3">
                                                             <label for="Tipo_Cliente">Tipo de cliente</label>
@@ -65,7 +65,7 @@
                                                     <div class="form-group col-md-6"></div>
                                                     <div class="form-group col-md-3">
                                                             <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                            <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual" required data-parsley-required-message="Por favor, digite un ingreso">
+                                                            <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso">
                                                     </div>
                                                 </div>    
                                             </div>    
@@ -125,7 +125,7 @@
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="Email_Cliente">Email</label>
-                                                                <input type="text" class="form-control" id="Email_Cliente" name="Email_Cliente" placeholder="Email">
+                                                                <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -163,27 +163,31 @@
                                                             <div class="form-group col-md-6">
                                                                 <label for="Observaciones">Observaciones</label>
                                                                 <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
+                                                                <input type="text" hidden name="urlImg" id="urlImg">
                                                             </div>
                                                         </div>
+                                       
+                                           
+                                       </div><!--FIN DEL DIV PARA VALIDAR-->
+                                            
                                                         <ul class="list-inline pull-left">
-                                                            <li><a class="btn btn-info waves-effect waves-light m-b-5"><i class="fa fa-camera fa-lg"></i> Foto</a></li>
+                                                            <li><a id="btnFoto" class="btn btn-info waves-effect waves-light m-b-5" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-camera fa-lg"></i> Agregar Foto</a></li>
                                                         </ul>
                                                         <ul class="pull-right">
-                                                            <li>
+                                                            <li><!--**********BOTONES**************-->
                                                                 <a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                                <button type="submit" id="btnGuardar" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</button> 
+                                                                <a  id="btnGuardar" class="btn btn-success waves-effect waves-light m-b-5 btn-info-full guardar1"><i class="fa fa-save fa-lg"></i> Guardar</a> 
                                                                 <a id="btn" class="btn btn-primary waves-effect waves-light m-b-5 next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</a>
                                                             </li>
                                                         </ul>
                                                      </form>
                                                     </div>
-
                                                 <!--Final del formulario Para insertar-->
                                                 <!--Tab Panel 4-->
                                                 <!--Tab Panel 4.1-->
                                                 <!--FORMULARIO PARA INSERTAR DATOS LABORALES DEL CLIENTE-->
                                                     <div role="tabpanel" class="tab-pane empleado" style="display: none;">
-                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
+                                                <form id="DLaborales" role="form" method="POST" action="<?= base_url()?>Clientes/datosLaborales" autocomplete="off">
                                                         <div class="mar_che_cobrar3">
                                                             <div class="row">
                                                                 <div class="form-group col-md-6">
@@ -236,7 +240,7 @@
                                                 <!--Tab Panel 4.2-->
                                                 <!--FORMULARIO PARA INSERTAR DATOS DEL NEGOCIO DEL CLIENTE-->
                                                     <div role="tabpanel" class="tab-pane empresario" style="display: none;">
-                                                <form role="form" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
+                                                <form id="DNegocio" role="form" method="POST" action="<?= base_url()?>Clientes/datosNegocio" autocomplete="off">
                                                         <div class="mar_che_cobrar3">
                                                             <div class="row">
                                                               <div class="form-group col-md-6">
@@ -301,91 +305,147 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
+<!--MODAL PARA LA FOTO-->
+<!-- MODAL PARA EDITAR --> 
+<div id="myModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
+            </div>
+            <div class="modal-body" >
+                <div id="errorFoto" style="display:none;" class="alert alert-danger">
+                <h4>Por favor complete los campos requeridos para poder agregar la foto</h4> 
+                </div>
+                <video id="video" height="300" width="300"></video>
+                <br>
+                <button class="btn btn-success" id="boton">Tomar foto</button>
+                <a class="btn btn-danger" id="Cancel"  data-dismiss="modal" aria-hidden="true">Cerrar</a>
+                <p id="estado"></p>
+                <canvas id="canvas" style="display: none;"></canvas>                                 
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<!--FINAL DEL MODAL-->
 <script>
 $(document).ready( function() {
    $('input, select, textarea').parsley();
-   $('#btn').click( function(event) {
-      event.preventDefault();
-      var isValid = true;
-      $('input, select, textarea').each( function() {
-         if ($(this).parsley().validate() !== true) isValid = false;
-      });
-
-      if (isValid) {
-        var $r = $("#select").val();
-        if ($r === "Empleado") {
-            $("#cliente1").hide();
-            $(".empleado").show();
-        } 
-        if ($r === "Empresario") {
-            $("#cliente1").hide();
-            $(".empresario").show();
-        }
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
-
-        function nextTab(elem) {
-            $(elem).next().find('a[data-toggle="tab"]').click();
-        }
-      }
-   });
-
-$('#btnGuardar').click( function(event) {
-      event.preventDefault();
-      var isValid = true;
-      $('input, select, textarea').each( function() {
-         if ($(this).parsley().validate() !== true) isValid = false;
-      });
-   });
-
-$('#btnTipoEmpleado').click( function(event) {
-      event.preventDefault();
-      var isValid = true;
-      $('input, select, textarea').each( function() {
-         if ($(this).parsley().validate() !== true) isValid = false;
-      });
-   });
-$('.btnTipoEmpresario').click( function(event) {
-      event.preventDefault();
-      var isValid = true;
-      $('input, select, textarea').each( function() {
-         if ($(this).parsley().validate() !== true) isValid = false;
-      });
-   });
-});
-</script>
-<script type="text/javascript">
-/*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-$(document).ready(function(){
-    //funcion para insertar los datos
-    $("#btn").on("click",function(){
-
-        //evnt.preventDefault();
-        //alert('hola')
-        $.ajax({
-        url:"<?= base_url()?>Clientes/InsertarCliente",
-        type:"POST",
-        data:$('#basic-form').serialize(),
-        success:function(respuesta){
-            document.getElementById("Nombre_Cliente").value="";
-            document.getElementById("Apellido_Cliente").value="";
-            var regi=eval(respuesta);
-            $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
-            $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
-
-        }
-            
+   //*********************************CODIGO PARA VALIDAR BOTON GUARDAR************************************************
+    function curIndex() {
+    // Return the current index by looking at which section has the class 'current'
+    return $sections.index($sections.filter('.current'));
+    }
+    var $sections = $('.form-section');
+   $('#btnGuardar').click(function(){
+    $sections
+      .removeClass('current')
+      .eq(0)
+      .addClass('current');
+    $('.demo-form').parsley().whenValidate({
+        group: 'block-' + curIndex()
+        }).done(function() {
+            $.ajax({
+                url:"<?= base_url()?>Clientes/InsertarCliente",
+                type:"POST",
+                data:$('#basic-form').serialize(),
+                success:function(respuesta){
+                    //alert('hola');
+                    var regi=eval(respuesta);
+                    //alert(regi[0]['Id_Cliente']);
+                    $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
+                    $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+                    $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+                    $("#TipoClienteEmpleado").val($("#select").val());
+                    $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
+                    $("#TipoClienteEmpresario").val($("#select").val());
+                    if(regi[0]['Tipo_Cliente']=="Otro" || regi[0]['Tipo_Cliente']==""){
+                        self.location ="<?= base_url()?>Clientes/gestionarCliente";
+                    }
+                }     
+            });
+        });
     });
+    // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
+    $sections.each(function(index, section) {
+        $(section).find('input, select, textarea').attr('data-parsley-group', 'block-' + index);
     });
-    //final de la funcion para insertar los datos
+   //************************* FIN DEL CODIGO PARA VALIDAR EL BOTON GUARDAR********************************************
+   //*************************CODIGO PARA VALIDAR OTRO BOTON SIGUIENTE*************************************************
+    $('#btn').click(function(){
+    $sections
+      .removeClass('current')
+      .eq(0)
+      .addClass('current');
+    $('.demo-form').parsley().whenValidate({
+        group: 'block-' + curIndex()
+        }).done(function() {
+            $.ajax({
+                url:"<?= base_url()?>Clientes/InsertarCliente",
+                type:"POST",
+                data:$('#basic-form').serialize(),
+                success:function(respuesta){
+                    //alert('hola');
+                    var regi=eval(respuesta);
+                    //alert(regi[0]['Id_Cliente']);
+                    $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
+                    $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
+                    $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+                    $("#TipoClienteEmpleado").val($("#select").val());
+                    $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
+                    $("#TipoClienteEmpresario").val($("#select").val());
+                    if(regi[0]['Tipo_Cliente']=="Otro" || regi[0]['Tipo_Cliente']==""){
+                        self.location ="<?= base_url()?>Clientes/gestionarCliente";
+                    }
+                    else{
+                        var $r = $("#select").val();
+                        if ($r === "Empleado") {
+                            $("#cliente1").hide();
+                            $(".empleado").show();
+                        } 
+                        if ($r === "Empresario") {
+                            $("#cliente1").hide();
+                            $(".empresario").show();
+                        }
+                            var $active = $('.wizard .nav-tabs li.active');
+                            $active.next().removeClass('disabled');
+                            nextTab($active);
+                            function nextTab(elem) {
+                                $(elem).next().find('a[data-toggle="tab"]').click();
+                        }
+                    }
+                }     
+            });
+        });
+    });
+//*************************FIN DEL CODIGO PARA VALIDAR BOTON SIGUIENTE******************************************
+
+
+//*************************CODIGO PARA VALIDAR FORMULARIO DE DATOS DE EMPLEADOS*********************************
+    //Aqui no se ejecuta el envento click del boton si no el evento submit del formulario
+   $('#DLaborales').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  });
+//*************************FIN DEL CODIGO PARA VALIDAR FORMULARIO DE EMPLEADOS********************************
+
+//*************************CODIGO PARA VALIDAR FORMULARIO DE DATOS DE NEGOCIO*********************************
+   //Aqui no se ejecuta el envento click del boton si no el evento submit del formulario
+   $('#DNegocio').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  });
+//*************************FIN DEL CODIGO PARA VALIDAR FORMULARIO DE DATOS DE NEGOCIO*************************
    $("#cbbDepartamentos").change(function () {
-      
       $('#cbbMunicipios').each(function(){
           $('#cbbMunicipios option').remove();
       })
-
       $.ajax({
              url: "obtenerMunicipios",
              type: "GET",
@@ -404,37 +464,97 @@ $(document).ready(function(){
                 }
              });
 
-   });   
+   });
+
+/*|||||||--------FUNCION PARA TOMAR LA FOTO----------------||||||*/
+
+function tieneSoporteUserMedia() {
+    //VALIDAR EL NAVEGADOR Y SI ES COMPATIBLE
+    return !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+}
+function _getUserMedia() {
+    //USAR EL ELEMENTO MEDIA QUE ES PARA ACCEDER A LA CAMARA
+    return (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
+}
+$("#btnFoto").click(function(){
+   // Declaramos elementos del DOM
+   var dui=$('#Dui_Cliente').val();
+   if(dui==""){
+    //alert('error');
+    document.getElementById('errorFoto').style.display='block';
+   }else{
+    document.getElementById('errorFoto').style.display='none';
+    var $video = document.getElementById("video"),
+    $canvas = document.getElementById("canvas"),
+    $boton = document.getElementById("boton"),
+    $estado = document.getElementById("estado");
+    if (tieneSoporteUserMedia()) {
+        _getUserMedia(
+        {video: true},
+        function (stream) {
+            console.log("Permiso concedido");
+            //$video.src = window.URL.createObjectURL(stream);
+            $video.srcObject=stream;
+            $video.play();
+            //Escuchar el click
+            $boton.addEventListener("click", function(){
+                //Pausar reproducción
+                $video.pause();
+                //Obtener contexto del canvas y dibujar sobre él
+                var contexto = $canvas.getContext("2d");
+                $canvas.width = $video.videoWidth;
+                $canvas.height = $video.videoHeight;
+                contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
+                var foto = $canvas.toDataURL(); //Esta es la foto, en base 64
+                $estado.innerHTML = "Enviando foto. Por favor, espera...";
+                var xhr = new XMLHttpRequest();
+                //var dui="2222222";
+                xhr.open("POST", "TomarFoto?dui="+dui, true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(encodeURIComponent(foto)); //Codificar y enviar
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                        console.log("La foto fue enviada correctamente");
+                        console.log(xhr);
+                        $estado.innerHTML = "Foto guardada con éxito. Puedes verla <a target='_blank' href='./" + xhr.responseText + "'> aquí</a>";
+                        //alert(xhr.responseText);//AQUI ESTA LA RUTA DE LA IMAGEN
+                        $('#urlImg').val(xhr.responseText);
+                        $video.pause();//PAUSAR EL VIDEO
+                        stream.stop();//CERRAR LA CAMARA
+                                //$video.src="";
+                    }
+                }
+            });
+        }, 
+        function (error) {
+            console.log("Permiso denegado o error: ", error);
+            $estado.innerHTML = "No se puede acceder a la cámara, o no diste permiso.";
+        });
+    }
+    else{
+        alert("Lo siento. Tu navegador no soporta esta característica");
+        $estado.innerHTML = "Parece que tu navegador no soporta esta característica. Intenta actualizarlo.";
+    }
+}
 });
-/*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-</script>
-<script type="text/javascript">
 
-    $( function() {
-        $("#select").change( function() {
-            if ($(this).val() === "Otro") {
-                $(".siguiente1").hide();
-                $(".guardar1").show();
-            }
-            if ($(this).val() === "Empleado") {
-                $(".siguiente1").show();
-                $(".guardar1").hide();
-            } 
-            if ($(this).val() === "Empresario") {
-                $(".siguiente1").show();
-                $(".guardar1").hide();
-            }
-        });
-
-        $(".siguiente1").click( function() {
-            var $n1 = $("#Nombre_Cliente").val();
-            var $a1 = $("#Apellido_Cliente").val();
-            var $hg = $n1 + " "+ $a1;
-            $("#NombreTipoClienteEmpleado").text($hg);
-            $("#TipoClienteEmpleado").text($("#select").val());
-
-            $("#NombreTipoClienteEmpresario").text($hg);
-            $("#TipoClienteEmpresario").text($("#select").val());
-        });
-    });
+$("#select").change( function() {
+                if ($(this).val() === "") {
+                    $(".siguiente1").hide();
+                    $(".guardar1").show();
+                }
+                if ($(this).val() === "Otro") {
+                    $(".siguiente1").hide();
+                    $(".guardar1").show();
+                }
+                if ($(this).val() === "Empleado") {
+                    $(".siguiente1").show();
+                    $(".guardar1").hide();
+                } 
+                if ($(this).val() === "Empresario") {
+                    $(".siguiente1").show();
+                    $(".guardar1").hide();
+                }
+            });
+});
 </script>

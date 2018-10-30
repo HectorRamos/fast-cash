@@ -270,9 +270,13 @@
                 var registro = eval(respuesta);
                     if (registro.length > 0)
                     {
-                    	html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+"'></div>";
-                    	html +="<div class='col-sm-6'><label>Apellido:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Apellido_Cliente']+"'></div></div>";
-
+                    	html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+" "+registro[0]['Apellido_Cliente']+"'></div>";
+                      if(registro[0]['urlImg']==""){
+                        html +="<div class='col-sm-6'><label>Sin foto&nbsp;</label></div></div>";
+                      }
+                      else{
+                        html +="<div class='col-sm-6'><img height='100' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"'></img></div></div>";
+                      }
                     	//html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Estado civil:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div></div>";
 
@@ -288,11 +292,13 @@
                     	html +="<div class='row'><div class='col-sm-6'><label>DUI:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['DUI_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>NIT:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT_Cliente']+"'></div></div>";
 
-                    	html +="<div class='row'><div class='col-sm-6'><label>Fecha de ingreso al sistema:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Fecha_Registro_Cliente']+"'></div>";
+                    	html +="<div class='row'><div class='col-sm-6'><label>Correo:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['email']+"'></div>";
+                      
                     	html +="<div class='col-sm-6'><label>Departamento:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Departamento']+"'></div></div>";
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Municipio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Municipio']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Profesión u Oficio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Profesion_Cliente']+"'></div></div>";
+                      html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['ingreso']+"'></div></div>";
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Tipo de cliente:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Cliente']+"'></div>";
                     	html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones_Cliente']+"'></div></div>";
@@ -308,7 +314,8 @@
                     		html +="<div class='col-sm-6'><label>Teléfono:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div></div>";
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Rubro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Rubro']+"'></div>";
-                    		html +="<div class='col-sm-6'><label>Igreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
+                        html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones']+"'></div></div>";
+                    		
                     		html+="</ol></ul>"
                     	}
                     	else if(registro[0]['Tipo_Cliente']=="Empresario"){
@@ -321,12 +328,13 @@
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
                     		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div></div>";
+                       
 
-                    		html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Ingreso_Mensual']+"'></div></div>";
+                    		
                         html+="</ul>"
                       }
                       else if(registro[0]['Tipo_Cliente']=="Otro"){
-                        html+="<div class='alert alert-success'><h4>Este cliente tiene otro tipo de ingresos el cual tienen un monto de: ..... aqui irian los ingresos nada mas</h4></div>"
+                        html+="<div class='alert alert-success'><h4>Cliente con fuente de ingresos diferentes</h4></div>"
                       }
                       html+="<br><div align='center'><button type='button' class='btn btn-default block waves-effect waves-light m-b-5' data-dismiss='modal'><i class='fa fa-close fa-lg'></i> Cerrar</button></div>";
                         document.getElementById('DivEmpleado').style.display='none';

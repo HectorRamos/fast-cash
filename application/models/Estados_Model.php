@@ -3,7 +3,7 @@
 class Estados_Model extends CI_Model{
 
 	public function GetEstados(){
-		$this->db->where('visible', 1);
+		$this->db->where('estado', 1);
 		$res=$this->db->GET('tbl_estados_solicitud');
 		return $res;
 	}
@@ -11,9 +11,9 @@ class Estados_Model extends CI_Model{
 		if($datos!=null){
 			$fecha = date("Y/m/d");
 			$data =array(
-				'estado'=> $datos['estado'],
-				'fecha_registro' => $fecha,
-				'visible'=>1
+				'nombreEstado'=> $datos['nombreEstado'],
+				//'fecha_registro' => $fecha,
+				'estado'=>1
 				);
 			if($this->db->insert('tbl_estados_solicitud', $data)){
 				return true;
@@ -49,7 +49,7 @@ class Estados_Model extends CI_Model{
 	public function ocultarEstado($id){
 	
 			
-			$datos = array('visible'=>2);
+			$datos = array('estado'=>2);
 			$this->db->where('id_estado', $id);
 			if($this->db->update('tbl_estados_solicitud', $datos))
 			{

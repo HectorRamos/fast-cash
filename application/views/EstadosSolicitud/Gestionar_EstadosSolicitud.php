@@ -71,12 +71,12 @@
                                                   <tbody class="tbody tbody1">
                                                   <?php
                                                   foreach ($datos->result() as  $estado) {
-                                                    $estadoN="'".$estado->estado."'";
+                                                    $estadoN="'".$estado->nombreEstado."'";
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
                                                       <td class="td td1" width="300"><b><?= $estado->id_estado?></b></td>
-                                                      <td class="td td1" ><?= $estado->estado?></td>
+                                                      <td class="td td1" ><?= $estado->nombreEstado?></td>
                                                       <td class="td td1">
                                                       <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
@@ -112,7 +112,7 @@
               <div class="margn">
                 <div class="form-group">
                     <label for="estado">Nombre del estado</label>
-                      <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="estado" placeholder="Estado">
+                      <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="nombreEstado" placeholder="Estado">
                 </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
@@ -140,11 +140,11 @@
                 <div class="form-group">
                     <label for="estado1">Nombre del estado</label>
                     <input type="hidden" name="id_estado" id="id_estado">
-                    <input type="text" class="form-control" id="estado1" name="estado" placeholder="Estado" required="No puede dejar este campo vacio">
+                    <input type="text" class="form-control" id="estado1" name="nombreEstado" placeholder="Estado" required="No puede dejar este campo vacio">
                 </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button onclick="limpiar()" type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
               </div>
             </form>                                  
@@ -154,7 +154,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal --> 
-
 <!--MODAL PARA ELIMINAR DATOS-->
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
