@@ -35,11 +35,10 @@
                                 <table id="datatable" class="table">
                                   <thead class="thead-dark thead thead1">
                                     <tr class="tr tr1">
-                                      <th class="th th1" scope="col">#</th>
+                                      <th class="th th1" scope="col">Estado</th>
                                       <th class="th th1" scope="col">Cliente</th>
                                       <th class="th th1" >Monto de dinero</th>
                                       <th class="th th1" >Fecha Recibida</th>
-                                      <th class="th th1" >Estado de las solicitud</th>
                                       <th class="th th1" >Acción</th>
                                     </tr>
                                   </thead>
@@ -65,16 +64,43 @@
                                         $observaciones = '"'.$solicitudes->observaciones.'"';
                                   	?>
                   									<tr class="tr tr1">
-                  										<td class="td td1"><?= $solicitudes->codigoSolicitud ?></td>
+                  										<td class="td td1 text-center">
+                                      <?php
+                                          switch ($solicitudes->estadoSolicitud)
+                                          {
+                                            case '1':
+                                              echo "<img title='Nueva Solicitud' src='".base_url()."/plantilla/images/estadosSolicitudes/new.png' width='30' height='30'>";
+                                              break;
+                                              case '2':
+                                              echo "<img title='Solicitud en Revisión' src='".base_url()."/plantilla/images/estadosSolicitudes/process.png' width='35' height='35'>";
+                                              break;
+                                              case '3':
+                                              echo "<img title='Solicitud aprobada' src='".base_url()."/plantilla/images/estadosSolicitudes/approved.png' width='30' height='30'>";
+                                              break;
+                                              case '4':
+                                              echo "<img title='Solicitud denegada' src='".base_url()."/plantilla/images/estadosSolicitudes/denied.png' width='30' height='30'>";
+                                              break;
+                                            
+                                            default:
+                                              # code...
+                                              break;
+                                          }
+                                      ?>
+                                      </td>
                   										<td class="td td1"><?= $solicitudes->Nombre_Cliente." ".$solicitudes->Apellido_Cliente ?></td>
                   										<td class="td td1">$<?= $solicitudes->ivaInteresCapital?></td>
                                       <td class="td td1"><?= $solicitudes->fechaRecibido ?></td>
-                  										<td class="td td1"><?= $solicitudes->estadoSolicitud ?></td>
                   										<td class="td td1" class="td td1">
                                       <?php 
                                         echo "<a onclick='actualizarPlazo($codigoSolicitud, $estadoSolicitud, $cliente, $tipoPrestamo, $fechaRegistro, $capital, $interes,
                                                                           $iva, $capitalPagar, $cuotaDiaria, $numeroCuotas, $observaciones)' title='Ver solicitud' data-toggle='modal' data-target='#modal_ver_solicitud' class='waves-effect waves-light ver'><i class='fa fa-info-circle'></i></a>";
                                        echo "<a title='Eliminar' onclick='Delete($idSolicitud)' class='waves-effect waves-light eliminar' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_eliminar_solicitud'><i class='fa fa-times-circle'></i></a>";
+                                       echo "<a title='Ver' href='".base_url()."Solicitud/DetalleSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-eye'></i></a>";
+                                        echo "<a title='Actualizar' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
+                                      /* if ($solicitudes->estadoSolicitud == 1 || $solicitudes->estadoSolicitud == 2)
+                                       {
+                                         echo "<a title='Actualizar' href='".base_url()."Solicitud/ActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
+                                       }*/
                                        ?>
                   											
                                         

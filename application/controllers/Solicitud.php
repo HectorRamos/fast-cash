@@ -137,4 +137,42 @@ class Solicitud extends CI_Controller {
 
 		}
 	}
+
+
+	public function DetalleSolicitud($id)
+	{
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$datos = $this->Solicitud_Model->DetalleSolicitud($id);
+		$data = array('datos' => $datos );
+		$this->load->view('Solicitud/detalle_solicitud', $data);
+		$this->load->view('Base/footer');
+	}
+
+	public function FrmActualizarSolicitud($id)
+	{
+		$plazos = $this->Solicitud_Model->obtenerPlazos();
+	
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$datos = $this->Solicitud_Model->DetalleSolicitud($id);
+		$data = array('datos' => $datos, 'plazos' => $plazos);
+		$this->load->view('Solicitud/actualizar_solicitud', $data);
+		$this->load->view('Base/footer');
+	}
+
+	public function ActualizarSolicitud($id)
+	{
+		$datos = $this->input->post();
+		$bool = $this->Solicitud_Model->ActualizarSolicitud($datos);
+		if($bool){
+				$this->session->set_flashdata("informa","Se creo exitosamente la solicitud !!!");
+				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al crear la solicitud");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
 }
