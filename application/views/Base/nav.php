@@ -34,7 +34,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesi�n</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -70,7 +70,7 @@
                                 <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span>Clientes</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar informaci�n de clientes</a></li>
+                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar información de clientes</a></li>
                                 </ul>
                             </li>
 
@@ -93,7 +93,7 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuraci�n</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuración</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>
@@ -112,7 +112,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
                         <i class="fa fa-th-large fa-lg text-success"></i>
                         Crear Solicitud

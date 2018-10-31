@@ -16,6 +16,18 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                     <!--Panel body aqui va la tabla con los datos-->
+                    <div class="panel-heading">
+                      <div class="table-title">
+                        <div class="row">
+                          <div class="col-sm-5">
+                            <h3 class="panel-title">Registro de solicitudes</h3>
+                          </div>
+                          <div class="col-sm-7">
+                              <a title="Nuevo" href="" data-toggle="modal" data-target=".modal_opcion_solicitud" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nueva Solicitud<span></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">

@@ -94,10 +94,18 @@
     </body>
 </html>
 <script type="text/javascript">
-    $(".validaTel").keypress( function (e){
-      telefo = (document.all) ? e.keyCode : e.which;
-      telefo = String.fromCharCode(telefo)
-      return /^[0-9\(+)-]+$/.test(telefo);
+    $(document).ready(function(){
+        $(".validaTel").keypress( function (e){
+          telefo = (document.all) ? e.keyCode : e.which;
+          telefo = String.fromCharCode(telefo)
+          return /^[0-9\()\-\+]+$/.test(telefo);
+        });
+
+        $(".validaDigit").keypress( function (e){
+          digits = (document.all) ? e.keyCode : e.which;
+          digits = String.fromCharCode(digits)
+          return /^[0-9\.]+$/.test(digits);
+        });
     });
 </script>
 <!-- SCRIPT CALENDARIO -->

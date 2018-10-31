@@ -192,7 +192,7 @@
                                                         </ul>
                                                     </div>
                                                 </form>
-                                                </div>
+                                                <!-- </div> -->
                                                 
                                                 <!--Final del formulario Para ACTUALIZAR-->
 

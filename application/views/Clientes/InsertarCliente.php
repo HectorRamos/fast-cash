@@ -65,7 +65,7 @@
                                                     <div class="form-group col-md-6"></div>
                                                     <div class="form-group col-md-3">
                                                             <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                            <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso">
+                                                            <input type="text" class="form-control validaDigit" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso">
                                                     </div>
                                                 </div>    
                                             </div>    
@@ -93,7 +93,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-3">
                                                                 <label for="Estado_Cliente">Estado Civil</label>
                                                                 <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                                                     <option value="Soltero/a">Soltero/a</option>
@@ -101,7 +101,7 @@
                                                                     <option value="Divorsiado/a">Divorciado/a</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-3">
                                                                 <label for="Genero_Cliente">Genero</label>
                                                                 <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
                                                                 <option value="Masculino">Masculino</option>
@@ -109,7 +109,11 @@
                                                                 <option value="Otro">Otro</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-3">
+                                                                <label for="Codigo_Cliente">Código</label>
+                                                                <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
+                                                            </div>
+                                                            <div class="form-group col-md-3">
                                                                 <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
                                                                 <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99" required data-parsley-required-message="Por favor, digite una fecha de nacimiento">
                                                             </div>
@@ -312,18 +316,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
+                    <h4 class="modal-title" id="myModalLabel">Foto de cliente</h4>
             </div>
             <div class="modal-body" >
                 <div id="errorFoto" style="display:none;" class="alert alert-danger">
                 <h4>Por favor complete los campos requeridos para poder agregar la foto</h4> 
                 </div>
-                <video id="video" height="300" width="300"></video>
+                <video id="video" width="200" style="width: 100%; height: auto;"></video>
                 <br>
-                <button class="btn btn-success" id="boton">Tomar foto</button>
-                <a class="btn btn-danger" id="Cancel"  data-dismiss="modal" aria-hidden="true">Cerrar</a>
+                <div align="center">
+                <button class="btn btn-success block waves-effect waves-light m-b-5" id="boton"><i class="fa fa-camera fa-lg"></i> Tomar foto</button>
+                <a class="btn btn-default block waves-effect waves-light m-b-5" id="Cancel"  data-dismiss="modal" aria-hidden="true"><i class="fa fa-close fa-lg"></i> Cerrar</a>
                 <p id="estado"></p>
                 <canvas id="canvas" style="display: none;"></canvas>                                 
+                </div>
             </div>
             <div class="modal-footer">
             </div>
