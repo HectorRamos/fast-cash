@@ -202,9 +202,15 @@
   $(document).on("ready", main);
   function main()
   {
-    $(".seleccionarCliente").on("click", agregarCliente);
+    $("#nombre_cliente").prop('readonly', true);
     $("#tasa_interes").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
+    $("#iva_pagar").prop('readonly', true);
+    $("#intereses_pagar").prop('readonly', true);
+    $("#cuota_diaria").prop('readonly', true);
+    $("#total_pagar").prop('readonly', true);
+
+    $(".seleccionarCliente").on("click", agregarCliente);
     $("#tipo_prestamo").on('change', activarIP);
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);

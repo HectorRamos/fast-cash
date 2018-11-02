@@ -166,13 +166,40 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$bool = $this->Solicitud_Model->ActualizarSolicitud($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se creo exitosamente la solicitud !!!");
+				$this->session->set_flashdata("informa","Se actualizo la solicitud !!!");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al crear la solicitud");
+			$this->session->set_flashdata("errorr","Error al actualizar la solicitud");
 			redirect(base_url()."Solicitud/");
 
 		}
+	}
+
+	public function ActualizarEstadoSolicitud($i)
+	{
+		$id = $_GET['id'];
+		$bool = $this->Solicitud_Model->ActualizarEstadoSolicitud($id, $i);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Se actualizo el estado la solicitud !!!");
+				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al actualizar el estado la solicitud");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
+
+	public function AgregarCredito()
+	{
+		$id = $_GET['k'];
+		$datos = $this->Solicitud_Model->obtenerSolicitud($id);
+		$data = array('id' => $id, 'datos' => $datos);
+
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$this->load->view('Solicitud/frm_agregar_credito', $data);
+		$this->load->view('Base/footer');
 	}
 }

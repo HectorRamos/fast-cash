@@ -1,3 +1,31 @@
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
@@ -66,7 +94,7 @@
                   									<tr class="tr tr1">
                   										<td class="td td1 text-center">
                                       <?php
-                                          switch ($solicitudes->estadoSolicitud)
+                                          switch ($solicitudes->idEstadoSolicitud)
                                           {
                                             case '1':
                                               echo "<img title='Nueva Solicitud' src='".base_url()."/plantilla/images/estadosSolicitudes/new.png' width='30' height='30'>";
@@ -92,15 +120,15 @@
                                       <td class="td td1"><?= $solicitudes->fechaRecibido ?></td>
                   										<td class="td td1" class="td td1">
                                       <?php 
-                                        echo "<a onclick='actualizarPlazo($codigoSolicitud, $estadoSolicitud, $cliente, $tipoPrestamo, $fechaRegistro, $capital, $interes,
-                                                                          $iva, $capitalPagar, $cuotaDiaria, $numeroCuotas, $observaciones)' title='Ver solicitud' data-toggle='modal' data-target='#modal_ver_solicitud' class='waves-effect waves-light ver'><i class='fa fa-info-circle'></i></a>";
+                                       // echo "<a onclick='actualizarPlazo($codigoSolicitud, $estadoSolicitud, $cliente, $tipoPrestamo, $fechaRegistro, $capital, $interes,
+                                       //                                    $iva, $capitalPagar, $cuotaDiaria, $numeroCuotas, $observaciones)' title='Ver solicitud' data-toggle='modal' data-target='#modal_ver_solicitud' class='waves-effect waves-light ver'><i class='fa fa-info-circle'></i></a>";
                                        echo "<a title='Eliminar' onclick='Delete($idSolicitud)' class='waves-effect waves-light eliminar' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_eliminar_solicitud'><i class='fa fa-times-circle'></i></a>";
                                        echo "<a title='Ver' href='".base_url()."Solicitud/DetalleSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-eye'></i></a>";
-                                        echo "<a title='Actualizar' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
-                                      /* if ($solicitudes->estadoSolicitud == 1 || $solicitudes->estadoSolicitud == 2)
+                                      //echo "<a title='Actualizar' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
+                                       if ($solicitudes->idEstadoSolicitud == 1 || $solicitudes->idEstadoSolicitud == 2)
                                        {
-                                         echo "<a title='Actualizar' href='".base_url()."Solicitud/ActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
-                                       }*/
+                                         echo "<a title='Actualizar' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
+                                       }
                                        ?>
                   											
                                         

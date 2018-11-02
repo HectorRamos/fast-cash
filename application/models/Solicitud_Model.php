@@ -203,6 +203,36 @@ class Solicitud_Model extends CI_Model
 		}
 	}
 
+	public function ActualizarEstadoSolicitud($id, $i)
+	{
+		switch ($i) {
+			case '1':
+				$sql = "UPDATE tbl_solicitudes SET idEstadoSolicitud='2' WHERE idSolicitud = '$id'";
+				break;
+			case '2':
+				$sql = "UPDATE tbl_solicitudes SET idEstadoSolicitud='4' WHERE idSolicitud = '$id'";
+				break;
+			default:
+				break;
+		}
+
+		if ($this->db->query($sql))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+	public function obtenerSolicitud($id)
+	{
+		$sql= "SELECT * FROM tbl_amortizaciones WHERE idSolicitud='$id'";
+		$datos = $this->db->query($sql);
+		return $datos;
+	}
 
 }
 
