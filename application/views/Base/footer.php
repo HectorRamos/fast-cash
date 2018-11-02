@@ -55,6 +55,8 @@
         <script src="<?= base_url() ?>plantilla/assets/select2/select2.min.js" type="text/javascript"></script>
         
         <script src="<?= base_url() ?>plantilla/assets/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+        <!--Dropzone-->
+        <script src="<?= base_url() ?>plantilla/js/dropzone.js"></script>
 
         <!--form validation-->
         <script src="<?= base_url() ?>plantilla/assets/jquery.validate/jquery.validate.min.js"></script>

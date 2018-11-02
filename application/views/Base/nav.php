@@ -66,6 +66,9 @@
                             <li>
                                 <a href="<?= base_url() ?>Home/Main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
                             </li>
+                             <li>
+                                <a href="<?= base_url() ?>Documentos/ViewInsertarDocumento" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Documentos</span></a>
+                            </li>
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span>Clientes</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">

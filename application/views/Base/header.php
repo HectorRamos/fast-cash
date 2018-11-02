@@ -21,6 +21,9 @@
         <!-- animate css -->
         <link href="<?= base_url() ?>plantilla/css/animate.css" rel="stylesheet" />
 
+        <!--Dropzone-->
+         <link href="<?= base_url() ?>plantilla/css/dropzone.css" rel="stylesheet" />
+
         <!-- Waves-effect -->
         <link href="<?= base_url() ?>plantilla/css/waves-effect.css" rel="stylesheet">
         <link href="<?= base_url() ?>plantilla/css/datatables.css" rel="stylesheet">
