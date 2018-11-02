@@ -12,6 +12,24 @@
                 </ol>
             </div>
         </div>
+            <?php 
+              $mes='';
+              foreach ($datos->result() as $solicitud) {
+                $idSolicitud = '"'.$solicitud->idSolicitud.'"';
+                $codigoSolicitud = '"'.$solicitud->codigoSolicitud.'"';
+                if ($solicitud->tiempo_plazo==1)
+                {
+                  $mes = 'mes';
+                }
+                else
+                {
+                  if ($solicitud->tiempo_plazo > 1)
+                  {
+                    $mes = 'meses';
+                  }
+                }
+              }
+            ?>
         <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -21,26 +39,28 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="margn">
                                   <div align="center">
-                                    <a type="button" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> En revisión</a>
-                                    <a type="button" class="btn btn-primary block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-thumbs-up fa-lg"></i> Aprobar</a>
-                                    <a type="button" class="btn btn-danger block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-minus-circle  fa-lg"></i> Denegar</a>
+                                   <?php
+                                        switch ($solicitud->idEstadoSolicitud)
+                                        {
+                                          case '1':
+                                                echo "<a title='Eliminar' onclick='Update($idSolicitud)' type='button' class='btn btn-warning block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudP'><i class='fa fa-list fa-lg'></i> En revisión </a> ";
+                                                echo "<a title='Eliminar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Eliminar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-primary block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </a>";
+                                            break;
+                                          case '2':
+                                                echo "<a title='Eliminar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Eliminar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-primary block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </a>";
+                                            break;
+                                          
+                                          default:
+                                              # code...
+                                            break;
+                                        }
+                                   ?>
+                                    <!-- <a type="button" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> En revisión</a> -->
+                                    <!-- <a type="button" class="btn btn-primary block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-thumbs-up fa-lg"></i> Aprobar</a> -->
+                                    <!-- <a type="button" class="btn btn-danger block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-minus-circle  fa-lg"></i> Denegar</a> -->
                                   </div>
-                              <?php 
-                                $mes='';
-                                foreach ($datos->result() as $solicitud) {
-                                  if ($solicitud->tiempo_plazo==1)
-                                  {
-                                    $mes = 'mes';
-                                  }
-                                  else
-                                  {
-                                    if ($solicitud->tiempo_plazo > 1)
-                                    {
-                                      $mes = 'meses';
-                                    }
-                                  }
-                                }
-                              ?>
                                 <table id="" class="table">
                                   <tbody class="tbody tbody1">
                                       <tr>
@@ -96,3 +116,110 @@
 <!-- ============================================================== -->
 <!-- End Right content here -->
 <!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- Ventana actualizar estado de solicitud a en proceso-->
+<!-- ============================================================== -->
+      <div class="modal fade modal_actualizar_estado_solicitudP" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                  <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/ActualizarEstadoSolicitud/1/" id="frmeliminarcliente" method="GET">
+                  <div>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title" id="mySmallModalLabel">
+                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                      </h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" hidden id="IdP" name='id'>
+                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                  </div>
+                  <div align="center">
+                      <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                      <button type="submit" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> Cambiar</button>
+                  </div>
+                  </form>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+<!-- ============================================================== -->
+<!-- Fin de ventana modal -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- Ventana actualizar estado de solicitud a denegado-->
+<!-- ============================================================== -->
+      <div class="modal fade modal_actualizar_estado_solicitudD" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                  <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/ActualizarEstadoSolicitud/2/" id="frmeliminarcliente" method="GET">
+                  <div>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title" id="mySmallModalLabel">
+                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                      </h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" hidden id="IdE" name='id'>
+                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                  </div>
+                  <div align="center">
+                      <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                      <button type="submit" class='btn btn-danger block waves-effect waves-light m-b-5'><i class='fa fa-minus-circle  fa-lg'></i> Denegar</button>
+                  </div>
+                  </form>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+<!-- ============================================================== -->
+<!-- Fin de ventana modal -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- Ventana para aprobar solicitud-->
+<!-- ============================================================== -->
+      <div class="modal fade modal_actualizar_estado_solicitudA" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                  <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/AgregarCredito/" id="frmeliminarcliente" method="GET">
+                  <div>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title" id="mySmallModalLabel">
+                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                      </h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" hidden id="IdA" name='k'>
+                    <input type="text" hidden id="Codigo" name='c'>
+                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                  </div>
+                  <div align="center">
+                      <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                      <button type="submit" class="btn btn-primary block waves-effect waves-light m-b-5"><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </button>
+                  </div>
+                  </form>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+<!-- ============================================================== -->
+<!-- Fin de ventana modal -->
+<!-- ============================================================== -->
+
+
+<script>
+  function Update(id){
+      document.getElementById('IdP').value=id;
+    }
+
+  function Delete(id){
+      document.getElementById('IdE').value=id;
+    }
+
+    function Approved(id, codigo){
+      document.getElementById('IdA').value=id;
+      document.getElementById('Codigo').value=codigo;
+    }
+</script>

@@ -1,4 +1,3 @@
-
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
