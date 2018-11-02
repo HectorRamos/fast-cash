@@ -25,7 +25,7 @@ contenedor -->
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" action="">
+              <form method="post" action="<?= base_url() ?>Home/Main">
                <!--  <label for="">Id de la solicitud</label>
                 <input type="text" value="<?= $id ?>"> -->
 
@@ -105,14 +105,32 @@ contenedor -->
                       </div>
                     </div>
                     <!-- Fin de la tercera Linea del formulario-->
-
-                    
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
-                     <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                     <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                </div>
-
+               <button hidden  type="submit" id="btnGuadar"></button>
               </form>
+              <br>
+                  <!-- Subir documentos-->
+                    <div class="row" style="display:none;" id="divDocs">
+                      <form action="/" method="post" class="dropzone" enctype="multipart/form-data" id="dropzone">
+                          <div class="fallback">
+                            <input type="file" name="file">
+                          </div>
+                          <input hidden type="text" name="codigo" id="codigo">
+                          <div class="dz-default dz-message">
+                            <h3>subir documentos</h3>
+                            <p>Arrastre los archivos hasta la zona indicada o click aqui para abrir la ventana de subida</p>
+                          </div>
+                      </form>
+                    </div>
+                    <!-- Fin para subir documentos-->
+                    <br>
+                    <div class="row">
+                        <a id="env" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</a>
+                       <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                       <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
+                      
+                    </div>
+
             </div>
           </div>
         </div>
@@ -160,3 +178,56 @@ contenedor -->
 <!-- ============================================================== -->
 <!-- Fin de ventana modal -->
 <!-- ============================================================== -->
+
+<!--INICIO DEL CODIGO JAVSCRIPT-->
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    Dropzone.options.dropzone = {
+      url:"<?= base_url()?>Documentos/SubirDocumentos",
+      acceptedFiles : ".doc, .docx, .pdf",
+      maxFilesize: 2,
+      maxFiles:2,
+      init:function(){
+          var self = this;
+          // config
+          self.options.addRemoveLinks = true;
+          self.options.dictRemoveFile = "Quitar";
+          self.options.dictInvalidFileType="Tipo de documento invalido";
+          self.options.dictFileTooBig="Tamaño del archivo no permito el tamaño maximo es de 2 MB";
+
+          //New file added
+          self.on("addedfile", function (file) {
+            console.log('new file added ', file);
+          });
+           // Send file starts
+          self.on("sending", function (file) {
+            console.log('upload started', file);
+            $('.meter').show();
+          });
+          self.on("error", function(file){
+            alert("Error subiendo el archivo " + file.name);
+            //removeFIle(file);
+
+          });
+      }
+    }
+//ejecutar el envento submit para el formulario
+    $("#env").on("click", function(){
+      alert('aaaaaaaaa');
+      $('#btnGuadar').click();
+    });
+//validar el codigo del cliente
+  $("#codigo_credito").on("change", function(){
+    if($("#codigo_credito").val()!==""){
+      $("#codigo").val($("#codigo_credito").val());
+      document.getElementById("divDocs").style.display="block";
+    }
+    else{
+      document.getElementById("divDocs").style.display="none";
+    }
+  })
+    
+  });
+</script>
+<!--FINAL DEL CODIGO JAVSCRIPT-->
