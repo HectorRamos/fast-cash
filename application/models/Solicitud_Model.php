@@ -227,6 +227,13 @@ class Solicitud_Model extends CI_Model
 	}
 
 
+	public function obtenerSolicitud($id)
+	{
+		$sql= "SELECT * FROM tbl_amortizaciones WHERE idSolicitud='$id'";
+		$datos = $this->db->query($sql);
+		return $datos;
+	}
+
 }
 
 ?>

@@ -194,8 +194,8 @@ class Solicitud extends CI_Controller {
 	public function AgregarCredito()
 	{
 		$id = $_GET['k'];
-		$codigo = $_GET['c'];
-		$data = array('id' => $id, 'codigo' => $codigo);
+		$datos = $this->Solicitud_Model->obtenerSolicitud($id);
+		$data = array('id' => $id, 'datos' => $datos);
 
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
