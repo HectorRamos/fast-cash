@@ -81,7 +81,7 @@
                       												  $tipo = "'".$clientes->Tipo_Cliente."'"
                       												  ?>
                       												    <tr class="tr tr1">
-                      												      <td class="td td1" width="150"><b><?= $clientes->Id_Cliente?></b></td>
+                      												      <td class="td td1" width="150"><b><?= $clientes->Codigo_Cliente?></b></td>
                       												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
                       												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
                       												     
@@ -255,12 +255,7 @@
 		function MostrarInfo(id, TipoCliente){
 
       document.getElementById('divInfo').innerHTML= "";
-			//alert(TipoCliente);
-			if(TipoCliente==""){
-				html="<div class='alert alert-danger'>El registro de este cliente esta incompleto no selecciono un tipo, usted puede seleccionar entre Empleado o Empresario para corregir este problema vaya a la sección de editar información del cliente y asigne un tipo.</div>";
-				document.getElementById('divInfo').innerHTML=html;
-			}
-			else{
+			if(TipoCliente != ""){
 			var html ="<div class='margn'><ul><h5><b>Información del Cliente</b></h5><ol>";
 			 $.ajax({
              url: "obtenerInfoCliente",

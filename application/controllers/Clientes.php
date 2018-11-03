@@ -17,26 +17,15 @@ class Clientes extends CI_Controller {
 		$datos=$this->input->POST();
 		$this->load->model("Clientes_Model");
 		$id=$this->Clientes_Model->Insertar($datos);
-		if($id){
-			// echo '<script type="text/javascript">
-			// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
-			// 	</script>';
-				$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
-				$data=$id;
-				//$this->load->view('Base/header');
-				//$this->load->view('Base/nav');
-				//$this->load->view('Clientes/Datos_Laborales', $data);
-				echo json_encode($data);
-				//$this->load->view('Base/footer');
+		if($id){			
+			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+			$data=$id;
+			echo json_encode($data);
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo insertar el cliente");
-			// 	self.location ="'.base_url().'Clientes/"
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
-				redirect(base_url()."Clientes/");
+			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			redirect(base_url()."Clientes/");
 		}
 	}
 	public function datosLaborales(){
@@ -44,19 +33,11 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->InsertarDatosLaborales($datos);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
 			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo insertar el cliente");
-			// 	self.location ="'.base_url().'Clientes/"
-			// 	</script>';
 			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
 			redirect(base_url()."Clientes/");
 		}
@@ -66,19 +47,11 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->InsertarDatosNegocio($datos);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
 			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo insertar el cliente");
-			// 	self.location ="'.base_url().'Clientes/"
-			// 	</script>';
 			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
 			redirect(base_url()."Clientes/");
 		}
@@ -110,24 +83,14 @@ class Clientes extends CI_Controller {
 		if(isset($_GET["id"])){ 
             $id=(int)$_GET["id"]; 
         }
-		// $id = $this->input->get('id');
 		$this->load->model("Clientes_Model");
-		//echo $id;
 		$bool=$this->Clientes_Model->Eliminar($id);
 		if ($bool) {
-		// echo '<script type="text/javascript">
-		// 		alert("Registro eliminado exitosamente");
-		// 		self.location ="'.base_url().'Clientes/gestionarCliente"
-		// 		</script>';
-				$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
-				redirect(base_url()."Clientes/gestionarCliente"); 
+			$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+			redirect(base_url()."Clientes/gestionarCliente"); 
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("NO, se pudo eliminar el registro");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
 			$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
@@ -146,33 +109,14 @@ class Clientes extends CI_Controller {
 	public function editarCliente(){
 		$datos=$this->input->POST();
 		$this->load->model("Clientes_Model");
-		$bool=$this->Clientes_Model->Editar($datos);
-			/*echo '<script type="text/javascript">
-				alert("Registro editado con exito");
-				</script>';*/
-				$this->session->set_flashdata("actualizado","El registro a sido actualizado con exito.");
-				//$datos = array('DatosLaborales'=>$bool);
-				//$this->load->view('Base/header');
-				//$this->load->view('Base/nav');
-				//$this->load->view('Clientes/Editar_Datos_Laborales', $datos);
-				//$this->load->view('Base/footer');
-				echo json_encode($bool);
-			// echo '<script type="text/javascript">
-			// 	alert("Error al modificar la informacion");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
-			//$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
-			//redirect(base_url()."Clientes/gestionarCliente");
-		
+		$bool=$this->Clientes_Model->Editar($datos);		
+		$this->session->set_flashdata("actualizado","El registro a sido actualizado con exito.");
+		echo json_encode($bool);		
 	}
 	public function TomarFoto(){
 
 		$imagenCodificada = file_get_contents("php://input"); //Obtener la imagen
-		//$id=$this->input->POST();
-		//$idc=$id['Dui_Cliente'];
 		$dui = $this->input->GET('dui');
-
-		//echo "<script>alert('FUNCION'".$dui.")</script>";
 
 		if(strlen($imagenCodificada) <= 0) exit("No se recibió ninguna imagen");
 		//La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
@@ -206,39 +150,23 @@ class Clientes extends CI_Controller {
 		if($accion==1){
 		$bool=$this->Clientes_Model->EditarDatosLaborales($data);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("FIN");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
-				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
-				redirect(base_url()."Clientes/gestionarCliente");
+			$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else{
-			// echo '<script type="text/javascript">
-			// 	alert("Error al modificar la informacion");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
-				redirect(base_url()."Clientes/gestionarCliente");
+			$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		
 		}
 		else if($accion==2){
 			$bool=$this->Clientes_Model->InsertarDatosLaborales($data);
 			if($bool){
-				// echo '<script type="text/javascript">
-				// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
-				// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-				// 	</script>';
 				$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
 				redirect(base_url()."Clientes/gestionarCliente");
 			}
 			else
 			{
-				// echo '<script type="text/javascript">
-				// 	alert("No se pudo insertar el cliente");
-				// 	self.location ="'.base_url().'Clientes/"
-				// 	</script>';
 				$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
 				redirect(base_url()."Clientes/");
 			}
@@ -262,20 +190,12 @@ class Clientes extends CI_Controller {
 		if($accion==1){
 		$bool=$this->Clientes_Model->EditarDatosNegocio($data);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("FIN");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
-				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
-				redirect(base_url()."Clientes/gestionarCliente");
+			$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else{
-			// echo '<script type="text/javascript">
-			// 	alert("Error al modificar la informacion");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
-				redirect(base_url()."Clientes/gestionarCliente");
+			$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+			redirect(base_url()."Clientes/gestionarCliente");
 		}
 
 
@@ -283,19 +203,11 @@ class Clientes extends CI_Controller {
 		else if($accion==2){
 		$bool=$this->Clientes_Model->InsertarDatosNegocio($data);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("Datos del cliente registrados exitosamente presione ok para continuar");
-			// 	self.location ="'.base_url().'Clientes/gestionarCliente"
-			// 	</script>';
 			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo insertar el cliente");
-			// 	self.location ="'.base_url().'Clientes/"
-			// 	</script>';
 			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
 			redirect(base_url()."Clientes/");
 		}

@@ -69,10 +69,29 @@
                                                             <div class="form-group col-md-3">
                                                                     <label for="Tipo_Cliente">Tipo de cliente</label>
                                                                     <select id="select" name="Tipo_Cliente" class="form-control">
-                                                                    <option value="<?= $datos_cliente->Tipo_Cliente ?>"  style="background-color:green; color:white;"><?= $datos_cliente->Tipo_Cliente ?></option>
-                                                                        <option value="Otro">Otro</option>
-                                                                        <option value="Empleado">Empleado</option>
-                                                                        <option value="Empresario">Empresario</option>
+                                                                        <?php 
+                                                                        if($datos_cliente->Tipo_Cliente == "Otro"){ 
+                                                                            echo "
+                                                                            <option value='Otro' style='background-color:green; color:white;'>Otro</option>
+                                                                            <option value='Empleado'>Empleado</option>
+                                                                            <option value='Empresario'>Empresario</option>
+                                                                            ";
+                                                                            }
+                                                                        if($datos_cliente->Tipo_Cliente == "Empleado"){ 
+                                                                            echo "
+                                                                            <option value='Empleado' style='background-color:green; color:white;'>Empleado</option>
+                                                                            <option value='Otro'>Otro</option>
+                                                                            <option value='Empresario'>Empresario</option>
+                                                                            ";
+                                                                            } 
+                                                                         if($datos_cliente->Tipo_Cliente == "Empresario"){ 
+                                                                            echo "
+                                                                            <option value='Empresario' style='background-color:green; color:white;'>Empresario</option>
+                                                                            <option value='Otro'>Otro</option>
+                                                                            <option value='Empleado'>Empleado</option>
+                                                                            ";
+                                                                            }                         
+                                                                        ?>
                                                                     </select>
                                                             </div>
                                                             <div class="form-group col-md-6"></div>
@@ -83,14 +102,19 @@
                                                         </div>    
                                                     </div>    
                                                     <div class="row">
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-4">
+                                                            <label for="Codigo_Cliente">Código</label>
+                                                            <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código" value="<?= $datos_cliente->Codigo_Cliente ?>" readonly="true">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
                                                             <label for="Nombre_Cliente">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre" value="<?= $datos_cliente->Nombre_Cliente ?>"></div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="Apellido_Cliente">Apellido</label>
-                                                                        <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido" value="<?= $datos_cliente->Apellido_Cliente ?>">
-                                                                    </div>
-                                                                </div>
+                                                            <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre" value="<?= $datos_cliente->Nombre_Cliente ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label for="Apellido_Cliente">Apellido</label>
+                                                            <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido" value="<?= $datos_cliente->Apellido_Cliente ?>">
+                                                        </div>
+                                                    </div>
                                                                 <div class="row">
                                                                     <div class="form-group col-md-4">
                                                                         <label for="Dui_Cliente">DUI</label>
@@ -203,23 +227,25 @@
 
                                                     <div role="tabpanel" class="tab-pane empleado" style="display: none;">
                                                 <form id="DLaborales" role="form" method="POST" action="<?= base_url()?>Clientes/EditardatosLaborales" autocomplete="off">
+                                                    <div class="mar_che_cobrar3">
                                                         <div class="row">
-                                                        <div id="aler" class="alert alert-danger" role="alert" style="display:none;">
-                                                            <strong>Alerta!</strong> Por favor tener en cuenta la elección del Tipo de cliente.
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
                                                           <div class="form-group col-md-6">
-                                                              <label>Cliente: <input type="text" id="NombreTipoClienteEmpleado" class="style" readonly="true"></label>
+                                                            <label><h5>Cliente: <span id="NombreTipoClienteEmpleado" style="color: gray;"></span></h5></label>
                                                             <!--===============CAMPO OCULTO================-->
-                                                             <input type="text" id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
-                                                             <input type="text"  id="Accion1" name="Accion" class="style" readonly="true">
+                                                             <input type="hidden" id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                             <input type="hidden"  id="Accion1" name="Accion" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
-                                                              <label>Tipo de cliente: <input type="text" id="TipoClienteEmpleado" class="style" readonly="true">
-                                                                </label>
-                                                              </div>
+                                                               <label><h5>Tipo de cliente: <span id="TipoClienteEmpleado" style="color: gray;"></span></h5></label>
+
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div id="aler" class="alert alert-danger" role="alert" style="display:none;">
+                                                        <strong>Alerta!</strong> Por favor tener en cuenta la elección del Tipo de cliente.
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-4">
                                                                 <label for="Nombre_Empresa">Nombre de la empresa</label>
@@ -262,23 +288,24 @@
                                                 <!--FORMULARIO PARA ACTUALIZAR DATOS DEL NEGOCIO DEL CLIENTE-->
                                                     <div role="tabpanel" class="tab-pane empresario" style="display: none;">
                                                 <form id="DNegocio" role="form" method="POST" action="<?= base_url()?>Clientes/EditarDatosNegocio" autocomplete="off">
+                                                    <div class="mar_che_cobrar3">
                                                         <div class="row">
-                                                        <div id="aler2" class="alert alert-danger" role="alert" style="display:none;">
-                                                            <strong>Alerta!</strong> Usted no registro la información o actualizo el tipo de cliente puede insertar dicha informacion en el siguiente formulario.
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
                                                           <div class="form-group col-md-6">
-                                                              <label>Cliente: <input type="text" id="NombreTipoClienteEmpresario1" class="style" readonly="true"></label>
+                                                               <label><h5>Cliente: <span id="NombreTipoClienteEmpresario" style="color: gray;"></span></h5></label>
                                                               <!--===============CAMPO OCULTO================-->
-                                                            <input type="text"  id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
-                                                             <input type="text" id="Accion2" name="Accion" class="style" readonly="true">
+                                                            <input type="hidden"  id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                             <input type="hidden" id="Accion2" name="Accion" class="style" readonly="true">
                                                            </div>
                                                             <div class="form-group col-md-6">
-                                                              <label>Tipo de cliente: <input type="text" id="TipoClienteEmpresario" class="style" readonly="true">
-                                                                </label>
+                                                              <label><h5>Tipo de cliente: <span id="TipoClienteEmpresario" style="color: gray;"></span></h5></label>
                                                               </div>
                                                         </div>
+                                                    </div>
+                                                    <div id="aler2" class="alert alert-danger" role="alert" style="display:none;">
+                                                        <strong>Alerta!</strong> Usted no registro la información o actualizo el tipo de cliente puede insertar dicha informacion en el siguiente formulario.
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="Nombre_Empresa">Nombre del negocio</label>
@@ -367,8 +394,12 @@ $(document).ready(function(){
                     //AQUI SE VALIDA EL TIPO DE EMPLEAD
                 if(regi[0]['Tipo_Cliente']=="Empleado"){
                     $("#Id_Cliente1").val($('#id_cliente').val());
-                    $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpleado").val($("#select").val());
+                    var $v1 = $("#Nombre_Cliente").val();
+                    var $v2 = $("#Apellido_Cliente").val();
+                    var $vg = $v1 +" "+ $v2;
+                    $("#NombreTipoClienteEmpleado").text($vg);
+                    $("#TipoClienteEmpleado").text($("#select").val());
+
                     $("#Nombre_Empresa").val(regi[0]['Nombre_Empresa']);
                     $("#Cargo").val(regi[0]['Cargo']);
                     $("#Telefono").val(regi[0]['Telefono']);
@@ -379,15 +410,26 @@ $(document).ready(function(){
                     //CARGAMOS Y OCULTAMOS DIVS
                     $(".empleado").show();
                     $("#cliente1").hide(); 
+
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+                    function nextTab(elem) {
+                    $(elem).next().find('a[data-toggle="tab"]').click();
+                    }
                 }
                  if(regi[0]['Tipo_Cliente']=="Otro"){
                     window.location.href="<?= base_url()?>Clientes/gestionarCliente";
-                        }
+                 }
                 if(regi[0]['Tipo_Cliente']=="Empresario"){
-                    alert('EMPR');
                     $("#Id_Cliente2").val($('#id_cliente').val());
-                    $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpresario").val(regi[0]['Tipo_Cliente']);
+                    var $n1 = $("#Nombre_Cliente").val();
+                    var $n2 = $("#Apellido_Cliente").val();
+                    var $hg = $n1 +" "+ $n2;
+
+                    $("#NombreTipoClienteEmpresario").text($hg);
+                    $("#TipoClienteEmpresario").text(regi[0]['Tipo_Cliente']);
+
                     $('#Nombre_Negocio').val(regi[0]['Nombre_Negocio']);
                     $("#NIT").val(regi[0]['NIT']);
                     $("#NRC").val(regi[0]['NRC']);
@@ -397,10 +439,16 @@ $(document).ready(function(){
                     $("#Accion2").val(1);
                     $(".empresario").show();
                     $("#cliente1").hide();
+
+                    var $active = $('.wizard .nav-tabs li.active');
+                    $active.next().removeClass('disabled');
+                    nextTab($active);
+                    function nextTab(elem) {
+                    $(elem).next().find('a[data-toggle="tab"]').click();
+                    }
                 }
                 }
                 else{
-                    alert('nada');
                     document.getElementById('aler').style.display='block';
                     document.getElementById('aler2').style.display='block';
                     $("#Accion1").val(2);
@@ -408,23 +456,41 @@ $(document).ready(function(){
                     var $r3 = $("#select").val();
                     if ($r3 === "Empleado") {
                         $("#Id_Cliente1").val($('#id_cliente').val());
-                        $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                        $("#TipoClienteEmpleado").val($("#select").val());
+                        var $o1 = $("#Nombre_Cliente").val();
+                        var $o2 = $("#Apellido_Cliente").val();
+                        var $og = $o1 +" "+ $o2;
+                        $("#NombreTipoClienteEmpleado").text($og);
+                        $("#TipoClienteEmpleado").text($("#select").val());
                         $(".empleado").show();
                         $("#cliente1").hide();
+
+                        var $active = $('.wizard .nav-tabs li.active');
+                        $active.next().removeClass('disabled');
+                        nextTab($active);
+                        function nextTab(elem) {
+                        $(elem).next().find('a[data-toggle="tab"]').click();
+                        }
                     }
                     if ($r3 === "Empresario") {
                         $(".empresario").show();
                         $("#cliente1").hide();
                         $("#Id_Cliente2").val($('#id_cliente').val());
-                        $("#NombreTipoClienteEmpresario1").val($("#Nombre_Cliente").val());
-                        $("#TipoClienteEmpresario").val($("#select").val());
+
+                        var $d1 = $("#Nombre_Cliente").val();
+                        var $d2 = $("#Apellido_Cliente").val();
+                        var $dg = $d1 +" "+ $d2;
+                        $("#NombreTipoClienteEmpresario").text($dg);
+                        $("#TipoClienteEmpresario").text($("#select").val());
+
+                        var $active = $('.wizard .nav-tabs li.active');
+                        $active.next().removeClass('disabled');
+                        nextTab($active);
+                        function nextTab(elem) {
+                        $(elem).next().find('a[data-toggle="tab"]').click();
+                        }
                     }
-                     if ($r3 =="Otro") {
-                        //alert('otro');
-                        //self.location ="<?= base_url()?>Clientes/gestionarCliente";
-                        window.location.href="<?= base_url()?>Clientes/gestionarCliente";
-                        
+                     if ($r3 == "Otro") {
+                        window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
                     }
                 }  
             }     
@@ -439,7 +505,6 @@ $(document).ready(function(){
         $(section).find('input, select, textarea').attr('data-parsley-group', 'block-' + index);
     });
 //*****************************FIN DE CODIGO PARA VALIDAR EL BOTON DE ACTUALIZAR*********************
-
 
 
 //*************************CODIGO PARA VALIDAR FORMULARIO DE DATOS DE EMPLEADOS*****************************
