@@ -234,6 +234,43 @@ class Solicitud_Model extends CI_Model
 		return $datos;
 	}
 
+	public function GuardarCredito($datos)
+	{
+		if ($datos != null)
+		{
+			$idSolicitud = $datos['id_solicitud'];
+			$codigoCredito = $datos['codigo_credito'];
+			$tipoCredito = $datos['nombre_credito'];
+			$codigoTipoCredito = $datos['codigo_tipo_credito'];
+			$montoTotal = $datos['monto_dinero'];
+			$totalAbonado = 0;
+			$estadoCredito = "Pendiente";
+			$fechaApertura = $datos['fecha_apertura'];
+			$fechaVencimiento = $datos['fecha_de_vencimiento'];
+			$estado = 1;
+			$idAmortizacion = $datos['amortizacion'];
+			$sql = "INSERT INTO tbl_creditos(codigoCredito, tipoCredito, codigoTipoCredito, montoTotal, totalAbonado, estadoCredito, fechaApertura, fechaVencimiento, estado, idAmortizacion)
+				VALUES('$codigoCredito', '$tipoCredito', '$codigoTipoCredito', '$montoTotal', '$totalAbonado', 'estadoCredito', '$fechaApertura', '$fechaVencimiento', '$estado', '$idAmortizacion')";
+
+			if ($this->db->query($sql))
+			{
+				$sql2 = "UPDATE tbl_solicitudes SET idEstadoSolicitud='3' WHERE idSolicitud='$idSolicitud'";
+				if ($this->db->query($sql2))
+					{
+						return true;
+					}
+				return false;
+			}
+			else
+			{
+				return false;
+			}	
+		}
+		else{
+			return false;
+		}
+	}
+
 }
 
 ?>
