@@ -202,4 +202,19 @@ class Solicitud extends CI_Controller {
 		$this->load->view('Solicitud/frm_agregar_credito', $data);
 		$this->load->view('Base/footer');
 	}
+
+	public function GuardarCredito()
+	{
+		$datos = $this->input->post();
+		$bool = $this->Solicitud_Model->GuardarCredito($datos);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
 }
