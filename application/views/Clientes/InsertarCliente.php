@@ -51,7 +51,7 @@
                                     <!--Tab Panel 1-->
                                     <div class="tab-pane active" role="tabpanel" id="cliente1">
                                        <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/InsertarCliente" class="demo-form" autocomplete="off">
-                                       <div class="row form-section">
+                                       <div class="row form-section">                                        
                                        <div class="mar_che_cobrar2">
                                                 <div class="row">
                                                     <div class="form-group col-md-3">
@@ -68,16 +68,21 @@
                                                             <input type="text" class="form-control validaDigit" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso">
                                                     </div>
                                                 </div>    
-                                            </div>    
+                                            </div>
                                             <div class="row">
-                                                <div class="form-group col-md-6">
+                                                 <div class="form-group col-md-4">
+                                                    <label for="Codigo_Cliente">Código</label>
+                                                    <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
+                                                </div>
+                                                <div class="form-group col-md-4">
                                                     <label for="Nombre_Cliente">Nombre</label>
-                                                    <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre"></div>
-                                                            <div class="form-group col-md-6">
-                                                                <label for="Apellido_Cliente">Apellido</label>
-                                                                <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
-                                                            </div>
-                                                        </div>
+                                                    <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="Apellido_Cliente">Apellido</label>
+                                                    <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
+                                                </div>
+                                            </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-4">
                                                                 <label for="Dui_Cliente">DUI</label>
@@ -93,7 +98,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Estado_Cliente">Estado Civil</label>
                                                                 <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
                                                                     <option value="Soltero/a">Soltero/a</option>
@@ -101,19 +106,15 @@
                                                                     <option value="Divorsiado/a">Divorciado/a</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Genero_Cliente">Genero</label>
                                                                 <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
                                                                 <option value="Masculino">Masculino</option>
                                                                 <option value="Femenino">Femenino</option>
                                                                 <option value="Otro">Otro</option>
                                                                 </select>
-                                                            </div>
-                                                            <div class="form-group col-md-3">
-                                                                <label for="Codigo_Cliente">Código</label>
-                                                                <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
-                                                            </div>
-                                                            <div class="form-group col-md-3">
+                                                            </div>                                           
+                                                            <div class="form-group col-md-4">
                                                                 <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
                                                                 <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99" required data-parsley-required-message="Por favor, digite una fecha de nacimiento">
                                                             </div>
@@ -197,7 +198,7 @@
                                                                 <div class="form-group col-md-6">
                                                                   <label><h5>Cliente: <span id="NombreTipoClienteEmpleado" style="color: gray;"></span></h5></label>
                                                                 <!--===============CAMPO OCULTO================-->
-                                                                 <input type="text" hidden id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                                 <input type="hidden" id="Id_Cliente1" name="Fk_Id_Cliente" class="style" readonly="true">
                                                                </div>
                                                                 <div class="form-group col-md-6">
                                                                   <label><h5>Tipo de cliente: <span id="TipoClienteEmpleado" style="color: gray;"></span></h5></label>
@@ -250,7 +251,7 @@
                                                               <div class="form-group col-md-6">
                                                                   <label><h5>Cliente: <span id="NombreTipoClienteEmpresario" style="color: gray;"></span></h5></label>
                                                                   <!--===============CAMPO OCULTO================-->
-                                                                <input type="text" hidden id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
+                                                                <input type="hidden" id="Id_Cliente2" name="Fk_Id_Cliente" class="style" readonly="true">
                                                                </div>
                                                                 <div class="form-group col-md-6">
                                                                   <label><h5>Tipo de cliente: <span id="TipoClienteEmpresario" style="color: gray;"></span></h5></label>
@@ -365,10 +366,10 @@ $(document).ready( function() {
                     //alert(regi[0]['Id_Cliente']);
                     $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
                     $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
-                    $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpleado").val($("#select").val());
-                    $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpresario").val($("#select").val());
+                    // $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
+                    // $("#TipoClienteEmpleado").val($("#select").val());
+                    // $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
+                    // $("#TipoClienteEmpresario").val($("#select").val());
                     if(regi[0]['Tipo_Cliente']=="Otro" || regi[0]['Tipo_Cliente']==""){
                         self.location ="<?= base_url()?>Clientes/gestionarCliente";
                     }
@@ -400,10 +401,17 @@ $(document).ready( function() {
                     //alert(regi[0]['Id_Cliente']);
                     $('#Id_Cliente1').val(regi[0]['Id_Cliente']);
                     $('#Id_Cliente2').val(regi[0]['Id_Cliente']);
-                    $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpleado").val($("#select").val());
-                    $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
-                    $("#TipoClienteEmpresario").val($("#select").val());
+
+                    var $n1 = $("#Nombre_Cliente").val();
+                    var $n2 = $("#Apellido_Cliente").val();
+                    var $hg = $n1 +" "+ $n2;
+
+                    $("#NombreTipoClienteEmpleado").text($hg);
+                    $("#TipoClienteEmpleado").text($("#select").val()); 
+
+                    $("#NombreTipoClienteEmpresario").text($hg);
+                    $("#TipoClienteEmpresario").text($("#select").val());
+
                     if(regi[0]['Tipo_Cliente']=="Otro" || regi[0]['Tipo_Cliente']==""){
                         self.location ="<?= base_url()?>Clientes/gestionarCliente";
                     }
@@ -417,11 +425,11 @@ $(document).ready( function() {
                             $("#cliente1").hide();
                             $(".empresario").show();
                         }
-                            var $active = $('.wizard .nav-tabs li.active');
-                            $active.next().removeClass('disabled');
-                            nextTab($active);
-                            function nextTab(elem) {
-                                $(elem).next().find('a[data-toggle="tab"]').click();
+                        var $active = $('.wizard .nav-tabs li.active');
+                        $active.next().removeClass('disabled');
+                        nextTab($active);
+                        function nextTab(elem) {
+                        $(elem).next().find('a[data-toggle="tab"]').click();
                         }
                     }
                 }     

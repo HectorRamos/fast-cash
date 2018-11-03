@@ -18,7 +18,7 @@ class Clientes_Model extends CI_Model{
 		if($datos!=null){
 			$data =array(
 
-				'Codigo_Cliente'=> '000123',
+				'Codigo_Cliente'=> $datos['Codigo_Cliente'],
 				'Nombre_Cliente' => $datos['Nombre_Cliente'],
 				'Apellido_Cliente' => $datos['Apellido_Cliente'],
 				'Estado_Civil_Cliente'=>$datos['Estado_Cliente'],
@@ -52,7 +52,7 @@ class Clientes_Model extends CI_Model{
 		}
 	}
 	public function CargarClientes(){
-		$sql = "SELECT * FROM tbl_clientes WHERE estado=1";
+		$sql = "SELECT * FROM tbl_clientes WHERE estado=1 ORDER BY Id_Cliente DESC";
 		$datos=$this->db->query($sql);
 		return $datos;
 	}
