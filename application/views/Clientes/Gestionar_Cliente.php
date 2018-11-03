@@ -266,10 +266,10 @@
                     if (registro.length > 0)
                     {
                       if(registro[0]['urlImg']==""){
-                        html +="<div class='row'><div class='col-sm-12' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive' width='100' src='<?=base_url()?>plantilla/images/user.png' alt='Imagen del Cliente'></img><br><label style='margin-right: 22px;'>Sin foto</label></div></div>";
+                        html +="<div class='row'><div class='col-sm-12' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user.png' alt='Imagen del Cliente'></img><br><label style='margin-right: 22px;'>Sin foto</label></div></div>";
                       }
                       else{
-                        html +="<div class='row'><div class='col-sm-12' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><label style='margin-right: 33px;'>Foto</label></div></div>";
+                        html +="<div class='row'><div class='col-sm-12 gallery' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><label style='margin-right: 33px;'>Foto</label></div></div>";
                       }
                       //html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
                       html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+" "+registro[0]['Apellido_Cliente']+"'></div>";
