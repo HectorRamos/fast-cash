@@ -233,7 +233,6 @@ class Solicitud_Model extends CI_Model
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
-
 	public function GuardarCredito($datos)
 	{
 		if ($datos != null)
@@ -250,8 +249,7 @@ class Solicitud_Model extends CI_Model
 			$estado = 1;
 			$idAmortizacion = $datos['amortizacion'];
 			$sql = "INSERT INTO tbl_creditos(codigoCredito, tipoCredito, codigoTipoCredito, montoTotal, totalAbonado, estadoCredito, fechaApertura, fechaVencimiento, estado, idAmortizacion)
-				VALUES('$codigoCredito', '$tipoCredito', '$codigoTipoCredito', '$montoTotal', '$totalAbonado', 'estadoCredito', '$fechaApertura', '$fechaVencimiento', '$estado', '$idAmortizacion')";
-
+				VALUES('$codigoCredito', '$tipoCredito', '$codigoTipoCredito', '$montoTotal', '$totalAbonado', '$estadoCredito', '$fechaApertura', '$fechaVencimiento', '$estado', '$idAmortizacion')";
 			if ($this->db->query($sql))
 			{
 				$sql2 = "UPDATE tbl_solicitudes SET idEstadoSolicitud='3' WHERE idSolicitud='$idSolicitud'";

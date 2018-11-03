@@ -231,7 +231,7 @@
 	                    </h4>
 	                </div>
 	                <div class="modal-body">
-	                  <input type="text" hidden id="Id" name='id'>
+	                  <input type="text"  id="Id" name='id'>
 	                  <p align="center">¿Está seguro de eliminar el registro?</p>
 	                </div>
 	                <div align="center">
