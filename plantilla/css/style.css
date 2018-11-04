@@ -3796,3 +3796,19 @@ textarea.parsley-error:focus {
     border-color:#843534;
     box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
 }
+  /*********************************Diseño de foto cliente en Gestionar_Cliente.php ********************************/
+      .zoom{
+        /* Aumentamos la anchura y altura durante 2 segundos */
+        transition: width 2s, height 2s, transform 2s;
+        -moz-transition: width 2s, height 2s, -moz-transform 2s;
+        -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+        -o-transition: width 2s, height 2s,-o-transform 2s;
+    }
+    .zoom:hover{
+        /* tranformamos el elemento al pasar el mouse por encima al doble de
+           su tamaño con scale(2). */
+        transform : scale(2);
+        -moz-transform : scale(2);      /* Firefox */
+        -webkit-transform : scale(2);   /* Chrome - Safari */
+        -o-transform : scale(2);        /* Opera */
+    }

@@ -73,7 +73,6 @@
                                     <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar información de clientes</a></li>
                                 </ul>
                             </li>
-
                              <!--Agregando nuevos item pertenecientes al modulo de solicitud-->
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-book"></i><span>Solicitud</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
@@ -81,6 +80,14 @@
                                     <li><a href="<?= base_url() ?>Solicitud/">Ver Solicitudes</a></li>
                                     <li><a href="" data-toggle="modal" data-target=".modal_opcion_solicitud">Crear solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
+                                </ul>
+                            </li>
+                            <!--Fin del modulo de solicitud-->
+                            <!--Agregando nuevos item pertenecientes al modulo de Creditos-->
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-usd fa-lg"></i><span>Creditos</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>Creditos">Ver creditos</a></li>
                                 </ul>
                             </li>
                             <!--Fin del modulo de solicitud-->
