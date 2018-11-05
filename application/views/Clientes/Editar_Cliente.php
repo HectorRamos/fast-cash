@@ -47,7 +47,7 @@
                                               <!-- Nav tabs -->
                                             <ul class="nav nav-tabs nav-justified nav-tabs-dropdown nav-pills" role="tablist">
                                                 <li role="presentation" class="active"><a href="#cliente1" class="btn-block waves-effect waves-light" aria-controls="cliente" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Información personal del Cliente</a></li>
-                                                <li role="presentation" class="disabled" id="tabsEmpleado"><a href="#empleado" id="btnTabsEmpleado" class="btn-block waves-effect waves-light" aria-controls="empleado" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Información tipo del Cliente</a></li>
+                                                <li role="presentation" class="disabled" id="tabsEmpleado"><a href="#empleado" class="btn-block waves-effect waves-light" aria-controls="empleado" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Información tipo del Cliente</a></li>
                                                 <div class="clearfix"></div>
                                             </ul>
                                               <!-- Tab panes --> 
@@ -97,7 +97,7 @@
                                                             <div class="form-group col-md-6"></div>
                                                             <div class="form-group col-md-3">
                                                                     <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                                    <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso" value="<?= $datos_cliente->ingreso ?>">
+                                                                    <input type="text" class="form-control validaDigit" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual"  required data-parsley-required-message="Por favor, digite un ingreso" value="<?= $datos_cliente->ingreso ?>">
                                                             </div>
                                                         </div>    
                                                     </div>    
@@ -257,7 +257,7 @@
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="Telefono">Teléfono</label>
-                                                                <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" data-mask="(999) 9999-9999? x99999" required data-parsley-required-message="Por favor, escriba un numero de telefono">
+                                                                <input type="text" class="form-control validaTel" id="Telefono" name="Telefono" placeholder="Teléfono" required data-parsley-required-message="Por favor, escriba un numero de telefono">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -552,94 +552,4 @@ $(document).ready(function(){
              });
    });   
 });
-/*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-        $( function() {
-           /* $("#select").change( function() {
-                if ($(this).val() === "") {
-                    $(".siguiente1").hide();
-                    $(".guardar1").show();
-                }
-                if ($(this).val() === "Otro") {
-                    $(".siguiente1").hide();
-                    $(".guardar1").show();
-                }
-                if ($(this).val() === "Empleado") {
-                    $(".siguiente1").hide();
-                    $(".guardar1").show();
-                } 
-                if ($(this).val() === "Empresario") {
-                    $(".siguiente1").show();
-                    $(".guardar1").hide();
-                }
-            });*/
-
-            //ESTA FUNCION YA NO SIRVE!!!!!!!!!
-            $("#btn").click( function() {
-                var $r = $("#select").val();
-                if ($r === "Empleado") {
-                    $(".cliente3").hide();
-                    $(".empleado").show();
-                } 
-                if ($r === "Empresario") {
-                    $(".cliente3").hide();
-                    $(".empresario").show();
-                } 
-                $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                $("#TipoClienteEmpleado").val($("#select").val());
-
-                $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
-                $("#TipoClienteEmpresario").val($("#select").val());
-            });
-            //ESTA FUNCION YA NO SIRVE
-            $("#atras0").click( function() {
-                var $r2 = $("#select").val();
-                if ($r2 === "") {
-                    $(".cliente3").hide();
-                }
-                if ($r2 === "Otro") {
-                    $(".cliente3").hide();
-                }
-                if ($r2 === "Empleado") {
-                    $(".cliente3").hide();
-                }
-                if ($r2 === "Empresario") {
-                    $(".cliente3").hide();
-                }
-            });
-
-            //YA NO SIRVE!!!!!!!!
-
-            $("#siguient0").click( function() {
-                var $r2 = $("#select").val();
-                if ($r2 === "") {
-                    $(".cliente3").show();
-                }
-                if ($r2 === "Otro") {
-                    $(".cliente3").show();
-                }
-            }); 
-            $("#btnTabsEmpleado").click( function() {
-                var $r3 = $("#select").val();
-                if ($r3 === "Empleado") {
-                    $(".empleado").show();
-                    $(".cliente3").hide();
-                }
-                if ($r3 === "Empresario") {
-                    $(".empresario").show();
-                    $(".cliente3").hide();
-                }
-            });
-            ///YA NO SIRVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            $("#btnTabsCliente").click( function() {
-                var $r4 = $("#select").val();
-                if ($r4 === "Empleado") {
-                    $(".empleado").hide();
-                    $(".cliente3").show();
-                }
-                if ($r4 === "Empresario") {
-                    $(".empresario").hide();
-                    $(".cliente3").show();
-                }
-            });
-        });
-    </script>
+</script>
