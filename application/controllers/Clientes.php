@@ -184,6 +184,7 @@ class Clientes extends CI_Controller {
 			'NIT'=>$datos['NIT'],
 			'NRC'=>$datos['NRC'],
 			'Giro'=>$datos['Giro'],
+			'Direccion_Negocio'=>$datos['Direccion_Negocio'],
 			'Tipo_Factura'=>$datos['Tipo_Factura']
 			);
 		$this->load->model("Clientes_Model");
