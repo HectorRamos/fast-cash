@@ -143,8 +143,26 @@ class Solicitud extends CI_Controller {
 	{
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
+		$fiadores = $this->Solicitud_Model->ObtenerFiadores($id);
+		$garantias = $this->Solicitud_Model->ObtenerGarantias($id);
 		$datos = $this->Solicitud_Model->DetalleSolicitud($id);
-		$data = array('datos' => $datos );
+		// $data = array('datos' => $datos );
+		// if (sizeof($fiadores->result() > 0))
+		// {
+		// 	// if (sizeof($fiadores->result()) > 0)
+		// 	// {
+		// 	// 	$data = array('datos' => $datos, 'fiadores' => $fiadores ,'garantias' => $garantias);
+		// 	// }
+		// 	// else
+		// 	// {
+		// 	// 	$data = array('datos' => $datos, 'fiadores' => $fiadores );
+		// 	// }
+		// }
+		// if (sizeof($garantias->result()) > 0)
+		// {
+		// 	$data = array('datos' => $datos, 'garantias' => $garantias);
+		// }
+		$data = array('datos' => $datos, 'fiadores' => $fiadores ,'garantias' => $garantias);
 		$this->load->view('Solicitud/detalle_solicitud', $data);
 		$this->load->view('Base/footer');
 	}

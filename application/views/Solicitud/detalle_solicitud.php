@@ -28,7 +28,7 @@
                     $mes = 'meses';
                   }
                 }
-              }
+              
             ?>
         <div class="row">
                 <div class="col-md-12">
@@ -77,7 +77,7 @@
                                           <td colspan=""><p><strong>Total a Pagar: </strong>$<?= $solicitud->ivaInteresCapital ?></p></td>
                                         </tr>
 
-                                        <tr>
+                                      <tr>
                                         <td colspan="3" class="text-center"><strong>DATOS DEL PERSONALES DEL SOLICITANTE</strong></td>
                                       </tr>
                                         <tr>
@@ -98,6 +98,49 @@
                                         <tr>
                                           <td colspan="3" class="text-center"><p><strong>Observaciones: </strong><?= $solicitud->observaciones ?></p></td>
                                         </tr>
+                                        <?php
+                                          }
+                                          if (sizeof($fiadores->result())>0)
+                                          {
+                                            foreach ($fiadores->result() as $fiador)
+                                            {
+                                            
+                                        ?>
+                                          <tr>
+                                        <td colspan="3" class="text-center"><strong>DATOS DEL FIADOR</strong></td>
+                                      </tr>
+                                        <tr>
+                                          <td colspan=""><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
+                                          <td colspan=""><p><strong>Ingreso: </strong>$<?= $fiador->ingreso?></p></td>
+                                          <td colspan=""><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
+                                        </tr>
+                                        <tr>
+                                          <td colspan=""><p><strong>NIT: </strong><?= $fiador->nit ?></p></td>
+                                          <td colspan=""><p><strong>Teléfono: </strong><?= $fiador->telefono ?></p></td>
+                                          <td colspan=""><p><strong>Correo: </strong><?= $fiador->email ?></p></td>
+                                        </tr>
+                                        <tr>
+                                          <td colspan=""><p><strong>Dirección: </strong><?= $fiador->direccion ?></p></td>
+                                          <td colspan=""><p><strong>Fecha de nacimiento: </strong><?= $fiador->fechaNacimiento ?></p></td>
+                                          <td colspan=""><p><strong>Género: </strong><?= $fiador->genero ?></p></td>
+                                        </tr>
+                                        <?php }} ?>
+
+                                        <?php
+                                          if (sizeof($garantias->result())>0)
+                                          {
+                                            foreach ($garantias->result() as $garantia)
+                                            {
+                                            
+                                        ?>
+                                          <tr>
+                                        <td colspan="3" class="text-center"><strong>DATOS DE LA GARANTIA</strong></td>
+                                      </tr>
+                                          <td colspan=""><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
+                                          <td colspan=""><p><strong>Precio valorado: </strong>$<?= $garantia->valorado ?></p></td>
+                                          <td colspan=""><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
+                                      </tr>
+                                        <?php }} ?>
                                   </tbody>
                                 </table>
                                   <div align="center">

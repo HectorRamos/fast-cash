@@ -45,7 +45,6 @@
                                 <option value="1">Crédito Fiduciario</option>
                                 <option value="2">Crédito Hipotecario</option>
                                 <option value="3">Crédito Prendario</option>
-                                <option value="4">Crédito Mixto</option>
                                 
                               </select>
                       </div>
@@ -139,7 +138,7 @@
                       <div class="form-group col-md-2">
                         <p><label for="">Operación</label></p>
                         <button class="btn btn-success" id="fiador" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador </button>
-                        <button class="btn btn-success" id="prenda" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Prenda</button>
+                        <button class="btn btn-success" id="prenda" type="button" data-toggle="modal" data-target="#agregarPrenda"><i class="fa fa-user-plus fa-lg"></i> Prenda</button>
                         <button class="btn btn-success" id="hipoteca" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Hipoteca</button>
                       </div>
                     </div>
@@ -195,16 +194,26 @@
               <?php 
                 foreach ($clientes->result() as $cliente)
                 {
-                  $datosCliente = $cliente->Id_Cliente." ".$cliente->Nombre_Cliente." ". $cliente->Apellido_Cliente;
+                  // $datosCliente = $cliente->Id_Cliente." ".$cliente->Nombre_Cliente." ". $cliente->Apellido_Cliente;
+                  $id = $cliente->Id_Cliente; 
+                  $nombre = '"'.$cliente->Nombre_Cliente.'"'; 
+                  $apellido = '"'.$cliente->Apellido_Cliente.'"';
+                  $dui = '"'.$cliente->DUI_Cliente.'"';
               ?>
               <tr class="tr tr1">
                 <td class="td td1"  width="300"><b><?= $cliente->Codigo_Cliente ?></b></td>
                 <td class="td td1"><?= $cliente->Nombre_Cliente. " ".$cliente->Apellido_Cliente ?></td>
                 <td class="td td1">
-                  <button type="button" title="Agregar" class="btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente" 
+                  <!-- <button type="button" title="Agregar" class="btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente" 
                         value="<?=$datosCliente;?>" data-toggle="tooltip" data-dismiss="modal">
                     <i class="fa fa-user-plus fa-lg"></i>
-                  </button>
+                  </button> -->
+                  <?php
+                  echo "<a title='Agregar' class='btn btn-success btn-custom waves-effect waves-light m-b-5 btn-xs seleccionarCliente' 
+                          onclick='agregarCliente($id, $nombre, $apellido, $dui)' data-toggle='tooltip' data-dismiss='modal'>
+                        <i class='fa fa-user-plus fa-lg'></i>
+                      </a>";
+                  ?>
                 </td>
               </tr>
               <?php } ?>
@@ -302,10 +311,56 @@
 <!-- Fin de ventana modal -->
 <!-- ============================================================== -->
 
+<!-- ============================================================== -->
+<!-- Ventana Modal para agregar prenda-->
+<!-- ============================================================== -->
+<div class="modal fade" id="agregarPrenda" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Datos del la prenda</h4>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                          <label for="">Nombre de la prenda</label>
+                          <input type="text" class="form-control" id="nombre_prenda" name="nombre_prenda" placeholder="Nombre del fiador">
+                    </div>
+                    <div class="form-group col-md-6">
+                          <label for="">Precio valorado</label>
+                          <input type="text" class="form-control" id="precio_valorado" name="precio_valorado" placeholder="Apellido del fiador">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="form-group col-md-12">
+                          <label for="">Descripción</label>
+                          <textarea class="form-control resize" rows="3" id="descripcion_prenda" name="descripcion_prenda"></textarea>
+
+                    </div>
+                </div>
+            </form>    
+        </div>
+        <div align="center">
+          <button class="btn btn-success" type="button" onclick="agregarPrenda()"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ============================================================== -->
+<!-- Fin de ventana modal -->
+<!-- ============================================================== -->
+
+
 <script type="text/javascript">
   $(document).on("ready", main);
   function main()
   {
+    $("#numero_solicitud").prop('readonly', true);
     $("#nombre_cliente").prop('readonly', true);
     $("#tasa_interes").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
@@ -314,32 +369,36 @@
     $("#cuota_diaria").prop('readonly', true);
     $("#total_pagar").prop('readonly', true);
 
-    $(".seleccionarCliente").on("click", agregarCliente);
+    // $(".seleccionarCliente").on("click", agregarCliente);
     $("#tipo_prestamo").on('change', activarIP);
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);
     $("#tipo_credito").on('change', mostrarOperacion);
   }
 
-  function agregarCliente()
+function agregarCliente(id, nombre, apellido, dui)
   {
-    separador = " ";
-    cliente = $(this).val(); //Obteniendo el valor
-    datos = cliente.split(separador); // Convirtiendolo en arreglo
-    id_cliente = datos[0]; // Capturando el primer elemento del arreglo que es el id del cliente
+    // separador = " ";
+    // cliente = $(this).val(); //Obteniendo el valor
+    // datos = cliente.split(separador); // Convirtiendolo en arreglo
+    // id_cliente = datos[0]; // Capturando el primer elemento del arreglo que es el id del cliente
 
-    datos.splice(0,1); // Eliminando la primera posicion del arreglo que es el id para que queden solo las posiciones del nombre
+    // datos.splice(0,1); // Eliminando la primera posicion del arreglo que es el id para que queden solo las posiciones del nombre
 
-    // Obteniendo el nombre en una cadena
-    nombre_cliente = ""
-    for (var i = 0; i < datos.length; i++)
-    {
-      nombre_cliente = nombre_cliente + " " + datos[i];
-    }
-    // Fin del proceso
-
+    // // Obteniendo el nombre en una cadena
+    // nombre_cliente = ""
+    // for (var i = 0; i < datos.length; i++)
+    // {
+    //   nombre_cliente = nombre_cliente + " " + datos[i];
+    // }
+    // // Fin del proceso
+    str = dui.replace("-", "");
+    codigo = "F"+str;
+    nombre_cliente = nombre +" "+apellido;
     $("#nombre_cliente").attr("value", nombre_cliente);
-    $("#id_cliente").attr("value", id_cliente);
+    $("#id_cliente").attr("value", id);
+    $("#numero_solicitud").attr("value", codigo);
+    // $("#id_cliente").val(id2["id"]);
 
   }
 
@@ -427,16 +486,22 @@ function agregarFiador()
 
   fila = '';
   fila += '<tr>';
-  fila +=  '<td><input type="text" class="form-control" value="'+nombre+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+apellido+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+dui+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+nit+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+telefono+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+email+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+nacimiento+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+genero+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+ingreso+'"></td>';
-  fila +=  '<td><input type="text" class="form-control" value="'+direccion+'"></td>';
+  fila +=  '<td><p>'+nombre +" "+ apellido +'</p></td>';
+  fila +=  '<td><p>'+ingreso+'</p></td>';
+  fila +=  '<td><p>'+direccion+'</p></td>';
+  fila += '</tr>';
+
+  fila += '<tr>';
+  fila +=  '<td><input type="hidden" name="nombreFiador[]" class="form-control" value="'+nombre+'"></td>';
+  fila +=  '<td><input type="hidden" name="apellidoFiador[]" class="form-control" value="'+apellido+'"></td>';
+  fila +=  '<td><input type="hidden" name="duiFiador[]" class="form-control" value="'+dui+'"></td>';
+  fila +=  '<td><input type="hidden" name="nitFiador[]" class="form-control" value="'+nit+'"></td>';
+  fila +=  '<td><input type="hidden" name="telefonoFiador[]" class="form-control" value="'+telefono+'"></td>';
+  fila +=  '<td><input type="hidden" name="emailFiador[]" class="form-control" value="'+email+'"></td>';
+  fila +=  '<td><input type="hidden" name="nacimientoFiador[]" class="form-control" value="'+nacimiento+'"></td>';
+  fila +=  '<td><input type="hidden" name="generoFiador[]" class="form-control" value="'+genero+'"></td>';
+  fila +=  '<td><input type="hidden" name="ingresoFiador[]" class="form-control" value="'+ingreso+'"></td>';
+  fila +=  '<td><input type="hidden" name="direccionFiador[]" class="form-control" value="'+direccion+'"></td>';
   fila += '</tr>';
 
   $("#garantia").append(fila);
@@ -450,6 +515,26 @@ function agregarFiador()
    // alert(genero);
    // alert(ingreso);
    // alert(direccion);
+}
+
+function agregarPrenda()
+{
+  nombre = $("#nombre_prenda").val();
+  precio = $("#precio_valorado").val();
+  descripcion = $("#descripcion_prenda").val();
+
+  fila = '';
+  fila += '<tr>';
+  fila +=  '<td><p>'+nombre+'</p></td>';
+  fila +=  '<td><p>'+precio+'</p></td>';
+  fila +=  '<td><p>'+descripcion+'</p></td>';
+  fila += '</tr>';
+  fila += '<tr>';
+  fila +=  '<td><input type="hidden" name="nombrePrenda[]" class="form-control" value="'+nombre+'"></td>';
+  fila +=  '<td><input type="hidden" name="precioPrenda[]" class="form-control" value="'+precio+'"></td>';
+  fila +=  '<td><input type="hidden" name="descripcionPrenda[]" class="form-control" value="'+descripcion+'"></td>';
+  fila += '</tr>';
+  $("#garantia").append(fila);
 }
 
 function mostrarOperacion()
