@@ -248,7 +248,6 @@
     }
     </script>
       <!-- FIN DEL MODAL PARA ELIMINAR DATOS-->
-
     <!-- SCRIPT DEL MODAL PARA MOSTRAR DATOS-->
 	  <script type="text/javascript">
 		//funcion para cargar los datos en modal con ajax
@@ -265,13 +264,15 @@
                 var registro = eval(respuesta);
                     if (registro.length > 0)
                     {
-                      if(registro[0]['urlImg']==""){
-                        html +="<div class='row'><div class='col-sm-12' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user.png' alt='Imagen del Cliente'></img><br><label style='margin-right: 22px;'>Sin foto</label></div></div>";
+                      html += "<div class='row'>"; 
+                       if(registro[0]['urlImg']==""){
+                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user1.png' alt='Imagen del Cliente'></img><br><label style='margin-left: 28px;'>Sin foto</label></div>";
                       }
                       else{
-                        html +="<div class='row'><div class='col-sm-12 gallery' align='right' style='margin-top: 1px; position:absolute; left: 4px;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><label style='margin-right: 33px;'>Foto</label></div></div>";
-                      }
+                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><label style='margin-left: 38px;'>Foto</label></div>";
+                      }                    
                       //html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
+                      html += "<div class='col-sm-10'>";
                       html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+" "+registro[0]['Apellido_Cliente']+"'></div>";
                       html +="<div class='col-sm-6'><label>Estado civil:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div></div>";
 
@@ -302,6 +303,9 @@
 
                     	if(registro[0]['Tipo_Cliente']=="Empleado"){
                     		html+="<ul><h5><b>Información Laboral</b></h5><ol>";
+                         html += "<div class='row'>"; 
+                         html += "<div class='col-sm-2'></div>"; 
+                         html += "<div class='col-sm-10'>"; 
                     		html +="<div class='row'><div class='col-sm-6'><label>Nombre de la empresa:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Empresa']+"'></div>";
                     		html +="<div class='col-sm-6'><label>Cargo:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Cargo']+"'></div></div>";
 
@@ -311,10 +315,13 @@
                     		html +="<div class='row'><div class='col-sm-6'><label>Rubro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Rubro']+"'></div>";
                         html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones']+"'></div></div>";
                     		
-                    		html+="</ol></ul>"
+                        html+="</ol></ul>"
                     	}
                     	else if(registro[0]['Tipo_Cliente']=="Empresario"){
                     		html+="<ul><h5><b>Información del Negocio propio</b></h5><ol>";
+                        html += "<div class='row'>"; 
+                         html += "<div class='col-sm-2'></div>"; 
+                         html += "<div class='col-sm-10'>"; 
                     		html +="<div class='row'><div class='col-sm-6'><label>Nombre del Negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Negocio']+"'></div>";
                     		html +="<div class='col-sm-6'><label>NIT:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['NIT']+"'></div></div>";
 
@@ -322,10 +329,7 @@
                     		html +="<div class='col-sm-6'><label>Tipo de factura emitida:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Factura']+"'></div></div>";
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
-                    		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div></div>";
-                       
-
-                    		
+                    		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div></div>";                  		
                         html+="</ul>"
                       }
                       else if(registro[0]['Tipo_Cliente']=="Otro"){

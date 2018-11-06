@@ -530,7 +530,7 @@ $("#btnFoto").click(function(){
                     if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                         console.log("La foto fue enviada correctamente");
                         console.log(xhr);
-                        $estado.innerHTML = "Foto guardada con éxito. Puedes verla <a target='_blank' href='./" + xhr.responseText + "'> aquí</a>";
+                        $estado.innerHTML = "Foto guardada con éxito.";
                         //alert(xhr.responseText);//AQUI ESTA LA RUTA DE LA IMAGEN
                         $('#urlImg').val(xhr.responseText);
                         $video.pause();//PAUSAR EL VIDEO

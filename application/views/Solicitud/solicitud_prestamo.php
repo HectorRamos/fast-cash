@@ -1,3 +1,8 @@
+<style>
+  #fiador, #prenda, #hipoteca{
+    display: none;
+  }
+</style>
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
@@ -34,6 +39,15 @@
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
                       </div>
                       <div class="form-group col-md-8">
+                        <label for="tipo_credito">Tipo de crédito</label>
+                              <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de prestamo">
+                                <option value="">Seleccione un tipo de crédito</option>
+                                <option value="1">Crédito Fiduciario</option>
+                                <option value="2">Crédito Hipotecario</option>
+                                <option value="3">Crédito Prendario</option>
+                                <option value="4">Crédito Mixto</option>
+                                
+                              </select>
                       </div>
                       <div class="form-group col-md-2" align="center">
                         <div class="mar_che_cobrar">
@@ -118,14 +132,23 @@
 
                     <!-- Cuarta Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-12">
+                      <div class="form-group col-md-10">
                             <label for="observaciones">Observaciones</label>
                             <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones"></textarea>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <p><label for="">Operación</label></p>
+                        <button class="btn btn-success" id="fiador" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador </button>
+                        <button class="btn btn-success" id="prenda" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Prenda</button>
+                        <button class="btn btn-success" id="hipoteca" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Hipoteca</button>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-12">
+                        <table class="table" id="garantia">
+                            
+                        </table>
                             <!-- <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label> -->
                             <input type="hidden" value="1" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
                             <input type="hidden" value="1" class="form-control" id="numero_cuotas" name="numero_cuotas" placeholder="">
@@ -194,10 +217,91 @@
       </div>
     </div>
   </div>
-</div>
 <!-- ============================================================== -->
 <!-- Fin de ventana modal -->
 <!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Ventana Modal para agregar Fiador-->
+<!-- ============================================================== -->
+<div class="modal fade" id="agregarFiador" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Datos del fiador</h4>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                          <label for="">Nombre</label>
+                          <input type="text" class="form-control" id="nombre_fiador" name="nombre_fiador" placeholder="Nombre del fiador">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">Apellido</label>
+                          <input type="text" class="form-control" id="apellido_fiador" name="apellido_fiador" placeholder="Apellido del fiador">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">DUI</label>
+                          <input type="text" class="form-control" id="dui_fiador" name="dui_fiador" placeholder="DUI" data-mask="9999999-9">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                          <label for="">NIT</label>
+                          <input type="text" class="form-control" id="nit_fiador" name="nit_fiador" placeholder="NIT" data-mask="9999-999999-999-9">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">Teléfono</label>
+                          <input type="text" class="form-control" id="telefono_fiador" name="telefono_fiador" placeholder="Teléfono" data-mask="9999-9999">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">Email</label>
+                          <input type="email" class="form-control" id="email_fiador" name="email_fiador" placeholder="Correo electrónico">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                          <label for="">Fecha de Nacimiento</label>
+                          <input type="text" class="form-control DateTime" id="nacimiento_fiador" name="nacimiento_fiador" placeholder="Fecha de nacimiento">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">Género</label>
+                          <select class="form-control" id="genero_fiador" name="genero_fiador" data-placeholder="Seleccione un género">
+                                <option value="">Seleccione un género</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                              </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="">Ingreso</label>
+                          <input type="text" class="form-control" id="ingreso_fiador" name="ingreso_fiador" placeholder="Ingreso mensual">
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-12">
+                          <label for="">Dirección</label>
+                          <textarea class="form-control resize" rows="3" id="direccion_fiador" name="direccion_fiador"></textarea>
+
+                    </div>
+                </div>
+            </form>    
+        </div>
+        <div align="center">
+          <button class="btn btn-success" type="button" onclick="agregarFiador()"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
+          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ============================================================== -->
+<!-- Fin de ventana modal -->
+<!-- ============================================================== -->
+
 <script type="text/javascript">
   $(document).on("ready", main);
   function main()
@@ -214,6 +318,7 @@
     $("#tipo_prestamo").on('change', activarIP);
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);
+    $("#tipo_credito").on('change', mostrarOperacion);
   }
 
   function agregarCliente()
@@ -307,5 +412,65 @@ function redondeo2decimales(numero)
   return resultado;
 }
 
+function agregarFiador()
+{
+  nombre = $("#nombre_fiador").val();
+  apellido = $("#apellido_fiador").val();
+  dui = $("#dui_fiador").val();
+  nit = $("#nit_fiador").val();
+  telefono = $("#telefono_fiador").val();
+  email = $("#email_fiador").val();
+  nacimiento = $("#nacimiento_fiador").val();
+  genero = $("#genero_fiador").val();
+  ingreso = $("#ingreso_fiador").val();
+  direccion = $("#direccion_fiador").val();
 
+  fila = '';
+  fila += '<tr>';
+  fila +=  '<td><input type="text" class="form-control" value="'+nombre+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+apellido+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+dui+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+nit+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+telefono+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+email+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+nacimiento+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+genero+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+ingreso+'"></td>';
+  fila +=  '<td><input type="text" class="form-control" value="'+direccion+'"></td>';
+  fila += '</tr>';
+
+  $("#garantia").append(fila);
+   // alert(nombre);
+   // alert(apellido);
+   // alert(dui);
+   // alert(nit);
+   // alert(telefono);
+   // alert(email);
+   // alert(nacimiento);
+   // alert(genero);
+   // alert(ingreso);
+   // alert(direccion);
+}
+
+function mostrarOperacion()
+{
+  pivote = $("#tipo_credito").val();
+  switch(pivote) {
+    case '1':
+        $("#fiador").fadeIn()
+        $("#hipoteca").fadeOut()
+        $("#prenda").fadeOut()
+        break;
+    case '2':
+        $("#hipoteca").fadeIn()
+        $("#fiador").fadeOut()
+        $("#prenda").fadeOut()
+        break;
+    case '3':
+        $("#prenda").fadeIn()
+        $("#fiador").fadeOut()
+        $("#hipoteca").fadeOut()
+        break;
+  } 
+}
 </script>
