@@ -114,13 +114,9 @@ class Solicitud_Model extends CI_Model
 			$descripcionPrenda = $datos['descripcionPrenda'];
 			$estadoPrenda = 1;
 		}
-
-
 	   // Guardando la solicitud
 	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estadoSolicitud, idCliente, idLineaPlazo, idEstadoSolicitud)
 	   		   VALUES('$codigoSolicitud', '$fechaRecibido', '$observaciones', '$estado', '$idCliente', '$idLineaPlazo', '$idEstadoSolicitud')";
-	    
-
 	    if ($this->db->query($sql))
 		{
 			//Buscando el ultimo Id
@@ -130,7 +126,6 @@ class Solicitud_Model extends CI_Model
 			{
 				$idSoli = $filaResultado->iSoli; //Dato para la amortizacion
 			}
-
 			// Guardando datos de la amortizacion
 			$sql3 = "INSERT INTO tbl_amortizaciones(tasaInteres, capital, totalInteres, totalIva, ivaInteresCapital, plazoMeses, pagoCuota, cantidadCuota, estadoAmortizacion, idSolicitud)
 			VALUES('$tasaInteres', '$capital', '$totalInteres', '$totalIva', '$ivaInteresCapital', '$plazoMeses', '$pagoCuota', '$cantidadCuota', '$estado', '$idSoli')";

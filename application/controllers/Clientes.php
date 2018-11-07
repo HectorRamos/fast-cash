@@ -117,22 +117,55 @@ class Clientes extends CI_Controller {
 
 		$imagenCodificada = file_get_contents("php://input"); //Obtener la imagen
 		$dui = $this->input->GET('dui');
+		$indicador = $this->input->GET('indicador');
+		//echo $dui;
+		//echo $indicador;
+		
+		if($indicador==1){
+			//echo "if uno"+$dui;
+			//echo $indicador;	
+			if(strlen($imagenCodificada) <= 0) exit("No se recibió ninguna imagen");
+			//La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
+			$imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", urldecode($imagenCodificada));
+			//Venía en base64 pero sólo la codificamos así para que viajara por la red, ahora la decodificamos y
+			//todo el contenido lo guardamos en un archivo
+			$imagenDecodificada = base64_decode($imagenCodificadaLimpia);
+			//Calcular un nombre único
+			$ruta= "plantilla/Fotos";
+			$nombreImagenGuardada ="plantilla/Fotos/foto_" .$dui. ".png";
 
-		if(strlen($imagenCodificada) <= 0) exit("No se recibió ninguna imagen");
-		//La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
-		$imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", urldecode($imagenCodificada));
-		//Venía en base64 pero sólo la codificamos así para que viajara por la red, ahora la decodificamos y
-		//todo el contenido lo guardamos en un archivo
-		$imagenDecodificada = base64_decode($imagenCodificadaLimpia);
-		//Calcular un nombre único
-		$ruta= "plantilla/Fotos";
-		$nombreImagenGuardada ="plantilla/Fotos/foto_" .$dui. ".png";
+			//Escribir el archivo
+			file_put_contents($nombreImagenGuardada, $imagenDecodificada);
+			//Terminar y regresar el nombre de la foto
+			exit($nombreImagenGuardada);
+		}
+		else if($indicador==2){
+			$id = $this->input->GET('id');
+			
+			if(strlen($imagenCodificada) <= 0) exit("No se recibió ninguna imagen para editar");
+			//La imagen traerá al inicio data:image/png;base64, cosa que debemos remover
+			$imagenCodificadaLimpia = str_replace("data:image/png;base64,", "", urldecode($imagenCodificada));
+			//Venía en base64 pero sólo la codificamos así para que viajara por la red, ahora la decodificamos y
+			//todo el contenido lo guardamos en un archivo
+			$imagenDecodificada = base64_decode($imagenCodificadaLimpia);
+			//Calcular un nombre único
+			//$ruta= "plantilla/Fotos";
+			$nombreImagenGuardada ="plantilla/Fotos/foto_" .$dui. ".png";
+			//Escribir el archivo
+			file_put_contents($nombreImagenGuardada, $imagenDecodificada);
+			$this->load->model("Clientes_Model");
+			$bool=$this->Clientes_Model->EditarFoto($nombreImagenGuardada,$id);
+			if($bool){
+				exit($nombreImagenGuardada);
+			}
+			else{
+				exit("error");
 
-		//Escribir el archivo
-		file_put_contents($nombreImagenGuardada, $imagenDecodificada);
-
-		//Terminar y regresar el nombre de la foto
-		exit($nombreImagenGuardada);
+			}
+			
+			
+			
+		}
 	}
 	public function EditardatosLaborales(){
 		$datos=$this->input->POST();

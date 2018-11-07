@@ -26,6 +26,7 @@
                 });
               </script>
             <?php endif; ?>
+
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -119,8 +120,20 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar1()">×</button>
                         <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-list-alt fa-lg"></i> Información</h4>
                     </div>
-
                     <div class="modal-body" >
+                      <div id="fotoE" style="display:none;">
+                          <div id="errorFoto" style="display:none;" class="alert alert-danger">
+                            <h4>Por favor complete los campos requeridos para poder agregar la foto</h4> 
+                          </div>
+                          <video id="video" width="200" geight="100" style="width: 100%; height: auto;"></video>
+                          <br>
+                          <div align="center">
+                            <button class="btn btn-success block waves-effect waves-light m-b-5" id="boton"><i class="fa fa-camera fa-lg"></i> Tomar foto</button>
+                           <a class="btn btn-default block waves-effect waves-light m-b-5" id="Cancel"  data-dismiss="modal" aria-hidden="true"><i class="fa fa-close fa-lg"></i> Cerrar</a>
+                          <p id="estado"></p>
+                          <canvas id="canvas" style="display: none;"></canvas>                                 
+                        </div>
+                      </div>
                         <div id="divInfo">
                           <input type="hidden" name='nombre' id="id" class="style" readonly='readonly'>
                         </div>
@@ -209,11 +222,13 @@
                             </div>
                           </form>
                         </div>
+                        
                     </div>
-
+                    
                     <div class="modal-body" id="divInfo">
                         <input type="hidden" name='nombre' id="id" class="" readonly='readonly'>
                     </div>
+                    
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -264,15 +279,21 @@
                 var registro = eval(respuesta);
                     if (registro.length > 0)
                     {
-                      html += "<div class='row'>"; 
+                      html += "<div class='row' id='DivInfoC'>"; 
                        if(registro[0]['urlImg']==""){
-                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user1.png' alt='Imagen del Cliente'></img><br><label style='margin-left: 28px;'>Sin foto</label></div>";
+                        var dui = registro[0]['DUI_Cliente'];
+                        var id =registro[0]['Id_Cliente'];
+                        //alert(dui);
+                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img id='Imgvacia' class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user1.png' alt='Imagen del Cliente'></img><br><a onclick='FotoA("+dui+","+id+",1)'>Agregar foto</a></div>";
                       }
                       else{
-                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><label style='margin-left: 38px;'>Foto</label></div>";
+                        var dui = '"'+registro[0]['DUI_Cliente']+'"';
+                        var id =registro[0]['Id_Cliente'];
+                        //alert(dui);
+                        html +="<div id='ImgDivCliente' class='col-sm-2' align='left' style='z-index: 999;'><img id='ImgD'  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente'></img><br><a onclick='FotoA("+dui+","+id+",2)'>Editar foto</a></div>";
                       }                    
                       //html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
-                      html += "<div class='col-sm-10'>";
+                      html += "<div class='col-sm-10' >";
                       html +="<div class='row'><div class='col-sm-6'><label>Nombre:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Nombre_Cliente']+" "+registro[0]['Apellido_Cliente']+"'></div>";
                       html +="<div class='col-sm-6'><label>Estado civil:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Estado_Civil_Cliente']+"'></div></div>";
 
@@ -297,7 +318,7 @@
                       html +="<div class='row'><div class='col-sm-12'><label>Ingreso Mensual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['ingreso']+"'></div></div>";
 
                     	html +="<div class='row'><div class='col-sm-6'><label>Tipo de cliente:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Cliente']+"'></div>";
-                    	html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones_Cliente']+"'></div></div>";
+                    	html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><textarea  height='200' width='300'  name='nombre' class='style form-control' readonly='readonly'>"+registro[0]['Observaciones_Cliente']+"</textarea></div></div>";
                     	html+="</ol></ul>";
                     	html+="<hr>"
 
@@ -313,7 +334,7 @@
                     		html +="<div class='col-sm-6'><label>Teléfono:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Telefono']+"'></div></div>";
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Rubro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Rubro']+"'></div>";
-                        html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Observaciones']+"'></div></div>";
+                        html +="<div class='col-sm-6'><label>Observaciones:&nbsp;</label><textarea height='200' name='nombre' class='style' readonly='readonly'>"+registro[0]['Observaciones']+"</textarea></div></div>";
                     		
                         html+="</ol></ul>"
                     	}
@@ -329,7 +350,7 @@
                     		html +="<div class='col-sm-6'><label>Tipo de factura emitida:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Tipo_Factura']+"'></div></div>";
 
                     		html +="<div class='row'><div class='col-sm-6'><label>Giro:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Giro']+"'></div>";
-                    		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Direccion_Negocio']+"'></div></div>";                  		
+                    		html +="<div class='col-sm-6'><label>Dirección del negocio:&nbsp;</label><textarea  name='nombre' class='style' readonly='readonly'>"+registro[0]['Direccion_Negocio']+"</textarea></div></div>";                  		
                         html+="</ul>"
                       }
                       else if(registro[0]['Tipo_Cliente']=="Otro"){
@@ -367,7 +388,6 @@
         $('#Telefono').val("");
         $('#Rubro').val("");
         $('#Observaciones').val("");
-
         $('#Nombre_Negocio').val("");
         $('#NIT').val("");
         $('#NRC').val("");
@@ -391,6 +411,90 @@
         $('#Direccion_Negocio').val("");
         $('#Tipo_Factura').val("");
     }
+    function FotoA(dui, id, param){
+      //alert('dui'+dui);
+      //alert('Id'+id);
+      document.getElementById('divInfo').style.display='none';
+      document.getElementById('fotoE').style.display='block';
+      // Declaramos elementos del DOM
+      document.getElementById('errorFoto').style.display='none';
+      var $video = document.getElementById("video"),
+      $canvas = document.getElementById("canvas"),
+      $boton = document.getElementById("boton"),
+      $estado = document.getElementById("estado");
+      if (tieneSoporteUserMedia()) {
+          _getUserMedia(
+          {video: true},
+          function (stream) {
+              console.log("Permiso concedido");
+              //$video.src = window.URL.createObjectURL(stream);
+              $video.srcObject=stream;
+              $video.play();
+              //Escuchar el click
+              $boton.addEventListener("click", function(){
+                  //Pausar reproducción
+                  $video.pause();
+                  //Obtener contexto del canvas y dibujar sobre él
+                  var contexto = $canvas.getContext("2d");
+                  $canvas.width = $video.videoWidth;
+                  $canvas.height = $video.videoHeight;
+                  contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
+                  var foto = $canvas.toDataURL(); //Esta es la foto, en base 64
+                  $estado.innerHTML = "Enviando foto. Por favor, espera...";
+                  var xhr = new XMLHttpRequest();
+                  //var dui="2222222";
+                  xhr.open("POST", "TomarFoto?dui="+dui+"&indicador=2&id="+id, true);
+                  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                  xhr.send(encodeURIComponent(foto)); //Codificar y enviar
+                  xhr.onreadystatechange = function() {
+                      if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                          console.log("La foto fue enviada correctamente");
+                          console.log(xhr);
+                          $estado.innerHTML = "Foto guardada con éxito.";
+                          //alert(xhr.responseText);//AQUI ESTA LA RUTA DE LA IMAGEN
+                          //$('#urlImg').val(xhr.responseText);
+                          if(xhr.responseText=="error"){
+                            alert('error al modificar la foto');
+                          }
+                          else{
+                            
+                            if(param==1){
+                              alert('foto modificada con exito');
+                              document.getElementById('Imgvacia').src="<?= base_url()?>"+xhr.responseText;
+                            }
+                            else if(param==2){
+                              alert('foto modificada con exito, es necesrio actualizar la pagina');
+                              self.location ="<?= base_url()?>Clientes/gestionarCliente";
+                            }                            
+                            document.getElementById('divInfo').style.display='block';
+                            document.getElementById('fotoE').style.display='none';
+                          }
+                          $video.pause();//PAUSAR EL VIDEO
+                          stream.stop();//CERRAR LA CAMARA
+                                  //$video.src="";
+                      }
+                  }
+              });
+          }, 
+          function (error) {
+              console.log("Permiso denegado o error: ", error);
+              $estado.innerHTML = "No se puede acceder a la cámara, o no diste permiso.";
+          });
+      }
+      else{
+          alert("Lo siento. Tu navegador no soporta esta característica");
+          $estado.innerHTML = "Parece que tu navegador no soporta esta característica. Intenta actualizarlo.";
+      }
+    }
+    //==================== EDITAR FOTO
+  function tieneSoporteUserMedia() {
+    //VALIDAR EL NAVEGADOR Y SI ES COMPATIBLE
+    return !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+  } 
+  function _getUserMedia() {
+    //USAR EL ELEMENTO MEDIA QUE ES PARA ACCEDER A LA CAMARA
+    return (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
+  }
 </script>
     <!-- FIN DEL SCRIPT DEL MODAL PARA MOSTRAR DATOS-->
 
