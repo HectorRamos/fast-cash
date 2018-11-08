@@ -523,7 +523,7 @@ $("#btnFoto").click(function(){
                 $estado.innerHTML = "Enviando foto. Por favor, espera...";
                 var xhr = new XMLHttpRequest();
                 //var dui="2222222";
-                xhr.open("POST", "TomarFoto?dui="+dui, true);
+                xhr.open("POST", "TomarFoto?dui="+dui+"&indicador=1", true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.send(encodeURIComponent(foto)); //Codificar y enviar
                 xhr.onreadystatechange = function() {

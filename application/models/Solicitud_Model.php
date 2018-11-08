@@ -88,6 +88,32 @@ class Solicitud_Model extends CI_Model
 	   $cantidadCuota = $datos['numero_cuotas'];
 	   $estado = 1;
 
+	   // Datos del Fiador
+	   if (isset($datos['nombreFiador'], $datos['apellidoFiador'], $datos['duiFiador'], $datos['nitFiador']))
+		{
+			$existeFiador = true;
+		    $nombreFiador = $datos['nombreFiador'];
+			$apellidoFiador = $datos['apellidoFiador'];
+			$duiFiador = $datos['duiFiador'];
+			$nitFiador = $datos['nitFiador'];
+			$telefonoFiador = $datos['telefonoFiador'];
+			$emailFiador = $datos['emailFiador'];
+			$direccionFiador = $datos['direccionFiador'];
+			$generoFiador = $datos['generoFiador'];
+			$nacimientoFiador = $datos['nacimientoFiador'];
+			$ingresoFiador = $datos['ingresoFiador'];
+			$estadoFiador = 1;
+		}
+
+		// Datos de la prenda
+		if (isset($datos['nombrePrenda'], $datos['precioPrenda'], $datos['descripcionPrenda']))
+		{
+			$existePrenda = true;
+		    $nombrePrenda = $datos['nombrePrenda'];
+			$precioPrenda = $datos['precioPrenda'];
+			$descripcionPrenda = $datos['descripcionPrenda'];
+			$estadoPrenda = 1;
+		}
 	   // Guardando la solicitud
 	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estadoSolicitud, idCliente, idLineaPlazo, idEstadoSolicitud)
 	   		   VALUES('$codigoSolicitud', '$fechaRecibido', '$observaciones', '$estado', '$idCliente', '$idLineaPlazo', '$idEstadoSolicitud')";
@@ -100,12 +126,30 @@ class Solicitud_Model extends CI_Model
 			{
 				$idSoli = $filaResultado->iSoli; //Dato para la amortizacion
 			}
-
 			// Guardando datos de la amortizacion
 			$sql3 = "INSERT INTO tbl_amortizaciones(tasaInteres, capital, totalInteres, totalIva, ivaInteresCapital, plazoMeses, pagoCuota, cantidadCuota, estadoAmortizacion, idSolicitud)
 			VALUES('$tasaInteres', '$capital', '$totalInteres', '$totalIva', '$ivaInteresCapital', '$plazoMeses', '$pagoCuota', '$cantidadCuota', '$estado', '$idSoli')";
 			if ($this->db->query($sql3))
 			{
+				if (isset($existeFiador))
+				{
+					for ($i=0; $i < sizeof($nombreFiador) ; $i++)
+					{ 
+					$sql4 = "INSERT INTO tbl_fiadores(nombre, apellido, dui, nit, telefono, email, direccion, genero, fechaNacimiento, ingreso, estado, idSolicitud)
+	    					VALUES('$nombreFiador[$i]', '$apellidoFiador[$i]', '$duiFiador[$i]', '$nitFiador[$i]', '$telefonoFiador[$i]', '$emailFiador[$i]', '$direccionFiador[$i]',
+	    			   		'$generoFiador[$i]', '$nacimientoFiador[$i]', '$ingresoFiador[$i]', '$estadoFiador', '$idSoli')";
+					}
+					$this->db->query($sql4);
+				}
+				if (isset($existePrenda))
+				{
+					for ($i=0; $i < sizeof($nombrePrenda) ; $i++) 
+					{ 
+						$sql5 = "INSERT INTO tbl_garantias(nombre, valorado, descripcion, estado, idSolicitud)
+		    					VALUES('$nombrePrenda[$i]', '$precioPrenda[$i]', '$descripcionPrenda[$i]', '$estadoPrenda', '$idSoli')";
+						$this->db->query($sql5);
+					}
+				}
 				return true;
 			}
 			else{
@@ -159,6 +203,20 @@ class Solicitud_Model extends CI_Model
 		$this->db->join('tbl_estados_solicitud', 'tbl_estados_solicitud.id_estado = tbl_solicitudes.idEstadoSolicitud');
 		$this->db->where('tbl_solicitudes.idSolicitud', $id);
 		$datos = $this->db->get();
+		return $datos;
+	}
+
+	public function ObtenerFiadores($id)
+	{
+		$sql = "SELECT * FROM tbl_fiadores WHERE idSolicitud='$id'";
+		$datos = $this->db->query($sql);
+		return $datos;
+	}
+
+	public function ObtenerGarantias($id)
+	{
+		$sql = "SELECT * FROM tbl_garantias WHERE idSolicitud='$id'";
+		$datos = $this->db->query($sql);
 		return $datos;
 	}
 
@@ -233,7 +291,6 @@ class Solicitud_Model extends CI_Model
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
-
 	public function GuardarCredito($datos)
 	{
 		if ($datos != null)
@@ -250,8 +307,7 @@ class Solicitud_Model extends CI_Model
 			$estado = 1;
 			$idAmortizacion = $datos['amortizacion'];
 			$sql = "INSERT INTO tbl_creditos(codigoCredito, tipoCredito, codigoTipoCredito, montoTotal, totalAbonado, estadoCredito, fechaApertura, fechaVencimiento, estado, idAmortizacion)
-				VALUES('$codigoCredito', '$tipoCredito', '$codigoTipoCredito', '$montoTotal', '$totalAbonado', 'estadoCredito', '$fechaApertura', '$fechaVencimiento', '$estado', '$idAmortizacion')";
-
+				VALUES('$codigoCredito', '$tipoCredito', '$codigoTipoCredito', '$montoTotal', '$totalAbonado', '$estadoCredito', '$fechaApertura', '$fechaVencimiento', '$estado', '$idAmortizacion')";
 			if ($this->db->query($sql))
 			{
 				$sql2 = "UPDATE tbl_solicitudes SET idEstadoSolicitud='3' WHERE idSolicitud='$idSolicitud'";

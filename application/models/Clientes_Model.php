@@ -195,6 +195,24 @@ public function dCliente(){
 	$d = $this->db->query();
 	return $d;
 }
+public function EditarFoto($img, $id){
+
+		$idC =$id ;
+		$url=$img;
+		$sql ="UPDATE tbl_clientes SET urlImg='$url' WHERE Id_Cliente=$id";
+		if($this->db->query($sql))
+			{
+				return true;
+			}
+		else{
+				return false;
+			}
+
+
+	
+
+}
+
 }
 
 ?>

@@ -51,7 +51,7 @@
                             <h3 class="panel-title">Registro de creditos</h3>
                           </div>
                           <div class="col-sm-7">
-                              <a title="Nuevo" href="" data-toggle="modal" data-target=".modal_opcion_solicitud" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nueva Solicitud<span></a>
+                              
                           </div>
                         </div>
                       </div>
