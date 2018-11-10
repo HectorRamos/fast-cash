@@ -162,7 +162,7 @@ class Solicitud extends CI_Controller {
 		// {
 		// 	$data = array('datos' => $datos, 'garantias' => $garantias);
 		// }
-		$data = array('datos' => $datos, 'fiadores' => $fiadores ,'garantias' => $garantias);
+		$data = array('datos' => $datos, 'fiadores' => $fiadores ,'garantias' => $garantias, 'idSoli' => $id);
 		$this->load->view('Solicitud/detalle_solicitud', $data);
 		$this->load->view('Base/footer');
 	}
@@ -228,6 +228,70 @@ class Solicitud extends CI_Controller {
 		if($bool){
 				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
 				redirect(base_url()."Solicitud/"); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
+
+	public function AgregarFiador()
+	{
+		$datos = $this->input->post();
+		$id = $datos["id_solicitud"];
+		$bool = $this->Solicitud_Model->AgregarFiador($datos);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
+
+	public function ActualizarFiador()
+	{
+		$datos = $this->input->post();
+		$id = $datos["id_solicitud"];
+		$bool = $this->Solicitud_Model->ActualizarFiador($datos);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
+
+	public function AgregarPrenda()
+	{
+		$datos = $this->input->post();
+		$id = $datos["id_solicitud"];
+		$bool = $this->Solicitud_Model->AgregarPrenda($datos);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			redirect(base_url()."Solicitud/");
+
+		}
+	}
+
+	public function ActualizarPrenda()
+	{
+		$datos = $this->input->post();
+		$id = $datos["id_solicitud"];
+		$bool = $this->Solicitud_Model->ActualizarPrenda($datos);
+		if($bool){
+				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error al realizar la operacion");
