@@ -327,6 +327,129 @@ class Solicitud_Model extends CI_Model
 		}
 	}
 
+	public function AgregarFiador($datos)
+	{
+		if ($datos != null)
+		{
+		    $idSolicitud = $datos['id_solicitud'];
+		    $nombreFiador = $datos['nombre_fiador'];
+			$apellidoFiador = $datos['apellido_fiador'];
+			$duiFiador = $datos['dui_fiador'];
+			$nitFiador = $datos['nit_fiador'];
+			$telefonoFiador = $datos['telefono_fiador'];
+			$emailFiador = $datos['email_fiador'];
+			$direccionFiador = $datos['direccion_fiador'];
+			$generoFiador = $datos['genero_fiador'];
+			$nacimientoFiador = $datos['nacimiento_fiador'];
+			$ingresoFiador = $datos['ingreso_fiador'];
+			$estadoFiador = 1;
+			$sql = "INSERT INTO tbl_fiadores(nombre, apellido, dui, nit, telefono, email, direccion, genero, fechaNacimiento, ingreso, estado, idSolicitud)
+	    					VALUES('$nombreFiador', '$apellidoFiador', '$duiFiador', '$nitFiador', '$telefonoFiador', '$emailFiador', '$direccionFiador',
+	    			   		'$generoFiador', '$nacimientoFiador', '$ingresoFiador', '$estadoFiador', '$idSolicitud')";
+			if ($this->db->query($sql))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function ActualizarFiador($datos)
+	{
+		if ($datos != null)
+		{
+		    $idFiador= $datos['id_fiador'];
+		    $idSolicitud = $datos['id_solicitud'];
+		    $nombreFiador = $datos['nombre_fiador'];
+			$apellidoFiador = $datos['apellido_fiador'];
+			$duiFiador = $datos['dui_fiador'];
+			$nitFiador = $datos['nit_fiador'];
+			$telefonoFiador = $datos['telefono_fiador'];
+			$emailFiador = $datos['email_fiador'];
+			$direccionFiador = $datos['direccion_fiador'];
+			$nacimientoFiador = $datos['nacimiento_fiador'];
+			$ingresoFiador = $datos['ingreso_fiador'];
+			// $generoFiador = $datos['genero_fiadorA'];
+
+			$sql = "UPDATE tbl_fiadores SET nombre='$nombreFiador', apellido='$apellidoFiador', dui='$duiFiador', nit='$nitFiador',
+											telefono='$telefonoFiador', email='$emailFiador', direccion='$direccionFiador',
+											fechaNacimiento='$nacimientoFiador', ingreso='$ingresoFiador' WHERE idFiador='$idFiador'";
+			if ($this->db->query($sql))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function AgregarPrenda($datos)
+	{
+		if ($datos != null)
+		{
+		    $idSolicitud = $datos['id_solicitud'];
+		    $nombrePrenda = $datos['nombre_prenda'];
+			$precioPrenda = $datos['precio_valorado'];
+			$descripcionPrenda = $datos['descripcion_prenda'];
+			$estadoPrenda = 1;
+
+			$sql = "INSERT INTO tbl_garantias(nombre, valorado, descripcion, estado, idSolicitud)
+		    					VALUES('$nombrePrenda', '$precioPrenda', '$descripcionPrenda', '$estadoPrenda', '$idSolicitud')";
+			if ($this->db->query($sql))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function ActualizarPrenda($datos)
+	{
+		if ($datos != null)
+		{
+		    $idPrenda = $datos['id_prenda'];
+		    $nombrePrenda = $datos['nombre_prenda'];
+			$precioPrenda = $datos['precio_valorado'];
+			$descripcionPrenda = $datos['descripcion_prenda'];
+			// $generoFiador = $datos['genero_fiadorA'];
+
+			$sql = "UPDATE tbl_garantias SET nombre='$nombrePrenda', valorado='$precioPrenda', descripcion='$descripcionPrenda'
+					WHERE idGarantia='$idPrenda'";
+			if ($this->db->query($sql))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
 
 ?>

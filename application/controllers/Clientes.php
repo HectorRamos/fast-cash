@@ -192,7 +192,7 @@ class Clientes extends CI_Controller {
 		else if($accion==2){
 			$bool=$this->Clientes_Model->InsertarDatosLaborales($data);
 			if($bool){
-				$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+				$this->session->set_flashdata("actualizado","El registro a sido guardar con exito.");
 				redirect(base_url()."Clientes/gestionarCliente");
 			}
 			else
@@ -234,7 +234,7 @@ class Clientes extends CI_Controller {
 		else if($accion==2){
 		$bool=$this->Clientes_Model->InsertarDatosNegocio($data);
 		if($bool){
-			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+			$this->session->set_flashdata("actualizado","El registro a sido guardar con exito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
