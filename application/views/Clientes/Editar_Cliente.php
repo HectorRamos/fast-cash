@@ -62,7 +62,7 @@
                                                      
                                                       <input type="text" hidden name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
 
-                                                      <input type="text" id="tipo"  name="tipo" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
+                                                      <input type="text" id="tipoC"  name="tipoC" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                                                       
                                                       <!--FIN DE CAMPOS OCULTOS-->
                                             <div class="row form-section">
@@ -389,6 +389,34 @@ $(document).ready(function(){
                 
                 var regi=eval(respuesta);
                 if(regi.length>0){
+                    var $r3 = $("#select").val();
+                    if ($r3 == "Otro") {
+                        alert("sssss");
+                        tipo=$('#tipoC').val();
+                        if(tipo=="Empleado"){
+                            //alert('sssseeeaaa'+$("#id_cliente").val());
+                            $.ajax({
+                                url:"<?= base_url()?>Clientes/EliminarDatosLaborales",
+                                type:"GET",
+                                data:{ID:$("#id_cliente").val()},
+                                success:function(respuesta){
+
+                                }
+                            });
+                        }
+                        if(tipo=="Empresario"){
+                            $.ajax({
+                                url:"<?= base_url()?>Clientes/EliminarDatosNegocio",
+                                type:"GET",
+                                data:{ID:$("#id_cliente").val()},
+                                success:function(respuesta){
+
+                                }
+                            });
+                    }
+
+                                               
+                    }
                     //alert(regi[0]['Tipo_Cliente']);
                     //AQUI SE VALIDA EL TIPO DE EMPLEAD
                 if(regi[0]['Tipo_Cliente']=="Empleado"){
@@ -417,7 +445,9 @@ $(document).ready(function(){
                     }
                 }
                  if(regi[0]['Tipo_Cliente']=="Otro"){
-                    window.location.href="<?= base_url()?>Clientes/gestionarCliente";
+                    //window.location.href="<?= base_url()?>Clientes/gestionarCliente";
+                    
+
                  }
                 if(regi[0]['Tipo_Cliente']=="Empresario"){
                     $("#Id_Cliente2").val($('#id_cliente').val());
@@ -505,7 +535,7 @@ $(document).ready(function(){
                         }
                     }
                      if ($r3 == "Otro") {
-                        window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
+                        //window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
                     }
                 }  
             }     
