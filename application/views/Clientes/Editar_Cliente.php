@@ -61,6 +61,8 @@
                                                       <input type="text" hidden  name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
                                                      
                                                       <input type="text" hidden name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
+
+                                                      <input type="text" id="tipo"  name="tipo" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                                                       
                                                       <!--FIN DE CAMPOS OCULTOS-->
                                             <div class="row form-section">
@@ -378,10 +380,7 @@ $(document).ready(function(){
     $('.demo-form').parsley().whenValidate({
         group: 'block-' + curIndex()
         }).done(function() {
-
-            
             //-------------Ajax
-           
             $.ajax({
             url:"<?= base_url()?>Clientes/editarCliente",
             type:"POST",
@@ -399,7 +398,6 @@ $(document).ready(function(){
                     var $vg = $v1 +" "+ $v2;
                     $("#NombreTipoClienteEmpleado").text($vg);
                     $("#TipoClienteEmpleado").text($("#select").val());
-
                     $("#Nombre_Empresa").val(regi[0]['Nombre_Empresa']);
                     $("#Cargo").val(regi[0]['Cargo']);
                     $("#Telefono").val(regi[0]['Telefono']);
@@ -449,12 +447,22 @@ $(document).ready(function(){
                 }
                 }
                 else{
+
                     document.getElementById('aler').style.display='block';
                     document.getElementById('aler2').style.display='block';
                     $("#Accion1").val(2);
                     $("#Accion2").val(2);
                     var $r3 = $("#select").val();
                     if ($r3 === "Empleado") {
+                         $.ajax({
+                            url:"<?= base_url()?>Clientes/EliminarDatosNegocio",
+                            type:"GET",
+                            data:{ID:$("#id_cliente").val()},
+                            success:function(respuesta){
+
+                            }
+                        });
+
                         $("#Id_Cliente1").val($('#id_cliente').val());
                         var $o1 = $("#Nombre_Cliente").val();
                         var $o2 = $("#Apellido_Cliente").val();
@@ -463,7 +471,6 @@ $(document).ready(function(){
                         $("#TipoClienteEmpleado").text($("#select").val());
                         $(".empleado").show();
                         $("#cliente1").hide();
-
                         var $active = $('.wizard .nav-tabs li.active');
                         $active.next().removeClass('disabled');
                         nextTab($active);
@@ -472,6 +479,14 @@ $(document).ready(function(){
                         }
                     }
                     if ($r3 === "Empresario") {
+                        $.ajax({
+                            url:"<?= base_url()?>Clientes/EliminarDatosLaborales",
+                            type:"GET",
+                            data:{ID:$("#id_cliente").val()},
+                            success:function(respuesta){
+
+                            }
+                        });
                         $(".empresario").show();
                         $("#cliente1").hide();
                         $("#Id_Cliente2").val($('#id_cliente').val());

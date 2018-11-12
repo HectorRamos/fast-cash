@@ -161,10 +161,7 @@ class Clientes extends CI_Controller {
 			else{
 				exit("error");
 
-			}
-			
-			
-			
+			}	
 		}
 	}
 	public function EditardatosLaborales(){
@@ -264,6 +261,16 @@ class Clientes extends CI_Controller {
 			echo "error";
 		}
 
+	}
+	public function EliminarDatosNegocio(){
+		$id=$this->input->GET('ID');
+		$this->load->model("Clientes_Model");
+		$bool= $this->Clientes_Model->EliminarDatosNegocio($id);
+	}
+	public function EliminarDatosLaborales(){
+		$id=$this->input->GET('ID');
+		$this->load->model("Clientes_Model");
+		$bool= $this->Clientes_Model->EliminarDatosLaborales($id);
 	}
 }
 ?>

@@ -190,12 +190,12 @@ public function obtenerInfoCliente($id, $tipo){
 		return $info->result();
 	}
 }
-public function dCliente(){
+	public function dCliente(){
 	$sql="SELECT * FROM tbl_clientes";
 	$d = $this->db->query();
 	return $d;
-}
-public function EditarFoto($img, $id){
+	}
+	public function EditarFoto($img, $id){
 
 		$idC =$id ;
 		$url=$img;
@@ -207,11 +207,25 @@ public function EditarFoto($img, $id){
 		else{
 				return false;
 			}
-
-
-	
-
-}
+	}
+	public function EliminarDatosNegocio($id){
+		$sql="DELETE FROM tbl_datos_negocio WHERE Fk_Id_Cliente=$id";
+		if($this->db->query($sql)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public function EliminarDatosLaborales($id){
+		$sql="DELETE FROM tbl_datos_laborales WHERE Fk_Id_Cliente=$id";
+		if($this->db->query($sql)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 }
 
