@@ -66,157 +66,125 @@
                                    ?>
                                     <!-- <a type="button" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> En revisión</a> -->
                                     <!-- <a type="button" class="btn btn-primary block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-thumbs-up fa-lg"></i> Aprobar</a> -->
-                                    <!-- <a type="button" class="btn btn-danger block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-minus-circle  fa-lg"></i> Denegar</a> -->
+                                    <a type="button" onclick="imprimirTabla()" class="btn btn-warning block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-print  fa-lg"></i> Imprimir</a>
                                   </div>
-                                <table id="" class="table">
-                                  <tbody class="tbody tbody1">
+                                  <table class="table">
+                                    <tbody class="tbody tbody1">
                                       <tr>
-                                        <td colspan="4" class="text-center"><strong>DATOS DEL CLIENTE SOLICITADO</strong></td>
-                                      </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Código de la solicitud: </strong><?= $solicitud->codigoSolicitud ?></p></td>
-                                          <td colspan=""><p><strong>Plazo: </strong><?= $solicitud->tiempo_plazo ." ".$mes?></p></td>
-                                          <td colspan=""><p><strong>Intereses: </strong><?= $solicitud->tasaInteres ?> %</p></td>
-                                          <td></td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Cantidad solicitada: </strong>$<?= $solicitud->capital ?></p></td>
-                                          <td colspan=""><p><strong>Número de cuotas: </strong><?= $solicitud->cantidadCuota?></p></td>
-                                          <td colspan=""><p><strong>Total a Pagar: </strong>$<?= $solicitud->ivaInteresCapital ?></p></td>
-                                          <td></td>
-                                        </tr>
-
-                                      <tr>
-                                        <td colspan="4" class="text-center"><strong>DATOS DEL PERSONALES DEL SOLICITANTE</strong></td>
-                                      </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Nombre: </strong><?= $solicitud->Nombre_Cliente." ".$solicitud->Apellido_Cliente ?></p></td>
-                                          <td colspan=""><p><strong>DUI: </strong><?= $solicitud->DUI_Cliente?></p></td>
-                                          <td colspan=""><p><strong>NIT: </strong><?= $solicitud->NIT_Cliente ?></p></td>
-                                          <td></td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Estado civil: </strong><?= $solicitud->Estado_Civil_Cliente ?></p></td>
-                                          <td colspan=""><p><strong>Género: </strong><?= $solicitud->Genero_Cliente ?></p></td>
-                                          <td colspan=""><p><strong>Profesión: </strong><?= $solicitud->Profesion_Cliente ?></p></td>
-                                          <td></td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Direción: </strong><?= $solicitud->Domicilio_Cliente ?></p></td>
-                                          <td colspan=""><p><strong>Teléfono: </strong><?= $solicitud->Telefono_Fijo_Cliente ?></p></td>
-                                          <td colspan=""><p><strong>Celular: </strong><?= $solicitud->Telefono_Celular_Cliente ?></p></td>
-                                          <td></td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan="4" class="text-center"><p><strong>Observaciones: </strong><?= $solicitud->observaciones ?></p></td>
-                                        </tr>
+                                        <td colspan='4' class='text-right'>
                                         <?php
+                                          if (sizeof($fiadores->result()) == 0) {
+                                            echo "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i> Agreagar Fiador</a> ";
                                           }
-                                          $idSolicitud = '"'.$idSoli.'"';
-                                          if (sizeof($fiadores->result())>0)
-                                          {
-                                            if (sizeof($fiadores->result()) == 1)
-                                            {
-                                              echo "<tr class='alert-success'>
-                                                    <td><strong>DATOS DEL FIADOR</strong></td>
-                                                    <td colspan='2' class='text-right'>
-                                                      <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
-                                                    </td>
-                                                  </tr>";
-                                            }
-                                            else
-                                            {
-                                              echo "<tr class='alert-success'>
-                                                    <td><strong>DATOS DE LOS FIADORES</strong></td>
-                                                    <td colspan='3' class='text-right'>
-                                                      <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
-                                                    </td>
-                                                  </tr>";
-                                            }
-                                            foreach ($fiadores->result() as $fiador)
-                                            {
-                                              $idFiador = '"'.$fiador->idFiador.'"';
-                                              $nombre = '"'.$fiador->nombre.'"';
-                                              $apellido = '"'.$fiador->apellido.'"';
-                                              $ingreso = '"'.$fiador->ingreso.'"';
-                                              $dui = '"'.$fiador->dui.'"';
-                                              $nit = '"'.$fiador->nit.'"';
-                                              $telefono = '"'.$fiador->telefono.'"';
-                                              $email = '"'.$fiador->email.'"';
-                                              $direccion = '"'.$fiador->direccion.'"';
-                                              $fechaNacimiento = '"'.$fiador->fechaNacimiento.'"';
-                                            
+                                          if (sizeof($garantias->result()) == 0) {
+                                            echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i> Agregar Garantia</a>";
+                                          }
                                         ?>
-                                        
-                                        <tr>
-                                          <td colspan=""><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
-                                          <td colspan=""><p><strong>Ingreso: </strong>$<?= $fiador->ingreso?></p></td>
-                                          <td colspan=""><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
-                                          <?php 
-                                            echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar'><i class='fa fa-pencil'></i></a></td>";
-                                          ?>
-                                        </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>NIT: </strong><?= $fiador->nit ?></p></td>
-                                          <td colspan=""><p><strong>Teléfono: </strong><?= $fiador->telefono ?></p></td>
-                                          <td colspan=""><p><strong>Correo: </strong><?= $fiador->email ?></p></td>
-                                        </tr>
-                                        <tr>
-                                          <td colspan=""><p><strong>Dirección: </strong><?= $fiador->direccion ?></p></td>
-                                          <td colspan=""><p><strong>Fecha de nacimiento: </strong><?= $fiador->fechaNacimiento ?></p></td>
-                                          <td colspan=""><p><strong>Género: </strong><?= $fiador->genero ?></p></td>
-                                        </tr>
-                                        <?php 
-                                          if (sizeof($fiadores->result()) == 1)
-                                            {
-                                              echo "<tr id=''><td colspan='4'></td></tr>";
-                                            }
-                                            else
-                                            {
-                                              echo "<tr><td colspan='4' id='LastF'></td></tr>";
-                                            }
-                                        ?>
-                                        
-                                        <?php }} ?>
-
-                                        <?php
-                                          if (sizeof($garantias->result())>0)
-                                          {
-                                            if (sizeof($garantias->result()) == 1)
-                                            {
-                                              echo "<tr class='alert-success'>
-                                                    <td><strong>DATOS DE LA GARANTIA</strong></td>
-                                                    <td colspan='3' class='text-right'>
-                                                      <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
-                                                    </td>
-                                                  </tr>";
-                                            }
-                                            else
-                                            {
-                                              echo "<tr class='alert-success'>
-                                                    <td><strong>DATOS DE LAS GARANTIAS</strong></td>
-                                                    <td colspan='3' class='text-right'>
-                                                      <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
-                                                    </td>
-                                                  </tr>";
-                                            }
-                                            foreach ($garantias->result() as $garantia)
-                                            {
-                                              $idGarantia = '"'.$garantia->idGarantia.'"';
-                                              $nombre = '"'.$garantia->nombre.'"';
-                                              $valorado = '"'.$garantia->valorado.'"';
-                                              $descripcion = '"'.$garantia->descripcion.'"';
-                                            ?>
-                                          <tr>  
-                                            <td colspan=""><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
-                                            <td colspan=""><p><strong>Precio valorado: </strong>$<?= $garantia->valorado ?></p></td>
-                                            <td colspan=""><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
-                                            <?php 
-                                                echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar'><i class='fa fa-pencil'></i></a></td>";
-                                              ?>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <div id="tablaImprimir">
+                                    <table id="" class="table">
+                                      <tbody class="tbody tbody1">
+                                          <tr>
+                                            <td colspan="4" class="text-center"><strong>DATOS DEL CLIENTE SOLICITADO</strong></td>
                                           </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Código de la solicitud: </strong><?= $solicitud->codigoSolicitud ?></p></td>
+                                              <td colspan=""><p><strong>Plazo: </strong><?= $solicitud->tiempo_plazo ." ".$mes?></p></td>
+                                              <td colspan=""><p><strong>Intereses: </strong><?= $solicitud->tasaInteres ?> %</p></td>
+                                              <td></td>
+                                            </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Cantidad solicitada: </strong>$<?= $solicitud->capital ?></p></td>
+                                              <td colspan=""><p><strong>Número de cuotas: </strong><?= $solicitud->cantidadCuota?></p></td>
+                                              <td colspan=""><p><strong>Total a Pagar: </strong>$<?= $solicitud->ivaInteresCapital ?></p></td>
+                                              <td></td>
+                                            </tr>
+
+                                          <tr>
+                                            <td colspan="4" class="text-center"><strong>DATOS DEL PERSONALES DEL SOLICITANTE</strong></td>
+                                          </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Nombre: </strong><?= $solicitud->Nombre_Cliente." ".$solicitud->Apellido_Cliente ?></p></td>
+                                              <td colspan=""><p><strong>DUI: </strong><?= $solicitud->DUI_Cliente?></p></td>
+                                              <td colspan=""><p><strong>NIT: </strong><?= $solicitud->NIT_Cliente ?></p></td>
+                                              <td></td>
+                                            </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Estado civil: </strong><?= $solicitud->Estado_Civil_Cliente ?></p></td>
+                                              <td colspan=""><p><strong>Género: </strong><?= $solicitud->Genero_Cliente ?></p></td>
+                                              <td colspan=""><p><strong>Profesión: </strong><?= $solicitud->Profesion_Cliente ?></p></td>
+                                              <td></td>
+                                            </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Direción: </strong><?= $solicitud->Domicilio_Cliente ?></p></td>
+                                              <td colspan=""><p><strong>Teléfono: </strong><?= $solicitud->Telefono_Fijo_Cliente ?></p></td>
+                                              <td colspan=""><p><strong>Celular: </strong><?= $solicitud->Telefono_Celular_Cliente ?></p></td>
+                                              <td></td>
+                                            </tr>
+                                            <tr>
+                                              <td colspan="4" class="text-center"><p><strong>Observaciones: </strong><?= $solicitud->observaciones ?></p></td>
+                                            </tr>
+                                            <?php
+                                              }
+                                              $idSolicitud = '"'.$idSoli.'"';
+                                              if (sizeof($fiadores->result())>0)
+                                              {
+                                                if (sizeof($fiadores->result()) == 1)
+                                                {
+                                                  echo "<tr class='alert-success'>
+                                                        <td><strong>DATOS DEL FIADOR</strong></td>
+                                                        <td colspan='2' class='text-right'>
+                                                          <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                        </td>
+                                                      </tr>";
+                                                }
+                                                else
+                                                {
+                                                  echo "<tr class='alert-success'>
+                                                        <td><strong>DATOS DE LOS FIADORES</strong></td>
+                                                        <td colspan='3' class='text-right'>
+                                                          <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                        </td>
+                                                      </tr>";
+                                                }
+                                                foreach ($fiadores->result() as $fiador)
+                                                {
+                                                  $idFiador = '"'.$fiador->idFiador.'"';
+                                                  $nombre = '"'.$fiador->nombre.'"';
+                                                  $apellido = '"'.$fiador->apellido.'"';
+                                                  $ingreso = '"'.$fiador->ingreso.'"';
+                                                  $dui = '"'.$fiador->dui.'"';
+                                                  $nit = '"'.$fiador->nit.'"';
+                                                  $telefono = '"'.$fiador->telefono.'"';
+                                                  $email = '"'.$fiador->email.'"';
+                                                  $direccion = '"'.$fiador->direccion.'"';
+                                                  $fechaNacimiento = '"'.$fiador->fechaNacimiento.'"';
+                                                
+                                            ?>
+                                            
+                                            <tr>
+                                              <td colspan=""><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
+                                              <td colspan=""><p><strong>Ingreso: </strong>$<?= $fiador->ingreso?></p></td>
+                                              <td colspan=""><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
+                                              <?php 
+                                                echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                              ?>
+                                            </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>NIT: </strong><?= $fiador->nit ?></p></td>
+                                              <td colspan=""><p><strong>Teléfono: </strong><?= $fiador->telefono ?></p></td>
+                                              <td colspan=""><p><strong>Correo: </strong><?= $fiador->email ?></p></td>
+                                            </tr>
+                                            <tr>
+                                              <td colspan=""><p><strong>Dirección: </strong><?= $fiador->direccion ?></p></td>
+                                              <td colspan=""><p><strong>Fecha de nacimiento: </strong><?= $fiador->fechaNacimiento ?></p></td>
+                                              <td colspan=""><p><strong>Género: </strong><?= $fiador->genero ?></p></td>
+                                            </tr>
                                             <?php 
-                                              if (sizeof($garantias->result()) == 1)
+                                              if (sizeof($fiadores->result()) == 1)
                                                 {
                                                   echo "<tr id=''><td colspan='4'></td></tr>";
                                                 }
@@ -225,9 +193,59 @@
                                                   echo "<tr><td colspan='4' id='LastF'></td></tr>";
                                                 }
                                             ?>
-                                        <?php }} ?>
-                                  </tbody>
-                                </table>
+                                            
+                                            <?php }} ?>
+
+                                            <?php
+                                              if (sizeof($garantias->result())>0)
+                                              {
+                                                if (sizeof($garantias->result()) == 1)
+                                                {
+                                                  echo "<tr class='alert-success'>
+                                                        <td><strong>DATOS DE LA GARANTIA</strong></td>
+                                                        <td colspan='3' class='text-right'>
+                                                          <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
+                                                        </td>
+                                                      </tr>";
+                                                }
+                                                else
+                                                {
+                                                  echo "<tr class='alert-success'>
+                                                        <td><strong>DATOS DE LAS GARANTIAS</strong></td>
+                                                        <td colspan='3' class='text-right'>
+                                                          <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
+                                                        </td>
+                                                      </tr>";
+                                                }
+                                                foreach ($garantias->result() as $garantia)
+                                                {
+                                                  $idGarantia = '"'.$garantia->idGarantia.'"';
+                                                  $nombre = '"'.$garantia->nombre.'"';
+                                                  $valorado = '"'.$garantia->valorado.'"';
+                                                  $descripcion = '"'.$garantia->descripcion.'"';
+                                                ?>
+                                              <tr>  
+                                                <td colspan=""><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
+                                                <td colspan=""><p><strong>Precio valorado: </strong>$<?= $garantia->valorado ?></p></td>
+                                                <td colspan=""><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
+                                                <?php 
+                                                    echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                                  ?>
+                                              </tr>
+                                                <?php 
+                                                  if (sizeof($garantias->result()) == 1)
+                                                    {
+                                                      echo "<tr id=''><td colspan='4'></td></tr>";
+                                                    }
+                                                    else
+                                                    {
+                                                      echo "<tr><td colspan='4' id='LastF'></td></tr>";
+                                                    }
+                                                ?>
+                                            <?php }} ?>
+                                      </tbody>
+                                    </table>
+                                  </div>
                                   <div align="center">
                                     <a href="<?= base_url() ?>Solicitud/" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
                                   </div>
@@ -504,7 +522,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos del fiador</h4>
+          <h4 class="modal-title">Datos de la garantia</h4>
         </div>
         <div class="modal-body">
             <form method="post" action="<?= base_url() ?>Solicitud/AgregarPrenda">
@@ -550,7 +568,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos del fiador</h4>
+          <h4 class="modal-title">Datos de la garantia</h4>
         </div>
         <div class="modal-body">
             <form method="post" action="<?= base_url() ?>Solicitud/ActualizarPrenda">
@@ -633,6 +651,19 @@
       $("#nombre_prendaA").attr('value', nombre);
       $("#precio_valoradoA").attr('value', valorado);
       $("#descripcion_prendaA").html(descripcion);
+    }
+
+    function imprimirTabla()
+    {
+       $(".ocultarImprimir").hide();
+      var elemento=document.getElementById('tablaImprimir');
+      var pantalla=window.open(' ','popimpr');
+      pantalla.document.write('<link href="<?= base_url() ?>plantilla/css/bootstrap.min.css" rel="stylesheet" />');
+      pantalla.document.write(elemento.innerHTML);
+      pantalla.document.close();
+      pantalla.print();
+      pantalla.close();
+       $(".ocultarImprimir").show();
     }
 </script>
 

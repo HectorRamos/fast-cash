@@ -1,6 +1,6 @@
 <style>
-  #fiador, #prenda, #hipoteca{
-    display: none;
+  a{
+    cursor: pointer;
   }
 </style>
 <!-- contenedor -->
@@ -39,14 +39,14 @@
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
                       </div>
                       <div class="form-group col-md-8">
-                        <label for="tipo_credito">Tipo de crédito</label>
+                       <!--  <label for="tipo_credito">Tipo de crédito</label>
                               <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de prestamo">
                                 <option value="">Seleccione un tipo de crédito</option>
                                 <option value="1">Crédito Fiduciario</option>
                                 <option value="2">Crédito Hipotecario</option>
                                 <option value="3">Crédito Prendario</option>
                                 
-                              </select>
+                              </select> -->
                       </div>
                       <div class="form-group col-md-2" align="center">
                         <div class="mar_che_cobrar">
@@ -135,11 +135,16 @@
                             <label for="observaciones">Observaciones</label>
                             <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones"></textarea>
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-2 text-center">
                         <p><label for="">Operación</label></p>
-                        <button class="btn btn-success" id="fiador" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador </button>
-                        <button class="btn btn-success" id="prenda" type="button" data-toggle="modal" data-target="#agregarPrenda"><i class="fa fa-user-plus fa-lg"></i> Prenda</button>
-                        <button class="btn btn-success" id="hipoteca" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Hipoteca</button>
+                        <!-- <button class="btn btn-success" id="fiador" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador </button> -->
+                        <!-- <button class="btn btn-success" id="prenda" type="button" data-toggle="modal" data-target="#agregarPrenda"><i class="fa fa-user-plus fa-lg"></i> Prenda</button> -->
+                        <!-- <button class="btn btn-success" id="hipoteca" type="button" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Hipoteca</button> -->
+                      <div class="btn-group-vertical">
+                             <button type="button" class="btn btn-primary" id="fiador" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador </button>
+                             <button type="button" class="btn btn-primary" id="prenda" data-toggle="modal" data-target="#agregarPrenda"><i class="fa fa-bicycle fa-lg"></i> Prenda</button>
+                             <button type="button" class="btn btn-primary" id="hipoteca" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-file fa-lg"></i> Hipoteca</button>
+                      </div>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
@@ -537,25 +542,25 @@ function agregarPrenda()
   $("#garantia").append(fila);
 }
 
-function mostrarOperacion()
-{
-  pivote = $("#tipo_credito").val();
-  switch(pivote) {
-    case '1':
-        $("#fiador").fadeIn()
-        $("#hipoteca").fadeOut()
-        $("#prenda").fadeOut()
-        break;
-    case '2':
-        $("#hipoteca").fadeIn()
-        $("#fiador").fadeOut()
-        $("#prenda").fadeOut()
-        break;
-    case '3':
-        $("#prenda").fadeIn()
-        $("#fiador").fadeOut()
-        $("#hipoteca").fadeOut()
-        break;
-  } 
-}
+// function mostrarOperacion()
+// {
+//   pivote = $("#tipo_credito").val();
+//   switch(pivote) {
+//     case '1':
+//         $("#fiador").fadeIn()
+//         $("#hipoteca").fadeOut()
+//         $("#prenda").fadeOut()
+//         break;
+//     case '2':
+//         $("#hipoteca").fadeIn()
+//         $("#fiador").fadeOut()
+//         $("#prenda").fadeOut()
+//         break;
+//     case '3':
+//         $("#prenda").fadeIn()
+//         $("#fiador").fadeOut()
+//         $("#hipoteca").fadeOut()
+//         break;
+//   } 
+// }
 </script>
