@@ -11,7 +11,6 @@
         <script src="<?= base_url() ?>plantilla/js/bootstrap.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/waves.js"></script>
         <script src="<?= base_url() ?>plantilla/js/wow.min.js"></script>
-        <script src="<?= base_url() ?>plantilla/js/datatables.js"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.nicescroll.js" type="text/javascript"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.scrollTo.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/chat/moment-2.2.1.js"></script>
@@ -68,7 +67,15 @@
         <script src="<?= base_url() ?>plantilla/assets/datatables/dataTables.bootstrap.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#datatable').dataTable();
+                // $('#datatable').dataTable();
+                $('#datatable').dataTable( {
+                    // "ordering": false,
+                    // "order": [[ 0,'desc' ]]
+                        "aaSorting": [[ 0, "desc" ]],
+                        "order": [
+                            [0, "desc"]
+                        ],
+                } );
             } );
         </script>
 
