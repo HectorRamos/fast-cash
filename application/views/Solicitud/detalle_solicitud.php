@@ -136,7 +136,7 @@
                                                 {
                                                   echo "<tr class='alert-success'>
                                                         <td><strong>DATOS DEL FIADOR</strong></td>
-                                                        <td colspan='2' class='text-right'>
+                                                        <td colspan='3' class='text-right'>
                                                           <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
                                                         </td>
                                                       </tr>";
