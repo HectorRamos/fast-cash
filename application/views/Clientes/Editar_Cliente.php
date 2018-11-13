@@ -385,8 +385,7 @@ $(document).ready(function(){
             url:"<?= base_url()?>Clientes/editarCliente",
             type:"POST",
             data:$('#basic-form').serialize(),
-            success:function(respuesta){
-                
+            success:function(respuesta){  
                 var regi=eval(respuesta);
                 if(regi.length>0){
                     var $r3 = $("#select").val();
