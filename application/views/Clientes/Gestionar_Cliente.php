@@ -51,58 +51,64 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <!-- <h3 class="panel-title">Registro de clientes</h3> -->
-            						              <div class="table-title">
-            						                <div class="row">
-            						                  <div class="col-sm-5">
-            						                    <h3 class="panel-title">Registro de clientes</h3>
-            						                  </div>
-            						                  <div class="col-sm-7">
-            						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
-            						                  </div>
-            						                </div>
-                                      </div>
-            						            </div>
+    						              <div class="table-title">
+    						                <div class="row">
+    						                  <div class="col-sm-5">
+    						                    <h3 class="panel-title">Registro de clientes</h3>
+    						                  </div>
+    						                  <div class="col-sm-7">
+    						                      <a title="Nuevo" data-toggle="tooltip" href="<?= base_url();?>Clientes/" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nuevo Cliente<span></a>
+    						                  </div>
+    						                </div>
+                                          </div>
+            						    </div>
                                         <div class="panel-body">
                                           <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                               <div class="margn">
-                      							           <table id="datatable" class="table">
-                      												  <thead class="thead-dark thead thead1">
-                      												    <tr class="tr tr1">
-                      												      <th class="th th1" scope="col">Código Cliente</th>
-                      												      <th class="th th1" scope="col">Nombre</th>
-                      												      <th class="th th1" scope="col">Apellido</th>
-                      												      
-                                                    <th class="th th1" scope="col">Tipo</th>
-                      												      <th class="th th1">Acción</th>
-                      												  </thead>
-                      												  <tbody class="tbody tbody1">
-                      												  <?php
-                      												  foreach ($registro->result() as $clientes) {
-                      												  $tipo = "'".$clientes->Tipo_Cliente."'"
-                      												  ?>
-                      												    <tr class="tr tr1">
-                      												      <td class="td td1" width="150"><b><?= $clientes->Codigo_Cliente?></b></td>
-                      												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
-                      												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
-                      												     
-                                                    <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
-                      												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
-                      												      <td class="td td1">
-                      												      	<a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="MostrarInfo(<?= $clientes->Id_Cliente?>, <?php echo $tipo;?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
+	          							           <table id="datatable" class="table">
+      												  <thead class="thead-dark thead thead1">
+      												    <tr class="tr tr1">
+      												      <th class="th th1" scope="col">#</th>
+      												      <th class="th th1" scope="col">Código Cliente</th>
+      												      <th class="th th1" scope="col">Nombre</th>
+      												      <th class="th th1" scope="col">Apellido</th>			      
+                                                          <th class="th th1" scope="col">Tipo</th>
+                      									  <th class="th th1">Acción</th>
+      												  </thead>
+      												  <tbody class="tbody tbody1">
+      												  <?php
+      												  $i = 0;
+                                                      if(!empty($registro)){
+      												  foreach ($registro->result() as $clientes) {
+      												  	$i = $i +1;
+      												  $tipo = "'".$clientes->Tipo_Cliente."'"
+      												  ?>
+      												    <tr class="tr tr1">
+      												      <td class="td td1" width="10" data-label="#"><?= $i;?></td>
+      												      <td class="td td1" width="150"><b><?= $clientes->Codigo_Cliente?></b></td>
+      												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
+      												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
+                                                          <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
+      												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
+      												      <td class="td td1">
+      												      	<a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="MostrarInfo(<?= $clientes->Id_Cliente?>, <?php echo $tipo;?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
-                        												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil-square-o"></i></a>
+        												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
-                        												      <a title="Eliminar" onclick="Delete(<?= $clientes->Id_Cliente?>)" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
-                      												      </td>
-                                                    </tr>
-                      												    <?php
-                      														}
-                      												    ?>
-                      												  </tbody>
-                      												</table>
-                                            </div>
-					                                </div>
+        												      <a title="Eliminar" onclick="Delete(<?= $clientes->Id_Cliente?>)" class="waves-effect waves-light eliminar" data-id="<?= $clientes->Id_Cliente?>" data-toggle="modal" data-target=".modal_eliminar_cliente"><i class="fa fa-times-circle"></i></a>
+      												      </td>
+                                                        </tr>
+      												    <?php
+      														}
+      													}else{
+									                      echo "NO HAY DATOS.";
+									                    }
+      												    ?>
+      												  </tbody>
+      												</table>
+                                                </div>
+					                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -246,8 +252,8 @@
 	                    </h4>
 	                </div>
 	                <div class="modal-body">
-	                  <input type="text"  id="Id" name='id'>
-	                  <p align="center">¿Está seguro de eliminar el registro?</p>
+	                  <input type="hidden"  id="Id" name='id'>
+	                  <p align="center">¿Está seguro de eliminar el cliente?</p>
 	                </div>
 	                <div align="center">
 	                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
@@ -285,13 +291,13 @@
                         var dui = registro[0]['DUI_Cliente'];
                         var id =registro[0]['Id_Cliente'];
                         //alert(dui);
-                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img id='Imgvacia' class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>plantilla/images/user1.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img><div style='z-index: 9;'><a class='btn btn-info btn-block btn-custom waves-effect waves-light m-b-5 btn-xs' onclick='FotoA("+dui+","+id+",1)' style='margin-top: 5px;'><i class='fa fa-camera'></i> Agregar foto</a></div></div>";
+                        html +="<div class='col-sm-2' align='left' style='z-index: 999;'><img id='Imgvacia' class='img-thumbnail img-responsive zoom1' width='100' src='<?=base_url()?>plantilla/images/user1.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img><div style='z-index: 9;'><a class='btn btn-success btn-block btn-custom waves-effect waves-light m-b-5 btn-xs' onclick='FotoA("+dui+","+id+",1)' style='margin-top: 5px;'><i class='fa fa-camera'></i> Agregar foto</a></div></div>";
                       }
                       else{
                         var dui = '"'+registro[0]['DUI_Cliente']+'"';
                         var id =registro[0]['Id_Cliente'];
                         //alert(dui);
-                        html +="<div id='ImgDivCliente' class='col-sm-2' align='left' style='z-index: 999;'><img id='ImgD'  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img><div style='z-index: 9;'><a class='btn btn-warning btn-block btn-custom waves-effect waves-light m-b-5 btn-xs' onclick='FotoA("+dui+","+id+",2)' style='margin-top: 5px;'><i class='fa fa-camera'></i> Editar foto</a></div></div>";
+                        html +="<div id='ImgDivCliente' class='col-sm-2' align='left' style='z-index: 999;'><img id='ImgD'  class='img-thumbnail img-responsive zoom' width='100' src='<?=base_url()?>"+registro[0]['urlImg']+"' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img><div style='z-index: 9;'><a class='btn btn-info btn-block btn-custom waves-effect waves-light m-b-5 btn-xs' onclick='FotoA("+dui+","+id+",2)' style='margin-top: 5px;'><i class='fa fa-camera'></i> Editar foto</a></div></div>";
                       }                    
                       //html +="<div class='row'><div class='col-sm-6'><label>Condición actual:&nbsp;</label><input type='text' name='nombre' class='style' readonly='readonly' value='"+registro[0]['Condicion_Actual_Cliente']+"'></div>";
                       html += "<div class='col-sm-10' >";
@@ -455,17 +461,25 @@
                           //alert(xhr.responseText);//AQUI ESTA LA RUTA DE LA IMAGEN
                           //$('#urlImg').val(xhr.responseText);
                           if(xhr.responseText=="error"){
-                            alert('error al modificar la foto');
+                          	$(document).ready(function(){
+				                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Error al modificar la foto');
+				              });
                           }
                           else{
                             
                             if(param==1){
-                              alert('foto modificada con exito');
+                              $(document).ready(function(){
+				                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', 'Foto guardada con exito');
+				              });
                               document.getElementById('Imgvacia').src="<?= base_url()?>"+xhr.responseText;
                             }
                             else if(param==2){
-                              alert('foto modificada con exito, es necesrio actualizar la pagina');
-                              self.location ="<?= base_url()?>Clientes/gestionarCliente";
+                              $(document).ready(function(){
+				                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', 'Foto modificada con exito.<br>Es necesrio actualizar la pagina!');
+				              });
+				              redirectTime = "5000";
+							  redirectURL = "<?= base_url()?>Clientes/gestionarCliente";
+						      setTimeout("self.location = redirectURL;",redirectTime);
                             }                            
                             document.getElementById('divInfo').style.display='block';
                             document.getElementById('fotoE').style.display='none';
@@ -479,11 +493,13 @@
           }, 
           function (error) {
               console.log("Permiso denegado o error: ", error);
-              $estado.innerHTML = "No se puede acceder a la cámara, o no diste permiso.";
+              $estado.innerHTML = "No se puede acceder a la cámara, no dio clic en permitir.";
           });
       }
       else{
-          alert("Lo siento. Tu navegador no soporta esta característica");
+          $(document).ready(function(){
+            $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Lo siento. Tu navegador no soporta esta característica');
+          });
           $estado.innerHTML = "Parece que tu navegador no soporta esta característica. Intenta actualizarlo.";
       }
     }

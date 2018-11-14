@@ -3812,12 +3812,12 @@ textarea.parsley-error:focus {
     box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
 }
   /*********************************Diseño de foto cliente en Gestionar_Cliente.php ********************************/
-      .zoom{
+    .zoom{
         /* Aumentamos la anchura y altura durante 2 segundos */
-        transition: width -5s, height -5s, transform -5s;
-        -moz-transition: width -5s, height -5s, -moz-transform -5s;
-        -webkit-transition: width -5s, height -5s, -webkit-transform -5s;
-        -o-transition: width -5s, height -5s,-o-transform -5s;
+        transition: width 1s, height 1s, transform 1s;
+        -moz-transition: width 1s, height 1s, -moz-transform 1s;
+        -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+        -o-transition: width 1s, height 1s,-o-transform 1s;
     }
     .zoom:hover{
         /* tranformamos el elemento al pasar el mouse por encima al doble de
@@ -3826,5 +3826,22 @@ textarea.parsley-error:focus {
         -moz-transform : scale(3.8);      /* Firefox */
         -webkit-transform : scale(3.8);   /* Chrome - Safari */
         -o-transform : scale(3.8);        /* Opera */
+        cursor: zoom-in;
+    }
+
+    .zoom1{
+        /* Aumentamos la anchura y altura durante 2 segundos */
+        transition: width 1s, height 1s, transform 1s;
+        -moz-transition: width 1s, height 1s, -moz-transform 1s;
+        -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+        -o-transition: width 1s, height 1s,-o-transform 1s;
+    }
+    .zoom1:hover{
+        /* tranformamos el elemento al pasar el mouse por encima al doble de
+           su tamaño con scale(2). */
+        transform : scale(1.8);
+        -moz-transform : scale(1.8);      /* Firefox */
+        -webkit-transform : scale(1.8);   /* Chrome - Safari */
+        -o-transform : scale(1.8);        /* Opera */
         cursor: zoom-in;
     }

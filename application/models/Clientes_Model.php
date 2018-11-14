@@ -63,7 +63,7 @@ class Clientes_Model extends CI_Model{
 	}
 	public function Eliminar($id){
 
-			$datos = array('estado'=>2);
+			$datos = array('estado'=>0);
 			$this->db->where('id_cliente', $id);
 			if($this->db->update('tbl_clientes', $datos))
 			{
