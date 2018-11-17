@@ -73,11 +73,14 @@
                                       <tr>
                                         <td colspan='4' class='text-right'>
                                         <?php
-                                          if (sizeof($fiadores->result()) == 0) {
+                                          if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                          {
+                                            if (sizeof($fiadores->result()) == 0) {
                                             echo "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i> Agreagar Fiador</a> ";
-                                          }
-                                          if (sizeof($garantias->result()) == 0) {
-                                            echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i> Agregar Garantia</a>";
+                                            }
+                                            if (sizeof($garantias->result()) == 0) {
+                                              echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i> Agregar Garantia</a>";
+                                            }
                                           }
                                         ?>
                                         </td>
@@ -130,25 +133,44 @@
                                             <?php
                                               }
                                               $idSolicitud = '"'.$idSoli.'"';
+                                              
                                               if (sizeof($fiadores->result())>0)
                                               {
                                                 if (sizeof($fiadores->result()) == 1)
                                                 {
+                                                  // Encabezado DATOS DEL FIADOR
                                                   echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DEL FIADOR</strong></td>
-                                                        <td colspan='3' class='text-right'>
-                                                          <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
-                                                        </td>
-                                                      </tr>";
+                                                        <td><strong>DATOS DEL FIADOR</strong></td>";
+                                                  
+                                                  if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                    {      
+                                                      echo  "<td colspan='3' class='text-right'>
+                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                          </td>";
+                                                    }
+                                                    else
+                                                    {
+                                                      echo  "<td colspan='3' class='text-right'></td>";
+                                                    }
+                                                  echo "</tr>";
                                                 }
                                                 else
                                                 {
+                                                  // Encabezado de DATOS DE LOS FIADORES
                                                   echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DE LOS FIADORES</strong></td>
-                                                        <td colspan='3' class='text-right'>
-                                                          <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
-                                                        </td>
-                                                      </tr>";
+                                                        <td><strong>DATOS DE LOS FIADORES</strong></td>";
+                                                  
+                                                  if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                    {      
+                                                      echo  "<td colspan='3' class='text-right'>
+                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                          </td>";
+                                                    }
+                                                    else
+                                                    {
+                                                      echo  "<td colspan='3' class='text-right'></td>";
+                                                    }
+                                                  echo "</tr>";
                                                 }
                                                 foreach ($fiadores->result() as $fiador)
                                                 {
@@ -169,8 +191,15 @@
                                               <td colspan=""><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
                                               <td colspan=""><p><strong>Ingreso: </strong>$<?= $fiador->ingreso?></p></td>
                                               <td colspan=""><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
-                                              <?php 
-                                                echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                              <?php
+                                              if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                {
+                                                  echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                                }
+                                              else
+                                              {
+                                                echo "<td rowspan=3></td>";
+                                              }
                                               ?>
                                             </tr>
                                             <tr>
@@ -190,7 +219,7 @@
                                                 }
                                                 else
                                                 {
-                                                  echo "<tr><td colspan='4' id='LastF'></td></tr>";
+                                                  echo "<tr><td colspan='4' id='LastF'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
                                                 }
                                             ?>
                                             
@@ -201,21 +230,39 @@
                                               {
                                                 if (sizeof($garantias->result()) == 1)
                                                 {
+                                                  //Encabezado de DATOS DE LA GARANTIA
                                                   echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DE LA GARANTIA</strong></td>
-                                                        <td colspan='3' class='text-right'>
-                                                          <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
-                                                        </td>
-                                                      </tr>";
+                                                      <td><strong>DATOS DE LA GARANTIA</strong></td>";
+                                                  if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                    { 
+                                                      echo "<td colspan='3' class='text-right'>
+                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
+                                                          </td>";
+                                                    }
+                                                    else
+                                                    {
+                                                      echo "<td colspan='3' class='text-right'>
+                                                          </td>";
+                                                    }
+                                                    echo "</tr>";
                                                 }
                                                 else
                                                 {
+                                                  // Encabezado de DATOS DE LAS GARANTIAS
                                                   echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DE LAS GARANTIAS</strong></td>
-                                                        <td colspan='3' class='text-right'>
-                                                          <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
-                                                        </td>
-                                                      </tr>";
+                                                      <td><strong>DATOS DE LAS GARANTIAS</strong></td>";
+                                                  if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                    { 
+                                                      echo "<td colspan='3' class='text-right'>
+                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
+                                                          </td>";
+                                                    }
+                                                    else
+                                                    {
+                                                      echo "<td colspan='3' class='text-right'>
+                                                          </td>";
+                                                    }
+                                                    echo "</tr>";
                                                 }
                                                 foreach ($garantias->result() as $garantia)
                                                 {
@@ -228,8 +275,15 @@
                                                 <td colspan=""><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
                                                 <td colspan=""><p><strong>Precio valorado: </strong>$<?= $garantia->valorado ?></p></td>
                                                 <td colspan=""><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
-                                                <?php 
+                                                <?php
+                                                if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
+                                                  { 
                                                     echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                                  }
+                                                else
+                                                {
+                                                  echo "<td></td>";
+                                                }
                                                   ?>
                                               </tr>
                                                 <?php 
@@ -239,7 +293,7 @@
                                                     }
                                                     else
                                                     {
-                                                      echo "<tr><td colspan='4' id='LastF'></td></tr>";
+                                                      echo "<tr><td colspan='4' id='LastF'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
                                                     }
                                                 ?>
                                             <?php }} ?>
