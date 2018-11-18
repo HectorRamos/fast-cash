@@ -56,13 +56,13 @@
                                                 <div class="tab-pane active" role="tabpanel" id="cliente1">
                                                    <form role="form" id="basic-form" method="POST" action="<?= base_url()?>Clientes/editarCliente" autocomplete="off" class="demo-form">
                                                     <!--*******************************CAMPOS OCULTOS***************************-->
-                                                      <input type="hidden" hidden id="id_cliente" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente;?>">
-                                                      <input type="text" hidden name="departamento" value="<?= $datos_cliente->Fk_Id_Departamento;?>">
-                                                      <input type="text" hidden  name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
+                                                      <input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo $datos_cliente->Id_Cliente;?>">
+                                                      <input type="hidden" name="departamento" value="<?= $datos_cliente->Fk_Id_Departamento;?>">
+                                                      <input type="hidden" name="municipio" value="<?php echo $datos_cliente->Fk_Id_Municipio;?>">
                                                      
-                                                      <input type="text" hidden name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
+                                                      <input type="hidden" name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
 
-                                                      <input type="text" id="tipoC"  name="tipoC" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
+                                                      <input type="hidden" id="tipoC"  name="tipoC" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                                                       
                                                       <!--FIN DE CAMPOS OCULTOS-->
                                             <div class="row form-section">
@@ -391,10 +391,8 @@ $(document).ready(function(){
                 if(regi.length>0){
                     var $r3 = $("#select").val();
                     if ($r3 == "Otro") {
-                        alert("sssss");
                         tipo=$('#tipoC').val();
                         if(tipo=="Empleado"){
-                            //alert('sssseeeaaa'+$("#id_cliente").val());
                             $.ajax({
                                 url:"<?= base_url()?>Clientes/EliminarDatosLaborales",
                                 type:"GET",
@@ -417,7 +415,6 @@ $(document).ready(function(){
 
                                                
                     }
-                    //alert(regi[0]['Tipo_Cliente']);
                     //AQUI SE VALIDA EL TIPO DE EMPLEAD
                 if(regi[0]['Tipo_Cliente']=="Empleado"){
                     $("#Id_Cliente1").val($('#id_cliente').val());
@@ -445,9 +442,7 @@ $(document).ready(function(){
                     }
                 }
                  if(regi[0]['Tipo_Cliente']=="Otro"){
-                    //window.location.href="<?= base_url()?>Clientes/gestionarCliente";
-                    
-
+                    window.location.href="<?= base_url()?>Clientes/gestionarCliente";
                  }
                 if(regi[0]['Tipo_Cliente']=="Empresario"){
                     $("#Id_Cliente2").val($('#id_cliente').val());
@@ -465,6 +460,7 @@ $(document).ready(function(){
                     $("#Tipo_Factura").val(regi[0]['Tipo_Factura']);
                     $("#Direccion_Negocio").val(regi[0]['Direccion_Negocio']);
                     $("#Accion2").val(1);
+
                     $(".empresario").show();
                     $("#cliente1").hide();
 
@@ -535,7 +531,7 @@ $(document).ready(function(){
                         }
                     }
                      if ($r3 == "Otro") {
-                        //window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
+                        // window.location.href="Clientes/gestionarCliente";                       
                     }
                 }  
             }     

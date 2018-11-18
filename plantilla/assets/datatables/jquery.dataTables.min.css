@@ -89,10 +89,10 @@ table.dataTable thead .sorting:after {
 	content: "\25BC"; /* sort */
 }
 table.dataTable thead .sorting_asc:after {
-	content: "\25B2"; /* sort-by-attributes */
+	content: "\25BC"; /* sort-by-attributes */
 }
 table.dataTable thead .sorting_desc:after {
-	content: "\25BC"; /* sort-by-attributes-alt */
+	content: "\25B2"; /* sort-by-attributes-alt */
 }
 
 table.dataTable thead .sorting_asc_disabled:after,

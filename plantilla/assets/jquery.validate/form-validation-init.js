@@ -40,22 +40,26 @@
         // VALIDACION DE FORMULARIO NUEVO CLIENTE
         this.$FormNuevoCliente1.validate({
             rules: {
+                Codigo_Cliente: "required",
                 Nombre_Cliente: "required",
                 Apellido_Cliente: "required",
-                cbbDepartamentos: { required: true },
+                cbbDepartamentos: "required",
                 cbbMunicipios: { required: true },
                 Celular_Cliente: { required: true },
+                Email: { email: true },
                 Fecha_Nacimiento: { required: true },                
                 Dui_Cliente: { required: true },
                 Fecha_Registro: { required: true }, 
                 Profesion_Cliente: "required",
             },
             messages: {
+                Codigo_Cliente: "Por favor, escriba un nombre",                
                 Nombre_Cliente: "Por favor, escriba un nombre",                
                 Apellido_Cliente: "Por favor, escriba un apellido",
-                cbbDepartamentos: { required: "Por favor, seleccione un Departamento" },
+                cbbDepartamentos: "Por favor, seleccione un Departamento",
                 cbbMunicipios: { required: "Por favor, seleccione un Municipio" },
                 Celular_Cliente: { required: "Por favor, digite un número de teléfono celular" },
+                Email: "Por favor, escriba el email del cliente correctamente",
                 Fecha_Nacimiento: { required: "Por favor, seleccione una fecha de nacimiento" },                
                 Dui_Cliente: { required: "Por favor, digite un número de dui" },
                 Fecha_Registro: { required: "Por favor, seleccione una fecha de registro" }, 
