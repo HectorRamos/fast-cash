@@ -37,7 +37,7 @@
                                 <!-- <h4 class="pull-left page-title">Gestion de los accesos al sistema</h4> -->
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
-                                    <li class="active">Gestión de los accesos al sistema</li>
+                                    <li class="active">Gestión de usuarios del sistema</li>
                                 </ol>
                             </div>
                         </div>
@@ -48,10 +48,10 @@
                                     <div class="table-title">
                                         <div class="row">
                                           <div class="col-sm-6">
-                                            <h5 class="panel-title">Accesos registrados</h3>
+                                            <h5 class="panel-title">Usuarios registrados</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo acceso<span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo usuario<span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -64,30 +64,35 @@
                                                 <table id="datatable" class="table">
                                                   <thead class="thead-dark thead thead1">
                                                     <tr class="tr tr1">
-                                                      <th class="th th1" scope="col">Id Estado</th>
-                                                      <th class="th th1" scope="col">Estados</th>
-                                                      <th class="th th1" scope="col">Descripción</th>
+                                                      <th class="th th1" scope="col">#</th>
+                                                      <th class="th th1" scope="col">Nombre</th>
+                                                      <th class="th th1" scope="col">Contraseña</th>
+                                                      <th class="th th1" scope="col">Tipo Acceso</th>
                                                       <th class="th th1" >Acción</th>
                                                       </tr>
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                   <?php
-                                                  foreach ($datos->result() as  $accesos) {
-                                                    $accesoN="'".$accesos->tipoAcceso."'";
-                                                    $descripcionN="'".$accesos->descripcion."'";
+                                                  $c = 0;
+                                                  if($datosUser)
+                                                  {
+                                                  foreach ($datosUser->result() as  $user) {
+                                                    $c = $c + 1;
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                  <td class="td td1"  width="150"><b><?= $accesos->idAcceso?></b></td>
-                                                  <td class="td td1"><?= $accesos->tipoAcceso?></td>
-                                                  <td class="td td1"><?= $accesos->descripcion?></td>
+                                                  <td class="td td1"  width="150"><b><?= $c ?></b></td>
+                                                  <td class="td td1"><?= $user->user?></td>
+                                                  <td class="td td1">***********</td>
+                                                  <td class="td td1"><?= $user->tipoAcceso?></td>
                                                   <td class="td td1">
-                                                      <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                      <a onclick="Edit(<?= $user->idUser?>, <?= $user->user?>,<?= $user->tipoAcceso?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
 
-                                                      <a onclick="del(<?= $accesos->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                      <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
                                                   </tr>
                                                   <?php
+                                                  }
                                                   }
                                                   ?>
                                                       
@@ -109,21 +114,53 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Insertar un nuevo acceso</h4>
+                    <h4 class="modal-title" id="myModalLabel">Insertar un nuevo usuario</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>Accesos/Guardar" autocomplete="off" id="FormNuevoAccesoSistema">
+            <form method="POST" action="<?= base_url()?>User/Guardar" autocomplete="off" id="FormNuevoAccesoSistema">
               <div class="margn">
                 <div class="row">
-                  <div class="form-group col-md-12">
-                    <label for="tipoAcceso">Tipo de acceso</label>
-                    <input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
+                     <div class="form-group col-md-12">                    
+                      <label for="cbbEmpleados">Empleados</label>
+                       <select id="cbbEmpleados" name="cbbEmpleados" class="select" data-placeholder="Elige un empleado ...">
+                          <option value="">.::Seleccionar::.</option>
+                          <?php 
+                          foreach ($datosEmpleados->result() as $empleados) { 
+                          ?>
+                          <option value="<?= $empleados->idEmpleado ?>"><?= $empleados->nombreEmpleado ?> <?= $empleados->apellidoEmpleado ?></option>
+                            <?php  } ?>         
+                      </select>                      
+                    </div>
                   </div>
-                  <div class="form-group col-md-12">
-                    <label for="descripcion">Descripción</label>
-                    <textarea type="text" class="form-control resize" rows="3" id="descripcion" name="descripcion" placeholder="Descripción del nuevo tipo de acceso"></textarea>
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="txtUsuario">Usuario</label>
+                      <input type="text" class="form-control" id="txtUsuario" name="txtUsuario" placeholder="Usuario">
+                    </div>
                   </div>
-                </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="txtpass">Contraseña</label>
+                      <input type="password" class="form-control" id="txtpass" name="txtpass" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="txtConfirmar">Confirmar Contraseña</label>
+                      <input type="password" class="form-control" id="txtConfirmar" name="txtConfirmar" placeholder="Confirmar Contraseña">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12">                    
+                      <label for="cbbRol">Tipo de Acceso</label>
+                       <select id="cbbRol" name="cbbRol" class="select" data-placeholder="Elige el tipo de acceso ...">
+                          <option value="">.::Seleccionar::.</option>
+                          <?php 
+                          foreach ($datosRol->result() as $rol) { 
+                          ?>
+                          <option value="<?= $rol->idAcceso ?>"><?= $rol->tipoAcceso ?></option>
+                            <?php  } ?>         
+                      </select>                      
+                    </div>
+                  </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
@@ -144,28 +181,60 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Editar información de acceso</h4>
+                    <h4 class="modal-title" id="myModalLabel">Editar información del usuario</h4>
             </div>
             <div class="modal-body">
-              <form method="POST" action="<?= base_url()?>Accesos/Editar" autocomplete="off" id="FormEditarAccesoSistema">
-                <div class="margn">
+            <form method="POST" action="<?= base_url()?>User/Guardar" autocomplete="off" id="FormNuevoAccesoSistema">
+              <div class="margn">
+                <div class="row">
+                     <div class="form-group col-md-12">                    
+                      <label for="cbbEmpleados">Empleados</label>
+                       <select id="cbbEmpleados" name="cbbEmpleados" class="select" data-placeholder="Elige un empleado ...">
+                          <option value="">.::Seleccionar::.</option>
+                          <?php 
+                          foreach ($datosEmpleados->result() as $empleados) { 
+                          ?>
+                          <option value="<?= $empleados->idEmpleado ?>"><?= $empleados->nombreEmpleado ?> <?= $empleados->apellidoEmpleado ?></option>
+                            <?php  } ?>         
+                      </select>                      
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="name">Tipo de acceso</label>
-                        <input type="text" class="form-control" id="tipoAcceso2" name="tipoAcceso" placeholder="Nuevo tipo de acceso">
-                        <input type="hidden" id="idAcceso" name="idAcceso">
+                      <label for="txtUsuario">Usuario</label>
+                      <input type="text" class="form-control" id="txtUsuario" name="txtUsuario" placeholder="Usuario">
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="name">Descripción</label>
-                        <textarea type="text" class="form-control resize" rows="3" id="descripcion2" name="descripcion" placeholder="Descripción del nuevo tipo de acceso"></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="txtpass">Contraseña</label>
+                      <input type="password" class="form-control" id="txtpass" name="txtpass" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="txtConfirmar">Confirmar Contraseña</label>
+                      <input type="password" class="form-control" id="txtConfirmar" name="txtConfirmar" placeholder="Confirmar Contraseña">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12">                    
+                      <label for="cbbRol">Tipo de Acceso</label>
+                       <select id="cbbRol" name="cbbRol" class="select" data-placeholder="Elige el tipo de acceso ...">
+                          <option value="">.::Seleccionar::.</option>
+                          <?php 
+                          foreach ($datosRol->result() as $rol) { 
+                          ?>
+                          <option value="<?= $rol->idAcceso ?>"><?= $rol->tipoAcceso ?></option>
+                            <?php  } ?>         
+                      </select>                      
                     </div>
                   </div>
                 <div  align="center">
-                  <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
-                  <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
-                </div>
-              </form>                                  
+            </div>
+            </form>                                  
             </div>
             <div class="modal-footer">
             </div>

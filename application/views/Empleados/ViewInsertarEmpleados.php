@@ -55,7 +55,7 @@
             <div class="panel-body">
               <!-- Formulario del empleado  -->
               <form method="post" action="<?= base_url()?>Empleados/InsertarEmpleados" autocomplete="off" id="FormNuevoEmpleado">
-                <div class="margn">
+                <div class="margn">                   
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="txtNombre">Nombre</label>
