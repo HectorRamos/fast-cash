@@ -8,6 +8,7 @@ class Creditos extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Creditos_Model");
 		$this->load->model("Documentos_Model");
+		$this->load->model("Pagos_Model");
 	}
 	public function index(){
 
@@ -23,16 +24,13 @@ class Creditos extends CI_Controller {
 		$cod=$this->input->GET('cc');
 		$data=$this->Creditos_Model->ObtenerCreditoId($id);
 		$data2=$this->Documentos_Model->ObtenerDocumentos($cod);
-		$datos = array('registros'=>$data, "Docs"=>$data2);
+		$data3=$this->Pagos_Model->ObtenerPagosCredito($id);
+		$datos = array('registros'=>$data, "Docs"=>$data2, 'Pagos'=>$data3);
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
 		$this->load->view("Creditos/ViewDetalleCredito", $datos);
 		$this->load->view('Base/footer');
-
-		//echo json_encode($data->result());
-
-
-
+		//echo json_encode($datos["Pagos"]->result());
 	}
 
 }

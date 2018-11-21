@@ -106,6 +106,13 @@
                                     <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>
                                 </ul>
                             </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Pagos</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a> 
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>Pagos/">Insertar pago</a></li>
+                                    
+                                </ul>
+                            </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>

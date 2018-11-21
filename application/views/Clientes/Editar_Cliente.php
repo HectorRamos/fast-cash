@@ -62,7 +62,7 @@
                                                      
                                                       <input type="text" hidden name="estado_civil" value="<?php echo $datos_cliente->Estado_Civil_Cliente;?>">
 
-                                                      <input type="text" id="tipoC"  name="tipoC" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
+                                                      <input type="hidden" id="tipoC"  name="tipoC" value="<?php echo $datos_cliente->Tipo_Cliente;?>">
                                                       
                                                       <!--FIN DE CAMPOS OCULTOS-->
                                             <div class="row form-section">
@@ -390,7 +390,7 @@ $(document).ready(function(){
                 if(regi.length>0){
                     var $r3 = $("#select").val();
                     if ($r3 == "Otro") {
-                        alert("sssss");
+                        //alert("sssss");
                         tipo=$('#tipoC').val();
                         if(tipo=="Empleado"){
                             //alert('sssseeeaaa'+$("#id_cliente").val());
@@ -444,7 +444,7 @@ $(document).ready(function(){
                     }
                 }
                  if(regi[0]['Tipo_Cliente']=="Otro"){
-                    //window.location.href="<?= base_url()?>Clientes/gestionarCliente";
+                    window.location.href="<?= base_url()?>Clientes/gestionarCliente";
                     
 
                  }
@@ -534,7 +534,7 @@ $(document).ready(function(){
                         }
                     }
                      if ($r3 == "Otro") {
-                        //window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
+                        window.location.href="<?=base_url()?>Clientes/gestionarCliente";                       
                     }
                 }  
             }     

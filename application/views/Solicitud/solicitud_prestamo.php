@@ -450,8 +450,6 @@ function calcularIntereses()
   cuotaDiaria = totalAPagar.toFixed(4)/numeroDePagos.toFixed();
 
   // Probando calculos
-  
-
   //totalPagoConCuotas = cuotaDiaria.toFixed(2)*26;
   totalPagoConCuotas = cuotaDiaria*26;
   //$("#totalP").attr("value", totalAPagar.toFixed(2)); // Total a pagar multiplicando el numero de cuotas por el monto diario a pagar
@@ -459,13 +457,11 @@ function calcularIntereses()
   //faltante
   //faltante = totalAPagar.toFixed(2) - totalPagoConCuotas.toFixed(2);
   //$("#ajusteP").attr("value", faltante.toFixed(2));
-
   $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
   $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
   $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
   $("#total_pagar").attr("value", totalAPagar.toFixed(4));
   $("#numero_cuotas").attr("value", numeroDePagos);
-
 }
 
 //Redondeo a dos decimales
