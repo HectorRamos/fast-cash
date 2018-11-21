@@ -542,11 +542,13 @@ $("#btnFoto").click(function(){
         }, 
         function (error) {
             console.log("Permiso denegado o error: ", error);
-            $estado.innerHTML = "No se puede acceder a la cámara, o no diste permiso.";
+            $estado.innerHTML = "No se puede acceder a la cámara, no dio clic en permitir.";
         });
     }
     else{
-        alert("Lo siento. Tu navegador no soporta esta característica");
+        $(document).ready(function(){
+          $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Lo siento. Tu navegador no soporta esta característica');
+        });
         $estado.innerHTML = "Parece que tu navegador no soporta esta característica. Intenta actualizarlo.";
     }
 }

@@ -7,7 +7,6 @@
         </script>
 
         <!-- jQuery  -->
-        <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/bootstrap.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/waves.js"></script>
         <script src="<?= base_url() ?>plantilla/js/wow.min.js"></script>
@@ -68,14 +67,16 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 // $('#datatable').dataTable();
-                $('#datatable').dataTable( {
+                $('#datatable').dataTable( 
+                // {
                     // "ordering": false,
                     // "order": [[ 0,'desc' ]]
-                        "aaSorting": [[ 0, "desc" ]],
-                        "order": [
-                            [0, "desc"]
-                        ],
-                } );
+                        // "aaSorting": [[ 0, "desc" ]],
+                        // "order": [
+                            // [0, "desc"]
+                        // ],
+                // } 
+                );
             } );
         </script>
 

@@ -442,7 +442,26 @@ function calcularIntereses()
   tasaInteres = (parseFloat($("#tasa_interes").val()) / 100) * mesesD;
   montoDinero = $("#monto_dinero").val();
 
-  numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
+
+  separador = " ";
+  indice = document.getElementById('tipo_prestamo').selectedIndex;
+  if (indice != "")
+  {
+    cadena = document.getElementById('tipo_prestamo').options[indice].text;
+    //cadena = document.getElementById('tipo_prestamo').options[document.getElementById('tipo_prestamo').selectedIndex].text;
+    datos = cadena.split(separador);
+
+    meses = datos[2]; // numero de meses
+  }
+  else
+  {
+    meses = "";
+  }
+
+  // numeroDePagos = (tipoPrestamo*30) - (tipoPrestamo*4);
+  numeroDePagos = (meses*30);
+
+  // alert(numeroDePagos);
 
   totalInteresesAPagar = montoDinero * tasaInteres;
   totalIvaAPagar = totalInteresesAPagar * 0.13;
