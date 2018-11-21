@@ -63,27 +63,31 @@
                                                 <table id="datatable" class="table">
                                                   <thead class="thead-dark thead thead1">
                                                     <tr class="tr tr1">
-                                                      <th class="th th1" scope="col">Id Estado</th>
+                                                      <th class="th th1" scope="col">#</th>
                                                       <th class="th th1" scope="col">Estados</th>
                                                       <th class="th th1" >Acción</th>
                                                     </tr>
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                   <?php
+                                                  $i = 0;
+                                                  if(!empty($datos)){
                                                   foreach ($datos->result() as  $estado) {
                                                     $estadoN="'".$estado->nombreEstado."'";
+                                                    $i = $i +1;
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                      <td class="td td1" width="300"><b><?= $estado->id_estado?></b></td>
-                                                      <td class="td td1" ><?= $estado->nombreEstado?></td>
-                                                      <td class="td td1">
-                                                      <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                      <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><?= $i;?></td>
+                                                      <td class="td td1" data-label="Estados"><?= $estado->nombreEstado?></td>
+                                                      <td class="td td1" data-label="Acción">
+                                                      <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
                                                       <a onclick="del(<?= $estado->id_estado?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
                                                   </tr>
                                                   <?php
+                                                   }
                                                   }
                                                   ?> 
                                                   </tbody>
@@ -112,7 +116,7 @@
               <div class="margn">
                 <div class="form-group">
                     <label for="estado">Nombre del estado</label>
-                      <input type="text" required="No puede dejar este campo vacio" class="form-control" id="estado" name="nombreEstado" placeholder="Estado">
+                      <input type="text" class="form-control" id="estado" name="nombreEstado" placeholder="Estado">
                 </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
@@ -131,7 +135,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar()">×</button>
                     <h4 class="modal-title" id="myModalLabel">Editar estado</h4>
             </div>
             <div class="modal-body">
@@ -140,7 +144,7 @@
                 <div class="form-group">
                     <label for="estado1">Nombre del estado</label>
                     <input type="hidden" name="id_estado" id="id_estado">
-                    <input type="text" class="form-control" id="estado1" name="nombreEstado" placeholder="Estado" required="No puede dejar este campo vacio">
+                    <input type="text" class="form-control" id="estado1" name="nombreEstado" placeholder="Estado">
                 </div>
                 <div  align="center">
                   <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
@@ -167,7 +171,7 @@
                 </div>
                     <div class="modal-body">
                       <input type="hidden" id="id" name='id'>
-                      <p align="center">¿Está seguro de eliminar el registro?</p>
+                      <p align="center">¿Está seguro de eliminar el estado?</p>
                     </div>
                     <div  align="center">
                         <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>

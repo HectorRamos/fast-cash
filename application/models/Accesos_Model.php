@@ -4,6 +4,7 @@ class Accesos_Model extends CI_Model{
 
 	public function obtenerAccesos()
 	{
+		$this->db->order_by("idAcceso", "desc");
 		$this->db->where('estado',1);
 		$departamentos = $this->db->get("tbl_accesos");
 		return $departamentos;
@@ -52,7 +53,7 @@ class Accesos_Model extends CI_Model{
 	public function ocultarAcceso($id){
 	
 			
-			$datos = array('estado'=>2);
+			$datos = array('estado'=>0);
 			$this->db->where('idAcceso', $id);
 			if($this->db->update('tbl_accesos', $datos))
 			{

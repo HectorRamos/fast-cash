@@ -166,7 +166,7 @@
                                                                         <input type="text" class="form-control validaTel" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular" required data-parsley-required-message="Por favor, digite un teléfono" value="<?= $datos_cliente->Telefono_Celular_Cliente?>">
                                                                     </div>
                                                                     <div class="form-group col-md-4">
-                                                                        <label for="Email_Cliente">Email</label>
+                                                                        <label for="Email">Email</label>
                                                                         <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" value="<?= $datos_cliente->email?>">
                                                                     </div>
                                                                 </div>
@@ -200,7 +200,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
                                                                         <label for="Domicilio_Cliente">Dirección</label>
-                                                                        <textarea id="Domicilio_Cliente" rows="3" name="Domicilio_Cliente" class="form-control resize" required data-parsley-required-message="Por favor, escriba una dirección"><?= $datos_cliente->Domicilio_Cliente?></textarea>
+                                                                        <textarea id="Domicilio_Cliente" rows="3" name="Domicilio_Cliente" class="form-control resize" ><?= $datos_cliente->Domicilio_Cliente?></textarea>
                                                                     </div>
                                                                     <div class="form-group col-md-6">
                                                                         <label for="Observaciones">Observaciones</label>
@@ -259,7 +259,7 @@
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="Telefono">Teléfono</label>
-                                                                <input type="text" class="form-control validaTel" id="Telefono" name="Telefono" placeholder="Teléfono" required data-parsley-required-message="Por favor, escriba un numero de telefono">
+                                                                <input type="text" class="form-control validaTel" id="Telefono" name="Telefono" placeholder="Teléfono" required data-parsley-required-message="Por favor, digite un teléfono">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -275,8 +275,8 @@
                                                         </div>
                                                          <div class="row">
                                                             <div class="form-group col-md-12">
-                                                                <label for="Observaciones">Observaciones</label>
-                                                                <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
+                                                                <label for="Observaciones1">Observaciones</label>
+                                                                <textarea id="Observaciones1" rows="3" name="Observaciones" class="form-control resize"></textarea>
                                                             </div>
                                                         </div>
                                                         <ul class="list-inline pull-right">
@@ -310,7 +310,7 @@
                                                     </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
-                                                                <label for="Nombre_Empresa">Nombre del negocio</label>
+                                                                <label for="Nombre_Negocio">Nombre del negocio</label>
                                                                 <input type="text" class="form-control" id="Nombre_Negocio" name="Nombre_Negocio" placeholder="Nombre del negocio" required data-parsley-required-message="Por favor, escriba un nombre">
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -427,7 +427,7 @@ $(document).ready(function(){
                     $("#Telefono").val(regi[0]['Telefono']);
                     $("#Direccion").val(regi[0]['Direccion']);
                     $("#Rubro").val(regi[0]['Rubro']);
-                    $("#Observaciones").val(regi[0]['Observaciones']);
+                    $("#Observaciones1").val(regi[0]['Observaciones']);
                     $("#Accion1").val(1);
                     //CARGAMOS Y OCULTAMOS DIVS
                     $(".empleado").show();

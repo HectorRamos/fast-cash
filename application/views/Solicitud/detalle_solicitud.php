@@ -45,18 +45,18 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="margn">
-                                  <div align="center">
+                                  <div class="pull-left">
                                    <?php
                                         switch ($solicitud->idEstadoSolicitud)
                                         {
                                           case '1':
-                                                echo "<a title='Eliminar' onclick='Update($idSolicitud)' type='button' class='btn btn-warning block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudP'><i class='fa fa-list fa-lg'></i> En revisión </a> ";
-                                                echo "<a title='Eliminar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
-                                                echo "<a title='Eliminar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-primary block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </a>";
+                                                echo "<a title='Revisión' onclick='Update($idSolicitud)' type='button' class='btn btn-warning block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudP'><i class='fa fa-list fa-lg'></i> En revisión </a> ";
+                                                echo "<a title='Denegar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Aprobar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
                                             break;
                                           case '2':
-                                                echo "<a title='Eliminar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
-                                                echo "<a title='Eliminar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-primary block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </a>";
+                                                echo "<a title='Denegar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Aprobar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
                                             break;
                                           
                                           default:
@@ -66,27 +66,21 @@
                                    ?>
                                     <!-- <a type="button" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> En revisión</a> -->
                                     <!-- <a type="button" class="btn btn-primary block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-thumbs-up fa-lg"></i> Aprobar</a> -->
-                                    <a type="button" onclick="imprimirTabla()" class="btn btn-warning block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-print  fa-lg"></i> Imprimir</a>
+                                    <a title="Imprimir" type="button" onclick="imprimirTabla()" class="btn btn-info block waves-effect waves-light m-b-5" data-toggle="tooltip" data-dismiss="modal"><i class="fa fa-print  fa-lg"></i> Imprimir</a>
                                   </div>
-                                  <table class="table">
-                                    <tbody class="tbody tbody1">
-                                      <tr>
-                                        <td colspan='4' class='text-right'>
+                                        <div class="pull-right">
                                         <?php
                                           if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                           {
                                             if (sizeof($fiadores->result()) == 0) {
-                                            echo "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i> Agreagar Fiador</a> ";
+                                            echo "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle fa-lg'></i> Agreagar Fiador</a> ";
                                             }
                                             if (sizeof($garantias->result()) == 0) {
-                                              echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i> Agregar Garantia</a>";
+                                              echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle fa-lg'></i> Agregar Garantia</a>";
                                             }
                                           }
                                         ?>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
+                                        </div>
                                   <div id="tablaImprimir">
                                     <table id="" class="table">
                                       <tbody class="tbody tbody1">
@@ -145,7 +139,7 @@
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     {      
                                                       echo  "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle fa-lg'></i></a>
                                                           </td>";
                                                     }
                                                     else
@@ -163,7 +157,7 @@
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     {      
                                                       echo  "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle'></i></a>
+                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle fa-lg'></i></a>
                                                           </td>";
                                                     }
                                                     else
@@ -194,7 +188,7 @@
                                               <?php
                                               if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                 {
-                                                  echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                                  echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-edit'></i></a></td>";
                                                 }
                                               else
                                               {
@@ -254,7 +248,7 @@
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     { 
                                                       echo "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
+                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle fa-lg'></i></a>
                                                           </td>";
                                                     }
                                                     else
@@ -278,7 +272,7 @@
                                                 <?php
                                                 if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                   { 
-                                                    echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil'></i></a></td>";
+                                                    echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-edit'></i></a></td>";
                                                   }
                                                 else
                                                 {

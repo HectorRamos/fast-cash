@@ -18,19 +18,11 @@ class EstadosSolicitud extends CI_Controller {
 		$this->load->model('Estados_Model');
 		$bool=$this->Estados_Model->InsertarEstado($datos);
 		if($bool){
-			// echo '<script type="text/javascript">
-			// 	alert("Informacion almacenada con exito");
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-			$this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+			$this->session->set_flashdata("guardar","El estado de solicitud a sido <b>guardado</b> con éxito.");
 			redirect(base_url()."EstadosSolicitud");
 		}
 		else{
-			// echo '<script type="text/javascript">
-			// 	alert("Error al insertar la informacion");
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el estado de solicitud no se pudo <b>guardar</b>.");
 			redirect(base_url()."EstadosSolicitud");
 		}
 
@@ -40,19 +32,11 @@ class EstadosSolicitud extends CI_Controller {
 		$this->load->model('Estados_Model');
 		$bool=$this->Estados_Model->EditarEstado($datos);
 		if($bool){
-			// echo '<script type="text/javascript">
-				
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+				$this->session->set_flashdata("actualizado","El estado de solicitud a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."EstadosSolicitud");
 		}
 		else{
-			// echo '<script type="text/javascript">
-			// 	alert("Error al insertar la informacion");
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+				$this->session->set_flashdata("errorr","Error el estado de solicitud no se pudo <b>actualizar</b>.");
 				redirect(base_url()."EstadosSolicitud");
 		}
 
@@ -62,19 +46,11 @@ class EstadosSolicitud extends CI_Controller {
 		$this->load->model('Estados_Model');
 		$bool=$this->Estados_Model->OcultarEstado($datos);
 		if($bool){
-			// echo '<script type="text/javascript">
-				
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-				$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+				$this->session->set_flashdata("informa","El estado de solicitud a sido <b>eliminado</b> con éxito.");
 				redirect(base_url()."EstadosSolicitud");
 		}
 		else{
-			// echo '<script type="text/javascript">
-			// 	alert("Error al insertar la informacion");
-			// 	self.location ="'.base_url().'EstadosSolicitud"
-			// 	</script>';
-			    $this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
+			    $this->session->set_flashdata("errorr","Error el estado de solicitud no pudo ser <b>eliminado</b>.");
 			    redirect(base_url()."EstadosSolicitud");
 		}
 

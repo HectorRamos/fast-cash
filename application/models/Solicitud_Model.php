@@ -4,6 +4,7 @@ class Solicitud_Model extends CI_Model
 {
 	public function obtenerPlazos()
 	{
+		$this->db->order_by("id_plazo", "desc");
 		$plazos= $this->db->get("tbl_plazos_prestamos");
 		return $plazos;
 	}
@@ -172,6 +173,7 @@ class Solicitud_Model extends CI_Model
 		$this->db->join('tbl_clientes', 'tbl_clientes.Id_Cliente = tbl_solicitudes.idCliente');
 		$this->db->join('tbl_plazos_prestamos', 'tbl_plazos_prestamos.id_plazo = tbl_solicitudes.idLineaPlazo');
 		$this->db->join('tbl_estados_solicitud', 'tbl_estados_solicitud.id_estado = tbl_solicitudes.idEstadoSolicitud');
+	    $this->db->order_by('tbl_solicitudes.idSolicitud', 'desc');
 		$datos = $this->db->get();
 		return $datos;
 	}

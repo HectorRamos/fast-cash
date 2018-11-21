@@ -19,7 +19,7 @@ class Empleados extends CI_Controller
 	}
 
 	public function ViewInsertarEmpleados()
-	{
+	{		
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
 		$this->load->view('Empleados/ViewInsertarEmpleados');

@@ -93,7 +93,7 @@
                                                                 <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente" data-mask="9999-999999-999-9">
                                                             </div>
                                                             <div class="form-group col-md-4">
-                                                                <label for="Prpofesion_Cliente">Profesion</label>
+                                                                <label for="Prpofesion_Cliente">Profesión</label>
                                                                 <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
                                                             </div>
                                                         </div>
@@ -260,8 +260,8 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
-                                                                <label for="Nombre_Empresa">Nombre del negocio</label>
-                                                                <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio" required data-parsley-required-message="Por favor, escriba un nombre">
+                                                                <label for="Nombre_Negocio">Nombre del negocio</label>
+                                                                <input type="text" class="form-control" id="Nombre_Negocio" name="Nombre_Negocio" placeholder="Nombre del negocio" required data-parsley-required-message="Por favor, escriba un nombre">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="NIT">NIT</label>
