@@ -94,12 +94,12 @@
                               <input type="hidden" value="<?= $caja->fechaCajaChica ?>" class="form-control" id="fecha_cc" name="fecha_cc" placeholder="Fecha de recibido del prestamo">
                               <input type="hidden" value="<?= $caja->idCajaChica ?>" class="form-control" id="id_cc" name="id_cc" placeholder="Fecha de recibido del prestamo">
                               <input type="hidden" value="<?= $caja->saldo ?>" class="form-control" id="saldo_cc" name="saldo_cc" placeholder="Fecha de recibido del prestamo">
-                              <button href="" class="btn btn-danger">Cerrar caja chica</button>
+                              <button href="" class="btn btn-danger"><i class=" fa fa-close"></i> Cerrar caja chica</button>
                             </div>
                       </div>
                 </form>
                 <!-- Fin cerrar caja -->
-                <form method="post" action="<?= base_url() ?>CajaChica/GuardarProcesoCC">
+                <form id="DProcesoCC" method="post" action="<?= base_url() ?>CajaChica/GuardarProcesoCC">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
@@ -111,7 +111,7 @@
                       </div>
                       <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Cantidad de dinero</label>
-                            <input type="text" value="" class="form-control" id="cantidad_dinero" name="cantidad_dinero" placeholder="Cantidad de dinero del proceso a efectuar">
+                            <input type="text" value="" class="form-control" id="cantidad_dinero" name="cantidad_dinero" placeholder="Cantidad de dinero del proceso a efectuar" required data-parsley-required-message="Digite el monto de dinero">
                       </div>
                     </div>
                     <!-- Fin de la primera Linea del formulario-->
@@ -119,14 +119,16 @@
                     <div class="row">
                     <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Tipo de proceso</label>
-                            <select name="tipo_proceso" id="" class="form-control">
+                            <select name="tipo_proceso" id="" class="select" required data-parsley-required-message="Seleccione en tipo de proceso">
+                              <option value="">Seleccione un tipo de proceso</option>
                               <option value="Entrada">Entrada de dinero</option>
                               <option value="Salida">Salida de dinero</option>
                             </select>
                       </div>
                       <div class="form-group col-md-6">
                             <label for="monto_dinero">Forma de pago</label><br>
-                            <select name="forma_pago" id="" class="form-control">
+                            <select name="forma_pago" id="" class="select" required data-parsley-required-message="Seleccione un tipo de pago">
+                              <option value="">Seleccione una forma de pago</option>
                               <?php 
                                 foreach ($tipoPago->result() as $tipo)
                                 {
@@ -141,7 +143,7 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                             <label for="detalle_proceso">Detalle del proceso</label>
-                            <textarea class="form-control resize" rows="3" id="detalle_proceso" name="detalle_proceso"></textarea>
+                            <textarea class="form-control resize" rows="3" id="detalle_proceso" name="detalle_proceso" required data-parsley-required-message="Digite la descripcion del proceso"></textarea>
                       </div>
                     </div>
                     <!-- Fin de la tercera linea del formulario-->
@@ -170,5 +172,12 @@
   function main()
   {
     $("#fecha_proceso").prop('readonly', true);
+
+    $('#DProcesoCC').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  });
+
   }
 </script>
