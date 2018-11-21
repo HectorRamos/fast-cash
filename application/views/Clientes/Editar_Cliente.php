@@ -275,8 +275,8 @@
                                                         </div>
                                                          <div class="row">
                                                             <div class="form-group col-md-12">
-                                                                <label for="Observaciones">Observaciones</label>
-                                                                <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
+                                                                <label for="Observaciones1">Observaciones</label>
+                                                                <textarea id="Observaciones1" rows="3" name="Observaciones" class="form-control resize"></textarea>
                                                             </div>
                                                         </div>
                                                         <ul class="list-inline pull-right">
@@ -427,7 +427,7 @@ $(document).ready(function(){
                     $("#Telefono").val(regi[0]['Telefono']);
                     $("#Direccion").val(regi[0]['Direccion']);
                     $("#Rubro").val(regi[0]['Rubro']);
-                    $("#Observaciones").val(regi[0]['Observaciones']);
+                    $("#Observaciones1").val(regi[0]['Observaciones']);
                     $("#Accion1").val(1);
                     //CARGAMOS Y OCULTAMOS DIVS
                     $(".empleado").show();
