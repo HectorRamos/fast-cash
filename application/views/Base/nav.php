@@ -113,6 +113,17 @@
                                     
                                 </ul>
                             </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Caja chica</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="<?= base_url() ?>CajaChica/" class="waves-effect"><i class="fa fa-cog" ></i><span>Realizar procesos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>CajaChica/HistorialCajas" class="waves-effect"><i class="fa fa-cog" ></i><span>Historial</span></a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
