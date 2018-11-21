@@ -234,7 +234,6 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!--FIN DEL MODAL PARA MOSTRAR DATOS-->
-
         <!--MODAL PARA ELIMINAR DATOS-->
 	    <div class="modal fade modal_eliminar_cliente" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
 	        <div class="modal-dialog modal-sm">
@@ -268,9 +267,12 @@
 	  <script type="text/javascript">
 		//funcion para cargar los datos en modal con ajax
 		function MostrarInfo(id, TipoCliente){
-
+      var id2=id;
+      //alert(id2);
       document.getElementById('divInfo').innerHTML= "";
 			if(TipoCliente != ""){
+        //alert(id2);
+
 			var html ="<div class='margn'><ul><h5><b>Información del Cliente</b></h5><ol>";
 			 $.ajax({
              url: "obtenerInfoCliente",
@@ -368,16 +370,17 @@
                         if (TipoCliente=="Empleado") {
                             document.getElementById('DivEmpleado').style.display='block';
                             document.getElementById('DivEmpresario').style.display='none';
+                            document.getElementById('Fk_Id_Cliente').value=id2;
                         }
                         else if(TipoCliente=="Empresario"){
                             document.getElementById('DivEmpleado').style.display='none';
                             document.getElementById('DivEmpresario').style.display='block';
-                            document.getElementById('Fk_Id_Cliente2').value=id;
+                            document.getElementById('Fk_Id_Cliente2').value=id2;
                         }
                       //html="<div class='alert alert-danger'></div>";
                     }
                     html+="</div>";
-                    document.getElementById('Fk_Id_Cliente').value=id;
+                    document.getElementById('Fk_Id_Cliente').value=id2;
                     document.getElementById('divInfo').innerHTML= html;
                 }
              }); 

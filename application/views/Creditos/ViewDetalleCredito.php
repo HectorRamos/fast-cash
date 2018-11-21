@@ -25,11 +25,11 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="margn">
-                                  <div align="center">
-                                  <h4>Detalle del credito codigo: <?= $detalle->codigoCredito?></h4>
+                                  <div  align="center">
+                                  <h1>Detalle del credito codigo: <?= $detalle->codigoCredito?></h1>
                                   </div>
-                                  <div class="alert alert-success row margn">
-                                  <h4 align="center">Informacion del cliente</h4>
+                                  <div class="row margn">
+                                  <h1 >Informacion del cliente</h1>
                                   <div class="row ">
                                     <div class="col-md-3">
                                        <p><b>Nombre del cliente: </b><?= $detalle->Nombre_Cliente?> <?= $detalle->Apellido_Cliente?></p>
@@ -71,7 +71,7 @@
                                   <br>
                                   <!--========================= INFORMACION DEL CREDITO-->
                                   <div class="  row margn">
-                                  <h4 align="center">Informacion del credito</h4>
+                                  <h1 >Informacion del credito</h1>
                                   <div class="row">
                                     <div class="col-md-3">
                                        <p><b>Capital: </b><?= $detalle->capital?> </p>
@@ -118,8 +118,57 @@
                                   </div>
                                   </div>
                                   <br>
+                                  <div class="row margn">
+                                  <h1>Detalle de pagos</h1>
+                                  <?php
+                                   if (sizeof($Pagos->result())>0){
+                                  ?>
+                                  <table id="datatable" class="table">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">Id Pago</th>
+                                        <th scope="col">Total Pago</th>
+                                        <th scope="col">Iva</th>
+                                        <th scope="col">Interes</th>
+                                        <th scope="col">Abono a capital</th>
+                                        <th scope="col">Capital pendiente</th>
+                                        <th scope="col">Dias pagados</th>
+                                        <th scope="col">Fecha de pago</th>
+                                        <th scope="col">Imprimir comprobante</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($Pagos->result() as $listPagos) {
+                                      ?>
+                                      <tr>
+                                      <td><?= $listPagos->idDetallePago?></td>
+                                      <td><?= $listPagos->totalPago?></td>
+                                      <td><?= $listPagos->iva?></td>
+                                      <td><?= $listPagos->interes?></td>
+                                      <td><?= $listPagos->abonoCapital?></td>
+                                      <td><?= $listPagos->capitalPendiente?></td>
+                                      <td><?= $listPagos->diasPagados?></td>
+                                      <td><?= $listPagos->fechaPago?></td>
+                                      <th><a>Imprimir</a></th>
+                                      </tr>
+                                    <?php  
+                                    }
+                                  }
+                                  else{
+
+                                    echo "<div class='row'>
+                                          <h3>No se han realizado pagos de este credito</h3>
+                                        </div>";
+                                    }
+                                  ?>
+                                      
+                                    </tbody>
+                                  </table>                                    
+                                  </div>
+                                  <br>
                                   <div class="  row margn">
-                                    <h4 align="center">Documentos</h4>
+                                    <h1>Documentos</h1>
                                     <table class="table-responsive table">
                                       <thead>
                                         <tr>
@@ -137,9 +186,8 @@
                                           
                                         </tr>
                                         <?php
-                                       
-                                      } 
-                                      ?>
+                                          } 
+                                        ?>
                                         
                                       </tbody>
                                     </table>

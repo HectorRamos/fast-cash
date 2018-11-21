@@ -79,6 +79,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="<?= base_url() ?>Solicitud/">Ver Solicitudes</a></li>
                                     <li><a href="" data-toggle="modal" data-target=".modal_opcion_solicitud">Crear solicitud</a></li>
+                                    <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
                                     <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
                                 </ul>
                             </li>
@@ -102,8 +103,26 @@
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuración</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
+                                    <li><a href="<?= base_url() ?>User/">Gestión de usuarios</a></li>
                                     <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Pagos</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a> 
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= base_url() ?>Pagos/">Insertar pago</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Caja chica</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="<?= base_url() ?>CajaChica/" class="waves-effect"><i class="fa fa-cog" ></i><span>Realizar procesos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url() ?>CajaChica/HistorialCajas" class="waves-effect"><i class="fa fa-cog" ></i><span>Historial</span></a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

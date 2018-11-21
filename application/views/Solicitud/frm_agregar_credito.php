@@ -218,7 +218,7 @@
     }
     //ejecutar el envento submit para el formulario
         $("#env").on("click", function(){
-          alert('aaaaaaaaa');
+          //alert('aaaaaaaaa');
           $('#btnGuadar').click();
         });
     //validar el codigo del cliente
