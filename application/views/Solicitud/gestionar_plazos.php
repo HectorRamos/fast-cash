@@ -70,6 +70,8 @@
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                    <?php 
+                                                      $i = 0;
+                                                      if(!empty($plazos)){
                                                       foreach ($plazos->result() as $plazo)
                                                       {
                                                         if ($plazo->estado_plazo != 0)
@@ -77,28 +79,29 @@
                                                         $idPlazo = '"'.$plazo->id_plazo.'"';  // variable que se le pasara como parametro a las funciones de actualizar y eliminar...
                                                         $tiempoPlazo= '"'.$plazo->tiempo_plazo.'"'; // variable que se le pasara como parametro a la funcion actualizar...
                                                         $fechaPlazo = '"'.$plazo->fechaRegistro.'"'; // variable que se le pasara como parametro a la funcion actualizar...
+                                                        $i = $i +1;
                                                    ?>
                                                       <tr class="tr tr1">
-                                                        <td class="td td1"  width="280"><b><?= $plazo->id_plazo ?></b></td>
+                                                        <td class="td td1" data-label="#" style="min-width: 80px; width: auto;"><?= $i;?></td>
                                                         <?php 
                                                             if ($plazo->tiempo_plazo == 1)
                                                             {
-                                                              echo '<td class="td td1">Populares hasta '.$plazo->tiempo_plazo.' mes</td>';
+                                                              echo '<td class="td td1" data-label="Plazos Existentes">Populares hasta '.$plazo->tiempo_plazo.' mes</td>';
                                                             }
                                                             else
                                                             {
-                                                              echo '<td class="td td1">Populares hasta '.$plazo->tiempo_plazo.' meses</td>';
+                                                              echo '<td class="td td1" data-label="Plazos Existentes">Populares hasta '.$plazo->tiempo_plazo.' meses</td>';
                                                             }
                                                         ?>
-                                                        <td class="td td1">                                      
+                                                        <td class="td td1" data-label="Acción">                                      
                                                           <?php 
-                                                            echo "<a onclick='actualizarPlazo($idPlazo, $tiempoPlazo, $fechaPlazo)' title='Editar' data-toggle='modal' data-target='#actualizarPlazo' class='waves-effect waves-light editar'><i class='fa fa-pencil'></i></a>";
+                                                            echo "<a onclick='actualizarPlazo($idPlazo, $tiempoPlazo, $fechaPlazo)' title='Editar' data-toggle='modal' data-target='#actualizarPlazo' class='waves-effect waves-light editar'><i class='fa fa-pencil-square'></i></a>";
 
                                                             echo "<a onclick='eliminarPlazo($idPlazo)' title='Eliminar' class='waves-effect waves-light eliminar'  data-toggle='modal' data-target='.modal_eliminar_plazo'><i class='fa fa-times-circle'></i></a>";
                                                           ?>
                                                         </td>
                                                       </tr>
-                                                   <?php }} ?>
+                                                   <?php }}} ?>
                                                   </tbody>
                                                 </table>
                                               </div>
@@ -126,20 +129,22 @@
           <button type="button" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
           <h4 class="modal-title">Nuevo plazo</h4>
         </div>
-        <form method="post" action="<?= base_url() ?>Solicitud/guardarPlazo" autocomplete="off" id="FormNuevoPlazo">
         <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                          <label for="tiempo_plazo">Plazo de tiempo</label>
-                          <input type="text" class="form-control" id="tiempo_plazo" name="tiempo_plazo" placeholder="Plazo de tiempo">
-                    </div>
+          <form method="post" action="<?= base_url() ?>Solicitud/guardarPlazo" autocomplete="off" id="FormNuevoPlazo">
+            <div class="margn">
+               <div class="row">
+                  <div class="form-group col-md-12">
+                    <label for="tiempo_plazo">Plazo de tiempo</label>
+                    <input type="text" class="form-control" id="tiempo_plazo" name="tiempo_plazo" placeholder="Plazo de tiempo">
+                  </div>
                </div>
+              <div align="center">
+                <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div align="center">
-          <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
-          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cancelar</button>
-        </div>
-        </form>
       </div>
     </div>
 </div>
@@ -158,31 +163,33 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Actualizar plazo</h4>
         </div>
-        <form method="post" action="<?= base_url() ?>Solicitud/actualizarPlazo" autocomplete="off" id="FormEditarPlazo">
         <div class="modal-body">
-            <div class="row">
-                  <div class="form-group col-md-6">
-                        <label for="">Fecha de creacíon</label>
-                        <input type="text" class="form-control" id="fecha_plazo" name="fecha_plazo" readonly="true">
-                  </div>
-                  <div class="form-group col-md-6">
-                        <label for="">Estado del plazo</label>
-                        <input type="text" class="form-control" value="Activo" id="estado_plazo" name="estado_plazo" readonly="true">
-                  </div>
-                  <div class="form-group col-md-12">
-                        <label for="plazo_tiempo">Tiempo del plazo</label>
-                        <input type="text" class="form-control" id="plazo_tiempo" name="tiempo_plazo" placeholder="Plazo">
-                  </div>
-                  <div class="form-group col-md-12">
-                        <input type="hidden" class="form-control" id="id_plazo" name="id_plazo">
-                  </div>
+          <form method="post" action="<?= base_url() ?>Solicitud/actualizarPlazo" autocomplete="off" id="FormEditarPlazo">
+            <div class="margn">
+              <div class="row">
+                    <div class="form-group col-md-6">
+                          <label for="">Fecha de creacíon</label>
+                          <input type="text" class="form-control" id="fecha_plazo" name="fecha_plazo" readonly="true">
+                    </div>
+                    <div class="form-group col-md-6">
+                          <label for="">Estado del plazo</label>
+                          <input type="text" class="form-control" value="Activo" id="estado_plazo" name="estado_plazo" readonly="true">
+                    </div>
+                    <div class="form-group col-md-12">
+                          <label for="plazo_tiempo">Tiempo del plazo</label>
+                          <input type="text" class="form-control" id="plazo_tiempo" name="tiempo_plazo" placeholder="Plazo">
+                    </div>
+                    <div class="form-group col-md-12">
+                          <input type="hidden" class="form-control" id="id_plazo" name="id_plazo">
+                    </div>
+              </div>
+              <div align="center">
+                <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+                <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+              </div>
             </div>
+          </form>
         </div>
-        <div align="center">
-          <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
-          <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
-        </div>
-        </form>
       </div>
     </div>
   </div>
@@ -202,18 +209,18 @@
                         <i class="fa fa-warning fa-lg text-danger"></i>
                     </h4>
                 </div>
-                    <div class="modal-body">
-                      <input type="hidden" id="id" name='id'>
-                      <p align="center">¿Está seguro de eliminar el registro?</p>
-                    </div>
-                    <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                        <button type="submit" class="btn btn-danger block wwaves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
-                    </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                <div class="modal-body">
+                  <input type="hidden" id="id" name='id'>
+                  <p align="center">¿Está seguro de eliminar el plazo?</p>
+                </div>
+                <div align="center">
+                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                    <button type="submit" class="btn btn-danger block wwaves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- ============= Inicio del Script================== -->
 <script type="text/javascript">

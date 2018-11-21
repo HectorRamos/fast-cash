@@ -4,13 +4,11 @@
 
     var FormValidator = function() {
         //####################### FORMULARIO DE CLIENTE #######################
-        this.$FormNuevoCliente1 = $("#basic-form");
-        this.$FormNuevoClienteEmpleado = $("#FormNuevoClienteEmpleado");
-        this.$FormNuevoClienteEmpresario = $("#FormNuevoClienteEmpresario");
-
-        this.$FormEditarCliente = $("#FormEditarCliente");
-        this.$FormEditarClienteEmpleado = $("#FormEditarClienteEmpleado");
-        this.$FormEditarClienteEmpresario = $("#FormEditarClienteEmpresario");
+        this.$FormCliente = $("#basic-form");
+        this.$FormClienteEmpleado = $("#DLaborales");
+        this.$FormClienteEmpresario = $("#DNegocio");
+        this.$FormClienteEmpleadoRe = $("#DLaboralesRe");
+        this.$FormClienteEmpresarioRe = $("#DNegocioRe");
         //##################### FIN FORMULARIO DE CLIENTE #####################
 
         //####################### FORMULARIO DE PLAZOS #######################
@@ -38,152 +36,95 @@
     FormValidator.prototype.init = function() {
         //####################### FORMULARIO DE CLIENTE #######################
         // VALIDACION DE FORMULARIO NUEVO CLIENTE
-        this.$FormNuevoCliente1.validate({
+        this.$FormCliente.validate({
             rules: {
+                Ingreso_Mensual: "required",
                 Codigo_Cliente: "required",
                 Nombre_Cliente: "required",
                 Apellido_Cliente: "required",
-                cbbDepartamentos: "required",
-                cbbMunicipios: { required: true },
-                Celular_Cliente: { required: true },
+                Dui_Cliente: "required",
+                Fecha_Nacimiento: "required",                
+                Celular_Cliente: "required",
                 Email: { email: true },
-                Fecha_Nacimiento: { required: true },                
-                Dui_Cliente: { required: true },
-                Fecha_Registro: { required: true }, 
+                cbbDepartamentos: "required",
+                cbbMunicipios: "required", 
                 Profesion_Cliente: "required",
             },
             messages: {
-                Codigo_Cliente: "Por favor, escriba un nombre",                
-                Nombre_Cliente: "Por favor, escriba un nombre",                
-                Apellido_Cliente: "Por favor, escriba un apellido",
-                cbbDepartamentos: "Por favor, seleccione un Departamento",
-                cbbMunicipios: { required: "Por favor, seleccione un Municipio" },
-                Celular_Cliente: { required: "Por favor, digite un número de teléfono celular" },
+                Ingreso_Mensual: "",                
+                Codigo_Cliente: "",                
+                Nombre_Cliente: "",                
+                Apellido_Cliente: "",
+                Dui_Cliente: "",
+                Fecha_Nacimiento: "",                
+                Celular_Cliente: "",
                 Email: "Por favor, escriba el email del cliente correctamente",
-                Fecha_Nacimiento: { required: "Por favor, seleccione una fecha de nacimiento" },                
-                Dui_Cliente: { required: "Por favor, digite un número de dui" },
-                Fecha_Registro: { required: "Por favor, seleccione una fecha de registro" }, 
-                Profesion_Cliente: "Por favor, escriba una profesión",
+                cbbDepartamentos: "",
+                cbbMunicipios: "",
+                Domicilio_Cliente: "",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
 
         // VALIDACION DE FORMULARIO NUEVO CLIENTE EMPLEADO
-        this.$FormNuevoClienteEmpleado.validate({
+        this.$FormClienteEmpleado.validate({
             rules: {
-                Nombre_Negocio: "required",
-                NIT: { required: true },                
-                NRC: { required: true },
-                Giro: "required",
-                Direccion_Negocio: "required",
-                Ingreso_Mensual: { required: true },
-                Tipo_Factura: "required",
+                Nombre_Empresa: "required",
+                Telefono: "required",
+                Direccion: "required",
             },
             messages: {
-                Nombre_Negocio: "Por favor, escriba el nombre de la empresa",
-                NIT: { required: "Por favor, digite un número de nit" },                
-                NRC: { required: "Por favor, digite un número de nrc" },
-                Giro: "Por favor, digite un giro",
-                Direccion_Negocio: "Por favor, escriba una dirección del negocio",
-                Ingreso_Mensual: { required: "Por favor, digite una cantidad de ingreso mensual" },
-                Tipo_Factura: "Por favor, escriba el tipo de factura",
+                Nombre_Empresa: "",
+                Telefono: "",
+                Direccion: "",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
 
         // VALIDACION DE FORMULARIO NUEVO CLIENTE EMPRESARIO
-        this.$FormNuevoClienteEmpresario.validate({
-            rules: {
-                Nombre_Empresa: "required",
-                Cargo: "required",
-                Direccion: "required",
-                Telefono: { required: true },
-                Rubro: "required",
-                Ingreso_Mensual: { required: true },
-            },
-            messages: {
-                Nombre_Empresa: "Por favor, escriba el nombre de la empresa",
-                Cargo: "Por favor, escriba el cargo que tiene en la empresa",
-                Direccion: "Por favor, escriba una dirección de la empresa",
-                Telefono: { required: "Por favor, digite un número de teléfono" },
-                Rubro: "Por favor, escriba el tipo de rubro de la empresa",
-                Ingreso_Mensual: { required: "Por favor, digite una cantidad de ingreso mensual" },
-            },
-            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
-            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
-        });
-
-        // VALIDACION DE FORMULARIO EDITAR CLIENTE
-        this.$FormEditarCliente.validate({
-            rules: {
-                Nombre_Cliente: "required",
-                Apellido_Cliente: "required",
-                cbbDepartamentos: { required: true },
-                cbbMunicipios: { required: true },
-                Celular_Cliente: { required: true },
-                Fecha_Nacimiento: { required: true },                
-                Dui_Cliente: { required: true },
-                Fecha_Registro: { required: true }, 
-                Profesion_Cliente: "required",
-            },
-            messages: {
-                Nombre_Cliente: "Por favor, escriba un nombre",                
-                Apellido_Cliente: "Por favor, escriba un apellido",
-                cbbDepartamentos: { required: "Por favor, seleccione un Departamento" },
-                cbbMunicipios: { required: "Por favor, seleccione un Municipio" },
-                Celular_Cliente: { required: "Por favor, digite un número de teléfono celular" },
-                Fecha_Nacimiento: { required: "Por favor, seleccione una fecha de nacimiento" },                
-                Dui_Cliente: { required: "Por favor, digite un número de dui" },
-                Fecha_Registro: { required: "Por favor, seleccione una fecha de registro" }, 
-                Profesion_Cliente: "Por favor, escriba una profesión",
-            },
-            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
-            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
-        });
-
-        // VALIDACION DE FORMULARIO EDITAR CLIENTE EMPLEADO
-        this.$FormEditarClienteEmpleado.validate({
+        this.$FormClienteEmpresario.validate({
             rules: {
                 Nombre_Negocio: "required",
-                NIT: { required: true },                
-                NRC: { required: true },
-                Giro: "required",
+                NRC: "required",
                 Direccion_Negocio: "required",
-                Ingreso_Mensual: { required: true },
-                Tipo_Factura: "required",
             },
             messages: {
-                Nombre_Negocio: "Por favor, escriba el nombre del negocio",
-                NIT: { required: "Por favor, digite un número de nit" },                
-                NRC: { required: "Por favor, digite un número de nrc" },
-                Giro: "Por favor, digite un giro",
-                Direccion_Negocio: "Por favor, escriba una dirección del negocio",
-                Ingreso_Mensual: { required: "Por favor, digite una cantidad de ingreso mensual" },
-                Tipo_Factura: "Por favor, escriba el tipo de factura",
+                Nombre_Negocio: "",
+                NRC: "",
+                Direccion_Negocio: "",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+                // VALIDACION DE FORMULARIO NUEVO CLIENTE EMPLEADO
+        this.$FormClienteEmpleadoRe.validate({
+            rules: {
+                Nombre_Empresa: "required",
+                Telefono: "required",
+                Direccion: "required",
+            },
+            messages: {
+                Nombre_Empresa: "Por favor, escriba el nombre de la empresa",
+                Telefono: "Por favor, digite un teléfono",
+                Direccion: "Por favor, escriba una dirección",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
 
-        // VALIDACION DE FORMULARIO EDITAR CLIENTE EMPRESARIO
-        this.$FormEditarClienteEmpresario.validate({
+        // VALIDACION DE FORMULARIO NUEVO CLIENTE EMPRESARIO
+        this.$FormClienteEmpresarioRe.validate({
             rules: {
-                Nombre_Empresa: "required",
-                Cargo: "required",
-                Direccion: "required",
-                Telefono: { required: true },
-                Rubro: "required",
-                Ingreso_Mensual: { required: true },
+                Nombre_Negocio: "required",
+                NRC: "required",
+                Direccion_Negocio: "required",
             },
             messages: {
-                Nombre_Empresa: "Por favor, escriba el nombre de la empresa",
-                Cargo: "Por favor, escriba el cargo que tiene en la empresa",
-                Direccion: "Por favor, escriba una dirección de la empresa",
-                Telefono: { required: "Por favor, digite un número de teléfono" },
-                Rubro: "Por favor, escriba el tipo de rubro de la empresa",
-                Ingreso_Mensual: { required: "Por favor, digite una cantidad de ingreso mensual" },
+                Nombre_Negocio: "Por favor, escriba un nombre",
+                NRC: "Por favor, digite un número NRC",
+                Direccion_Negocio: "Por favor, escriba una dirección",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
@@ -220,10 +161,10 @@
         // VALIDACION DE FORMULARIO NUEVO ESTADO DE SOLICITUD
         this.$FormNuevoEstadoSolicitud.validate({
             rules: {
-                estado: "required",
+                nombreEstado: "required",
             },
             messages: {
-                estado: "Por favor, escriba el nombre del estado de solicitud",
+                nombreEstado: "Por favor, escriba un nombre del estado de solicitud",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
@@ -232,10 +173,10 @@
         // VALIDACION DE FORMULARIO EDITAR ESTADO DE SOLICITUD
         this.$FormEditarEstadoSolicitud.validate({
             rules: {
-                estado: "required",
+                nombreEstado: "required",
             },
             messages: {
-                estado: "Por favor, escriba el nombre del estado de solicitud",
+                nombreEstado: "Por favor, escriba un nombre del estado de solicitud",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
@@ -247,11 +188,9 @@
         this.$FormNuevoAccesoSistema.validate({
             rules: {
                 tipoAcceso: "required",
-                descripcion: "required",
             },
             messages: {
-                tipoAcceso: "Por favor, escriba el nombre de tipo de acceso",
-                descripcion: "Por favor, escriba una descripción",
+                tipoAcceso: "Por favor, escriba un nombre de acceso",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
@@ -261,11 +200,9 @@
         this.$FormEditarAccesoSistema.validate({
             rules: {
                 tipoAcceso: "required",
-                descripcion: "required",
             },
             messages: {
-                tipoAcceso: "Por favor, escriba el nombre de tipo de acceso",
-                descripcion: "Por favor, escriba una descripción",
+                tipoAcceso: "Por favor, escriba un nombre de acceso",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
