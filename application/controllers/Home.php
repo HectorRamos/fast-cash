@@ -20,8 +20,10 @@ class Home extends CI_Controller
 	{
 		if($this->session->userdata("login"))
 		{
+
+            $data = array('acceso' => $this->LoginModel->obtenerPermisos());
 			$this->load->view('Base/header');
-			$this->load->view('Base/nav');
+			$this->load->view('Base/nav', $data);
 			$this->load->view('Base/content');
 			$this->load->view('Base/footer');	
 		}
@@ -41,6 +43,7 @@ class Home extends CI_Controller
 		{
 			$login  = array(
 				'idEmpleado' => $respuesta->idEmpleado,
+				'idAcceso' => $respuesta->idAcceso,
 				'nombre' => $respuesta->nombreEmpleado,
 				'apellido' => $respuesta->apellidoEmpleado,
 				'tipoAcceso' => $respuesta->tipoAcceso,

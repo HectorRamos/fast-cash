@@ -19,13 +19,13 @@ class User_Model extends CI_Model{
 	public function obtenerUser()
 	{
 		$this->db->select("
-							tbl_users.idUser, 
-							tbl_users.user, 
-							tbl_accesos.tipoAcceso, 
-							tbl_accesos.descripcion"
-						);
+							tbl_users.*, 
+							tbl_accesos.*,
+							tbl_empleados.*
+						");
 		$this->db->from("tbl_users");
 		$this->db->join("tbl_accesos", "tbl_users.idAcceso = tbl_accesos.idAcceso");
+		$this->db->join("tbl_empleados", "tbl_users.idEmpleado = tbl_empleados.idEmpleado");
 		$this->db->where("tbl_users.estado", 1);
 		$this->db->order_by("idUser", "desc");
 		$user = $this->db->get();
@@ -56,37 +56,39 @@ class User_Model extends CI_Model{
 			}
 
 	}
-	// public function EditarAcceso($datos=null){
-	// 	if($datos!=null){
-	// 		//$fecha = date("Y/m/d");
-	// 		$id = $datos['idAcceso'];
-	// 		$this->db->where('idAcceso', $id);
-	// 		if($this->db->update('tbl_accesos', $datos)){
-	// 			return true;
-	// 		}
-	// 		else{
-	// 			return false;
-	// 		}
+	public function EditarUser($datos=null)
+	{
+		if($datos!=null)
+		{
+			$id = $datos['txtIdUser'];
+			$user = $datos['txtuser'];
+			$pass = $datos['txtpassword'];
+			$idacceso = $datos['cbbRol1'];
+			$sql = "UPDATE tbl_users SET user = '$user', pass = '$pass', idAcceso = '$idacceso' WHERE idUser = $id";
+			if ($this->db->query($sql))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 
-	// 	}
-	// 	else{
-	// 		return false;
-	// 	}
-
-	// }
-	// public function ocultarAcceso($id){
+		}
+	}
+	public function OcultarUser($id){
 	
 			
-	// 		$datos = array('estado'=>2);
-	// 		$this->db->where('idAcceso', $id);
-	// 		if($this->db->update('tbl_accesos', $datos))
-	// 		{
-	// 			return true;
-	// 		}
-	// 		else{
-	// 			return false;
-	// 		}
+			$datos = array('estado'=>0);
+			$this->db->where('idUser', $id);
+			if($this->db->update('tbl_users', $datos))
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
 
-	// 	}
+		}
 }
 ?>

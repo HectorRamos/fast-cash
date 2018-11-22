@@ -35,29 +35,28 @@ class User extends CI_Controller {
 		$bool=$this->User_Model->EditarUser($datos);
 		if($bool){
 			$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
-			redirect(base_url()."Accesos");
+			redirect(base_url()."User");
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
-			redirect(base_url()."Accesos");
+			redirect(base_url()."User");
 		}
 
 	}
-	/*
+	
 	public function Eliminar(){
 		$datos=$this->input->GET('id');
-		$this->load->model('Accesos_Model');
-		$bool=$this->Accesos_Model->OcultarAcceso($datos);
+		$bool=$this->User_Model->OcultarUser($datos);
 		if($bool){
 			$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
-			redirect(base_url()."Accesos");
+			redirect(base_url()."User");
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
-			redirect(base_url()."Accesos");
+			redirect(base_url()."User");
 		}
 
-	}*/
+	}
 
 }
 

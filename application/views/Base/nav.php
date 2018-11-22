@@ -63,68 +63,12 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <li>
-                                <a href="<?= base_url() ?>Home/Main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
-                            </li>
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-user-o fa-lg"></i><span>Clientes</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Clientes/">Agregar nuevo cliente</a></li>
-                                    <li><a href="<?= base_url() ?>Clientes/gestionarCliente">Gestionar información de clientes</a></li>
-                                </ul>
-                            </li>
-                             <!--Agregando nuevos item pertenecientes al modulo de solicitud-->
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-book"></i><span>Solicitud</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Solicitud/">Ver Solicitudes</a></li>
-                                    <li><a href="" data-toggle="modal" data-target=".modal_opcion_solicitud">Crear solicitud</a></li>
-                                    <li><a href="<?= base_url() ?>EstadosSolicitud/">Gesctionar estados de la solicitud</a></li>
-                                    <li><a href="<?= base_url() ?>Solicitud/gestionarPlazos">Gestionar plazos</a></li>
-                                </ul>
-                            </li>
-                            <!--Fin del modulo de solicitud-->
-                            <!--Agregando nuevos item pertenecientes al modulo de Creditos-->
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-usd fa-lg"></i><span>Creditos</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Creditos">Ver creditos</a></li>
-                                </ul>
-                            </li>
-                            <!--Fin del modulo de solicitud-->
-
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-user-plus fa-lg" ></i><span>Empleados</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Empleados/ViewInsertarEmpleados">Agregar nuevo empleado</a></li>
-                                    <li><a href="<?= base_url() ?>Empleados/Index">Gestionar Empleado</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Configuración</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>User/">Gestión de usuarios</a></li>
-                                    <li><a href="<?= base_url() ?>Accesos/">Gesctionar accesos de usuarios</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Pagos</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a> 
-                                <ul class="list-unstyled">
-                                    <li><a href="<?= base_url() ?>Pagos/">Insertar pago</a></li>
-                                    
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="fa fa-cog" ></i><span>Caja chica</span><span class="pull-right"><i class="md  md-keyboard-arrow-down"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="<?= base_url() ?>CajaChica/" class="waves-effect"><i class="fa fa-cog" ></i><span>Realizar procesos</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?= base_url() ?>CajaChica/HistorialCajas" class="waves-effect"><i class="fa fa-cog" ></i><span>Historial</span></a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <?php                                
+                                foreach ($acceso->Result() as $item) {
+                                    # code...
+                                    echo $item->html;
+                                }
+                            ?>
                         </ul>
                         <div class="clearfix"></div>
                     </div>

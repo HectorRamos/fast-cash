@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginModel extends CI_Model
 {		
+	public function obtenerPermisos()
+	{   
+	$idAcceso = $this->session->userdata("idAcceso");
+	$query = "SELECT m.*, p.*, a.* FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu WHERE p.idAcceso = '$idAcceso' AND p.permiso = '1'";
+		$data =  $this->db->query($query);
+		return $data;	
+	}
 	public function Login($user, $pass)
 	{
 		$this->db->where("user", $user);
