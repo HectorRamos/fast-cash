@@ -2,7 +2,8 @@
 
 class Estados_Model extends CI_Model{
 
-	public function GetEstados(){
+public function GetEstados(){
+		$this->db->order_by("id_estado", "desc");
 		$this->db->where('estado', 1);
 		$res=$this->db->GET('tbl_estados_solicitud');
 		return $res;
@@ -48,8 +49,7 @@ class Estados_Model extends CI_Model{
 	}
 	public function ocultarEstado($id){
 	
-			
-			$datos = array('estado'=>2);
+			$datos = array('estado'=>0);
 			$this->db->where('id_estado', $id);
 			if($this->db->update('tbl_estados_solicitud', $datos))
 			{

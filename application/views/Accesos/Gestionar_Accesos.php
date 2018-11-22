@@ -48,7 +48,7 @@
                                     <div class="table-title">
                                         <div class="row">
                                           <div class="col-sm-6">
-                                            <h5 class="panel-title">Accesos registrados</h3>
+                                            <h5 class="panel-title">Accesos registrados al sistema</h3>
                                           </div>
                                           <div class="col-sm-6">
                                               <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo acceso<span></a>
@@ -64,7 +64,7 @@
                                                 <table id="datatable" class="table">
                                                   <thead class="thead-dark thead thead1">
                                                     <tr class="tr tr1">
-                                                      <th class="th th1" scope="col">Id Estado</th>
+                                                      <th class="th th1" scope="col">#</th>
                                                       <th class="th th1" scope="col">Estados</th>
                                                       <th class="th th1" scope="col">Descripción</th>
                                                       <th class="th th1" >Acción</th>
@@ -72,22 +72,26 @@
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                   <?php
+                                                  $i = 0;
+                                                  if(!empty($datos)){
                                                   foreach ($datos->result() as  $accesos) {
+                                                    $i = $i +1;
                                                     $accesoN="'".$accesos->tipoAcceso."'";
                                                     $descripcionN="'".$accesos->descripcion."'";
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                  <td class="td td1"  width="150"><b><?= $accesos->idAcceso?></b></td>
-                                                  <td class="td td1"><?= $accesos->tipoAcceso?></td>
-                                                  <td class="td td1"><?= $accesos->descripcion?></td>
-                                                  <td class="td td1">
-                                                      <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><?= $i;?></td>
+                                                  <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
+                                                  <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
+                                                  <td class="td td1" data-label="Acción">
+                                                      <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
                                                       <a onclick="del(<?= $accesos->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
                                                   </tr>
                                                   <?php
+                                                  }
                                                   }
                                                   ?>
                                                       
@@ -186,7 +190,7 @@
                 </div>
                     <div class="modal-body">
                       <input type="text" hidden id="id" name='id'>
-                      <p align="center">¿Está seguro de eliminar el registro?</p>
+                      <p align="center">¿Está seguro de eliminar el acceso?</p>
                     </div>
                     <div  align="center">
                         <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>

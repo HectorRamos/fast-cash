@@ -71,25 +71,24 @@
       												      <th class="th th1" scope="col">Código Cliente</th>
       												      <th class="th th1" scope="col">Nombre</th>
       												      <th class="th th1" scope="col">Apellido</th>			      
-                                                          <th class="th th1" scope="col">Tipo</th>
-                      									  <th class="th th1">Acción</th>
+                                    <th class="th th1" scope="col">Tipo</th>
+                      							<th class="th th1">Acción</th>
       												  </thead>
       												  <tbody class="tbody tbody1">
       												  <?php
       												  $i = 0;
-                                                      if(!empty($registro)){
+                                if(!empty($registro)){
       												  foreach ($registro->result() as $clientes) {
       												  	$i = $i +1;
       												  $tipo = "'".$clientes->Tipo_Cliente."'"
       												  ?>
       												    <tr class="tr tr1">
       												      <td class="td td1" width="10" data-label="#"><?= $i;?></td>
-      												      <td class="td td1" width="150"><b><?= $clientes->Codigo_Cliente?></b></td>
-      												      <td class="td td1"><?= $clientes->Nombre_Cliente?></td>
-      												      <td class="td td1"><?= $clientes->Apellido_Cliente?></td>
-                                                          <td class="td td1" width="100"><?= $clientes->Tipo_Cliente?></td>
-      												      <!-- <td><a onclick="confirmar(<?= $clientes->Id_Cliente?>)" class="btn btn-danger">Eliminar</a> -->
-      												      <td class="td td1">
+      												      <td class="td td1" width="150" data-label="Código Cliente"><b><?= $clientes->Codigo_Cliente?></b></td>
+      												      <td class="td td1" data-label="Nombre"><?= $clientes->Nombre_Cliente?></td>
+      												      <td class="td td1" data-label="Apellido"><?= $clientes->Apellido_Cliente?></td>
+                                    <td class="td td1" width="100" data-label="Tipo"><?= $clientes->Tipo_Cliente?></td>
+      												      <td class="td td1" data-label="Acción">
       												      	<a title="Ver historial" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="MostrarInfo(<?= $clientes->Id_Cliente?>, <?php echo $tipo;?>)" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
         												      <a title="Editar" data-toggle="tooltip" href="<?=base_url()?>Clientes/Editar?id=<?= $clientes->Id_Cliente?>" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
@@ -99,9 +98,7 @@
                                   </tr>
       												    <?php
       														}
-      													}else{
-									                      echo "NO HAY DATOS.";
-									                    }
+      													}
       												    ?>
       												  </tbody>
       												</table>
@@ -121,7 +118,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar1()">×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="limpiar()">×</button>
                         <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-list-alt fa-lg"></i> Información</h4>
                     </div>
                     <div class="modal-body" >
@@ -142,7 +139,7 @@
                           <input type="hidden" name='nombre' id="id" class="style" readonly='readonly'>
                         </div>
                         <div id="DivEmpleado" style="display:none;">
-                          <form method="POST" action="<?= base_url()?>Clientes/datosLaborales">
+                          <form id="DLaboralesRe" method="POST" action="<?= base_url()?>Clientes/datosLaborales">
                             <div class="margn">
                               <div class="row">
                                 <input type="hidden" id="Fk_Id_Cliente" name="Fk_Id_Cliente" value="<?php //echo $dato->Id_Cliente; ?>">
@@ -178,14 +175,14 @@
                               <div  align="center">
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
                                 <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar2()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                               </div>
                             </div>
                           </form>
                         </div>
 
                         <div id="DivEmpresario" style="display:none;">
-                          <form method="POST" action="<?= base_url()?>Clientes/datosNegocio">
+                          <form id="DNegocioRe" method="POST" action="<?= base_url()?>Clientes/datosNegocio">
                             <div class="margn">
                               <div class="row">
                                 <input type="hidden" id="Fk_Id_Cliente2" name="Fk_Id_Cliente">
@@ -221,7 +218,7 @@
                               <div align="center">
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
                                 <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar3()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                               </div>
                             </div>
                           </form>
@@ -389,29 +386,14 @@
              }); 
     }
   }
-    function limpiar1(){
+    function limpiar(){
         $('#Nombre_Empresa').val("");
         $('#Cargo').val("");
         $('#Direccion').val("");
         $('#Telefono').val("");
         $('#Rubro').val("");
         $('#Observaciones').val("");
-        $('#Nombre_Negocio').val("");
-        $('#NIT').val("");
-        $('#NRC').val("");
-        $('#Giro').val("");
-        $('#Direccion_Negocio').val("");
-        $('#Tipo_Factura').val("");
-    }
-    function limpiar2(){
-        $('#Nombre_Empresa').val("");
-        $('#Cargo').val("");
-        $('#Direccion').val("");
-        $('#Telefono').val("");
-        $('#Rubro').val("");
-        $('#Observaciones').val("");
-    }
-    function limpiar3(){
+
         $('#Nombre_Negocio').val("");
         $('#NIT').val("");
         $('#NRC').val("");

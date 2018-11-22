@@ -18,13 +18,13 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$id=$this->Clientes_Model->Insertar($datos);
 		if($id){			
-			$this->session->set_flashdata("guardar","El cliente tipo <b>otro</b> a sido guardado con éxito.");
+			$this->session->set_flashdata("guardar","El cliente a sido <b>guardado</b> con éxito.");
 			$data=$id;
 			echo json_encode($data);
 		}
 		else
 		{
-			$this->session->set_flashdata("errorr","Error el cliente tipo <b>otro</b> no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>guardar</b>.");
 			redirect(base_url()."Clientes/");
 		}
 	}
@@ -33,12 +33,12 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->InsertarDatosLaborales($datos);
 		if($bool){
-			$this->session->set_flashdata("guardar","El cliente <b>empleado</b> a sido guardado con éxito.");
+			$this->session->set_flashdata("guardar","El cliente a sido <b>guardado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			$this->session->set_flashdata("errorr","Error el cliente <b>empleado</b> no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>guardar</b>.");
 			redirect(base_url()."Clientes/");
 		}
 	}
@@ -47,12 +47,12 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->InsertarDatosNegocio($datos);
 		if($bool){
-			$this->session->set_flashdata("guardar","El cliente <b>empresario</b> a sido guardado con éxito.");
+			$this->session->set_flashdata("guardar","El cliente a sido <b>guardado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			$this->session->set_flashdata("errorr","Error el cliente <b>empresario</b> no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>guardar</b>.");
 			redirect(base_url()."Clientes/");
 		}
 	}
@@ -86,12 +86,12 @@ class Clientes extends CI_Controller {
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->Eliminar($id);
 		if ($bool) {
-			$this->session->set_flashdata("informa","El cliente a sido eliminado con éxito.");
+			$this->session->set_flashdata("informa","El cliente a sido <b>eliminado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente"); 
 		}
 		else
 		{
-			$this->session->set_flashdata("errorr","Error el cliente no pudo ser eliminado.");
+			$this->session->set_flashdata("errorr","Error el cliente no pudo ser <b>eliminado</b>.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 	}
@@ -110,7 +110,7 @@ class Clientes extends CI_Controller {
 		$datos=$this->input->POST();
 		$this->load->model("Clientes_Model");
 		$bool=$this->Clientes_Model->Editar($datos);					
-        $this->session->set_flashdata("actualizado","El cliente tipo <b>otro</b> a sido actualizado con éxito.");
+        $this->session->set_flashdata("actualizado","El cliente a sido <b>actualizado</b> con éxito.");
         echo json_encode($bool);		
 	}
 	public function TomarFoto(){
@@ -180,11 +180,11 @@ class Clientes extends CI_Controller {
 		if($accion==1){
 		$bool=$this->Clientes_Model->EditarDatosLaborales($data);
 		if($bool){
-			$this->session->set_flashdata("actualizado","El cliente <b>empleado</b> a sido actualizado con éxito.");
+			$this->session->set_flashdata("actualizado","El cliente a sido <b>actualizado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el cliente <b>empleado</b> no se pudo actualizar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		
@@ -192,12 +192,12 @@ class Clientes extends CI_Controller {
 		else if($accion==2){
 			$bool=$this->Clientes_Model->InsertarDatosLaborales($data);
 			if($bool){
-				$this->session->set_flashdata("actualizado","El cliente <b>empleado</b> a sido actualizado con éxito.");
+				$this->session->set_flashdata("actualizado","El cliente a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."Clientes/gestionarCliente");
 			}
 			else
 			{
-				$this->session->set_flashdata("errorr","Error el cliente <b>empleado</b> no se pudo actualizar.");
+				$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
 				redirect(base_url()."Clientes/");
 			}
 				
@@ -221,11 +221,11 @@ class Clientes extends CI_Controller {
 		if($accion==1){
 		$bool=$this->Clientes_Model->EditarDatosNegocio($data);
 		if($bool){
-			$this->session->set_flashdata("actualizado","El cliente <b>empresario</b> a sido actualizado con éxito.");
+			$this->session->set_flashdata("actualizado","El cliente a sido <b>actualizado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el cliente <b>empresario</b> no se pudo actualizar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 
@@ -234,12 +234,12 @@ class Clientes extends CI_Controller {
 		else if($accion==2){
 		$bool=$this->Clientes_Model->InsertarDatosNegocio($data);
 		if($bool){
-			$this->session->set_flashdata("actualizado","El cliente <b>empresario</b> a sido actualizado con éxito.");
+			$this->session->set_flashdata("actualizado","El cliente a sido <b>actualizado</b> con éxito.");
 			redirect(base_url()."Clientes/gestionarCliente");
 		}
 		else
 		{
-			$this->session->set_flashdata("errorr","Error el cliente <b>empresario</b> no se pudo actualizar.");
+			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Clientes/");
 		}
 			

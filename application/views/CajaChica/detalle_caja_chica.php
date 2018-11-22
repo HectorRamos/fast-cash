@@ -90,14 +90,14 @@
                                 <?php 
                                 	if ($cajaChica->salida != 0)
                                 	{
-                                		echo '<td class="td td1" width="280">'.$cajaChica->salida.'</td>';
+                                		echo '<td class="td td1" width="280">$ '.$cajaChica->salida.'</td>';
                                 		echo '<td class="td td1" width="280">Salida</td>';
                                 	}
                                 	else
                                 	{
                                 		if ($cajaChica->entrada != 0)
                                 		{
-                                			echo '<td class="td td1" width="280">'.$cajaChica->entrada.'</td>';
+                                			echo '<td class="td td1" width="280">$ '.$cajaChica->entrada.'</td>';
                                 			echo '<td class="td td1" width="280">Entrada</td>';
                                 		}
                                 		else
@@ -109,9 +109,13 @@
                                 ?>
                                 
                                 <td class="td td1" width="280"><?= $cajaChica->detalle ?></td>
-                                <td class="td td1" width="280"><?= $cajaChica->saldo ?></td>
+                                <td class="td td1" width="280">$ <?= $cajaChica->saldo ?></td>
                               </tr>
                             <?php } ?>
+                              <tr>
+                              	<td class="td td1 text-center" colspan="4"><strong>SALDO FINAL</strong></td>
+                              	<td class="td td1 text-right" colspan="4"><strong>$<?= $cajaChica->saldo ?></strong></td>
+                              </tr>
                           </tbody>
                           <div>
                           	<p><strong>Saldo en efectivo: $<?= $efectivo ?></strong>
@@ -119,6 +123,9 @@
                           	<strong>Saldo total: $<?= $efectivo + $cheques?></strong></p>                          
                           </div>
                         </table>
+                        <div align="center">
+	                       <a href="<?= base_url() ?>CajaChica/HistorialCajas" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
+	                    </div>
                       </div>
                     </div>
                 </div>
