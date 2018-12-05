@@ -81,7 +81,7 @@
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><?= $i;?></td>
+                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
                                                   <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
                                                   <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
                                                   <td class="td td1" data-label="Acción">
@@ -133,7 +133,7 @@
                   <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
-            </div>
+              </div>
             </form>                                  
             </div>
             <div class="modal-footer">
@@ -193,8 +193,8 @@
                       <p align="center">¿Está seguro de eliminar el acceso?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                         <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

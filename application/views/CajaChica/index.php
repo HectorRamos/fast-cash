@@ -1,7 +1,7 @@
-<?php if($this->session->flashdata("informa")):?>
+<?php if($this->session->flashdata("guardar")):?>
   <script type="text/javascript">
     $(document).ready(function(){
-    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
     });
   </script>
 <?php endif; ?>
@@ -49,27 +49,29 @@
               if (sizeof($datos->result())==0)
               {
             ?>
-              <form method="post" action="<?= base_url() ?>CajaChica/AperturarCaja">
+              <form method="post" action="<?= base_url() ?>CajaChica/AperturarCaja" id="formAperturar" autocomplete="off">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
 
+                  <h4>Aperturar Caja</h4>
+                  <div class="margn">
                     <div class="row">
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-6">
                             <label for="fecha_apertura">Fecha</label>
                             <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de recibido del prestamo" data-mask="9999/99/99">
                       </div>
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Cantidad de apertura</label>
-                            <input type="text"  class="form-control" id="cantidad_apertura" name="cantidad_apertura" placeholder="Tasa de interes del prestamo">
-                      </div>
-                      <div class="form-group col-md-2">
-                            <label for="monto_dinero">Acción</label><br>
-                            <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Aperturar</button>
+                            <input type="text"  class="form-control validaDigit" id="cantidad_apertura" name="cantidad_apertura" placeholder="Tasa de interes del prestamo">
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-
-                     <!-- <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a> -->
+                  </div>
+                  <br>
+                  <div class="margn">
+                    <div align="center">
+                            <button type="submit" class="btn btn-info waves-effect waves-light m-d-5"><i class="fa fa-check-square-o fa-lg"></i> Aperturar</button>
+                    </div>
+                  </div>
                </div>
               </form>
               <?php
@@ -86,22 +88,8 @@
                   }
                 
                 ?>
-                <!-- Inicio cerrar caja -->
-                <form method="post" action="<?= base_url() ?>CajaChica/CerrarCajaChica/">
-                      <div class="row">
-                            <div class="form-group col-md-10"></div>
-                            <div class="form-group col-md-2">
-                              <input type="hidden" value="<?= $caja->fechaCajaChica ?>" class="form-control" id="fecha_cc" name="fecha_cc" placeholder="Fecha de recibido del prestamo">
-                              <input type="hidden" value="<?= $caja->idCajaChica ?>" class="form-control" id="id_cc" name="id_cc" placeholder="Fecha de recibido del prestamo">
-                              <input type="hidden" value="<?= $caja->saldo ?>" class="form-control" id="saldo_cc" name="saldo_cc" placeholder="Fecha de recibido del prestamo">
-                              <button href="" class="btn btn-danger"><i class=" fa fa-close"></i> Cerrar caja chica</button>
-                            </div>
-                      </div>
-                </form>
-                <!-- Fin cerrar caja -->
-                <form id="DProcesoCC" method="post" action="<?= base_url() ?>CajaChica/GuardarProcesoCC">
                 <div class="margn">
-                <!-- Primera Linea del formulario-->
+                <form id="DProcesoCC2" method="post" action="<?= base_url() ?>CajaChica/GuardarProcesoCC" autocomplete="off">
                     <div class="row">
                       <div class="form-group col-md-6">
                             <label for="fecha_proceso">Fecha</label>
@@ -111,15 +99,13 @@
                       </div>
                       <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Cantidad de dinero</label>
-                            <input type="text" value="" class="form-control" id="cantidad_dinero" name="cantidad_dinero" placeholder="Cantidad de dinero del proceso a efectuar" required data-parsley-required-message="Digite el monto de dinero">
+                            <input type="text" class="form-control validaDigit" id="cantidad_dinero" name="cantidad_dinero" placeholder="Cantidad de dinero del proceso a efectuar">
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-                    <!-- Inicio de la segunda linea del formulario-->
                     <div class="row">
                     <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Tipo de proceso</label>
-                            <select name="tipo_proceso" id="" class="select" required data-parsley-required-message="Seleccione en tipo de proceso">
+                            <select name="tipo_proceso" id="" class="select">
                               <option value="">Seleccione un tipo de proceso</option>
                               <option value="Entrada">Entrada de dinero</option>
                               <option value="Salida">Salida de dinero</option>
@@ -127,7 +113,7 @@
                       </div>
                       <div class="form-group col-md-6">
                             <label for="monto_dinero">Forma de pago</label><br>
-                            <select name="forma_pago" id="" class="select" required data-parsley-required-message="Seleccione un tipo de pago">
+                            <select name="forma_pago" id="" class="select">
                               <option value="">Seleccione una forma de pago</option>
                               <?php 
                                 foreach ($tipoPago->result() as $tipo)
@@ -138,21 +124,24 @@
                             </select>
                       </div>
                     </div>
-                    <!-- Fin de la segunda linea del formulario-->
-                    <!-- Tercera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-12">
                             <label for="detalle_proceso">Detalle del proceso</label>
-                            <textarea class="form-control resize" rows="3" id="detalle_proceso" name="detalle_proceso" required data-parsley-required-message="Digite la descripcion del proceso"></textarea>
+                            <textarea class="form-control resize" rows="3" id="detalle_proceso" name="detalle_proceso"></textarea>
                       </div>
                     </div>
-                    <!-- Fin de la tercera linea del formulario-->
 
-
-                            <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
-                     <!-- <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a> -->
-               </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
               </form>
+                 <!-- Inicio cerrar caja -->
+                <form method="post" action="<?= base_url() ?>CajaChica/CerrarCajaChica/">
+                      <input type="hidden" value="<?= $caja->fechaCajaChica ?>" class="form-control" id="fecha_cc" name="fecha_cc" placeholder="Fecha de recibido del prestamo">
+                      <input type="hidden" value="<?= $caja->idCajaChica ?>" class="form-control" id="id_cc" name="id_cc" placeholder="Fecha de recibido del prestamo">
+                      <input type="hidden" value="<?= $caja->saldo ?>" class="form-control" id="saldo_cc" name="saldo_cc" placeholder="Fecha de recibido del prestamo">
+                      <button href="" class="btn btn-danger waves-effect waves-light m-d-5" style="position: absolute; margin-left: 105px; margin-top: -34px;"><i class=" fa fa-close fa-lg"></i> Cerrar caja chica</button>
+                </form>
+                <!-- Fin cerrar caja -->
+               </div>
                 <?php } ?>
             </div>
           </div>
@@ -172,12 +161,5 @@
   function main()
   {
     $("#fecha_proceso").prop('readonly', true);
-
-    $('#DProcesoCC').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  });
-
   }
 </script>

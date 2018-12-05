@@ -50,7 +50,7 @@
                                             <h3 class="panel-title">Registro de plazos</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#agregarPlazo"><i class="fa fa-plus-circle"></i> <span>Nuevo plazo</span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="modal" data-target="#agregarPlazo"><i class="fa fa-plus-circle"></i> <span>Nuevo Plazo</span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -82,7 +82,7 @@
                                                         $i = $i +1;
                                                    ?>
                                                       <tr class="tr tr1">
-                                                        <td class="td td1" data-label="#" style="min-width: 80px; width: auto;"><?= $i;?></td>
+                                                        <td class="td td1" data-label="#" style="min-width: 80px; width: auto;"><b><?= $i;?></b></td>
                                                         <?php 
                                                             if ($plazo->tiempo_plazo == 1)
                                                             {
@@ -140,6 +140,7 @@
                </div>
               <div align="center">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                 <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cancelar</button>
               </div>
             </div>
@@ -214,8 +215,8 @@
                   <p align="center">¿Está seguro de eliminar el plazo?</p>
                 </div>
                 <div align="center">
-                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     <button type="submit" class="btn btn-danger block wwaves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

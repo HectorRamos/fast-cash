@@ -50,7 +50,7 @@
                                             <h3 class="panel-title">Registro de estados de solicitud</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a class="btn btn-primary waves-effect waves-light m-d-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo Estado de solicitud</span></a>
+                                              <a class="btn btn-primary waves-effect waves-light m-d-5" title="Nuevo" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i> <span>Nuevo Estado de Solicitud</span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -78,7 +78,7 @@
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                      <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><?= $i;?></td>
+                                                      <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
                                                       <td class="td td1" data-label="Estados"><?= $estado->nombreEstado?></td>
                                                       <td class="td td1" data-label="Acción">
                                                       <a onclick="Edit(<?= $estado->id_estado?>, <?= $estadoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
@@ -174,8 +174,8 @@
                       <p align="center">¿Está seguro de eliminar el estado?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                         <button type="submit" class="btn btn-danger block waves-effect waves-light m-d-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

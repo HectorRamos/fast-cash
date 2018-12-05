@@ -7,6 +7,7 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("LoginModel");
+		$this->load->library('session'); 
 	}
 
 	public function index()
@@ -18,12 +19,13 @@ class Home extends CI_Controller
 
 	public function Main()
 	{
-		if($this->session->userdata("login"))
+		if(1 == 1)
 		{
 
-            $data = array('acceso' => $this->LoginModel->obtenerPermisos());
+            // $dataP = array('acceso' => $this->LoginModel->obtenerPermisos());
+            // $dataP;
 			$this->load->view('Base/header');
-			$this->load->view('Base/nav', $data);
+			$this->load->view('Base/nav');
 			$this->load->view('Base/content');
 			$this->load->view('Base/footer');	
 		}
@@ -41,12 +43,13 @@ class Home extends CI_Controller
 		$respuesta = $this->LoginModel->login($user, $pass);
 		if($respuesta)
 		{
+			// $menu =  $this->LoginModel->Ac($respuesta->idAcceso);
 			$login  = array(
 				'idEmpleado' => $respuesta->idEmpleado,
 				'idAcceso' => $respuesta->idAcceso,
 				'nombre' => $respuesta->nombreEmpleado,
 				'apellido' => $respuesta->apellidoEmpleado,
-				'tipoAcceso' => $respuesta->tipoAcceso,
+				'tipoAcceso' => $respuesta->tipoAcceso,				
 				'login' => TRUE
 			 );
 			$this->session->set_userdata($login);

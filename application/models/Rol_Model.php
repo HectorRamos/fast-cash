@@ -11,6 +11,8 @@ class Rol_Model extends CI_Model{
 
 	public function obtenerRol()
 	{
+		$this->db->where("tbl_accesos.estado", 1);
+		$this->db->order_by("tbl_accesos.idAcceso", "DESC");
 		$rol= $this->db->get("tbl_accesos");
 		return $rol;
 	}
@@ -94,19 +96,16 @@ class Rol_Model extends CI_Model{
 
 	// 	}
 	// }
-	// public function OcultarUser($id){
-	
-			
-	// 		$datos = array('estado'=>0);
-	// 		$this->db->where('idUser', $id);
-	// 		if($this->db->update('tbl_users', $datos))
-	// 		{
-	// 			return true;
-	// 		}
-	// 		else{
-	// 			return false;
-	// 		}
+	public function EliminarRol($id){	
+			$this->db->where('tbl_permisos.idAcceso', $id);
+			if($this->db->delete('tbl_permisos'))
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
 
-	// 	}
+		}
 }
 ?>

@@ -6,7 +6,7 @@
         <meta name="description" content="Desarrollo de sistemas.">
         <meta name="author" content="jireh">
 
-        <link rel="shortcut icon" href="<?= base_url() ?>plantilla/images/fc_ico.png">
+        <link rel="shortcut icon" href="<?= base_url() ?>plantilla/images/fc_logo.png">
 
         <title>FAST CASH</title>
 

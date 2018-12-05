@@ -37,7 +37,7 @@
                                 <!-- <h4 class="pull-left page-title">Gestion de los accesos al sistema</h4> -->
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
-                                    <li class="active">Gestión de permisos del sistema</li>
+                                    <li class="active">Permisos asignados</li>
                                 </ol>
                             </div>
                         </div>
@@ -48,10 +48,10 @@
                                     <div class="table-title">
                                         <div class="row">
                                           <div class="col-sm-6">
-                                            <h5 class="panel-title">Permisos asignados</h3>
+                                            <h5 class="panel-title">Gestión de permisos del sistema</h3>
                                           </div>
                                           <div class="col-sm-6">
-                                              <a href="<?= base_url() ?>Rol/Crear" class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo"><i class="fa fa-plus-circle"></i> <span>Nuevo Permiso<span></a>
+                                              <a href="<?= base_url() ?>Rol/Crear" class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="tooltip"><i class="fa fa-plus-circle"></i><span> Nuevo Permiso<span></a>
                                           </div>
                                         </div>
                                       </div>
@@ -80,13 +80,13 @@
                                                       # code...
                                                   ?>
                                                   <tr class="tr tr1">
-                                                  <td class="td td1"  width="150"><b><?= $c ?></b></td>
-                                                  <td class="td td1"><?= $permiso->tipoAcceso?></td>
-                                                  <td class="td td1"><?= $permiso->descripcion?></td>
-                                                  <td class="td td1">
-                                                      <a onclick="Edit()" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $c ?></b></td>
+                                                  <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
+                                                  <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>
+                                                  <td class="td td1" data-label="Acción">
+                                                      <a onclick="Edit()" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
-                                                      <a onclick="del(<?= $permiso->idPermiso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                      <a onclick="del(<?= $permiso->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
                                                   </tr>
                                                   <?php
@@ -111,7 +111,7 @@
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form name="frmeliminarcliente" action="<?= base_url();?>User/Eliminar" id="frmeliminarcliente" method="GET">
+            <form name="frmeliminarcliente" action="<?= base_url();?>Rol/Eliminar" id="frmeliminarcliente" method="GET">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
@@ -119,12 +119,12 @@
                     </h4>
                 </div>
                     <div class="modal-body">
-                      <input type="text" id="id" name='id'>
-                      <p align="center">¿Está seguro de eliminar el registro?</p>
+                      <input type="hidden" id="id" name='id'>
+                      <p align="center">¿Está seguro de eliminar el permiso?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                         <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->

@@ -96,11 +96,11 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$bool = $this->Solicitud_Model->GuardarSolicitud($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se creo exitosamente la solicitud !!!");
+				$this->session->set_flashdata("guardar","La solicitud a sido <b>guardada</b> con éxito.");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al crear la solicitud");
+			$this->session->set_flashdata("errorr","Error la solicitud no se pudo <b>guardar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -111,11 +111,11 @@ class Solicitud extends CI_Controller {
 		$id = $_GET['id'];
 		$bool = $this->Solicitud_Model->EliminarSolicitud($id);
 		if($bool){
-				$this->session->set_flashdata("informa","Se elimino exitosamente la solicitud !!!");
+				$this->session->set_flashdata("informa","La solicitud a sido <b>eliminada</b> con éxito.");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al eliminar la solicitud");
+			$this->session->set_flashdata("errorr","Error la solicitud no pudo ser <b>eliminada</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -167,11 +167,11 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$bool = $this->Solicitud_Model->ActualizarSolicitud($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se actualizo la solicitud !!!");
+				$this->session->set_flashdata("actualizado","La solicitud a sido <b>actualizada</b> con éxito.");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al actualizar la solicitud");
+			$this->session->set_flashdata("errorr","Error la solicitud no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -182,11 +182,11 @@ class Solicitud extends CI_Controller {
 		$id = $_GET['id'];
 		$bool = $this->Solicitud_Model->ActualizarEstadoSolicitud($id, $i);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Se actualizo el estado la solicitud !!!");
+				$this->session->set_flashdata("actualizado","El estado de solicitud a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al actualizar el estado la solicitud");
+			$this->session->set_flashdata("errorr","Error el estado de solicitud no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -209,11 +209,11 @@ class Solicitud extends CI_Controller {
 		$datos = $this->input->post();
 		$bool = $this->Solicitud_Model->GuardarCredito($datos);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				$this->session->set_flashdata("guardar","El crédito de solicitud a sido <b>aprobado</b> con éxito.");
 				redirect(base_url()."Solicitud/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			$this->session->set_flashdata("errorr","Error el crédito de solicitud no se pudo <b>aprobar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -225,11 +225,11 @@ class Solicitud extends CI_Controller {
 		$id = $datos["id_solicitud"];
 		$bool = $this->Solicitud_Model->AgregarFiador($datos);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				$this->session->set_flashdata("guardar","El fiador a sido <b>agregado</b> con éxito.");
 				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			$this->session->set_flashdata("errorr","Error el fiador no se pudo <b>agregar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -241,11 +241,11 @@ class Solicitud extends CI_Controller {
 		$id = $datos["id_solicitud"];
 		$bool = $this->Solicitud_Model->ActualizarFiador($datos);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				$this->session->set_flashdata("actualizado","El fiador a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			$this->session->set_flashdata("errorr","Error el fiador no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -257,11 +257,11 @@ class Solicitud extends CI_Controller {
 		$id = $datos["id_solicitud"];
 		$bool = $this->Solicitud_Model->AgregarPrenda($datos);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				$this->session->set_flashdata("guardar","La garantia prendaria a sido <b>agregada</b> con éxito.");
 				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			$this->session->set_flashdata("errorr","Error la garantia prendaria no se pudo <b>agregar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}
@@ -273,11 +273,11 @@ class Solicitud extends CI_Controller {
 		$id = $datos["id_solicitud"];
 		$bool = $this->Solicitud_Model->ActualizarPrenda($datos);
 		if($bool){
-				$this->session->set_flashdata("actualizado","Operación realizada exitosamente!!!");
+				$this->session->set_flashdata("actualizado","La garantia prendaria a sido <b>actualizada</b> con éxito.");
 				redirect(base_url()."Solicitud/DetalleSolicitud/".$id); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al realizar la operacion");
+			$this->session->set_flashdata("errorr","Error la garantia prendaria no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Solicitud/");
 
 		}

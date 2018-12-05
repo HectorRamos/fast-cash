@@ -33,7 +33,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div align="center" class="mar-logo-login js-tilt"> 
-                                            <img src="<?= base_url() ?>plantilla/images/fc.png" class="img-responsive img-thumbnail imgwrapper" alt="Logo">
+                                            <img src="<?= base_url() ?>plantilla/images/original.png" class="img-responsive img-thumbnail imgwrapper" alt="Logo">
                                             <h4 id="messageLabel"></h4>
                                         </div> 
                                     </div>

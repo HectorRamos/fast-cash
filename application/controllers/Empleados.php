@@ -32,16 +32,12 @@ class Empleados extends CI_Controller
 		$bool = $this->Empleados_Model->InsertarEmleados($datos);
 		if($bool)
 		{
-			// redirect('Empleados/Index');
-		    $this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+		    $this->session->set_flashdata("guardar","El empleado a sido <b>guardado</b> con éxito.");
 			redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo insertar");
-			// 	</script>';
-			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el empleado no se pudo <b>guardar</b>.");
 			redirect(base_url()."Empleados/Index");
 		}
 	}
@@ -63,16 +59,12 @@ class Empleados extends CI_Controller
 		$data=$this->input->POST();
 		$bool=$this->Empleados_Model->ActualizarEmleados($data);
 		if($bool){
-			// redirect('Empleados/Index');
-				$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+				$this->session->set_flashdata("actualizado","El empleado a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo Actualizar");
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+				$this->session->set_flashdata("errorr","Error el empleado no se pudo <b>actualizar</b>.");
 				redirect(base_url()."Empleados/Index");
 		}
 	}
@@ -82,16 +74,12 @@ class Empleados extends CI_Controller
 		$id=$this->input->GET('id');
 		$bool=$this->Empleados_Model->EliminarEmpleados($id);
 		if($bool){
-			// redirect('Empleados/Index');
-				$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+				$this->session->set_flashdata("informa","El empleado a sido <b>eliminado</b> con éxito.");
 				redirect(base_url()."Empleados/Index");
 		}
 		else
 		{
-			// echo '<script type="text/javascript">
-			// 	alert("No se pudo Actualizar");
-			// 	</script>';
-				$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
+				$this->session->set_flashdata("errorr","Error el empleado no pudo ser <b>eliminado</b>.");
 			    redirect(base_url()."Empleados/Index");
 		}
 	}

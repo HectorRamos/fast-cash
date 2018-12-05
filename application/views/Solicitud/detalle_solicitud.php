@@ -1,20 +1,41 @@
 <style>
   #LastF{
-    background-color: rgba(255, 0 ,0, 0.1);
+    background-color: #EAFAF1;
     border: 1px solid #fff;
-    height: 1px
+    height: 1px;
   }
 </style>
+<?php if($this->session->flashdata("actualizado")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("errorr")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+    });
+  </script>
+<?php endif; ?>
+<?php if($this->session->flashdata("guardar")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+    });
+  </script>
+<?php endif; ?>
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
     <div class="container">
       <!-- Page-Title -->
-		<div class="row">
+    <div class="row">
             <div class="col-sm-12">
                 <!-- <h4 class="pull-left page-title">Gestion de los estados de la solicitud</h4> -->
                 <ol class="breadcrumb pull-right">
-                    <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+                    <li><a href="<?= base_url() ?>Solicitud/">Registro de solicitudes</a></li>
                     <li class="active">Solicitudes de préstamo</li>
                 </ol>
             </div>
@@ -45,18 +66,19 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="margn">
+                                <table class="table">
                                   <div class="pull-left">
                                    <?php
                                         switch ($solicitud->idEstadoSolicitud)
                                         {
                                           case '1':
-                                                echo "<a title='Revisión' onclick='Update($idSolicitud)' type='button' class='btn btn-warning block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudP'><i class='fa fa-list fa-lg'></i> En revisión </a> ";
-                                                echo "<a title='Denegar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
-                                                echo "<a title='Aprobar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
+                                                echo "<a title='Revisión Solicitud' onclick='Update($idSolicitud)' type='button' class='btn btn-warning block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudP'><i class='fa fa-list fa-lg'></i> En revisión </a> ";
+                                                echo "<a title='Denegar Solicitud' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Aprobar Solicitud' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
                                             break;
                                           case '2':
-                                                echo "<a title='Denegar' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
-                                                echo "<a title='Aprobar' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
+                                                echo "<a title='Denegar Solicitud' onclick='Delete($idSolicitud)' type='button' class='btn btn-danger block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudD'><i class='fa fa-minus-circle  fa-lg'></i> Denegar </a> ";
+                                                echo "<a title='Aprobar Solicitud' onclick='Approved($idSolicitud, $codigoSolicitud)' type='button' class='btn btn-success block waves-effect waves-light m-b-5' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_actualizar_estado_solicitudA'><i class='fa fa-check fa-lg'></i> Aprobar </a>";
                                             break;
                                           
                                           default:
@@ -66,7 +88,7 @@
                                    ?>
                                     <!-- <a type="button" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> En revisión</a> -->
                                     <!-- <a type="button" class="btn btn-primary block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-thumbs-up fa-lg"></i> Aprobar</a> -->
-                                    <a title="Imprimir" type="button" onclick="imprimirTabla()" class="btn btn-info block waves-effect waves-light m-b-5" data-toggle="tooltip" data-dismiss="modal"><i class="fa fa-print  fa-lg"></i> Imprimir</a>
+                                    <a title="Imprimir Solicitud" type="button" onclick="imprimirTabla()" class="btn btn-info block waves-effect waves-light m-b-5" data-toggle="tooltip" data-dismiss="modal"><i class="fa fa-print  fa-lg"></i> Imprimir</a>
                                   </div>
                                         <div class="pull-right">
                                         <?php
@@ -81,90 +103,100 @@
                                           }
                                         ?>
                                         </div>
+                                     </table>
                                   <div id="tablaImprimir">
-                                    <table id="" class="table">
-                                      <tbody class="tbody tbody1">
-                                          <tr>
-                                            <td colspan="4" class="text-center"><strong>DATOS DEL CLIENTE SOLICITADO</strong></td>
-                                          </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Código de la solicitud: </strong><?= $solicitud->codigoSolicitud ?></p></td>
-                                              <td colspan=""><p><strong>Plazo: </strong><?= $solicitud->tiempo_plazo ." ".$mes?></p></td>
-                                              <td colspan=""><p><strong>Intereses: </strong><?= $solicitud->tasaInteres ?> %</p></td>
+                                    <div class="margn">
+                                    <div class="margn">
+                                    <table class="table">
+                                      <tbody class="tbody">
+                                            <div align="center"><strong>DATOS DEL CLIENTE SOLICITADO</strong></div>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Código de la solicitud: </strong><?= $solicitud->codigoSolicitud ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Plazo: </strong><?= $solicitud->tiempo_plazo ." ".$mes?></p></td>
+                                              <td colspan="" class='td'><p><strong>Intereses: </strong><?= $solicitud->tasaInteres ?> %</p></td>
+                                              <td class='td'></td>
+                                            </tr>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Cantidad solicitada: </strong>$&nbsp;<?= $solicitud->capital ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Número de cuotas: </strong><?= $solicitud->cantidadCuota?></p></td>
+                                              <td colspan="" class='td'><p><strong>Total a Pagar: </strong>$&nbsp;<?= $solicitud->ivaInteresCapital ?></p></td>
+                                              <td class='td'></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                      <br>
+                                    <div class="margn">
+                                      <table class="table">
+                                      <tbody class="tbody">
+                                          <div align="center"><strong>DATOS PERSONALES DEL SOLICITANTE</strong></div>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Nombre: </strong><?= $solicitud->Nombre_Cliente." ".$solicitud->Apellido_Cliente ?></p></td>
+                                              <td colspan="" class='td'><p><strong>DUI: </strong><?= $solicitud->DUI_Cliente?></p></td>
+                                              <td colspan="" class='td'><p><strong>NIT: </strong><?= $solicitud->NIT_Cliente ?></p></td>
                                               <td></td>
                                             </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Cantidad solicitada: </strong>$<?= $solicitud->capital ?></p></td>
-                                              <td colspan=""><p><strong>Número de cuotas: </strong><?= $solicitud->cantidadCuota?></p></td>
-                                              <td colspan=""><p><strong>Total a Pagar: </strong>$<?= $solicitud->ivaInteresCapital ?></p></td>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Estado civil: </strong><?= $solicitud->Estado_Civil_Cliente ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Género: </strong><?= $solicitud->Genero_Cliente ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Profesión: </strong><?= $solicitud->Profesion_Cliente ?></p></td>
                                               <td></td>
                                             </tr>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Direción: </strong><?= $solicitud->Domicilio_Cliente ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Teléfono: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $solicitud->Telefono_Fijo_Cliente ?></span></p></td>
+                                              <td colspan="" class='td'><p><strong>Celular: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $solicitud->Telefono_Celular_Cliente ?></span></p></td>
+                                              <td></td>
+                                            </tr>
+                                            <tr >
+                                              <td colspan="4" class='td'><p><strong>Observaciones: </strong><?= $solicitud->observaciones ?></p></td>
+                                            </tr>
+                                          </tbody>
+                                          </table>
+                                          </div>
+                                          </div>
+                                          <br>
 
-                                          <tr>
-                                            <td colspan="4" class="text-center"><strong>DATOS DEL PERSONALES DEL SOLICITANTE</strong></td>
-                                          </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Nombre: </strong><?= $solicitud->Nombre_Cliente." ".$solicitud->Apellido_Cliente ?></p></td>
-                                              <td colspan=""><p><strong>DUI: </strong><?= $solicitud->DUI_Cliente?></p></td>
-                                              <td colspan=""><p><strong>NIT: </strong><?= $solicitud->NIT_Cliente ?></p></td>
-                                              <td></td>
-                                            </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Estado civil: </strong><?= $solicitud->Estado_Civil_Cliente ?></p></td>
-                                              <td colspan=""><p><strong>Género: </strong><?= $solicitud->Genero_Cliente ?></p></td>
-                                              <td colspan=""><p><strong>Profesión: </strong><?= $solicitud->Profesion_Cliente ?></p></td>
-                                              <td></td>
-                                            </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Direción: </strong><?= $solicitud->Domicilio_Cliente ?></p></td>
-                                              <td colspan=""><p><strong>Teléfono: </strong><?= $solicitud->Telefono_Fijo_Cliente ?></p></td>
-                                              <td colspan=""><p><strong>Celular: </strong><?= $solicitud->Telefono_Celular_Cliente ?></p></td>
-                                              <td></td>
-                                            </tr>
-                                            <tr>
-                                              <td colspan="4" class="text-center"><p><strong>Observaciones: </strong><?= $solicitud->observaciones ?></p></td>
-                                            </tr>
                                             <?php
                                               }
                                               $idSolicitud = '"'.$idSoli.'"';
                                               
                                               if (sizeof($fiadores->result())>0)
                                               {
+                                                echo "<div class='margn'>
+                                                <table class='table'>
+                                                <tbody class='tbody tbody1'>";
                                                 if (sizeof($fiadores->result()) == 1)
                                                 {
                                                   // Encabezado DATOS DEL FIADOR
-                                                  echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DEL FIADOR</strong></td>";
+                                                  echo "<div class='alert alert-success'>
+                                                        <strong style='color: #424949;'>DATOS DEL FIADOR</strong>";
                                                   
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     {      
-                                                      echo  "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle fa-lg'></i></a>
-                                                          </td>";
+                                                      echo  "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir pull-right' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador' style='margin-top: -7px;'><i class='fa fa-plus-circle fa-lg'></i></a>";
                                                     }
                                                     else
                                                     {
-                                                      echo  "<td colspan='3' class='text-right'></td>";
+                                                       echo "<i class='fa fa-check fa-lg pull-right'></i>";
                                                     }
-                                                  echo "</tr>";
+                                                  echo "</div>";
                                                 }
                                                 else
                                                 {
                                                   // Encabezado de DATOS DE LOS FIADORES
-                                                  echo "<tr class='alert-success'>
-                                                        <td><strong>DATOS DE LOS FIADORES</strong></td>";
+                                                  echo "<div class='alert alert-success'>
+                                                        <strong style='color: #424949;'>DATOS DE LOS FIADORES</strong>";
                                                   
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     {      
-                                                      echo  "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador'><i class='fa fa-plus-circle fa-lg'></i></a>
-                                                          </td>";
+                                                      echo  "<a onclick='agregarFiador($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir pull-right' title='Agregar nuevo Fiador' data-toggle='modal' data-target='#agregarFiador' style='margin-top: -7px;'><i class='fa fa-plus-circle fa-lg'></i></a>";
                                                     }
                                                     else
                                                     {
-                                                      echo  "<td colspan='3' class='text-right'></td>";
+                                                       echo "<i class='fa fa-check fa-lg pull-right'></i>";
                                                     }
-                                                  echo "</tr>";
+                                                  echo "</div>";
                                                 }
                                                 foreach ($fiadores->result() as $fiador)
                                                 {
@@ -181,82 +213,85 @@
                                                 
                                             ?>
                                             
-                                            <tr>
-                                              <td colspan=""><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
-                                              <td colspan=""><p><strong>Ingreso: </strong>$<?= $fiador->ingreso?></p></td>
-                                              <td colspan=""><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Nombre: </strong><?= $fiador->nombre." ".$fiador->apellido ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Ingreso: </strong>$&nbsp;<?= $fiador->ingreso?></p></td>
+                                              <td colspan="" class='td'><p><strong>DUI: </strong><?= $fiador->dui ?></p></td>
                                               <?php
                                               if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                 {
-                                                  echo "<td rowspan=3><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-edit'></i></a></td>";
+                                                  echo "<td rowspan=3 class='td' align='center'><a onclick='actualizarFiador($idSolicitud, $idFiador ,$nombre, $apellido, $ingreso, $dui, $nit, $telefono, $email, $direccion, $fechaNacimiento)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarFiador' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil-square'></i></a></td>";
                                                 }
                                               else
                                               {
-                                                echo "<td rowspan=3></td>";
+                                                echo "<td rowspan=3 class='td'></td>";
                                               }
                                               ?>
                                             </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>NIT: </strong><?= $fiador->nit ?></p></td>
-                                              <td colspan=""><p><strong>Teléfono: </strong><?= $fiador->telefono ?></p></td>
-                                              <td colspan=""><p><strong>Correo: </strong><?= $fiador->email ?></p></td>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>NIT: </strong><?= $fiador->nit ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Teléfono: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $fiador->telefono ?></span></p></td>
+                                              <td colspan="" class='td'><p><strong>Correo: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $fiador->email ?></span></p></td>
                                             </tr>
-                                            <tr>
-                                              <td colspan=""><p><strong>Dirección: </strong><?= $fiador->direccion ?></p></td>
-                                              <td colspan=""><p><strong>Fecha de nacimiento: </strong><?= $fiador->fechaNacimiento ?></p></td>
-                                              <td colspan=""><p><strong>Género: </strong><?= $fiador->genero ?></p></td>
+                                            <tr class='tr'>
+                                              <td colspan="" class='td'><p><strong>Dirección: </strong><?= $fiador->direccion ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Fecha de nacimiento: </strong><?= $fiador->fechaNacimiento ?></p></td>
+                                              <td colspan="" class='td'><p><strong>Género: </strong><?= $fiador->genero ?></p></td>
                                             </tr>
                                             <?php 
                                               if (sizeof($fiadores->result()) == 1)
                                                 {
-                                                  echo "<tr id=''><td colspan='4'></td></tr>";
+                                                  echo "<tr id='' class='tr'><td colspan='4' class='td td1'></td></tr>";
                                                 }
                                                 else
                                                 {
-                                                  echo "<tr><td colspan='4' id='LastF'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
+                                                  echo "<tr class='tr tr1'><td colspan='4' id='LastF' class='td td1'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
                                                 }
+
+                                              }
                                             ?>
-                                            
-                                            <?php }} ?>
+                                          </tbody>
+                                          </table>
+                                          </div>
+                                          <br>
+                                            <?php } ?>
 
                                             <?php
                                               if (sizeof($garantias->result())>0)
                                               {
+                                                echo "<div class='margn'>
+                                                <table class='table'>
+                                                <tbody class='tbody tbody1'>";
                                                 if (sizeof($garantias->result()) == 1)
                                                 {
                                                   //Encabezado de DATOS DE LA GARANTIA
-                                                  echo "<tr class='alert-success'>
-                                                      <td><strong>DATOS DE LA GARANTIA</strong></td>";
+                                                  echo "<div class=' alert alert-success'>
+                                                      <strong style='color: #424949;'>DATOS DE LA GARANTIA</strong>";
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     { 
-                                                      echo "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle'></i></a>
-                                                          </td>";
+                                                      echo "
+                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir pull-right' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda' style='margin-top: -7px;'><i class='fa fa-plus-circle fa-lg'></i></a>";
                                                     }
                                                     else
                                                     {
-                                                      echo "<td colspan='3' class='text-right'>
-                                                          </td>";
+                                                       echo "<i class='fa fa-check fa-lg pull-right'></i>";
                                                     }
-                                                    echo "</tr>";
+                                                    echo "</div>";
                                                 }
                                                 else
                                                 {
                                                   // Encabezado de DATOS DE LAS GARANTIAS
-                                                  echo "<tr class='alert-success'>
-                                                      <td><strong>DATOS DE LAS GARANTIAS</strong></td>";
+                                                  echo "<div class='alert alert-success'>
+                                                      <strong style='color: #424949;'>DATOS DE LAS GARANTIAS</strong>";
                                                   if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                     { 
-                                                      echo "<td colspan='3' class='text-right'>
-                                                            <a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda'><i class='fa fa-plus-circle fa-lg'></i></a>
-                                                          </td>";
+                                                      echo "<a onclick='agregarPrenda($idSolicitud)' class='btn btn-primary waves-effect waves-light m-b-5 ocultarImprimir pull-right' title='Agregar nueva garantia' data-toggle='modal' data-target='#agregarPrenda' style='margin-top: -7px;'><i class='fa fa-plus-circle fa-lg'></i></a>";
                                                     }
                                                     else
                                                     {
-                                                      echo "<td colspan='3' class='text-right'>
-                                                          </td>";
+                                                      echo "<i class='fa fa-check fa-lg pull-right'></i>";
                                                     }
-                                                    echo "</tr>";
+                                                    echo "</div>";
                                                 }
                                                 foreach ($garantias->result() as $garantia)
                                                 {
@@ -266,34 +301,36 @@
                                                   $descripcion = '"'.$garantia->descripcion.'"';
                                                 ?>
                                               <tr>  
-                                                <td colspan=""><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
-                                                <td colspan=""><p><strong>Precio valorado: </strong>$<?= $garantia->valorado ?></p></td>
-                                                <td colspan=""><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
+                                                <td colspan="" class='td td1'><p><strong>Nombre: </strong><?= $garantia->nombre ?></p></td>
+                                                <td colspan="" class='td td1'><p><strong>Precio valorado: </strong>$&nbsp;<?= $garantia->valorado ?></p></td>
+                                                <td colspan="" class='td td1'><p><strong>Descripción: </strong><?= $garantia->descripcion ?></p></td>
                                                 <?php
                                                 if ($solicitud->idEstadoSolicitud != 3 && $solicitud->idEstadoSolicitud != 4)
                                                   { 
-                                                    echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Fiador' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-edit'></i></a></td>";
+                                                    echo "<td><a onclick='actualizarPrenda($idSolicitud, $idGarantia, $nombre, $valorado, $descripcion)' title='Editar Garantia' data-toggle='modal' data-target='#actualizarPrenda' class='waves-effect waves-light editar ocultarImprimir'><i class='fa fa-pencil-square'></i></a></td>";
                                                   }
                                                 else
                                                 {
-                                                  echo "<td></td>";
+                                                  echo "<td class='td td1'></td>";
                                                 }
                                                   ?>
                                               </tr>
                                                 <?php 
                                                   if (sizeof($garantias->result()) == 1)
                                                     {
-                                                      echo "<tr id=''><td colspan='4'></td></tr>";
+                                                      echo "<tr id='' class='tr tr1'><td colspan='4' class='td td1'></td></tr>";
                                                     }
                                                     else
                                                     {
-                                                      echo "<tr><td colspan='4' id='LastF'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
+                                                      echo "<tr class='tr tr1'><td colspan='4' id='LastF' class='td td1'></td></tr>"; //Esta es la fila rosada que aparece en el detalle de la solicitud
                                                     }
+                                                  }
                                                 ?>
-                                            <?php }} ?>
-                                      </tbody>
-                                    </table>
-                                  </div>
+                                          </tbody>
+                                          </table>
+                                          </div>
+                                        <br>
+                                        <?php } ?>
                                   <div align="center">
                                     <a href="<?= base_url() ?>Solicitud/" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
                                   </div>
@@ -316,22 +353,22 @@
 <!-- Ventana actualizar estado de solicitud a en proceso-->
 <!-- ============================================================== -->
       <div class="modal fade modal_actualizar_estado_solicitudP" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-          <div class="modal-dialog modal-sm">
+          <div class="modal-dialog modal-md">
               <div class="modal-content">
                   <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/ActualizarEstadoSolicitud/1/" id="frmeliminarcliente" method="GET">
                   <div>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                       <h4 class="modal-title" id="mySmallModalLabel">
-                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                        <i class="fa fa-refresh fa-lg text-warning"></i> 
                       </h4>
                   </div>
                   <div class="modal-body">
                     <input type="text" hidden id="IdP" name='id'>
-                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                    <p align="center">¿Está seguro de revisar el estado de la solicitud?</p>
                   </div>
                   <div align="center">
                       <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                      <button type="submit" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> Cambiar</button>
+                      <button type="submit" class="btn btn-warning block waves-effect waves-light m-b-5"><i class="fa fa-list fa-lg"></i> Revisar</button>
                   </div>
                   </form>
               </div><!-- /.modal-content -->
@@ -346,18 +383,18 @@
 <!-- Ventana actualizar estado de solicitud a denegado-->
 <!-- ============================================================== -->
       <div class="modal fade modal_actualizar_estado_solicitudD" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-          <div class="modal-dialog modal-sm">
+          <div class="modal-dialog modal-md">
               <div class="modal-content">
                   <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/ActualizarEstadoSolicitud/2/" id="frmeliminarcliente" method="GET">
                   <div>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                       <h4 class="modal-title" id="mySmallModalLabel">
-                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                        <i class="fa fa-ban fa-lg text-danger"></i> 
                       </h4>
                   </div>
                   <div class="modal-body">
                     <input type="text" hidden id="IdE" name='id'>
-                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                    <p align="center">¿Está seguro de denegar el estado de la solicitud?</p>
                   </div>
                   <div align="center">
                       <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
@@ -376,23 +413,23 @@
 <!-- Ventana para aprobar solicitud-->
 <!-- ============================================================== -->
       <div class="modal fade modal_actualizar_estado_solicitudA" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-          <div class="modal-dialog modal-sm">
+          <div class="modal-dialog modal-md">
               <div class="modal-content">
                   <form name="frmeliminarcliente" action="<?= base_url();?>Solicitud/AgregarCredito/" id="frmeliminarcliente" method="GET">
                   <div>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                       <h4 class="modal-title" id="mySmallModalLabel">
-                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                        <i class="fa fa-check-square-o fa-lg text-success"></i> 
                       </h4>
                   </div>
                   <div class="modal-body">
                     <input type="text" hidden id="IdA" name='k'>
                     <input type="text" hidden id="Codigo" name='c'>
-                    <p align="center">¿Está seguro de cambiar el estado de la solicitud?</p>
+                    <p align="center">¿Está seguro de aprobar el estado de la solicitud?</p>
                   </div>
                   <div align="center">
                       <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-                      <button type="submit" class="btn btn-primary block waves-effect waves-light m-b-5"><i class='fa fa-thumbs-up fa-lg'></i> Aprobar </button>
+                      <button type="submit" class="btn btn-success block waves-effect waves-light m-b-5"><i class='fa fa-check fa-lg'></i> Aprobar </button>
                   </div>
                   </form>
               </div><!-- /.modal-content -->
@@ -410,72 +447,72 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos del fiador</h4>
+          <button type="button" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
+          <h4 class="modal-title">Nuevo fiador</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="<?= base_url() ?>Solicitud/AgregarFiador">
-                <input type="hidden" class="form-control" id="id_solicitud" name="id_solicitud">
+            <form method="post" action="<?= base_url() ?>Solicitud/AgregarFiador" autocomplete="off" id="FormNuevaSolicitudModalFiador">
+              <input type="hidden" class="form-control" id="id_solicitud" name="id_solicitud">
+              <div class="margn">
                 <div class="row">
                     <div class="form-group col-md-4">
-                          <label for="">Nombre</label>
+                          <label for="nombre_fiador">Nombre</label>
                           <input type="text" class="form-control" id="nombre_fiador" name="nombre_fiador" placeholder="Nombre del fiador">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Apellido</label>
+                          <label for="apellido_fiador">Apellido</label>
                           <input type="text" class="form-control" id="apellido_fiador" name="apellido_fiador" placeholder="Apellido del fiador">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">DUI</label>
+                          <label for="dui_fiador">DUI</label>
                           <input type="text" class="form-control" id="dui_fiador" name="dui_fiador" placeholder="DUI" data-mask="9999999-9">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-4">
-                          <label for="">NIT</label>
+                          <label for="nit_fiador">NIT</label>
                           <input type="text" class="form-control" id="nit_fiador" name="nit_fiador" placeholder="NIT" data-mask="9999-999999-999-9">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Teléfono</label>
-                          <input type="text" class="form-control" id="telefono_fiador" name="telefono_fiador" placeholder="Teléfono" data-mask="9999-9999">
+                          <label for="telefono_fiador">Teléfono</label>
+                          <input type="text" class="form-control validaTel" id="telefono_fiador" name="telefono_fiador" placeholder="Teléfono">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Email</label>
+                          <label for="email_fiador">Email</label>
                           <input type="email" class="form-control" id="email_fiador" name="email_fiador" placeholder="Correo electrónico">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-4">
-                          <label for="">Fecha de Nacimiento</label>
-                          <input type="text" class="form-control DateTime" id="nacimiento_fiador" name="nacimiento_fiador" placeholder="Fecha de nacimiento">
+                          <label for="nacimiento_fiador">Fecha de Nacimiento</label>
+                          <input type="text" class="form-control DateTime" id="nacimiento_fiador" name="nacimiento_fiador" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Género</label>
+                          <label for="genero_fiador">Género</label>
                           <select class="form-control" id="genero_fiador" name="genero_fiador" data-placeholder="Seleccione un género">
                                 <option value="">Seleccione un género</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
-                              </select>
+                                <option value="Otro">Otro</option>
+                          </select>
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Ingreso</label>
-                          <input type="text" class="form-control" id="ingreso_fiador" name="ingreso_fiador" placeholder="Ingreso mensual">
+                          <label for="ingreso_fiador">Ingreso</label>
+                          <input type="text" class="form-control validaDigit" id="ingreso_fiador" name="ingreso_fiador" placeholder="Ingreso mensual">
                     </div>
                 </div>
-
                 <div class="row">
                   <div class="form-group col-md-12">
-                          <label for="">Dirección</label>
+                          <label for="direccion_fiador">Dirección</label>
                           <textarea class="form-control resize" rows="3" id="direccion_fiador" name="direccion_fiador"></textarea>
-
                     </div>
                 </div>
                 <div align="center">
-                  <button class="btn btn-success"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
-                  <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
+              </div>
             </form>    
         </div>
       </div>
@@ -494,65 +531,63 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos del fiador</h4>
+          <h4 class="modal-title">Actualizar fiador</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="<?= base_url() ?>Solicitud/ActualizarFiador">
-                <input type="hidden" class="form-control" id="id_solicitudA" name="id_solicitud">
-                <input type="hidden" class="form-control" id="id_fiadorA" name="id_fiador">
+            <form method="post" action="<?= base_url() ?>Solicitud/ActualizarFiador" autocomplete="off" id="FormEditarSolicitudModalFiadorA">
+              <input type="hidden" class="form-control" id="id_solicitudA" name="id_solicitud">
+              <input type="hidden" class="form-control" id="id_fiadorA" name="id_fiador">
+              <div class="margn">
                 <div class="row">
                     <div class="form-group col-md-6">
-                          <label for="">Nombre</label>
+                          <label for="nombre_fiadorA">Nombre</label>
                           <input type="text" class="form-control" id="nombre_fiadorA" name="nombre_fiador" placeholder="Nombre del fiador">
                     </div>
                     <div class="form-group col-md-6">
-                          <label for="">Apellido</label>
+                          <label for="nombre_fiadorA">Apellido</label>
                           <input type="text" class="form-control" id="apellido_fiadorA" name="apellido_fiador" placeholder="Apellido del fiador">
                     </div>
-                    
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-4">
-                          <label for="">NIT</label>
+                          <label for="dui_fiadorA">DUI</label>
+                          <input type="text" class="form-control" id="dui_fiadorA" name="dui_fiador" placeholder="DUI" data-mask="9999999-9">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="nit_fiadorA">NIT</label>
                           <input type="text" class="form-control" id="nit_fiadorA" name="nit_fiador" placeholder="NIT" data-mask="9999-999999-999-9">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Teléfono</label>
-                          <input type="text" class="form-control" id="telefono_fiadorA" name="telefono_fiador" placeholder="Teléfono" data-mask="9999-9999">
-                    </div>
-                    <div class="form-group col-md-4">
-                          <label for="">DUI</label>
-                          <input type="text" class="form-control" id="dui_fiadorA" name="dui_fiador" placeholder="DUI" data-mask="9999999-9">
+                          <label for="telefono_fiadorA">Teléfono</label>
+                          <input type="text" class="form-control validaTel" id="telefono_fiadorA" name="telefono_fiador" placeholder="Teléfono">
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-4">
-                          <label for="">Fecha de Nacimiento</label>
-                          <input type="text" class="form-control DateTime" id="nacimiento_fiadorA" name="nacimiento_fiador" placeholder="Fecha de nacimiento">
-                    </div>
-                    <div class="form-group col-md-4">
-                          <label for="">Email</label>
+                          <label for="email_fiadorA">Email</label>
                           <input type="email" class="form-control" id="email_fiadorA" name="email_fiador" placeholder="Correo electrónico">
                     </div>
                     <div class="form-group col-md-4">
-                          <label for="">Ingreso</label>
-                          <input type="text" class="form-control" id="ingreso_fiadorA" name="ingreso_fiador" placeholder="Ingreso mensual">
+                          <label for="nacimiento_fiadorA">Fecha de Nacimiento</label>
+                          <input type="text" class="form-control DateTime" id="nacimiento_fiadorA" name="nacimiento_fiador" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
+                    </div>
+                    <div class="form-group col-md-4">
+                          <label for="ingreso_fiadorA">Ingreso</label>
+                          <input type="text" class="form-control validaDigit" id="ingreso_fiadorA" name="ingreso_fiador" placeholder="Ingreso mensual">
                     </div>
                 </div>
 
                 <div class="row">
                   <div class="form-group col-md-12">
-                          <label for="">Dirección</label>
+                          <label for="direccion_fiadorA">Dirección</label>
                           <textarea class="form-control resize" rows="3" id="direccion_fiadorA" name="direccion_fiador"></textarea>
-
                     </div>
                 </div>
                 <div align="center">
-                  <button class="btn btn-success"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
+                  <button class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
                   <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
+              </div>
             </form>    
         </div>
       </div>
@@ -569,35 +604,35 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos de la garantia</h4>
+          <button type="button" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
+          <h4 class="modal-title">Nueva garantia</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="<?= base_url() ?>Solicitud/AgregarPrenda">
-                <input type="hidden" class="form-control" id="id_solicitudP" name="id_solicitud">
+            <form method="post" action="<?= base_url() ?>Solicitud/AgregarPrenda" id="FormNuevaSolicitudModalPrenda" autocomplete="off">
+              <input type="hidden" class="form-control" id="id_solicitudP" name="id_solicitud">
+              <div class="margn">
                 <div class="row">
                     <div class="form-group col-md-6">
-                          <label for="">Nombre de la prenda</label>
-                          <input type="text" class="form-control" id="nombre_prenda" name="nombre_prenda" placeholder="Nombre del fiador">
+                          <label for="nombre_prenda">Nombre de la prenda</label>
+                          <input type="text" class="form-control" id="nombre_prenda" name="nombre_prenda" placeholder="Nombre de la prenda">
                     </div>
                     <div class="form-group col-md-6">
-                          <label for="">Precio valorado</label>
-                          <input type="text" class="form-control" id="precio_valorado" name="precio_valorado" placeholder="Apellido del fiador">
+                          <label for="precio_valorado">Precio valorado</label>
+                          <input type="text" class="form-control validaDigit" id="precio_valorado" name="precio_valorado" placeholder="Precio de la prenda">
                     </div>
                 </div>
-
-
                 <div class="row">
                   <div class="form-group col-md-12">
-                          <label for="">Descripción</label>
+                          <label for="descripcion_prenda">Descripción</label>
                           <textarea class="form-control resize" rows="3" id="descripcion_prenda" name="descripcion_prenda"></textarea>
-
                   </div>
                 </div>
                 <div align="center">
-                  <button class="btn btn-success"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
-                  <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                  <button class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
+              </div>
             </form>    
         </div>
       </div>
@@ -616,35 +651,34 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Datos de la garantia</h4>
+          <h4 class="modal-title">Actualizar garantia</h4>
         </div>
         <div class="modal-body">
-            <form method="post" action="<?= base_url() ?>Solicitud/ActualizarPrenda">
-                <input type="hidden" class="form-control" id="id_solicitudAP" name="id_solicitud">
-                <input type="hidden" class="form-control" id="id_prendaA" name="id_prenda">
+            <form method="post" action="<?= base_url() ?>Solicitud/ActualizarPrenda" autocomplete="off" id="FormEditarSolicitudModalPrendaA">
+              <input type="hidden" class="form-control" id="id_solicitudAP" name="id_solicitud">
+              <input type="hidden" class="form-control" id="id_prendaA" name="id_prenda">
+              <div class="margn">
                 <div class="row">
                     <div class="form-group col-md-6">
-                          <label for="">Nombre de la prenda</label>
-                          <input type="text" class="form-control" id="nombre_prendaA" name="nombre_prenda" placeholder="Nombre del fiador">
+                          <label for="nombre_prendaA">Nombre de la prenda</label>
+                          <input type="text" class="form-control" id="nombre_prendaA" name="nombre_prenda" placeholder="Nombre de la prenda">
                     </div>
                     <div class="form-group col-md-6">
-                          <label for="">Precio valorado</label>
-                          <input type="text" class="form-control" id="precio_valoradoA" name="precio_valorado" placeholder="Apellido del fiador">
+                          <label for="precio_valoradoA">Precio valorado</label>
+                          <input type="text" class="form-control validaDigit" id="precio_valoradoA" name="precio_valorado" placeholder="Precio de la prenda">
                     </div>
                 </div>
-
-
                 <div class="row">
                   <div class="form-group col-md-12">
-                          <label for="">Descripción</label>
+                          <label for="descripcion_prendaA">Descripción</label>
                           <textarea class="form-control resize" rows="3" id="descripcion_prendaA" name="descripcion_prenda"></textarea>
-
                   </div>
                 </div>
                 <div align="center">
-                  <button class="btn btn-success"><i class="fa fa-user-plus fa-lg"></i> Agregar</button>
+                  <button class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
                   <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
+              </div>
             </form>    
         </div>
       </div>
@@ -712,6 +746,22 @@
       pantalla.print();
       pantalla.close();
        $(".ocultarImprimir").show();
+    }
+    function limpiar(){
+        $('#nombre_fiador').val("");
+        $('#apellido_fiador').val("");
+        $('#dui_fiador').val("");
+        $('#nit_fiador').val("");
+        $('#telefono_fiador').val("");
+        $('#email_fiador').val("");
+        $('#nacimiento_fiador').val("");
+        $('#genero_fiador').val("");
+        $('#ingreso_fiador').val("");
+        $('#direccion_fiador').val("");
+
+        $('#nombre_prenda').val("");
+        $('#precio_valorado').val("");
+        $('#descripcion_prenda').val("");
     }
 </script>
 

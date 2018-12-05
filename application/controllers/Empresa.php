@@ -24,11 +24,11 @@ class Empresa extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->Empresa_Model->GuardarEmpresa($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se guardaron los datos de la empresa !!!");
+				$this->session->set_flashdata("guardar","Los datos de la empresa se <b>guardaron</b> con éxito.");
 				redirect(base_url()."Empresa/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al guardar los datos de las empresa");
+			$this->session->set_flashdata("errorr","Error los datos de la empresa no se pudieron <b>guardar</b>.");
 			redirect(base_url()."Empresa/");
 
 		}
@@ -39,11 +39,11 @@ class Empresa extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->Empresa_Model->ActualizarEmpresa($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se actualizaron los datos de la empresa !!!");
+				$this->session->set_flashdata("actualizado","Los datos de la empresa se <b>actualizaron</b> con éxito.");
 				redirect(base_url()."Empresa/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al actualizar los datos de las empresa");
+			$this->session->set_flashdata("errorr","Error los datos de la empresa no se pudieron <b>actualizar</b>.");
 			redirect(base_url()."Empresa/");
 
 		}
@@ -54,11 +54,11 @@ class Empresa extends CI_Controller
 		$id = $_GET['idEmpresa'];
 		$bool = $this->Empresa_Model->EliminarEmpresa($id);
 		if($bool){
-				$this->session->set_flashdata("informa","Se eliminaron los datos de la empresa !!!");
+				$this->session->set_flashdata("informa","Los datos de la empresa se <b>eliminaron</b> con éxito.");
 				redirect(base_url()."Empresa/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al eliminar los datos de las empresa");
+			$this->session->set_flashdata("errorr","Error los datos de la empresa no se pudieron <b>eliminar</b>.");
 			redirect(base_url()."Empresa/");
 
 		}

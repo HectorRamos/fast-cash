@@ -26,11 +26,11 @@ class CajaChica extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->CajaChica_Model->AperturarCaja($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se Aperturo caja chica !!!");
+				$this->session->set_flashdata("guardar","Se aperturo caja chica, <b>proceso</b> con éxito.");
 				redirect(base_url()."CajaChica/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al aperturar caja chica");
+			$this->session->set_flashdata("errorr","Error en el <b>preceso</b> de aperturar caja chica.");
 			redirect(base_url()."CajaChica/");
 
 		}
@@ -41,11 +41,11 @@ class CajaChica extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->CajaChica_Model->GuardarProcesoCC($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Proceso registrado correctamente !!!");
+				$this->session->set_flashdata("guardar","Proceso <b>registrado</b> correctamente en caja chica.");
 				redirect(base_url()."CajaChica/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al registrar el proceso");
+			$this->session->set_flashdata("errorr","Error al <b>registrar</b> el proceso en caja.");
 			redirect(base_url()."CajaChica/");
 
 		}

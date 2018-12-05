@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+            <li><a href="<?= base_url() ?>CajaChica/HistorialCajas">Detalle caja chica</a></li>
             <li class="active">Caja chica</li>
           </ol>
         </div>
@@ -33,7 +33,7 @@
 				<div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <div class="margn">
-                        <table id="" class="table">
+                        <table id="datatable" class="table">
                           <thead class="thead-dark thead thead1">
                             <tr class="tr tr1">
                               <th class="th th1" scope="col">Detalle</th>
@@ -108,20 +108,19 @@
                                 	}
                                 ?>
                                 
-                                <td class="td td1" width="280"><?= $cajaChica->detalle ?></td>
-                                <td class="td td1" width="280">$ <?= $cajaChica->saldo ?></td>
+                                <td class="td td1" style="min-width: 80px; width: auto;"><?= $cajaChica->detalle ?></td>
+                                <td class="td td1" style="min-width: 80px; width: auto;">$&nbsp;<?= $cajaChica->saldo ?></td>
                               </tr>
                             <?php } ?>
-                              <tr>
-                              	<td class="td td1 text-center" colspan="4"><strong>SALDO FINAL</strong></td>
-                              	<td class="td td1 text-right" colspan="4"><strong>$<?= $cajaChica->saldo ?></strong></td>
-                              </tr>
                           </tbody>
-                          <div>
-                          	<p><strong>Saldo en efectivo: $<?= $efectivo ?></strong>
-                          	<strong>Saldo en cheques: $<?= $cheques ?></strong>
-                          	<strong>Saldo total: $<?= $efectivo + $cheques?></strong></p>                          
-                          </div>
+                          <tfooter>
+                              <tr class="tr tr1">
+                                <td class="td td1"><span class='label label-warning' style="font-size: 1.5rem;"><strong>Saldo en efectivo: </strong>$ <?= $efectivo ?></span></td>
+                                <td class="td td1"><span class='label label-info' style="font-size: 1.5rem;"><strong>Saldo en cheques: </strong>$ <?= $cheques ?></span></td>
+                                <td class="td td1"><span class='label label-default' style="font-size: 1.5rem;"><strong>Saldo total: </strong>$ <?= $efectivo + $cheques?></span>  </td>
+                              	<td class="td td1 text-right" colspan="4"><strong>SALDO FINAL: <span class='label label-success' style="font-size: 1.5rem;">$ <?= $cajaChica->saldo ?></span></strong></td>
+                              </tr>
+                          </tfooter>
                         </table>
                         <div align="center">
 	                       <a href="<?= base_url() ?>CajaChica/HistorialCajas" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>

@@ -47,20 +47,21 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Pago de credito</h3>                 
+                    <h3 class="panel-title">Pago de crédito</h3>                 
                   </div>
                 </div>
               </div>
             </div>
             <div class="panel-body">
               <!-- Formulario del empleado  -->
-              <form method="post" action="<?= base_url()?>Pagos/InsertarPago" autocomplete="off" id="FormNuevoEmpleado">
+              <form method="post" action="<?= base_url()?>Pagos/InsertarPago" autocomplete="off" id="FormPago" autocomplete="off">
                 <div class="margn">
+                  <!-- <div class="mar_che_cobrar1"> -->
                   <div class="row">
-                    <div class="form-group col-md-12">
-                      
-                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito..." required data-parsley-required-message="Por favor, un credito">
-                        <option value="">.::Seleccione un credito::.</option>
+                    <div class="form-group col-md-6">
+                      <label for="idCredito" style='color: #424949;'>Crédito</label>
+                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito...">
+                        <option value="">.::Seleccione un crédito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {
                             # code...
@@ -71,86 +72,80 @@
                         ?>
                       </select>
                     </div>                
-                  </div>
-                   <div id="infor" class="alert alert-success" style="display:none;">
-                      <h4>Informacion</h4>
+                    <div class="col-md-6"></div>
+                  </div>                
+                  <!-- </div> -->
+                  <!-- <br> -->
+                   <div id="infor" class="mar_che_cobrar2" style="padding-left: 15px; padding-right: 15px; display:none;">
+                      <h4 style='color: #424949;'>Detalle del crédito</h4>
                         <div class="row">
                           <div class="form-group col-md-4">
-                            <label for="Codigo_Cliente">Cliente</label>
-                              <input type="text" class="form-control" id="cliente" name="Cliente" placeholder="Código del cliente"
-                              readonly data-parsley-required-message="Por favor, digite un código">
+                            <label for="" style='color: #424949;'>Cliente</label>
+                              <input type="text" class="form-control" id="cliente" name="Cliente" placeholder="Cliente" readonly="true">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="Nombre_Cliente">Capital</label>
-                              <input type="text" class="form-control" id="capital" name="capital" readonly="true" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre">
+                              <label for="" style='color: #424949;'>Capital</label>
+                              <input type="text" class="form-control validaDigit" id="capital" name="capital" readonly="true" placeholder="Capital">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="Apellido_Cliente">Tasa de interes</label>
-                              <input type="text" class="form-control" id="tasa" name="tasa" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
+                              <label for="" style='color: #424949;'>Tasa de interés</label>
+                              <input type="text" class="form-control validaDigit" id="tasa" name="tasa" readonly="true" placeholder="Tasa de interes">
                             </div>
-                            
                         </div>
+
                         <div class="row">
                             <div class="form-group col-md-4">
-                              <label for="Apellido_Cliente">Fecha de apertura del credito</label>
-                              <input type="text" class="form-control" id="fechaA" name="fechaA" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
+                              <label for="" style='color: #424949;'>Fecha de apertura del crédito</label>
+                              <input type="text" class="form-control" id="fechaA" name="fechaA" readonly="true" data-mask="9999/99/99" placeholder="Fecha de apertura del crédito">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="Apellido_Cliente">Capital abonado hasta la fecha</label>
-                              <input type="text" class="form-control" id="totalAb" name="totalAb" readonly="true" placeholder="Capital Abonado" required data-parsley-required-message="Por favor, escriba un apellido">
+                              <label for="" style='color: #424949;'>Capital abonado hasta la fecha</label>
+                              <input type="text" class="form-control validaDigit" id="totalAb" name="totalAb" readonly="true" placeholder="Capital Abonado">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="Apellido_Cliente">Capital pendiente</label>
-                              <input type="text" class="form-control" id="capitalPendiente1" name="capitalPendiente1" readonly="true" placeholder="Capital Abonado" required data-parsley-required-message="Por favor, escriba un apellido">
+                              <label for="" style='color: #424949;'>Capital pendiente</label>
+                              <input type="text" class="form-control validaDigit" id="capitalPendiente1" name="capitalPendiente1" readonly="true" placeholder="Capital pendiente">
                             </div>
                         </div>
                     </div>
                   <div class="row">
-                  <div class="form-group col-md-4">
-                        <label for="Nombre_Cliente">Fecha de pago</label>
-                        <input type="text" class="form-control DateTime" id="fechaPago" name="fechaPago" placeholder="Fecha de nacimiento" data-mask="9999/99/99" required data-parsley-required-message="Por favor, digite una fecha de nacimiento">
+                  <div class="form-group col-md-3">
+                        <label for="fechaPago">Fecha de pago</label>
+                        <input type="text" class="form-control DateTime" id="fechaPago" name="fechaPago" placeholder="Fecha de pago" data-mask="9999/99/99">
                       </div>
-                    <div class="form-group col-md-4">
-                      <label for="Codigo_Cliente">Total Pago</label>
-                        <input type="text" class="form-control" id="totalPago" name="totalPago" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
+                    <div class="form-group col-md-3">
+                      <label for="totalPago">Total pago</label>
+                        <input type="text" class="form-control validaDigit" id="totalPago" name="totalPago" placeholder="Total pago">
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="Nombre_Cliente">iva</label>
-                        <input type="text" class="form-control" id="iva" name="iva" readonly="true" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, escriba un nombre">
+                      <div class="form-group col-md-3">
+                        <label for="">IVA</label>
+                        <input type="text" class="form-control validaDigit" id="iva" name="iva" readonly="true" placeholder="IVA">
                       </div>
-                      
+                      <div class="form-group col-md-3">
+                        <label for="">Interés</label>
+                        <input type="text" class="form-control validaDigit" id="interes" name="interes" readonly="true" placeholder="Interés">
+                      </div>
                   </div>
                   <div class="row">
-                      <div class="form-group col-md-4">
-                        <label for="Apellido_Cliente">interes</label>
-                        <input type="text" class="form-control" id="interes" name="interes" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
+                      <div class="form-group col-md-3">
+                        <label for="">Abono a capital</label>
+                        <input type="text" class="form-control validaDigit" id="abonoCapital" name="abonoCapital" readonly="true" placeholder="Abono a capital">
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="Codigo_Cliente">abono a capital</label>
-                        <input type="text" class="form-control" id="abonoCapital" name="abonoCapital" readonly="true" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="Apellido_Cliente">dias a cancelar</label>
-                        <input type="text" class="form-control" id="diasPagados" name="diasPagados" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="Por favor, escriba un apellido">
+                      <div class="form-group col-md-3">
+                        <label for="">Días a cancelar</label>
+                        <input type="text" class="form-control validaDigit" id="diasPagados" name="diasPagados" readonly="true" placeholder="Días a cancelar">
                       </div> 
-                  </div>
-                  <div class="row">
-                    <div class="form-group col-md-4">
-                      <label for="Nombre_Cliente">capital pendiente</label>
-                      <input type="text" class="form-control" id="capitalP" name="capitalPendiente" readonly="true" placeholder="capital pendiente" required data-parsley-required-message="Por favor, escriba un nombre">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="Nombre_Cliente">Total Abonado</label>
-                      <input type="text" class="form-control" id="totalAbonado" name="totalAbonado" readonly="true" placeholder="capital total abonado despues del pago" required data-parsley-required-message="Por favor, escriba un nombre">
-                    </div>  
-                       <!--
-                    <div class="form-group col-md-4">
-                      <label for="Codigo_Cliente">mora</label>
-                        <input type="text" class="form-control" id="mora" name="mora" readonly="true" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
-                      </div>-->
+                      <div class="form-group col-md-3">
+                        <label for="">Capital pendiente</label>
+                        <input type="text" class="form-control validaDigit" id="capitalP" name="capitalPendiente" readonly="true" placeholder="Capital pendiente">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="">Total abonado</label>
+                        <input type="text" class="form-control validaDigit" id="totalAbonado" name="totalAbonado" readonly="true" placeholder="Total abonado">
+                      </div>
                   </div>
                   <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="button" class="btn btn-default waves-effect waves-light m-d-5" onclick="limpiar()"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <a href="<?= base_url() ?>home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                 </div>
               </form>
@@ -239,7 +234,7 @@ $(document).on('ready', function(){
 
 function calculos(){
     var capitalPendiente = $('#capitalPendiente1').val();
-    alert(capitalPendiente);
+    // alert(capitalPendiente);
     var totalp = $('#totalPago').val();
     var diaspa = $('#diasPagados').val();
     var tasa = $('#tasa').val();
@@ -249,7 +244,7 @@ function calculos(){
     }
     else{
       if(diaspa==""){
-        alert('vacio');
+        // alert('vacio');
       }
       else{
         var tasaI = tasa/100;
@@ -257,7 +252,7 @@ function calculos(){
         //var totalInteres = TasaInteresDiario*(capitalPendiente)*diaspa;
         var Interes=(capitalPendiente*diaspa*tasaI)/30;
         var iva = Interes*0.13;
-        alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
+        // alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
         var abonoCapital = totalp-Interes-iva;
         $('#iva').val(iva.toFixed(4));
         $('#interes').val(Interes.toFixed(4));
@@ -274,6 +269,10 @@ function calculos(){
     }
 
 }
-  
+    function limpiar(){
+        $('#idCredito').val("");
+        $('#fechaPago').val("");
+        $('#totalPago').val("");
+    }
 </script>
 

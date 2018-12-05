@@ -4,7 +4,8 @@ class Proveedores_Model extends CI_Model
 {
 
 	public function ObtenerProveedores()
-	{
+	{ 
+		$this->db->order_by("idProveedor", "desc");
 		$datos= $this->db->get("tbl_proveedores");
 		return $datos;
 	}

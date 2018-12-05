@@ -30,11 +30,11 @@ class Rol extends CI_Controller {
 		$datos=$this->input->POST();
 		$bool=$this->Rol_Model->InsertarPermisos($datos);
 		if($bool){
-		    $this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+		    $this->session->set_flashdata("guardar","Los permisos seleccionados se <b>guardaron</b> con éxito.");
 			redirect(base_url()."Rol");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error los permisos seleccionados no se pudieron <b>guardar</b>.");
 			redirect(base_url()."Rol");
 		}
 
@@ -43,7 +43,6 @@ class Rol extends CI_Controller {
 		$id=$this->input->GET("Id");
 		$bool=$this->Rol_Model->validarPermiso($id);
 		echo json_encode($bool->result());
-
 	}
 	
 	// public function Editar(){
@@ -60,19 +59,19 @@ class Rol extends CI_Controller {
 
 	// }
 	
-	// public function Eliminar(){
-	// 	$datos=$this->input->GET('id');
-	// 	$bool=$this->User_Model->OcultarUser($datos);
-	// 	if($bool){
-	// 		$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
-	// 		redirect(base_url()."User");
-	// 	}
-	// 	else{
-	// 		$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
-	// 		redirect(base_url()."User");
-	// 	}
+	public function Eliminar(){
+		$datos=$this->input->GET('id');
+		$bool=$this->Rol_Model->EliminarRol($datos);
+		if($bool){
+			$this->session->set_flashdata("informa","El permiso se <b>elimino</b> con éxito.");
+			redirect(base_url()."Rol");
+		}
+		else{
+			$this->session->set_flashdata("errorr","Error el permiso no se pudo <b>eliminar</b>.");
+			redirect(base_url()."Rol");
+		}
 
-	// }
+	}
 
 }
 

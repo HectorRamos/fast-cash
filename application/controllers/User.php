@@ -20,11 +20,11 @@ class User extends CI_Controller {
 		$datos=$this->input->POST();
 		$bool=$this->User_Model->InsertarUser($datos);
 		if($bool){
-		    $this->session->set_flashdata("guardar","El registro a sido guardar con exito.");
+		    $this->session->set_flashdata("guardar","El usuario a sido <b>guardado</b> con éxito.");
 			redirect(base_url()."User");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
+			$this->session->set_flashdata("errorr","Error el usuario no se pudo <b>guardar</b>.");
 			redirect(base_url()."User");
 		}
 
@@ -34,11 +34,11 @@ class User extends CI_Controller {
 		$datos=$this->input->POST();
 		$bool=$this->User_Model->EditarUser($datos);
 		if($bool){
-			$this->session->set_flashdata("actualizado","Registro a sido actualizado con exito.");
+			$this->session->set_flashdata("actualizado","El usuario a sido <b>actualizado</b> con éxito.");
 			redirect(base_url()."User");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el registro no pudo ser actualizado.");
+			$this->session->set_flashdata("errorr","Error el usuario no se pudo <b>actualizar</b>.");
 			redirect(base_url()."User");
 		}
 
@@ -48,11 +48,11 @@ class User extends CI_Controller {
 		$datos=$this->input->GET('id');
 		$bool=$this->User_Model->OcultarUser($datos);
 		if($bool){
-			$this->session->set_flashdata("informa","El registro a sido eliminado con exito.");
+			$this->session->set_flashdata("informa","El usuario a sido <b>eliminado</b> con éxito.");
 			redirect(base_url()."User");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el registro no pudo ser eliminado.");
+			$this->session->set_flashdata("errorr","Error el usuario no pudo ser <b>eliminado</b>.");
 			redirect(base_url()."User");
 		}
 

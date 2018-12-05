@@ -17,7 +17,7 @@ class LoginModel extends CI_Model
 		$resultado = $this->db->get("tbl_users");
 		if($resultado->num_rows() > 0)
 		{
-			$this->db->select("tbl_accesos.idAcceso, 
+			$this->db->select("tbl_accesos.idAcceso,
 							   tbl_empleados.idEmpleado, 
 							   tbl_empleados.nombreEmpleado, 
 							   tbl_empleados.apellidoEmpleado,
@@ -35,6 +35,12 @@ class LoginModel extends CI_Model
 		{
 		 	return false;
 		}		
-	}	
+	}
+	// public function Ac($acceso)
+	// {
+	// 	$consulta = "SELECT m.html FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu WHERE p.idAcceso = '$acceso' AND p.permiso = '1'";
+	// 	$datos =  $this->db->query($consulta);
+	// 	return $datos;			
+	// }	
 }
 ?>

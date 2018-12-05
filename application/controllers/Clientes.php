@@ -198,7 +198,7 @@ class Clientes extends CI_Controller {
 			else
 			{
 				$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
-				redirect(base_url()."Clientes/");
+				redirect(base_url()."Clientes/gestionarCliente");
 			}
 				
 		}
@@ -240,7 +240,7 @@ class Clientes extends CI_Controller {
 		else
 		{
 			$this->session->set_flashdata("errorr","Error el cliente no se pudo <b>actualizar</b>.");
-			redirect(base_url()."Clientes/");
+			redirect(base_url()."Clientes/gestionarCliente");
 		}
 			
 		}

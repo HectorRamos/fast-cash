@@ -97,7 +97,7 @@
                                         $i = $i +1;
                                   	?>
                   									<tr class="tr tr1">
-                                      <td class="td td1" data-label="#" style="min-width: 10px; width: auto;"><?= $i;?></td>
+                                      <td class="td td1" data-label="#" style="min-width: 10px; width: auto;"><b><?= $i;?></b></td>
                   										<td class="td td1" data-label="Estado" style="min-width: 5px; width: auto;">
                                       <?php
                                           switch ($solicitudes->idEstadoSolicitud)
@@ -122,16 +122,16 @@
                                       ?>
                                       </td>
                   										<td class="td td1" data-label="Cliente"><?= $solicitudes->Nombre_Cliente." ".$solicitudes->Apellido_Cliente ?></td>
-                  										<td class="td td1" data-label="Monto de dinero">$<?= $solicitudes->ivaInteresCapital?></td>
+                  										<td class="td td1" data-label="Monto de dinero">$ <?= $solicitudes->ivaInteresCapital?></td>
                                       <td class="td td1" data-label="Fecha Recibida"><?= $solicitudes->fechaRecibido ?></td>
                   										<td class="td td1" data-label="Acción">
                                       <?php 
 
-                                       echo "<a title='Más...' data-toggle='tooltip' href='".base_url()."Solicitud/DetalleSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-folder'></i></a>";
+                                       echo "<a title='Ver más...' data-toggle='tooltip' href='".base_url()."Solicitud/DetalleSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light ver'><i class='fa fa-folder'></i></a>";
 
                                        if ($solicitudes->idEstadoSolicitud == 1 || $solicitudes->idEstadoSolicitud == 2)
                                        {
-                                        echo "<a title='Editar' data-toggle='tooltip' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light editar'><i class='fa fa-edit'></i></a>";
+                                        echo "<a title='Editar' data-toggle='tooltip' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light editar'><i class='fa fa-pencil-square'></i></a>";
                                         echo "<a title='Eliminar' onclick='Delete($idSolicitud)' class='waves-effect waves-light eliminar' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_eliminar_solicitud'><i class='fa fa-times-circle'></i></a>";
                                        }
                                        ?>
@@ -202,8 +202,8 @@
                     <p align="center">¿Está seguro de eliminar la solicitud?</p>
                   </div>
                   <div align="center">
-                      <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                       <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                      <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                   </div>
                   </form>
               </div><!-- /.modal-content -->

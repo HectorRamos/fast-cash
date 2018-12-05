@@ -4,7 +4,7 @@ class Empleados_Model extends CI_Model
 {
 	public function ListaEmpleados()
 	{
-		$sql = "SELECT * FROM tbl_empleados WHERE estado != 0";
+		$sql = "SELECT * FROM tbl_empleados WHERE estado != 0 ORDER BY idEmpleado DESC";
 		$datos=$this->db->query($sql);
 		return $datos;
 	}

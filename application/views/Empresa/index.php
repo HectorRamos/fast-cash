@@ -1,18 +1,31 @@
-<?php if($this->session->flashdata("informa")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
-    });
-  </script>
-<?php endif; ?>
-<?php if($this->session->flashdata("errorr")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
-    });
-  </script>
-<?php endif; ?>
-
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?>
 <style>
   a{
     cursor: pointer;
@@ -52,46 +65,57 @@
                   if (sizeof($datos->result()) == 0 || $empresa->estado == 0)
                   {
                 ?>
-                <form id="DProcesoCC" method="post" action="<?= base_url() ?>Empresa/GuardarEmpresa">
+                <form id="DProcesoCC" method="post" action="<?= base_url() ?>Empresa/GuardarEmpresa" autocomplete="off">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-4">
-                            <label for="nombre_empresa">Nombre de la empresa</label>
-                            <input type="text" value="" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre completo de la empresa" required data-parsley-required-message="Digite el nombre de la empresa">
+                      <div class="col-md-4">
+                        <br>
+                        <div align="center" class="js-tilt"><img class='img-thumbnail img-responsive' src='<?=base_url()?>plantilla/images/original.png' alt='Imagen del Cliente'alt="Logo"></img>
+                        <h4>GOCAJAA GROUP, S.A.DE C.V.</h4>
+                        </div>
                       </div>
-                      <div class="form-group col-md-4">
-                            <label for="giro_empresa">Giro</label>
-                            <select name="giro_empresa" id="giro_empresa" class="select" required data-parsley-required-message="Seleccione un giro">
-                              <option value="">Seleccione un tipo de giro</option>
-                              <option value="Comercio">Comercio</option>
-                              <option value="Financiero">Financiero</option>
-                            </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="correo_empresa">Correo electrónico</label>
-                            <input type="text" value="" class="form-control" id="correo_empresa" name="correo_empresa" placeholder="Correo electronico de la empresa" required data-parsley-required-message="Digite el correo de la empresa">
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="form-group col-md-7">
+                                <label for="nombre_empresa">Nombre de la empresa</label>
+                                <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre completo de la empresa">
+                          </div>
+                          <div class="form-group col-md-5">
+                                <label for="telefono_empresa">Teléfono</label>
+                                <input type="text" class="form-control validaTel" id="telefono_empresa" name="telefono_empresa" placeholder="Teléfono de la empresa">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-4">
+                                <label for="nrc_empresa">NRC</label>
+                                <input type="text" class="form-control" id="nrc_empresa" name="nrc_empresa" placeholder="NRC de la empresa" data-mask="9999-999999-999-9">
+                          </div>
+                          <div class="form-group col-md-4">
+                                <label for="correo_empresa">Correo electrónico</label>
+                                <input type="text" class="form-control" id="correo_empresa" name="correo_empresa" placeholder="Email de la empresa">
+                          </div>
+                          <div class="form-group col-md-4">
+                                <label for="giro_empresa">Giro</label>
+                                <select name="giro_empresa" id="giro_empresa" class="form-control">
+                                  <option value="">Seleccione un tipo de giro</option>
+                                  <option value="Comercio">Comercio</option>
+                                  <option value="Financiero">Financiero</option>
+                                </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                                <label for="direccion_empresa">Dirección</label>
+                                <textarea type="text" rows="3" class="form-control resize" id="direccion_empresa" name="direccion_empresa" placeholder="Dirección de la empresa"></textarea>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
-
-                    <div class="row">
-                      <div class="form-group col-md-4">
-                            <label for="telefono_empresa">Teléfono</label>
-                            <input type="text" value="" class="form-control" id="telefono_empresa" name="telefono_empresa" placeholder="Teléfono de la empresa" required data-parsley-required-message="Digite el numero de teléfono">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="nrc_empresa">NRC</label>
-                            <input type="text" value="" class="form-control" id="nrc_empresa" name="nrc_empresa" placeholder="NRC de la empresa" required data-parsley-required-message="Digite el NRC de la empresa">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="direccion_empresa">Dirección</label>
-                            <input type="text" value="" class="form-control" id="direccion_empresa" name="direccion_empresa" placeholder="Dirección de la empresa" required data-parsley-required-message="Digite la dirección de la empresa">
-                      </div>
-                    </div>
-
-
                     <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
-               </div>
+                    <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                </div>
               </form>
               <?php
               }
@@ -107,45 +131,62 @@
                   $nrc = '"'.$empresa->nrc.'"';
                 }
               ?>
-              <div class="row">
-                  <div class="col-md-8">
+                <div class="margn">
+                  <div class="margn">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div align="center" class="js-tilt"><img class='img-thumbnail img-responsive' src='<?=base_url()?>plantilla/images/original.png' alt='Imagen del Cliente'alt="Logo"></img>
+                        <h4>GOCAJAA GROUP, S.A.DE C.V.</h4>
+                        </div>
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-7">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>Nombre de la empresa: </strong><?= $empresa->nombreEmpresa ?></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>Teléfono: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $empresa->telefono ?></span></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>NRC: </strong><?= $empresa->nrc ?></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>Email: </strong><span style='color: #2E86C1; text-decoration: underline;'><?= $empresa->email ?></span></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>Giro: </strong><?= $empresa->giro ?></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p style="font-size: 17px;"><strong>Dirección: </strong><?= $empresa->direccion ?></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-2 text-right">
-                    <?php 
-                    echo "<a onclick='actualizarInformacionEmpresa($id, $nombre, $giro, $email, $telefono, $direccion, $nrc)' title='Nuevo' href='' data-toggle='modal' data-target='#modal_actualizar_empresa' class='btn btn-success waves-effect waves-light m-b-5'><i class='fa fa-plus-circle'></i> <span>Actualizar Información<span></a> ";
-                    ?>
-                  </div>
-                  <div class='col-md-2 text-right'>
-                    <?php 
-                    echo "<a onclick='Delete($id)' class='btn btn-danger waves-effect waves-light eliminar' data-id='$id' data-toggle='modal' data-target='#modal_eliminar_datos_empresa'><i class='fa fa-close'></i> <span> Eliminar Información<span></a>";
-                    ?>
+                  <br>
+                  <div class="margn">
+                    <div align="center">
+                      <?php 
+                      echo "<a onclick='actualizarInformacionEmpresa($id, $nombre, $giro, $email, $telefono, $direccion, $nrc)' title='Actualizar' href='' data-toggle='modal' data-target='#modal_actualizar_empresa' class='btn btn-warning waves-effect waves-light m-b-5'><i class='fa fa-pencil fa-lg'></i><span> Actualizar Información<span></a> ";
+                      ?>
+                      <?php 
+                      echo "<a onclick='Delete($id)' title='Eliminar' class='btn btn-danger waves-effect waves-light m-b-5' data-id='$id' data-toggle='modal' data-target='#modal_eliminar_datos_empresa'><i class='fa fa-trash-o fa-lg'></i><span> Eliminar Información<span></a>";
+                      ?>
+                    </div>
                   </div>
 
                 </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <h4><strong>Nombre de la empresa:</strong><?= $empresa->nombreEmpresa ?></h4>
-                  </div>
-                  <div class="col-md-4">
-                    <h4><strong>Giro:</strong> <?= $empresa->giro ?></h4>
-                  </div>
-                  <div class="col-md-4">
-                    <h4><strong>Email:</strong> <?= $empresa->email ?></h4>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-4">
-                    <h4><strong>Teléfono:</strong> <?= $empresa->telefono ?></h4>
-                  </div>
-                  <div class="col-md-4">
-                    <h4><strong>Dirección:</strong> <?= $empresa->direccion ?></h4>
-                  </div>
-                  <div class="col-md-4">
-                    <h4><strong>NRC:</strong> <?= $empresa->nrc ?></h4>
-                  </div>
-                </div>
-
               <?php } ?>
             </div>
           </div>
@@ -167,51 +208,50 @@
       <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Datos de la empresa</h4>
+            <h4 class="modal-title">Editar datos de la Empresa</h4>
           </div>
           <div class="modal-body">
-              <form id="DProcesoCC" method="post" action="<?= base_url() ?>Empresa/ActualizarEmpresa">
+              <form id="DProcesoCC" method="post" action="<?= base_url() ?>Empresa/ActualizarEmpresa" autocomplete="off">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
+                      <div class="form-group col-md-7">
+                            <label for="nombre_empresaA">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="nombre_empresaA" name="nombre_empresa" placeholder="Nombre completo de la empresa">
+                            <input type="hidden" class="form-control" id="id_empresaA" name="id_empresa">
+                      </div>
+                      <div class="form-group col-md-5">
+                            <label for="telefono_empresaA">Teléfono</label>
+                            <input type="text" class="form-control validaTel" id="telefono_empresaA" name="telefono_empresa" placeholder="Teléfono de la empresa">
+                      </div>
+                    </div>
+                    <div class="row">
                       <div class="form-group col-md-4">
-                            <label for="nombre_empresa">Nombre de la empresa</label>
-                            <input type="text" value="" class="form-control" id="nombre_empresaA" name="nombre_empresa" placeholder="Nombre completo de la empresa" required data-parsley-required-message="Digite el nombre de la empresa">
-                            <input type="hidden" value="" class="form-control" id="id_empresaA" name="id_empresa">
+                            <label for="nrc_empresaA">NRC</label>
+                            <input type="text" class="form-control" id="nrc_empresaA" name="nrc_empresa" placeholder="NRC de la empresa" data-mask="9999-999999-999-9">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="giro_empresa">Giro</label>
-                            <select name="giro_empresa" id="giro_empresaA" class="form-control" required data-parsley-required-message="Seleccione un giro">
-                              <option value="">Seleccione un tipo de giro</option>
+                            <label for="correo_empresaA">Correo electrónico</label>
+                            <input type="text" class="form-control" id="correo_empresaA" name="correo_empresa" placeholder="Email de la empresa">
+                      </div>
+                      <div class="form-group col-md-4">
+                            <label for="giro_empresaA">Giro</label>
+                            <select name="giro_empresa" id="giro_empresaA" class="form-control">
                               <option value="Comercio">Comercio</option>
                               <option value="Financiero">Financiero</option>
                             </select>
                       </div>
-                      <div class="form-group col-md-4">
-                            <label for="correo_empresa">Correo electrónico</label>
-                            <input type="text" value="" class="form-control" id="correo_empresaA" name="correo_empresa" placeholder="Correo electronico de la empresa" required data-parsley-required-message="Digite el correo de la empresa">
-                      </div>
                     </div>
-
                     <div class="row">
-                      <div class="form-group col-md-4">
-                            <label for="telefono_empresa">Teléfono</label>
-                            <input type="text" value="" class="form-control" id="telefono_empresaA" name="telefono_empresa" placeholder="Teléfono de la empresa" required data-parsley-required-message="Digite el numero de teléfono">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="nrc_empresa">NRC</label>
-                            <input type="text" value="" class="form-control" id="nrc_empresaA" name="nrc_empresa" placeholder="NRC de la empresa" required data-parsley-required-message="Digite el NRC de la empresa">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="direccion_empresa">Dirección</label>
-                            <input type="text" value="" class="form-control" id="direccion_empresaA" name="direccion_empresa" placeholder="Dirección de la empresa" required data-parsley-required-message="Digite la dirección de la empresa">
+                      <div class="form-group col-md-12">
+                            <label for="direccion_empresaA">Dirección</label>
+                            <textarea type="text" rows="3" class="form-control resize" id="direccion_empresaA" name="direccion_empresa" placeholder="Dirección de la empresa"></textarea>
                       </div>
                     </div>
-
-
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
-                <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
-
+                    <div  align="center">
+                      <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+                      <button type="button" class="btn btn-default block waves-effect waves-light m-d-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                    </div>
                </div>
               </form>
           </div>

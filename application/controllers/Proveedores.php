@@ -24,11 +24,11 @@ class Proveedores extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->Proveedores_Model->GuardarProveedor($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se guardaron los datos del proveedor !!!");
+				$this->session->set_flashdata("guardar","El proveedor a sido <b>guardado</b> con éxito.");
 				redirect(base_url()."Proveedores/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al guardar los datos del proveedor");
+			$this->session->set_flashdata("errorr","Error el proveedor no se pudo <b>guardar</b>.");
 			redirect(base_url()."Proveedores/");
 
 		}
@@ -39,11 +39,11 @@ class Proveedores extends CI_Controller
 		$datos = $this->input->post();
 		$bool = $this->Proveedores_Model->ActualizarProveedor($datos);
 		if($bool){
-				$this->session->set_flashdata("informa","Se actualizo los datos del proveedor !!!");
+				$this->session->set_flashdata("actualizado","El proveedor a sido <b>actualizado</b> con éxito.");
 				redirect(base_url()."Proveedores/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al actualizar los datos del proveedor");
+			$this->session->set_flashdata("errorr","Error el proveedor no se pudo <b>actualizar</b>.");
 			redirect(base_url()."Proveedores/");
 
 		}
@@ -54,11 +54,11 @@ class Proveedores extends CI_Controller
 		$id = $_GET['id'];
 		$bool = $this->Proveedores_Model->EliminarProveedor($id);
 		if($bool){
-				$this->session->set_flashdata("informa","Se elimino el proveedor !!!");
+				$this->session->set_flashdata("informa","El proveedor a sido <b>eliminado</b> con éxito.");
 				redirect(base_url()."Proveedores/"); 
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error al eliminar el proveedor");
+			$this->session->set_flashdata("errorr","Error el proveedor no pudo ser <b>eliminado</b>.");
 			redirect(base_url()."Proveedores/");
 
 		}

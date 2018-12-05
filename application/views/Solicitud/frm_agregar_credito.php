@@ -1,4 +1,11 @@
-  contenedor -->
+  <!-- contenedor -->
+  <?php if($this->session->flashdata("errorr")):?>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+    });
+  </script>
+<?php endif; ?>
 <div class="content-page">
   <div class="content">
     <div class="container">
@@ -6,7 +13,7 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+            <li><a href="<?= base_url() ?>Solicitud/">Registro de solicitudes</a></li>
             <li class="active">Gestión de Solicitud de prestamo</li>
           </ol>
         </div>
@@ -25,7 +32,7 @@
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" action="<?= base_url() ?>Solicitud/GuardarCredito">
+              <form method="post" action="<?= base_url() ?>Solicitud/GuardarCredito" id="validarFormAprobarCredito" autocomplete="off">
                <!--  <label for="">Id de la solicitud</label>
                 <input type="text" value="<?= $id ?>"> -->
                 <?php 
@@ -37,30 +44,20 @@
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
+                        <div class="mar_che_cobrar2" style="padding: 13px;">
                             <label for="codigo_credito">Código del crédito</label>
-                            <input type="text" class="form-control" id="codigo_credito" name="codigo_credito" placeholder="Código del crédito">
-                      </div>
-                      <div class="form-group col-md-8">
-                      </div>
-                      <!-- <div class="form-group col-md-2" align="center">
-                        <div class="mar_che_cobrar">
-                            <label for="cobra_mora">Cobrar mora</label><br>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
-                                <label for="cobra_mora">Cobrar</label>
-                            </div>
+                            <input type="text" class="form-control" id="codigo_credito" name="codigo_credito" placeholder="Código del crédito" required data-parsley-required-message="">
                         </div>  
-                      </div> -->
+                      </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-6">
                       <label for="tipo_credito">Tipo de Crédito</label>
                         <div class="">
-                          <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de cré  dito">
+                          <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de crédito" required data-parsley-required-message="">
                                 <option value="">Seleccione un tipo de crédito</option>
                                 <option value="CPFC">Crédito personal</option>
-     
                               </select>
                         </div>
                       </div>
@@ -68,8 +65,9 @@
                     <div class="row"> -->
 
                       <div class="form-group col-md-6">
-                            <label for="codigo_tipo_credito">Código tipo de cŕedito</label>
+                            <label for="">Código tipo de cŕedito</label>
                             <input type="text" class="form-control" id="codigo_tipo_credito" name="codigo_tipo_credito" placeholder="Código del tipo de crédito">
+
                             <input type="hidden" class="form-control" id="numero_meses" name="numero_meses" value="<?= $amortizacion->plazoMeses ?>">
                             <input type="hidden" class="form-control" id="nombre_credito" name="nombre_credito">
                             <input type="hidden" class="form-control" id="id_solicitud" name="id_solicitud" value="<?= $amortizacion->idSolicitud ?>">
@@ -81,15 +79,15 @@
                     <div class="row">
                       <div class="form-group col-md-4">
                             <label for="fecha_apertura">Fecha Apertura</label>
-                            <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de recibido de apertura" data-mask="9999/99/99">
+                            <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de recibido de apertura" data-mask="9999/99/99"  required data-parsley-required-message="">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="fecha_de_vencimiento">Fecha de vencimiento</label>
+                            <label for="">Fecha de vencimiento</label>
                             <input type="text" class="form-control" id="fecha_de_vencimiento" name="fecha_de_vencimiento" placeholder="Fecha de vencimiento">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="monto_dinero">Monto de dinero</label>
-                            <input type="text" class="form-control" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->ivaInteresCapital ?>">
+                            <label for="">Monto de dinero</label>
+                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->ivaInteresCapital ?>">
                       </div>
                     </div>
                     <!-- Fin de la segunda Linea del formulario-->
@@ -100,21 +98,13 @@
                             <!-- <label for="">Amortizacion</label> -->
                             <input type="hidden" class="form-control" id="amortizacion" name="amortizacion" value="<?= $amortizacion->idAmortizacion ?>">
                       </div>
-                      <!-- <div class="form-group col-md-9">
-                            <label for="nombre_cliente">Documento</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="documento" name="documento" placeholder="Documento">
-                            <a title="Agregar Documento" class="input-group-addon btn btn-primary" data-toggle="modal" data-target="#agregarDocumento"><i class="fa fa-user-plus fa-lg"></i></a>
-                          </div>
-                      </div> -->
                     </div>
                     <!-- Fin de la tercera Linea del formulario-->
-               </div>
                <button hidden  type="submit" id="btnGuadar"></button>
               </form>
-              <br>
                   <!-- Subir documentos-->
                     <div class="row" style="display:none;" id="divDocs">
+                      <div>
                       <form action="/" method="post" class="dropzone" enctype="multipart/form-data" id="dropzone">
                           <div class="fallback">
                             <input type="file" name="file">
@@ -125,16 +115,14 @@
                             <p>Arrastre los archivos hasta la zona indicada o click aqui para abrir la ventana de subida</p>
                           </div>
                       </form>
+                      </div>
                     </div>
                     <!-- Fin para subir documentos-->
                     <br>
-                    <div class="row">
                         <a id="env" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</a>
                        <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
-                       <a href="<?= base_url() ?>Home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                      
-                    </div>
-
+                       <a href="<?= base_url() ?>Solicitud/" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
+               </div>
             </div>
           </div>
         </div>
@@ -210,7 +198,10 @@
             $('.meter').show();
           });
           self.on("error", function(file){
-            alert("Error subiendo el archivo " + file.name);
+            $(document).ready(function(){
+              $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Error subiendo el archivo ' + file.name);
+            });
+            // alert("Error subiendo el archivo " + file.name);
             //removeFIle(file);
 
           });
@@ -220,6 +211,13 @@
         $("#env").on("click", function(){
           //alert('aaaaaaaaa');
           $('#btnGuadar').click();
+          // $(document).ready(function () {
+            $('#validarFormAprobarCredito').parsley().on('field:validated', function() {
+              var ok = $('.parsley-error').length === 0;
+              $('.bs-callout-info').toggleClass('hidden', !ok);
+              $('.bs-callout-warning').toggleClass('hidden', ok);
+            });
+          // });
         });
     //validar el codigo del cliente
       $("#codigo_credito").on("change", function(){

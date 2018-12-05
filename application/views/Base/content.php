@@ -7,398 +7,304 @@
                     <div class="container">
 
                         <!-- Page-Title -->
-                        <div class="row">
+<!--                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Inicio</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li class="active"><i class="fa fa-bookmark fa-lg"></i></li>
                                 </ol>
                             </div>
+                        </div> -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mini-stat clearfix bx-shadow">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="imgWrapper4">
+                                                <div class="imgResponsiva">
+                                                    <img src="<?= base_url()?>plantilla/images/fc_logo.png" class="img-responsive" alt="Logo" style="width: 170px;">
+                                                </div>
+                                                <div class="imgResponsiva">
+                                                    <img src="<?= base_url()?>plantilla/images/fast_cash.png" class="img-responsive" alt="Logo" style="width: 300px;">
+                                                </div>
+                                                <div class="imgResponsiva pull-right">
+                                                    <h3 style="margin-top: 40px;">GOCAJAA GROUP, S.A.DE C.V.</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Start Widget -->
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-3">
-                                <div class="mini-stat clearfix bx-shadow">
-                                    <span class="mini-stat-icon bg-info"><i class="ion-social-usd"></i></span>
-                                    <div class="mini-stat-info text-right text-muted">
-                                        <span class="counter">15852</span>
-                                        Total Sales
-                                    </div>
-                                    <div class="tiles-progress">
-                                        <div class="m-t-20">
-                                            <h5 class="text-uppercase">Sales <span class="pull-right">60%</span></h5>
-                                            <div class="progress progress-sm m-0">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                    <span class="sr-only">60% Complete</span>
+                                <div class="bx-shadow" style="background: #FFF; padding: 2px; border-top-left-radius: 3px;border-top-right-radius: 3px; border-bottom: 1px solid #eee;">
+                                    <center><p style="font-size: 17px; font-weight: bold; margin-top: 10px;">Crédito Popular</p></center>
+                                </div>
+                                <div class="mini-stat clearfix bx-shadow" style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-info" style="background: #8D6E63;"><i class="ion-clipboard"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">1,000,000</span>
+                                            Créditos Asignados
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Asignados <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;background: #8D6E63;">
+                                                        <span class="sr-only">60% Completo</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-info" style="background: #FFC107;"><i class="md md-description"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">15852</span>
+                                            Créditos en Mora
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos en Mora <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #FFC107;">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-info"><i class="ion-folder"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">15852</span>
+                                            Créditos Solventes
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Solventes <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
+
                             <div class="col-md-6 col-sm-6 col-lg-3">
-                                <div class="mini-stat clearfix bx-shadow">
-                                    <span class="mini-stat-icon bg-purple"><i class="ion-ios7-cart"></i></span>
-                                    <div class="mini-stat-info text-right text-muted">
-                                        <span class="counter">956</span>
-                                        New Orders
-                                    </div>
-                                    <div class="tiles-progress">
-                                        <div class="m-t-20">
-                                            <h5 class="text-uppercase">Orders <span class="pull-right">90%</span></h5>
-                                            <div class="progress progress-sm m-0">
-                                                <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-                                                    <span class="sr-only">90% Complete</span>
+                                <div class="bx-shadow" style="background: #FFF; padding: 2px; border-top-left-radius: 3px;border-top-right-radius: 3px; border-bottom: 1px solid #eee;">
+                                    <center><p style="font-size: 17px; font-weight: bold; margin-top: 10px;">Crédito Hipotecario</p></center>
+                                </div>
+                                <div class="mini-stat clearfix bx-shadow"style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-purple" style="background: #CCCC33;"><i class="ion-ios7-paper"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">956</span>
+                                            Créditos Asignados
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Asignados <span class="pull-right">90%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%; background: #CCCC33;">
+                                                        <span class="sr-only">90% Complete</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-purple" style="background: #CC6600;"><i class="md md-assignment"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">956</span>
+                                            Créditos en Mora
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos en Mora <span class="pull-right">90%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%; background: #CC6600;">
+                                                        <span class="sr-only">90% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-success"><i class="fa fa-folder-open"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">956</span>
+                                            Créditos Solventes
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Solventes <span class="pull-right">90%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                                        <span class="sr-only">90% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                             
                             <div class="col-md-6 col-sm-6 col-lg-3">
-                                <div class="mini-stat clearfix bx-shadow">
-                                    <span class="mini-stat-icon bg-success"><i class="ion-eye"></i></span>
-                                    <div class="mini-stat-info text-right text-muted">
-                                        <span class="counter">20544</span>
-                                        Unique Visitors
-                                    </div>
-                                    <div class="tiles-progress">
-                                        <div class="m-t-20">
-                                            <h5 class="text-uppercase">Visitors <span class="pull-right">60%</span></h5>
-                                            <div class="progress progress-sm m-0">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                    <span class="sr-only">60% Complete</span>
+                                <div class="bx-shadow" style="background: #FFF; padding: 2px; border-top-left-radius: 3px;border-top-right-radius: 3px; border-bottom: 1px solid #eee;">
+                                    <center><p style="font-size: 17px; font-weight: bold; margin-top: 10px;">Crédito Prendario</p></center>
+                                </div>
+                                <div class="mini-stat clearfix bx-shadow" style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-success" style="background: #FF9966;"><i class="ion-document-text"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">20544</span>
+                                            Créditos Asignados
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Asignados <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #FF9966;">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-success" style="background: #33CC99;"><i class="ion-ios7-paper-outline"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">20544</span>
+                                            Créditos en Mora
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos en Mora <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;background: #33CC99;">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-danger" style="background: #F44336;"><i class="md md-folder-shared"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">20544</span>
+                                            Créditos Solventes
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Solventes <span class="pull-right">60%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #F44336;">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-lg-3">
-                                <div class="mini-stat clearfix bx-shadow">
-                                    <span class="mini-stat-icon bg-primary"><i class="ion-android-contacts"></i></span>
-                                    <div class="mini-stat-info text-right text-muted">
-                                        <span class="counter">5210</span>
-                                        New Users
-                                    </div>
-                                    <div class="tiles-progress">
-                                        <div class="m-t-20">
-                                            <h5 class="text-uppercase">Users <span class="pull-right">57%</span></h5>
-                                            <div class="progress progress-sm m-0">
-                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%;">
-                                                    <span class="sr-only">57% Complete</span>
+                                <div class="bx-shadow" style="background: #FFF; padding: 2px; border-top-left-radius: 3px;border-top-right-radius: 3px; border-bottom: 1px solid #eee;">
+                                    <center><p style="font-size: 17px; font-weight: bold; margin-top: 10px;">Crédito Mixto</p></center>
+                                </div>
+                                <div class="mini-stat clearfix bx-shadow" style="border-top-left-radius: 0px;border-top-right-radius: 0px;">
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-warning" style="background: #009688;"><i class="md   md-my-library-books"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">5210</span>
+                                            Créditos Asignados
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Asignados <span class="pull-right">57%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%; background: #009688;">
+                                                        <span class="sr-only">57% Complete</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-warning" style="background: #999966;"><i class=" ion-ios7-copy"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">5210</span>
+                                            Créditos en Mora
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos en Mora <span class="pull-right">57%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%; background: #999966;">
+                                                        <span class="sr-only">57% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <br>
+                                    <hr>
+                                    <br>
+                                    <a href="">
+                                        <span class="mini-stat-icon bg-warning" style="background: #607D8B;"><i class="ion-filing"></i></span>
+                                        <div class="mini-stat-info text-right text-muted">
+                                            <span class="counter">5210</span>
+                                            Créditos Solventes
+                                        </div>
+                                        <div class="tiles-progress">
+                                            <div class="m-t-20">
+                                                <h5 class="text-uppercase">Créditos Solventes <span class="pull-right">57%</span></h5>
+                                                <div class="progress progress-sm m-0">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%; background: #607D8B;">
+                                                        <span class="sr-only">57% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div> 
                         <!-- End row-->
-
-                        <!-- Basic Form Wizard -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"> 
-                                        <h3 class="panel-title">Wizard Tabs</h3> 
-                                    </div> 
-                                    <div class="panel-body"> 
-                                        <div class="wizard">
-                                          <div role="tabpanel">
-                                          <!-- Nav tabs -->
-                                          <ul class="nav nav-tabs nav-justified nav-tabs-dropdown nav-pills" role="tablist">
-                                                <li role="presentation" class="active"><a href="#cliente1" class="btn-block waves-effect waves-light" aria-controls="cliente" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Información personal</a></li>
-                                                <li role="presentation" class="disabled"><a href="#cliente2" class="btn-block waves-effect waves-light" aria-controls="cliente2" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Documentos y Domicilio</a></li>
-                                                <li role="presentation" ><a href="#cliente3" id="btnTabsCliente" class="btn-block waves-effect waves-light" aria-controls="cliente3" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Profesión u oficio</a></li>
-                                                <li role="presentation" class="disabled" id="tabsEmpleado"><a href="#empleado" id="btnTabsEmpleado" class="btn-block waves-effect waves-light" aria-controls="empleado" role="tab" data-toggle="tab" style="pointer-events: none;cursor: default;">Tipo de cliente</a></li>
-                                            <div class="clearfix"></div>
-                                          </ul>
-
-                                          <!-- Tab panes --> 
-                                          <form role="form">
-                                              <div class="tab-content margn top">
-                                                <!--Tab Panel 1-->
-                                                <div class="tab-pane active" role="tabpanel" id="cliente1">
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Nombre_Cliente">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre_Cliente" name="Nombre_Cliente" placeholder="Nombre del cliente" >
-                                                        </div>
-                                                        <script type="text/javascript">
-                                                            $("#Nombre_Cliente").keypress( function (e){
-                                                              telefo = (document.all) ? e.keyCode : e.which;
-                                                              telefo = String.fromCharCode(telefo)
-                                                              return /^[0-9\(+)-]+$/.test(telefo);
-                                                            });
-                                                        </script>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Apellido_Cliente">Apellido</label>
-                                                            <input type="text" class="form-control" id="Apellido_Cliente" name="Apellido_Cliente" placeholder="Apellido del cliente">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Telefono_Cliente">Teléfono</label>
-                                                            <input type="text" class="form-control" id="Telefono_Cliente" name="Telefono_Cliente" placeholder="Teléfono móvil">
-                                                            </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Celular_Cliente">Celular</label>
-                                                            <input type="text" class="form-control" id="Celular_Cliente" name="Celular_Cliente" placeholder="Teléfono celular">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Fecha_Nacimiento">Fecha de nacimiento</label>
-                                                            <input type="text" class="form-control DateTime" id="Fecha_Nacimiento" name="Fecha_Nacimiento" placeholder="Fecha de nacimiento" data-mask="9999/99/99">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Estado_Cliente">Estado Civil</label>
-                                                            <select id="Estado_Cliente" name="Estado_Cliente" class="form-control">
-                                                                <option value="">.::Seleccionar::.</option>
-                                                                <option value="Soltero/a">Soltero/a</option>
-                                                                <option value="Casado/a">Casado/a</option>
-                                                                <option value="Divorsiado/a">Divorciado/a</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
-                                                    </ul>
-                                                </div>
-                                                <!--Tab Panel 2-->
-                                                <div class="tab-pane" role="tabpanel" id="cliente2">
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Dui_Cliente">DUI</label>
-                                                            <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" data-mask="9999999-9">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Nit_Cliente">NIT</label>
-                                                            <input type="text" class="form-control" id="Nit_Cliente" name="Nit_Cliente" placeholder="NIT del cliente" data-mask="9999-999999-999-9">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-4">
-                                                            <label for="cbbDepartamentos">Departamento</label>
-                                                            <select id="cbbDepartamentos" name="cbbDepartamentos" class="select" data-placeholder="Elige un Departamento ...">
-                                                            <option value=""></option>
-      
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="cbbMunicipios">Municipio</label>
-                                                            <select id="cbbMunicipios" name="cbbMunicipios" class="select" data-placeholder="...">
-                                                            <option value="">...</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="Zona">Zona </label>
-                                                            <select id="Zona" name="Zona" class="form-control">
-                                                            <option value="">.::Seleccionar::.</option>
-                                                            <option value="Rural">Rural</option>
-                                                            <option value="Urbana">Urbana</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12">
-                                                            <label for="Domicilio_Cliente">Domicilio</label>
-                                                            <textarea id="Domicilio_Cliente" rows="3" name="Domicilio_Cliente" class="form-control resize"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="pull-right">
-                                                        <li><button type="button" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
-                                                        <button type="button" id="siguient0" class="btn btn-primary waves-effect waves-light next-step"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
-                                                    </ul>
-                                                </div>
-
-                                                <!--TAB PANEL 3-->
-                                                <div class="tab-pane cliente3" role="tabpanel" id="cliente3">
-                                                    <div class="row">
-                                                        <div class="col-md-7">
-                                                            <div class="alert alert-info" role="alert">
-                                                                <strong>Aviso!</strong> Guarde la información básica del Cliente u elija el Tipo de cliente y clic en Siguiente.
-                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                  </button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <div class="alert alert-danger" role="alert">
-                                                                <strong>Alerta!</strong> Por favor tener en cuenta la elección del Tipo de cliente.
-                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                  </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="name">Condición actual</label>
-                                                            <select id="Condicion_Cliente" name="Condicion_Cliente" class="form-control">
-                                                            <option value="">.::Seleccionar::.</option>
-                                                            <option value="Activo">Activo</option>
-                                                            <option value="Inactivo">Inactivo</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Fecha_Registro">Fecha de registro</label>
-                                                            <input type="text" class="form-control DateTime" id="Fecha_Registro" name="Fecha_Registro" placeholder="Fecha de registro del cliente" data-mask="9999/99/99">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-4">
-                                                            <label for="Prpofesion_Cliente">Profesion</label>
-                                                            <input type="text" class="form-control" id="Prpofesion_Cliente" name="Profesion_Cliente" placeholder="Profesión del cliente">
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="Tipo_Cliente">Tipo de cliente</label>
-                                                            <select id="select" name="select" class="form-control">
-                                                            <option value="">.::Seleccionar::.</option>
-                                                            <option value="Empleado">Empleado</option>
-                                                            <option value="Empresario">Empresario</option>
-                                                            </select>        
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="Genero_Cliente">Genero</label>
-                                                            <select id="Genero_Cliente" name="Genero_Cliente" class="form-control">
-                                                            <option value="">.::Seleccionar::.</option>
-                                                            <option value="Masculino">Masculino</option>
-                                                            <option value="Femenino">Femenino</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12">
-                                                            <label for="Observaciones">Observaciones</label>
-                                                            <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="pull-right">
-                                                        <li><button type="button" id="atras0" class="btn btn-default waves-effect waves-light prev-step"><i class="fa fa-reply fa-lg"></i> Atras</button>
-                                                            <button type="button" class="btn btn-success btn-info-full guardar1"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                                                            <button type="button" id="btn" class="btn btn-primary next-step siguiente1" style="display: none;"><i class="fa fa-share fa-lg"></i> Siguiente</button></li>
-                                                    </ul>
-                                                </div>
-                                                <!--Tab Panel 4-->
-                                                <div role="tabpanel" class="tab-pane empleado" style="display: none;">
-                                                    <div class="row">
-                                                      <div class="form-group col-md-6">
-                                                          <label>Cliente: <input type="text" id="NombreTipoClienteEmpleado" class="style" readonly="true"></label>
-                                                       </div>
-                                                        <div class="form-group col-md-6">
-                                                          <label>Tipo de cliente: <input type="text" id="TipoClienteEmpleado" class="style" readonly="true">
-                                                            </label>
-                                                          </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Nombre_Empresa">Nombre de la empresa</label>
-                                                            <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Empresa" placeholder="Nombre de la empresa">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Cargo">Cargo que desempeña</label>
-                                                            <input type="text" class="form-control" id="Cargo" name="Cargo" placeholder="Cargo que desempeña">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Direccion">Dirección de la empresa</label>
-                                                            <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Dirección de empresa">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Telefono">Teléfono</label>
-                                                            <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" data-mask="(999) 9999-9999? x99999">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Rubro">Rubro de la empresa que en que trabaja</label>
-                                                            <input type="text" class="form-control" id="Rubro" name="Rubro" placeholder="Rubro de la empresa">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                            <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
-                                                        </div>
-                                                    </div>
-                                                     <div class="row">
-                                                        <div class="form-group col-md-12">
-                                                            <label for="Observaciones">Observaciones</label>
-                                                            <textarea id="Observaciones" rows="3" name="Observaciones" class="form-control resize"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="list-inline pull-right">
-                                                        <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                        <button type="button" class="btn btn-success btn-info-full"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button></li>
-                                                    </ul>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane empresario" style="display: none;">
-                                                    <div class="row">
-                                                      <div class="form-group col-md-6">
-                                                          <label>Cliente: <input type="text" id="NombreTipoClienteEmpresario" class="style" readonly="true"></label>
-                                                       </div>
-                                                        <div class="form-group col-md-6">
-                                                          <label>Tipo de cliente: <input type="text" id="TipoClienteEmpresario" class="style" readonly="true">
-                                                            </label>
-                                                          </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Nombre_Empresa">Nombre del negocio</label>
-                                                            <input type="text" class="form-control" id="Nombre_Empresa" name="Nombre_Negocio" placeholder="Nombre del negocio">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="NIT">NIT</label>
-                                                            <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT" data-mask="9999-999999-999-9">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="NRC">Número de Registro del Contribuyente(NRC)</label>
-                                                            <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Número de Registro del Contibuyente" data-mask="9999-999999-999-9">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Giro">Giro</label>
-                                                            <input type="text" class="form-control" id="Giro" name="Giro" placeholder="Giro del negocio">
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12">
-                                                            <label for="Direccion_Negocio">Dirección del negocio</label>
-                                                            <input type="text" class="form-control" id="Direccion_Negocio" name="Direccion_Negocio" placeholder="Dirección del negocio">
-                                                        </div>
-                                                    </div>
-                                                     <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Ingreso_Mensual">Ingreso Mensual</label>
-                                                            <input type="text" class="form-control" id="Ingreso_Mensual" name="Ingreso_Mensual" placeholder="Ingreso mensual">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="Tipo_Factura">Tipo de factura</label>
-                                                            <input type="text" class="form-control" id="Tipo_Factura" name="Tipo_Factura" placeholder="Tipo factura">
-                                                        </div>
-                                                    </div>
-                                                    <ul class=" pull-right">
-                                                        <li><a href="<?= base_url() ?>Clientes/gestionarCliente" class="btn btn-default"><i class="fa fa-close fa-lg"></i> Cancelar</a>
-                                                        <button type="button" class="btn btn-success btn-info-full"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button></li>
-                                                    </ul>
-                                                </div>
-                                                <!--Fn de Tab Panel 4-->
-                                                <div class="clearfix"></div>
-                                              </div>
-                                          </form>
-                                         </div>
-                                        </div>
-                                    </div>  <!-- End panel-body -->
-                                </div> <!-- End panel -->
-
-                            </div> <!-- end col -->
-
-                        </div> <!-- End row -->
 
                     </div> <!-- container -->
                                
@@ -408,116 +314,23 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
+<style type="text/css">
+.imgWrapper4 {
+    font-size: 0;
+    /*text-align: center;*/
+}
+.imgWrapper4 .imgResponsiva {
+    display: inline-block;
+    font-size: inherit;
+}
+/*.imgWrapper4 .imgResponsiva {width: 50%; max-width: 345px;}*/
 
-    <script type="text/javascript">
+.imgResponsiva img {
+    height: auto;
+    width: 100%;
+}
+</style>
 
-        $( function() {
-            // $("#select").change( function() {
-            //     if ($(this).val() === "Empleado") {
-            //         $("#btn").prop("disabled", false);
-            //     } else if ($(this).val() === "Empresario") {
-            //         $("#btn").prop("disabled", false);
-            //     } else {
-            //         $("#btn").prop("disabled", true);
-            //     }
-            // });
-            $("#select").change( function() {
-                if ($(this).val() === "") {
-                    $(".siguiente1").hide();
-                    $(".guardar1").show();
-                }
-                if ($(this).val() === "Empleado") {
-                    $(".siguiente1").show();
-                    $(".guardar1").hide();
-                } 
-                if ($(this).val() === "Empresario") {
-                    $(".siguiente1").show();
-                    $(".guardar1").hide();
-                }
-            });
 
-            $("#btn").click( function() {
-                var $r = $("#select").val();
-                if ($r === "Empleado") {
-                    $(".cliente3").hide();
-                    $(".empleado").show();
-                } 
-                if ($r === "Empresario") {
-                    $(".cliente3").hide();
-                    $(".empresario").show();
-                } 
 
-                $("#NombreTipoClienteEmpleado").val($("#Nombre_Cliente").val());
-                $("#TipoClienteEmpleado").val($("#select").val());
 
-                $("#NombreTipoClienteEmpresario").val($("#Nombre_Cliente").val());
-                $("#TipoClienteEmpresario").val($("#select").val());
-            });
-
-            $("#atras0").click( function() {
-                var $r2 = $("#select").val();
-                if ($r2 === "") {
-                    $(".cliente3").hide();
-                }
-                if ($r2 === "Empleado") {
-                    $(".cliente3").hide();
-                }
-                if ($r2 === "Empresario") {
-                    $(".cliente").hide();
-                }
-            });
-
-            $("#siguient0").click( function() {
-                var $r2 = $("#select").val();
-                if ($r2 === "") {
-                    $(".cliente3").show();
-                }
-            });
-
-            // $("#atras1").click( function() {
-            //     var $r1 = $("#select").val();
-            //     if ($r1 === "Empleado") {
-            //         $(".empleado").hide();
-            //         $(".cliente3").show();
-            //     }
-            //     if ($r1 === "Empresario") {
-            //         $(".empresario").hide();
-            //         $(".cliente3").show();
-            //     }
-            // });
-            // $("#atras2").click( function() {
-            //     var $r2 = $("#select").val();
-            //     if ($r2 === "Empleado") {
-            //         $(".empleado").hide();
-            //         $(".cliente3").show();
-            //     }
-            //     if ($r2 === "Empresario") {
-            //         $(".empresario").hide();
-            //         $(".cliente3").show();
-            //     }
-            // });
-
-            $("#btnTabsEmpleado").click( function() {
-                var $r3 = $("#select").val();
-                if ($r3 === "Empleado") {
-                    $(".empleado").show();
-                    $(".cliente3").hide();
-                }
-                if ($r3 === "Empresario") {
-                    $(".empresario").show();
-                    $(".cliente3").hide();
-                }
-            });
-            $("#btnTabsCliente").click( function() {
-                var $r4 = $("#select").val();
-                if ($r4 === "Empleado") {
-                    $(".empleado").hide();
-                    $(".cliente3").show();
-                }
-                if ($r4 === "Empresario") {
-                    $(".empresario").hide();
-                    $(".cliente3").show();
-                }
-            });
-        });
-    </script>

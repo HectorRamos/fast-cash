@@ -63,6 +63,7 @@ class Solicitud_Model extends CI_Model
 
 	public function obtenerClientes()
 	{
+	    $this->db->order_by("Id_Cliente", "desc");
 		$clientes= $this->db->get("tbl_clientes");
 		return $clientes;
 	}
@@ -210,14 +211,14 @@ class Solicitud_Model extends CI_Model
 
 	public function ObtenerFiadores($id)
 	{
-		$sql = "SELECT * FROM tbl_fiadores WHERE idSolicitud='$id'";
+		$sql = "SELECT * FROM tbl_fiadores WHERE idSolicitud='$id' ORDER BY idFiador DESC";
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
 
 	public function ObtenerGarantias($id)
 	{
-		$sql = "SELECT * FROM tbl_garantias WHERE idSolicitud='$id'";
+		$sql = "SELECT * FROM tbl_garantias WHERE idSolicitud='$id' ORDER BY idGarantia DESC";
 		$datos = $this->db->query($sql);
 		return $datos;
 	}

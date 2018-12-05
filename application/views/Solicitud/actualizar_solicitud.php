@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Home/Main">Inicio</a></li>
+            <li><a href="<?= base_url() ?>Solicitud/">Registro de solicitudes</a></li>
             <li class="active">Gestión de Solicitud de prestamo</li>
           </ol>
         </div>
@@ -23,18 +23,18 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Solicitud de prestamo</h3>                 
+                    <h3 class="panel-title">Actualizar Solicitud de prestamo</h3>                   
                   </div>
                 </div>
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" action="<?= base_url() ?>Solicitud/ActualizarSolicitud/<?= $solicitud->idSolicitud ?>">
+              <form method="post" action="<?= base_url() ?>Solicitud/ActualizarSolicitud/<?= $solicitud->idSolicitud ?>" autocomplete="off" id="formNuevaSolicitud">
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-2">
-                            <label for="numero_solicitud">Número de solicitud</label>
+                            <label for="">Número de solicitud</label>
                             <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" value="<?= $solicitud->codigoSolicitud  ?>">
                       </div>
                       <div class="form-group col-md-8">
@@ -88,12 +88,12 @@
                             <input type="text" class="form-control DateTime" id="fecha_recibido" name="fecha_recibido" value="<?= $solicitud->fechaRecibido ?>" data-mask="9999/99/99">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="tasa_interes">Tasa de interes</label>
-                            <input type="text" value="10" class="form-control" id="tasa_interes" name="tasa_interes" value="<?= $solicitud->tasaInteres ?>">
+                            <label for="">Tasa de interes</label>
+                            <input type="text" value="10" class="form-control validaDigit" id="tasa_interes" name="tasa_interes" value="<?= $solicitud->tasaInteres ?>" placeholder="Tasa de interes del prestamo">
                       </div>
                       <div class="form-group col-md-4">
                             <label for="monto_dinero">Monto de dinero</label>
-                            <input type="text" class="form-control" id="monto_dinero" name="monto_dinero" value="<?= $solicitud->capital ?>">
+                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $solicitud->capital ?>" placeholder="Monto de dinero">
                       </div>
                     </div>
                     <!-- Fin de la segunda Linea del formulario-->
@@ -102,19 +102,19 @@
                     <div class="row">
                       <div class="form-group col-md-3">
                             <label for="">IVA a pagar</label>
-                            <input type="text" class="form-control" id="iva_pagar" name="iva_pagar" value="<?= $solicitud->totalIva ?>">
+                            <input type="text" class="form-control validaDigit" id="iva_pagar" name="iva_pagar" value="<?= $solicitud->totalIva ?>">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Intereses a pagar</label>
-                            <input type="text" class="form-control" id="intereses_pagar" name="intereses_pagar" value="<?= $solicitud->totalInteres ?>">
+                            <input type="text" class="form-control validaDigit" id="intereses_pagar" name="intereses_pagar" value="<?= $solicitud->totalInteres ?>">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Cuota diaria</label>
-                            <input type="text" class="form-control" id="cuota_diaria" name="cuota_diaria" value="<?= $solicitud->pagoCuota ?>">
+                            <input type="text" class="form-control validaDigit" id="cuota_diaria" name="cuota_diaria" value="<?= $solicitud->pagoCuota ?>">
                       </div>
                       <div class="form-group col-md-3">
                             <label for="">Total a pagar</label>
-                            <input type="text" class="form-control" id="total_pagar" name="total_pagar" value="<?= $solicitud->ivaInteresCapital ?>">
+                            <input type="text" class="form-control validaDigit" id="total_pagar" name="total_pagar" value="<?= $solicitud->ivaInteresCapital ?>">
                       </div>
                     </div>
                     <!-- Fin de la tercera Linea del formulario-->
@@ -134,7 +134,7 @@
                             <input type="hidden" value="<?= $solicitud->cantidadCuota ?>" class="form-control" id="numero_cuotas" name="numero_cuotas" value="">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar </button>
+                    <button type="submit" class="btn btn-warning waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar </button>
                      <a href="<?= base_url() ?>Solicitud" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                </div>
               </form>
@@ -157,6 +157,7 @@
     $("#numero_solicitud").prop('readonly', true);
     $("#nombre_cliente").prop('readonly', true);
     $("#tasa_interes").prop('readonly', true);
+    $("#monto_dinero").prop('readonly', true);
     $("#iva_pagar").prop('readonly', true);
     $("#intereses_pagar").prop('readonly', true);
     $("#cuota_diaria").prop('readonly', true);

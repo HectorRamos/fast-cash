@@ -15,8 +15,8 @@ class Empresa_Model extends CI_Model
 			$giro = $datos['giro_empresa'];
 			$email = $datos['correo_empresa'];
 			$telefono = $datos['telefono_empresa'];
-			$direccion = $datos['nrc_empresa'];
-			$nrc = $datos['direccion_empresa'];
+			$direccion = $datos['direccion_empresa'];
+			$nrc = $datos['nrc_empresa'];
 			$sql = "INSERT INTO tbl_empresa(nombreEmpresa, giro, email, telefono, direccion, nrc, estado)
 				VALUES('$empresa', '$giro', '$email', '$telefono', '$direccion', '$nrc', '1')";
 			if ($this->db->query($sql))
@@ -39,8 +39,8 @@ class Empresa_Model extends CI_Model
 			$giro = $datos['giro_empresa'];
 			$email = $datos['correo_empresa'];
 			$telefono = $datos['telefono_empresa'];
-			$direccion = $datos['nrc_empresa'];
-			$nrc = $datos['direccion_empresa'];
+			$direccion = $datos['direccion_empresa'];
+			$nrc = $datos['nrc_empresa'];
 			$sql = "UPDATE tbl_empresa SET nombreEmpresa='$empresa', giro='$giro', email='$email', telefono='$telefono', direccion='$direccion', nrc='$nrc' WHERE idEmpresa='$id'";
 			if ($this->db->query($sql))
 			{

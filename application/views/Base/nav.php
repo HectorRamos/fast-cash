@@ -19,7 +19,7 @@
                             </div>
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="hidden-xs">
-                                    <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
+                                    <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free" style="font-size: 21px;"></i></a>
                                 </li>
                                 <li class="hidden-xs">
                                     <div class="margen_nombe_nav">
@@ -57,17 +57,26 @@
                             </div>
                             <div class="tipo_nav1">
                                 <?php echo $this->session->userdata("tipoAcceso");?>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <?php                                
-                                foreach ($acceso->Result() as $item) {
-                                    # code...
-                                    echo $item->html;
-                                }
+                            <li>
+                                <a href="<?= base_url() ?>Home/Main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
+                            </li>
+                        <?php
+                            $conn = mysqli_connect("localhost", "root", "123456", "db_fastcash");
+                            if (!$conn){die("Connection failed: " . mysqli_connect_error());}
+                            else{
+                                mysqli_query($conn, "SET CHARACTER SET 'utf8'");
+                                $acceso = $this->session->userdata("idAcceso");
+                                $consulta = "SELECT m.html FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu WHERE p.idAcceso = '$acceso' AND p.permiso = '1'";
+                                $datos =  mysqli_query( $conn, $consulta);  
+                                while($item = mysqli_fetch_array($datos)){echo $item["html"];}
+                            }
+                            mysqli_close($conn);
                             ?>
                         </ul>
                         <div class="clearfix"></div>

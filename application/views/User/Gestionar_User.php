@@ -75,7 +75,7 @@
                                                   <tbody class="tbody tbody1">
                                                   <?php
                                                   $c = 0;
-                                                  if($datosUser)
+                                                  if(!empty($datosUser))
                                                   {
                                                   foreach ($datosUser->result() as  $user) {
                                                      $empleadoN = "'".$user->nombreEmpleado." ".$user->apellidoEmpleado."'";
@@ -89,11 +89,11 @@
                                                   <tr class="tr tr1">
                                                   <td class="td td1"  width="150"><b><?= $c ?></b></td>
                                                   <td class="td td1"><?= $user->nombreEmpleado." ".$user->apellidoEmpleado?></td>
-                                                  <td class="td td1"><?= $user->user?></td>
-                                                  <td class="td td1">***********</td>
+                                                  <td class="td td1"><span class='label label-success'><?= $user->user?></span></td>
+                                                  <td class="td td1"><span style='color: #2E86C1; text-decoration: underline;'>***********</span></td>
                                                   <td class="td td1"><?= $user->tipoAcceso?></td>
                                                   <td class="td td1">
-                                                      <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil"></i></a>
+                                                      <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
                                                       <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
@@ -124,7 +124,7 @@
                     <h4 class="modal-title" id="myModalLabel">Insertar un nuevo usuario</h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>User/Guardar" autocomplete="off" id="FormNuevoAccesoSistema">
+            <form method="POST" action="<?= base_url()?>User/Guardar" autocomplete="off" id="FormNuevoUsuario">
               <div class="margn">
                 <div class="row">
                      <div class="form-group col-md-12">                    
@@ -158,7 +158,7 @@
                   <div class="row">
                     <div class="form-group col-md-12">                    
                       <label for="cbbRol">Tipo de Acceso</label>
-                       <select id="cbbRol" name="cbbRol" class="select" data-placeholder="Elige el tipo de acceso ...">
+                       <select id="cbbRol" name="cbbRol" class="form-control">
                           <option value="">.::Seleccionar::.</option>
                           <?php 
                           foreach ($datosRol->result() as $rol) { 
@@ -191,7 +191,7 @@
                     <h4 class="modal-title" id="myModalLabel">Editar información de <span id="empleado"></span></h4>
             </div>
             <div class="modal-body">
-            <form method="POST" action="<?= base_url()?>User/Editar" autocomplete="off" id="FormEditarUser">
+            <form method="POST" action="<?= base_url()?>User/Editar" autocomplete="off" id="FormEditarUsuario">
               <div class="margn">
                   <div class="row">
                     <div class="form-group col-md-12">
@@ -201,24 +201,21 @@
                   </div>
                   <div class="row">
                     <div class="form-group col-md-6">
-                      <label for="txtpass">Contraseña</label>
+                      <label for="txtpassword">Contraseña</label>
                       <input type="password" class="form-control" id="txtpassword" name="txtpassword" placeholder="Contraseña">
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="txtConfirmar">Confirmar Contraseña</label>
+                      <label for="txtpassConfirmar">Confirmar Contraseña</label>
                       <input type="password" class="form-control" id="txtpassConfirmar" name="txtpassConfirmar" placeholder="Confirmar Contraseña">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-12">                    
-                      <label for="cbbRol">Tipo de Acceso</label>
-                       <select id="cbbRol1" name="cbbRol1" class="select" data-placeholder="Elige el tipo de acceso ...">
-                        <option value="">.::Seleccionar::.</option>
-                          <?php 
-                          foreach ($datosRol->result() as $rol) { 
-                          ?>
-                          <option value="<?= $rol->idAcceso ?>"><?= $rol->tipoAcceso ?></option>
-                          <?php  } ?> 
+                      <label for="cbbRol1">Tipo de Acceso</label>
+                       <select id="cbbRol1" name="cbbRol1" class="form-control" data-placeholder="Elige el tipo de acceso ...">
+                          <?php foreach ($datosRol->result() as $rol) { ?>
+                           <option value="<?= $rol->idAcceso ?>"><?= $rol->tipoAcceso ?></option> 
+                          <?php } ?> 
                       </select>                      
                     </div>
                   </div>
@@ -240,7 +237,7 @@
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form name="frmeliminarcliente" action="<?= base_url();?>User/Eliminar" id="frmeliminarcliente" method="GET">
+            <form name="frmeliminarcliente" action="<?= base_url();?>Accesos/Eliminar/" id="frmeliminarcliente" method="GET">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
@@ -249,11 +246,11 @@
                 </div>
                     <div class="modal-body">
                       <input type="text" hidden id="id" name='id'>
-                      <p align="center">¿Está seguro de eliminar el registro?</p>
+                      <p align="center">¿Está seguro de eliminar el usuario?</p>
                     </div>
                     <div  align="center">
-                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                         <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -265,8 +262,16 @@
         document.getElementById("empleado").innerHTML = empleado;
         $('#txtuser').val(user);
         $('#txtpassword').val(pass);
-        $('#txtpassConfirmar').val(pass);     
+        $('#txtpassConfirmar').val(pass);
+        $("#cbbRol1 option[value='"+idAcceso+"']").remove();
+        $("#cbbRol1").append('<option value="'+idAcceso+'" selected>'+tipoAcceso+'</option>');        
         $('#txtIdUser').val(id);
+    }
+
+    function limpiar(){
+        $('#tipoAcceso').val("");
+        $('#idAcceso').val("");
+        $('#descripcion').val("");
     }
    function del(id){
         $('#id').val(id);

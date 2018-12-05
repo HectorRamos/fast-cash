@@ -4,6 +4,7 @@ class User_Model extends CI_Model{
 
 	public function obtenerEmpleados()
 	{
+		$this->db->where("tbl_empleados.estado", 1);
 		$empleados= $this->db->get("tbl_empleados");
 		return $empleados;
 	}
@@ -11,6 +12,7 @@ class User_Model extends CI_Model{
 
 	public function obtenerRol()
 	{
+		$this->db->where("tbl_accesos.estado", 1);
 		$rol= $this->db->get("tbl_accesos");
 		return $rol;
 	}

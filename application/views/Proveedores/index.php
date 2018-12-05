@@ -1,17 +1,31 @@
-<?php if($this->session->flashdata("informa")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
-    });
-  </script>
-<?php endif; ?>
-<?php if($this->session->flashdata("errorr")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
-    });
-  </script>
-<?php endif; ?>
+            <?php if($this->session->flashdata("informa")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("actualizado")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("errorr")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
+                });
+              </script>
+            <?php endif; ?>
+            <?php if($this->session->flashdata("guardar")):?>
+              <script type="text/javascript">
+                $(document).ready(function(){
+                $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
+                });
+              </script>
+            <?php endif; ?> 
 
 <style>
   a{
@@ -39,7 +53,7 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Proveedor</h3>                 
+                    <h3 class="panel-title">Registro de Proveedores</h3>                 
                   </div>
                   <div class="col-sm-7">
                       <a title="Nuevo" href="" data-toggle="modal" data-target="#modal_agregar_proveedor" class="btn btn-primary waves-effect waves-light m-b-5"><i class="fa fa-plus-circle"></i> <span>Nuevo Proveedor<span></a>
@@ -55,6 +69,7 @@
                   <table id="datatable" class="table">
                     <thead class="thead-dark thead thead1">
                       <tr class="tr tr1">
+                        <th class="th th1" scope="col">#</th>
                         <th class="th th1" scope="col">Nombre</th>
                         <th class="th th1" scope="col">Empresa</th>
                         <th class="th th1" scope="col">Rubro</th>
@@ -63,6 +78,8 @@
                     </thead>
                     <tbody class="tbody tbody1">
                         <?php 
+                          $i = 0;
+                          if(!empty($datos)){
                           foreach ($datos->result() as $proveedor) {
                             $id = $proveedor->idProveedor;
                             $nombre = '"'.$proveedor->nombreCompleto.'"';
@@ -75,24 +92,24 @@
                             $fecha = '"'.$proveedor->fechaRegistro.'"';
 
                             if ($proveedor->estado != 0 ){
+                            $i = $i +1;
                         ?>
                           <tr class="tr tr1">
+                            <td class="td td1" data-label="#"><b><?= $i;?></b></td>
                             <td class="td td1"><?= $proveedor->nombreCompleto?></td>
                             <td class="td td1"><?= $proveedor->nombreEmpresa?></td>
                             <td class="td td1"><?= $proveedor->rubro?></td>
                             <td class="td td1">
                           <?php 
-                            echo "<a onclick='detalleProveedor($id, $nombre, $empresa, $rubro, $telefono, $email, $direccion, $descripcion, $fecha)' title='Ver' href='' data-toggle='modal' data-target='#modal_ver_proveedor' class='waves-effect waves-light ver'><i class='fa fa-eye'></i></a>";
+                            echo "<a onclick='detalleProveedor($id, $nombre, $empresa, $rubro, $telefono, $email, $direccion, $descripcion, $fecha)' title='Ver historial' href='' data-toggle='modal' data-target='#modal_ver_proveedor' class='waves-effect waves-light ver'><i class='fa fa-info-circle'></i></a>";
 
-                            echo "<a title='Actualizar' href='' onclick='actualizarProveedor($id, $nombre, $empresa, $rubro, $telefono, $email, $direccion, $descripcion, $fecha)' data-toggle='modal' data-target='#modal_actualizar_proveedor' class='waves-effect waves-light ver'><i class='fa fa-edit '></i></a>";
+                            echo "<a title='Editar' href='' onclick='actualizarProveedor($id, $nombre, $empresa, $rubro, $telefono, $email, $direccion, $descripcion, $fecha)' data-toggle='modal' data-target='#modal_actualizar_proveedor' class='waves-effect waves-light editar'><i class='fa fa-pencil-square'></i></a>";
                             echo "<a title='Eliminar' onclick='Delete($id)' class='waves-effect waves-light eliminar' data-id='$id' data-toggle='modal' data-target='#modal_eliminar_proveedor'><i class='fa fa-times-circle'></i></a>";
                           ?>
                               
-
-                              
                                 </td>
                               </tr>
-                            <?php }} ?>
+                            <?php }}} ?>
                         </tbody>
                       </table>
                     </div>
@@ -118,25 +135,34 @@
   <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Datos del proveedor</h4>
+            <button type="button" class="close" data-dismiss="modal" onclick="limpiar()">&times;</button>
+            <h4 class="modal-title">Nuevo proveedor</h4>
           </div>
           <div class="modal-body">
-              <form id="DProveedor" method="post" action="<?= base_url() ?>Proveedores/GuardarProveedor">
+              <form id="DProveedor" method="post" action="<?= base_url() ?>Proveedores/GuardarProveedor" autocomplete="off">
                 <div class="margn">
-                <!-- Primera Linea del formulario-->
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                            <label for="nombre_proveedor">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" placeholder="Nombre completo del proveedor">
+                      </div>
+                      <div class="form-group col-md-6">
+                            <label for="nombre_empresa">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre completo de la empresa">
+                      </div>
+                    </div>
                     <div class="row">
                       <div class="form-group col-md-4">
-                            <label for="nombre_proveedor">Nombre completo</label>
-                            <input type="text" value="" class="form-control" id="nombre_proveedor" name="nombre_proveedor" placeholder="Nombre completo del proveedor" required data-parsley-required-message="Digite el nombre del proveedor">
+                            <label for="telefono_empresa">Teléfono</label>
+                            <input type="text" class="form-control validaTel" id="telefono_empresa" name="telefono_empresa" placeholder="Teléfono de la empresa">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="nombre_empresa">Nombre de la empresa</label>
-                            <input type="text" value="" class="form-control" id="nombre_empresa" name="nombre_empresa" placeholder="Nombre completo de la empresa" required data-parsley-required-message="Digite el nombre de la empresa">
+                            <label for="correo_empresa">Correo electrónico</label>
+                            <input type="email" class="form-control" id="correo_empresa" name="correo_empresa" placeholder="Email de la empresa">
                       </div>
                       <div class="form-group col-md-4">
                             <label for="rubro_empresa">Rubro</label>
-                            <select name="rubro_empresa" id="rubro_empresa" class="select" required data-parsley-required-message="Seleccione un rubro">
+                            <select name="rubro_empresa" id="rubro_empresa" class="select">
                               <option value="">Seleccione un tipo de proceso</option>
                               <option value="Textil">Textil</option>
                               <option value="Construcción, estructuras metálicas">Construcción, estructuras metálicas</option>
@@ -147,40 +173,20 @@
                             </select>
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-
-                    <!-- Primera Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-4">
-                            <label for="telefono_empresa">Teléfono</label>
-                            <input type="text" value="" class="form-control" id="telefono_empresa" name="telefono_empresa" placeholder="Teléfono de la empresa" required data-parsley-required-message="Digite el número de teléfono">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="correo_empresa">Correo electrónico</label>
-                            <input type="email" value="" class="form-control" id="correo_empresa" name="correo_empresa" placeholder="Correo electronico de la empresa" required data-parsley-required-message="Digite el correo electrónico">
-                      </div>
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                             <label for="direccion_empresa">Dirección de la empresa</label>
-                            <input type="text" value="" class="form-control" id="direccion_empresa" name="direccion_empresa" placeholder="Direccion de la empresa" required data-parsley-required-message="Digite la dirección de la empresa">
+                            <textarea class="form-control resize" rows="3" id="direccion_empresa" name="direccion_empresa"></textarea>
                       </div>
-                    </div>
-                    <!-- Fin de la primera Linea del formulario-->
-
-                    <!-- Primera Linea del formulario-->
-                    <div class="row">
-                      <div class="form-group col-md-12">
+                      <div class="form-group col-md-6">
                             <label for="descripcion_empresa">Descripción</label>
-                            <textarea class="form-control resize" rows="3" id="descripcion_empresa" name="descripcion_empresa" required data-parsley-required-message="Digite la descripcion de la empresa"></textarea>
+                            <textarea class="form-control resize" rows="3" id="descripcion_empresa" name="descripcion_empresa"></textarea>
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-                 
-
-
-                  <div align="center">
-                      <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
-                    
-                    <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+                   <div  align="center">
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
+                    <button type="reset" class="btn btn-default waves-effect waves-light m-b-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                   </div>
                </div>
               </form>
@@ -197,20 +203,21 @@
 <!-- Ventana Modal para ver datos de los proveedores-->
 <!-- ============================================================== -->
 <div class="modal fade" id="modal_ver_proveedor" role="dialog">
-  <div class="modal-dialog modal-md">
+  <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Detalle del proveedor</h4>
+            <h4 class="modal-title"><i class="fa fa-list-alt fa-lg"></i> Detalle del proveedor</h4>
           </div>
           <div class="modal-body">
-              <table class="table" id="detalleProveedor">
+            <div class='margn'>
+              <div id="detalleProveedor">
                 
-              </table>
-
+              </div>
               <div align="center">
                 <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar </button>
               </div>
+            </div>
           </div>
       </div>
   </div>
@@ -228,26 +235,34 @@
       <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Datos del proveedor</h4>
+            <h4 class="modal-title">Editar datos del proveedor</h4>
           </div>
           <div class="modal-body">
-              <form id="DProveedor" method="post" action="<?= base_url() ?>Proveedores/ActualizarProveedor">
+              <form id="DProveedor" class="DProveedor" method="post" action="<?= base_url() ?>Proveedores/ActualizarProveedor" autocomplete="off">
                 <div class="margn">
-                <!-- Primera Linea del formulario-->
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                            <label for="nombre_proveedorA">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre_proveedorA" name="nombre_proveedor" placeholder="Nombre completo del proveedor">
+                            <input type="hidden" class="form-control" id="id_proveedorA" name="id_proveedor" >
+                      </div>
+                      <div class="form-group col-md-6">
+                            <label for="nombre_empresaA">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="nombre_empresaA" name="nombre_empresa" placeholder="Nombre completo de la empresa">
+                      </div>
+                    </div>
                     <div class="row">
                       <div class="form-group col-md-4">
-                            <label for="nombre_proveedor">Nombre completo</label>
-                            <input type="text" value="" class="form-control" id="nombre_proveedorA" name="nombre_proveedor" placeholder="Nombre completo del proveedor" required data-parsley-required-message="Digite el nombre del proveedor">
-                            <input type="hidden" value="" class="form-control" id="id_proveedorA" name="id_proveedor" >
+                            <label for="telefono_empresaA">Teléfono</label>
+                            <input type="text" class="form-control validaTel" id="telefono_empresaA" name="telefono_empresa" placeholder="Teléfono de la empresa">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="nombre_empresa">Nombre de la empresa</label>
-                            <input type="text" value="" class="form-control" id="nombre_empresaA" name="nombre_empresa" placeholder="Nombre completo de la empresa" required data-parsley-required-message="Digite el nombre de la empresa">
+                            <label for="correo_empresaA">Correo electrónico</label>
+                            <input type="email" class="form-control" id="correo_empresaA" name="correo_empresa" placeholder="Email de la empresa">
                       </div>
                       <div class="form-group col-md-4">
-                            <label for="rubro_empresa">Rubro</label>
-                            <select name="rubro_empresa" id="rubro_empresaA" class="form-control" required data-parsley-required-message="Seleccione un rubro">
-                              <option value="">Seleccione un tipo de proceso</option>
+                            <label for="rubro_empresaA">Rubro</label>
+                            <select name="rubro_empresa" id="rubro_empresaA" class="form-control">
                               <option value="Textil">Textil</option>
                               <option value="Construcción, estructuras metálicas">Construcción, estructuras metálicas</option>
                               <option value="Suministros Eléctricos">Suministros Eléctricos</option>
@@ -257,40 +272,19 @@
                             </select>
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-
-                    <!-- Primera Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-4">
-                            <label for="telefono_empresa">Teléfono</label>
-                            <input type="text" value="" class="form-control" id="telefono_empresaA" name="telefono_empresa" placeholder="Teléfono de la empresa" required data-parsley-required-message="Digite el número de teléfono">
+                      <div class="form-group col-md-6">
+                            <label for="direccion_empresaA">Dirección de la empresa</label>
+                            <textarea class="form-control resize" rows="3" id="direccion_empresaA" name="direccion_empresa"></textarea>
                       </div>
-                      <div class="form-group col-md-4">
-                            <label for="correo_empresa">Correo electrónico</label>
-                            <input type="email" value="" class="form-control" id="correo_empresaA" name="correo_empresa" placeholder="Correo electronico de la empresa" required data-parsley-required-message="Digite el correo electrónico">
-                      </div>
-                      <div class="form-group col-md-4">
-                            <label for="direccion_empresa">Dirección de la empresa</label>
-                            <input type="text" value="" class="form-control" id="direccion_empresaA" name="direccion_empresa" placeholder="Direccion de la empresa" required data-parsley-required-message="Digite la dirección de la empresa">
+                      <div class="form-group col-md-6">
+                            <label for="descripcion_empresaA">Descripción</label>
+                            <textarea class="form-control resize" rows="3" id="descripcion_empresaA" name="descripcion_empresa"></textarea>
                       </div>
                     </div>
-                    <!-- Fin de la primera Linea del formulario-->
-
-                    <!-- Primera Linea del formulario-->
-                    <div class="row">
-                      <div class="form-group col-md-12">
-                            <label for="descripcion_empresa">Descripción</label>
-                            <textarea class="form-control resize" rows="3" id="descripcion_empresaA" name="descripcion_empresa" required data-parsley-required-message="Digite la descripcion de la empresa"></textarea>
-                      </div>
-                    </div>
-                    <!-- Fin de la primera Linea del formulario-->
-                 
-
-
-                  <div align="center">
-                      <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Actualizar </button>
-                    
-                    <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cancelar</button>
+                  <div  align="center">
+                    <button type="submit" class="btn btn-warning waves-effect waves-light m-b-5"><i class="fa fa-save fa-lg"></i> Actualizar</button>
+                    <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                   </div>
                </div>
               </form>
@@ -316,7 +310,7 @@
         </div>
             <div class="modal-body">
               <input type="hidden" id="idProveedor" name='id'>
-              <p align="center">¿Está seguro de eliminar el registro?</p>
+              <p align="center">¿Está seguro de eliminar el proveedor?</p>
             </div>
             <div  align="center">
                 <button type="submit" class="btn btn-danger block wwaves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
@@ -346,29 +340,21 @@
   {
     $("#detalleProveedor").empty(); 
     fila = '';
-    fila += '<tr>';
-    fila +=  '<td><p><strong>Nombre del proveedor</strong></p>';
-    fila +=  '<p>'+ nombre +'</p></td>';
-    fila +=  '<td><p><strong>Nombre de la empresa</strong></p>';
-    fila +=  '<p>'+empresa+'</p></td>';
-    fila +=  '<td><p><strong>Rubro de la empresa</strong></p>';
-    fila +=  '<p>'+rubro+'</p></td>';
-    fila += '</tr>';
+    fila +="<ul><h5><b>Información del Empleado</b></h5><ol>";
+    fila += "<div class='row'>"; 
+    fila += "<div class='col-sm-1'></div>"; 
+    fila += "<div class='col-sm-11'>"; 
+    fila +="<div class='row'><div class='col-sm-6'><label>Nombre del proveedor:&nbsp;</label>"+ nombre +"</div>";
+    fila +="<div class='col-sm-6'><label>Nombre de la empresa:&nbsp;</label>"+empresa+"</div></div>";
 
-    fila += '<tr>';
-    fila +=  '<td><p><strong>Teléfono del proveedor</strong></p>';
-    fila +=  '<p>'+ telefono +'</p></td>';
-    fila +=  '<td><p><strong>Email de la empresa</strong></p>';
-    fila +=  '<p>'+email+'</p></td>';
-    fila +=  '<td><p><strong>Dirección de la empresa</strong></p>';
-    fila +=  '<p>'+direccion+'</p></td>';
-    fila += '</tr>';
+    fila +="<div class='row'><div class='col-sm-6'><label>Teléfono del proveedor:&nbsp;</label><span style='color: #2E86C1; text-decoration: underline;'>"+ telefono +"</span></div>";
+    fila +="<div class='col-sm-6'><label>Email de la empresa:&nbsp;</label><span style='color: #2E86C1; text-decoration: underline;'>"+email+"</span></div></div>";
 
-    fila += '<tr>';
-    fila +=  '<td colspan="3"><p><strong>Descripción del proveedor</strong></p>';
-    fila +=  '<p>'+ descripcion +'</p></td>';
+    fila +="<div class='row'><div class='col-sm-6'><label>Rubro de la empresa:&nbsp;</label>"+rubro+"</div>";
+    fila +="<div class='col-sm-6'><label>Dirección de la empresa:&nbsp;</label>"+direccion+"</div></div>";
 
-    fila += '</tr>';
+    fila +="<div class='row'><div class='col-sm-6'><label>Descripción del proveedor:&nbsp;</label>"+ descripcion +"</div></div>";
+    fila+="</div></div></ul>";
 
     $("#detalleProveedor").append(fila);
   }
@@ -387,5 +373,15 @@
 
   function Delete(id){
         $('#idProveedor').val(id);
+  }
+
+  function limpiar(){
+    $('#nombre_proveedor').val("");
+    $('#nombre_empresa').val("");
+    $('#rubro_empresa').val("");
+    $('#telefono_empresa').val("");
+    $('#correo_empresa').val("");
+    $('#direccion_empresa').val("");
+    $('#descripcion_empresa').val("");
   }
 </script>

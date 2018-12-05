@@ -114,14 +114,14 @@ class CajaChica_Model extends CI_Model{
 	{
 		$sql = "SELECT cc.idCajaChica, cc.estadoCajaChica, cc.fechaCajaChica, cc.cantidadApertura, ccp.idProceso ,ccp.detalleProceso,
 ccp.entrada, ccp.salida, ccp.saldo, ccp.idProceso, ccp.idTipoPago, tp.detalle FROM tbl_caja_chica AS 
-cc INNER JOIN tbl_cajachica_procesos AS ccp ON(cc.idCajaChica=ccp.idCajaChica) INNER JOIN tbl_tipo_pago as tp ON(ccp.idTipoPago = tp.idTipo) WHERE cc.idCajaChica = '$id' ORDER BY ccp.idProceso ASC";
+cc INNER JOIN tbl_cajachica_procesos AS ccp ON(cc.idCajaChica=ccp.idCajaChica) INNER JOIN tbl_tipo_pago as tp ON(ccp.idTipoPago = tp.idTipo) WHERE cc.idCajaChica = '$id' ORDER BY ccp.idProceso DESC";
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
 
 	public function HistorialCajas()
 	{
-		$sql = "SELECT * FROM tbl_caja_chica";
+		$sql = "SELECT * FROM tbl_caja_chica ORDER BY idCajaChica DESC";
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
