@@ -26,7 +26,7 @@
                 </div>
 
                 <!-- Top Bar End -->
-                <div class="row" style="background: red;">
+                <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-color panel-primary panel-pages bord">
                             <div class="panel-body">
