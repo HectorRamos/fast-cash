@@ -43,7 +43,7 @@
                     <div class="row">
                       <div class="form-group col-md-2">
                             <label for="">Número de solicitud</label>
-                            <input type="text" class="form-control" id="" name="numero_solicitud" placeholder="Numero de la solicitud">
+                            <input type="text" class="form-control" id="" name="numero_solicitud" placeholder="Numero de la solicitud" required data-parsley-required-message="Por favor, ingresa un codigo">
                       </div>
                       <div class="form-group col-md-8">
                       </div>
@@ -133,7 +133,7 @@
                     <div class="row">
                       <div class="form-group col-md-10">
                             <label for="observaciones">Observaciones</label>
-                            <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones" style="min-height: 101px;"></textarea>
+                            <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones" style="min-height: 101px;" required data-parsley-required-message="Por favor, ingresa una descripción"></textarea>
                       </div>
                       <div class="form-group col-md-2 text-center">
                         <p><label for="">Operación</label></p>
@@ -445,11 +445,52 @@ function calcularIntereses()
   // Probando calculos
   totalPagoConCuotas = cuotaDiaria*26;
 
-  $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
-  $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
-  $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
-  $("#total_pagar").attr("value", totalAPagar.toFixed(4));
-  $("#numero_cuotas").attr("value", numeroDePagos);
+  if (isNaN(cuotaDiaria))
+  {
+    $("#cuota_diaria").attr("value",  0);
+  }
+  else
+  {
+    $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
+  }
+
+  if (isNaN(totalIvaAPagar))
+  {
+    $("#iva_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
+  }
+
+  if (isNaN(totalInteresesAPagar))
+  {
+    $("#intereses_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
+  }
+
+  if (isNaN(totalAPagar))
+  {
+    $("#total_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#total_pagar").attr("value", totalAPagar.toFixed(4));
+  }
+
+  if (isNaN(numeroDePagos))
+  {
+    $("#numero_cuotas").attr("value", 0);
+  }
+  else
+  {
+    $("#numero_cuotas").attr("value", numeroDePagos);
+  }
+
+
 }
 
 //Redondeo a dos decimales
