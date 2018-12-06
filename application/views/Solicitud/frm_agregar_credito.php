@@ -71,6 +71,8 @@
                             <input type="hidden" class="form-control" id="numero_meses" name="numero_meses" value="<?= $amortizacion->plazoMeses ?>">
                             <input type="hidden" class="form-control" id="nombre_credito" name="nombre_credito">
                             <input type="hidden" class="form-control" id="id_solicitud" name="id_solicitud" value="<?= $amortizacion->idSolicitud ?>">
+                            <input type="hidden" class="form-control" id="nombre_cliente" name="nombre_cliente" value="<?= $amortizacion->Nombre_Cliente ?>">
+                            <input type="hidden" class="form-control" id="apellido_cliente" name="apellido_cliente" value="<?= $amortizacion->Apellido_Cliente ?>">
                       </div>
                     </div>
                     <!-- Fin de la primera Linea del formulario-->
@@ -174,7 +176,7 @@
 <!--INICIO DEL CODIGO JAVSCRIPT-->
 <script type="text/javascript">
   $(document).ready(function()
-  {
+  { 
     Dropzone.options.dropzone = {
       url:"<?= base_url()?>Documentos/SubirDocumentos",
       acceptedFiles : ".doc, .docx, .pdf",
@@ -235,6 +237,7 @@
     // Funciones para capturar el codigo del prestamo y calcular nueva fecha de vencimiento
 
     // Bloqueando las cajas de codigo de credito y fecha de vencimiento
+    $("#codigo_credito").prop('readonly', true);
     $("#codigo_tipo_credito").prop('readonly', true);
     $("#fecha_de_vencimiento").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
@@ -272,6 +275,51 @@
       $("#fecha_de_vencimiento").attr("value", fechaVencimiento);
       // alert(dt);
     });
+      codigoCredito()
   });
+
+
+
+  function codigoCredito()
+    {
+      var separador = " ";
+      nombre = $("#nombre_cliente").val();
+      apellido = $("#apellido_cliente").val();
+      name = nombre.trim();
+      lastname = apellido.trim();
+
+      var f = new Date();
+      var fecha = f.getFullYear() + "/" + f.getDate() + "/" + (f.getMonth() +1);
+
+      arregloNombre = name.split(separador);
+      arregloApellido = lastname.split(separador);
+
+      var codigo = "";
+      sizeN = arregloNombre.length;
+      sizeA = arregloApellido.length;
+      switch (sizeN) {
+          case 1:
+              codigo = codigo + arregloNombre[0][0];
+              break;
+          case 2:
+              codigo = codigo + arregloNombre[0][0] + arregloNombre[1][0];
+              break;
+      }
+
+      switch (sizeA) {
+          case 1:
+              codigo = codigo + arregloApellido[0][0];
+              break;
+          case 2:
+              codigo = codigo + arregloApellido[0][0] + arregloApellido[1][0];
+              break;
+      }
+
+      codigo = codigo + f.getFullYear()  + f.getDate()  + (f.getMonth() +1)
+      //codigo = arregloNombre[0][0] + arregloNombre[1][0] + arregloNombre[2][0] + arregloNombre[3][0] + f.getFullYear()  + f.getDate()  + (f.getMonth() +1);
+
+      $("#codigo_credito").attr("value", codigo);
+  }
+
 </script>
 <!--FINAL DEL CODIGO JAVSCRIPT

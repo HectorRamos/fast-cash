@@ -77,6 +77,7 @@ class Solicitud_Model extends CI_Model
 	   $estado = 1;
 	   $idCliente = $datos['id_cliente'];
 	   $idLineaPlazo = $datos['tipo_prestamo'];
+	   $mora = $datos['cobra_mora'];
 	   $idEstadoSolicitud = '1';
 
 	   // Datos Amortizacion
@@ -117,8 +118,8 @@ class Solicitud_Model extends CI_Model
 			$estadoPrenda = 1;
 		}
 	   // Guardando la solicitud
-	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estadoSolicitud, idCliente, idLineaPlazo, idEstadoSolicitud)
-	   		   VALUES('$codigoSolicitud', '$fechaRecibido', '$observaciones', '$estado', '$idCliente', '$idLineaPlazo', '$idEstadoSolicitud')";
+	   $sql = "INSERT INTO tbl_solicitudes(codigoSolicitud, fechaRecibido, observaciones, estadoSolicitud, cobraMora, idCliente, idLineaPlazo, idEstadoSolicitud)
+	   		   VALUES('$codigoSolicitud', '$fechaRecibido', '$observaciones', '$estado', '$mora' ,'$idCliente', '$idLineaPlazo', '$idEstadoSolicitud')";
 	    if ($this->db->query($sql))
 		{
 			//Buscando el ultimo Id
@@ -290,7 +291,7 @@ class Solicitud_Model extends CI_Model
 
 	public function obtenerSolicitud($id)
 	{
-		$sql= "SELECT * FROM tbl_amortizaciones WHERE idSolicitud='$id'";
+		$sql= "SELECT am.idAmortizacion, am.tasaInteres, am.capital, am.totalInteres, am.totalIva, am.totalIva, am.ivaInteresCapital, am.plazoMeses, am.pagoCuota, am.cantidadCuota, am.estadoAmortizacion, am.fechaRegistro, am.idSolicitud, cl.Nombre_Cliente, cl.Apellido_Cliente FROM tbl_amortizaciones as am INNER JOIN tbl_solicitudes as so ON(am.idSolicitud = so.idSolicitud) INNER JOIN tbl_clientes as cl ON(so.idCliente = cl.Id_Cliente) WHERE am.idSolicitud='$id'";
 		$datos = $this->db->query($sql);
 		return $datos;
 	}
