@@ -1,14 +1,3 @@
-<li class='has_sub'>                                 
-  <a href='#' class='waves-effect'><i class='fa fa-user-o fa-lg'></i><span>Clientes</span><span class='pull-right'><i class='md md-keyboard-arrow-down'></i></span></a>                                 
-  <ul class='list-unstyled'>                                     
-    <li><a href='http://localhost/Trabajo_Fast_Cash/fast-cash/Clientes/'>Agregar nuevo cliente</a></li>
-    <li><a href='http://localhost/Trabajo_Fast_Cash/fast-cash/Clientes/gestionarCliente'>Gestionar información de clientes</a></li>                                 
-  </ul>
-</li>
-
-
-
-
 <!-- contenedor -->
 <div class="content-page">
   <div class="content">
