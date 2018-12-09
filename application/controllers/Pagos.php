@@ -8,10 +8,12 @@ class Pagos extends CI_Controller
 		parent::__construct();
 		$this->load->model("Pagos_Model");
 		$this->load->model("Creditos_Model");
+		$this->load->model("CajaChica_Model");		
 	}
 	public function index(){
 		$data = $this->Creditos_Model->ObtenerCreditos();
-		$datos = array('creditos'=>$data);
+		$data2 = $this->CajaChica_Model->ObtenerCajaActiva();
+		$datos = array('creditos'=>$data, 'caja'=>$data2);
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
 		$this->load->view('Pagos/InsertarPagos', $datos);
@@ -29,6 +31,7 @@ class Pagos extends CI_Controller
 	}
 	public function InsertarPago(){
 		$datos = $this->input->post();
+		$data2 = $this->CajaChica_Model->ObtenerCajaActiva();
 		$bool=$this->Pagos_Model->InsertarPago($datos);
 		if($bool){
 			$this->session->set_flashdata("guardar","Pago insertado con exito.");
@@ -37,7 +40,6 @@ class Pagos extends CI_Controller
 		else{
 			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
 			redirect(base_url()."Creditos/");
-
 		}
 	}
 }

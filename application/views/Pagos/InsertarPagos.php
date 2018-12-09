@@ -34,11 +34,42 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Empleados/Index">Gestión de Empleados</a></li>
-            <li class="active">Nuevo Empleado</li>
+            <li><a href="<?= base_url() ?>Creditos">Operecinones</a></li>
+            <li class="active">Pagos</li>
           </ol>
         </
       </div>
+      <?php
+      if (sizeof($caja->result())==0)
+              {
+
+              
+      ?>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-md-5">
+                    <h3 class="panel-title">Accion no permitida</h3>                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="alert alert-danger">
+                <h3>No se a realizado la apertura de caja o ya se hizo el cierre de caja, comuniquese con el administrador</h3>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+    }
+    else{
+      ?>
 
       <div class="row">
         <div class="col-md-12">
@@ -47,105 +78,123 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Pago de crédito</h3>                 
+                    <h3 class="panel-title">Pago de credito</h3>                 
                   </div>
                 </div>
               </div>
             </div>
             <div class="panel-body">
               <!-- Formulario del empleado  -->
-              <form method="post" action="<?= base_url()?>Pagos/InsertarPago" autocomplete="off" id="FormPago" autocomplete="off">
+              <form method="post" action="<?= base_url()?>Pagos/InsertarPago" autocomplete="off" id="FrmPagos">
                 <div class="margn">
-                  <!-- <div class="mar_che_cobrar1"> -->
                   <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="idCredito" style='color: #424949;'>Crédito</label>
-                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito...">
-                        <option value="">.::Seleccione un crédito::.</option>
+                  <!--CAMPOS OCULTOS-->
+                  <?php 
+                  foreach ($caja->result() as $caja) {
+                    # code...
+                  }
+
+                  ?>
+                  <input type="text" hidden name="idCajaChica" value="<?php echo $caja->idCajaChica?>">
+                  <input type="text" hidden name="fechaCajaChica" value="<?= $caja->fechaCajaChica?>">
+                  <input type="text" hidden name="cantidadApertura" value="<?= $caja->cantidadApertura?>">
+                  <!--FIN DE LOS CAMPOS OCULTOS-->
+                    <div class="form-group col-md-12">
+                      
+                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito..." required data-parsley-required-message="Por favor, seleccione un credito">
+                        <option value="">.::Seleccione un credito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {
                             # code...
-                            echo '<option value="'.$c->idCredito.'">'.$c->codigoCredito.'
-                                   || '.$c->Nombre_Cliente.'
-                            </option>';
+                            if($c->estadoCredito=='Pendiente'){
+                              echo '<option value="'.$c->idCredito.'">'.$c->Codigo_Cliente.' - '.$c->Nombre_Cliente.' '.$c->Apellido_Cliente.'
+                                    </option>';
+                            }
                           }
                         ?>
                       </select>
                     </div>                
-                    <div class="col-md-6"></div>
-                  </div>                
-                  <!-- </div> -->
-                  <!-- <br> -->
-                   <div id="infor" class="mar_che_cobrar2" style="padding-left: 15px; padding-right: 15px; display:none;">
-                      <h4 style='color: #424949;'>Detalle del crédito</h4>
+                  </div>
+                   <div id="infor" class="alert alert-success" style="display:none;">
+                      <h4>Informacion</h4>
                         <div class="row">
                           <div class="form-group col-md-4">
-                            <label for="" style='color: #424949;'>Cliente</label>
-                              <input type="text" class="form-control" id="cliente" name="Cliente" placeholder="Cliente" readonly="true">
+                            <label for="Cliente">Cliente</label>
+                              <input type="text" class="form-control" id="cliente" name="Cliente" placeholder="Código del cliente"
+                              readonly >
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="" style='color: #424949;'>Capital</label>
-                              <input type="text" class="form-control validaDigit" id="capital" name="capital" readonly="true" placeholder="Capital">
+                              <label for="Nombre_Cliente">Capital</label>
+                              <input type="text" class="form-control" id="capital" name="capital" readonly="true" placeholder="Nombre del cliente" >
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="" style='color: #424949;'>Tasa de interés</label>
-                              <input type="text" class="form-control validaDigit" id="tasa" name="tasa" readonly="true" placeholder="Tasa de interes">
+                              <label for="Apellido_Cliente">Tasa de interes</label>
+                              <input type="text" class="form-control" id="tasa" name="tasa" readonly="true" placeholder="Apellido del cliente" >
                             </div>
+                            
                         </div>
-
                         <div class="row">
                             <div class="form-group col-md-4">
-                              <label for="" style='color: #424949;'>Fecha de apertura del crédito</label>
-                              <input type="text" class="form-control" id="fechaA" name="fechaA" readonly="true" data-mask="9999/99/99" placeholder="Fecha de apertura del crédito">
+                              <label for="Apellido_Cliente">Fecha de apertura del credito</label>
+                              <input type="text" class="form-control" id="fechaA" name="fechaA" readonly="true" placeholder="Apellido del cliente" >
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="" style='color: #424949;'>Capital abonado hasta la fecha</label>
-                              <input type="text" class="form-control validaDigit" id="totalAb" name="totalAb" readonly="true" placeholder="Capital Abonado">
+                              <label for="Apellido_Cliente">Capital abonado hasta la fecha</label>
+                              <input type="text" class="form-control" id="totalAb" name="totalAb" readonly="true" placeholder="Capital Abonado" >
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="" style='color: #424949;'>Capital pendiente</label>
-                              <input type="text" class="form-control validaDigit" id="capitalPendiente1" name="capitalPendiente1" readonly="true" placeholder="Capital pendiente">
+                              <label for="Apellido_Cliente">Capital pendiente</label>
+                              <input type="text" class="form-control" id="capitalPendiente1" name="capitalPendiente1" readonly="true" placeholder="Capital Abonado" >
+                              <input type="text" hidden name="pagoReal" id="pagoReal">
                             </div>
                         </div>
                     </div>
                   <div class="row">
-                  <div class="form-group col-md-3">
-                        <label for="fechaPago">Fecha de pago</label>
-                        <input type="text" class="form-control DateTime" id="fechaPago" name="fechaPago" placeholder="Fecha de pago" data-mask="9999/99/99">
+                  <div class="form-group col-md-4">
+                        <label for="Nombre_Cliente">Fecha de pago</label>
+                        <input type="text" class="form-control DateTime" id="fechaPago" name="fechaPago" placeholder="Fecha de nacimiento" data-mask="9999/99/99" required data-parsley-required-message="Por favor, seleccione  una fecha de pago">
                       </div>
-                    <div class="form-group col-md-3">
-                      <label for="totalPago">Total pago</label>
-                        <input type="text" class="form-control validaDigit" id="totalPago" name="totalPago" placeholder="Total pago">
+                    <div class="form-group col-md-4">
+                      <label for="Codigo_Cliente">Total Pago</label>
+                        <input type="text" class="form-control" id="totalPago" name="totalPago" placeholder="Código del cliente" required data-parsley-required-message="Por favor, inserte el monto de dinero">
                       </div>
-                      <div class="form-group col-md-3">
-                        <label for="">IVA</label>
-                        <input type="text" class="form-control validaDigit" id="iva" name="iva" readonly="true" placeholder="IVA">
+                      <div class="form-group col-md-4">
+                        <label for="Nombre_Cliente">iva</label>
+                        <input type="text" class="form-control" id="iva" name="iva" readonly="true" placeholder="Nombre del cliente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
                       </div>
-                      <div class="form-group col-md-3">
-                        <label for="">Interés</label>
-                        <input type="text" class="form-control validaDigit" id="interes" name="interes" readonly="true" placeholder="Interés">
-                      </div>
+                      
                   </div>
                   <div class="row">
-                      <div class="form-group col-md-3">
-                        <label for="">Abono a capital</label>
-                        <input type="text" class="form-control validaDigit" id="abonoCapital" name="abonoCapital" readonly="true" placeholder="Abono a capital">
+                      <div class="form-group col-md-4">
+                        <label for="Apellido_Cliente">interes</label>
+                        <input type="text" class="form-control" id="interes" name="interes" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
                       </div>
-                      <div class="form-group col-md-3">
-                        <label for="">Días a cancelar</label>
-                        <input type="text" class="form-control validaDigit" id="diasPagados" name="diasPagados" readonly="true" placeholder="Días a cancelar">
+                      <div class="form-group col-md-4">
+                        <label for="Codigo_Cliente">abono a capital</label>
+                        <input type="text" class="form-control" id="abonoCapital" name="abonoCapital" readonly="true" placeholder="Código del cliente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="Apellido_Cliente">dias a cancelar</label>
+                        <input type="text" class="form-control" id="diasPagados" name="diasPagados" readonly="true" placeholder="Apellido del cliente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
                       </div> 
-                      <div class="form-group col-md-3">
-                        <label for="">Capital pendiente</label>
-                        <input type="text" class="form-control validaDigit" id="capitalP" name="capitalPendiente" readonly="true" placeholder="Capital pendiente">
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="">Total abonado</label>
-                        <input type="text" class="form-control validaDigit" id="totalAbonado" name="totalAbonado" readonly="true" placeholder="Total abonado">
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <label for="Nombre_Cliente">capital pendiente</label>
+                      <input type="text" class="form-control" id="capitalP" name="capitalPendiente" readonly="true" placeholder="capital pendiente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="Nombre_Cliente">Total Abonado</label>
+                      <input type="text" class="form-control" id="totalAbonado" name="totalAbonado" readonly="true" placeholder="capital total abonado despues del pago" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
+                    </div>  
+                       
+                    <div class="form-group col-md-4">
+                      <label for="vuelto">Vuelto</label>
+                        <input type="text" class="form-control" id="vuelto" name="vuelto" readonly="true" placeholder="Vuelto" 
                       </div>
                   </div>
                   <button type="submit" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button>
-                  <button type="button" class="btn btn-default waves-effect waves-light m-d-5" onclick="limpiar()"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
+                  <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <a href="<?= base_url() ?>home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                 </div>
               </form>
@@ -157,19 +206,29 @@
     </div>
   </div>
 </div>
+
+<?php
+}
+?>
 <script type="text/javascript">
 $(document).on('ready', function(){
+  $('#FrmPagos').parsley().on('field:validated', function() {
+    var ok = $('.parsley-error').length === 0;
+    $('.bs-callout-info').toggleClass('hidden', !ok);
+    $('.bs-callout-warning').toggleClass('hidden', ok);
+  });
   //Fucion Change del select donde estan los datos de los clientes aqui vamos a cargar los datos que necesitemos------------
   $('#idCredito').on('change', function(){
     //alert('id'+$('#idCredito').val());
     ide = $('#idCredito').val();
     //cargar el ultimo pago si lo hay si no carga los datos del credito directamente
     $.ajax({
-      url:"CargarUltimoPago",
+      url:"<?= base_url()?>Pagos/CargarUltimoPago",
       type:"GET",
       data:{Id:ide},
       success:function(respuesta){
         var registro = eval(respuesta);
+       // alert('aaaaa');
         if (registro.length > 0)
         {
           //alert('funciona');
@@ -187,14 +246,14 @@ $(document).on('ready', function(){
         else{
           //cargar datos del credito en lugar de los pagos
           $.ajax({
-            url:"CargarDetallePago",
+            url:"<?= base_url()?>Pagos/CargarDetallePago",
             type:"GET",
             data:{Id:ide},
             success:function(respuesta){
               var registro = eval(respuesta);
               if (registro.length > 0)
               {
-                //alert('funciona');
+               // alert('funciona');
                 for (var i =0 ; i<registro.length ; i++){
                   $('#cliente').val(registro[i]['Nombre_Cliente']+" "+registro[i]['Apellido_Cliente']);
                   $('#capital').val(registro[i]['capital']);
@@ -234,7 +293,7 @@ $(document).on('ready', function(){
 
 function calculos(){
     var capitalPendiente = $('#capitalPendiente1').val();
-    // alert(capitalPendiente);
+    //alert(capitalPendiente);
     var totalp = $('#totalPago').val();
     var diaspa = $('#diasPagados').val();
     var tasa = $('#tasa').val();
@@ -244,7 +303,7 @@ function calculos(){
     }
     else{
       if(diaspa==""){
-        // alert('vacio');
+        alert('vacio');
       }
       else{
         var tasaI = tasa/100;
@@ -252,7 +311,7 @@ function calculos(){
         //var totalInteres = TasaInteresDiario*(capitalPendiente)*diaspa;
         var Interes=(capitalPendiente*diaspa*tasaI)/30;
         var iva = Interes*0.13;
-        // alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
+        //alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
         var abonoCapital = totalp-Interes-iva;
         $('#iva').val(iva.toFixed(4));
         $('#interes').val(Interes.toFixed(4));
@@ -264,15 +323,30 @@ function calculos(){
         //alert(ta);
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
+        alert('Nuevo abonado: '+newAbono);
+        $('#pagoReal').val(totalp);
+       if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
+          var abono = $('#totalAbonado').val();
+          var vuelto;
+          var capitalPend = $('#capitalPendiente1').val();
+          vuelto = abonoCapital - capitalPend;
+          var newAbonoCApital = abonoCapital-vuelto;
+          var newCapitalPendiente=capitalPend - newAbonoCApital;
+          var ab= $('#totalAb').val()
+          var newTotalAbono= newAbonoCApital + parseFloat(ab); 
+          $('#abonoCapital').val(newAbonoCApital)
+          $('#vuelto').val(vuelto);
+          $('#capitalP').val(newCapitalPendiente);
+          $('#totalAbonado').val(newTotalAbono);
+          $('#pagoReal').val(parseFloat(newAbonoCApital)+parseFloat(Interes)+parseFloat(iva));
+          swal("Mensaje de notificación!", "El credito seria saldado con este pago");
+        }
+        
       } 
       //alert('asas');
     }
 
 }
-    function limpiar(){
-        $('#idCredito').val("");
-        $('#fechaPago').val("");
-        $('#totalPago').val("");
-    }
+  
 </script>
 
