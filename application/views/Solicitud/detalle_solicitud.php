@@ -332,7 +332,7 @@
                                         <br>
                                         <?php } ?>
                                   <div align="center">
-                                    <a href="<?= base_url() ?>Solicitud/" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
+                                    <a href="<?= base_url() ?>Solicitud/" type="button" class="btn btn-default block waves-effect waves-light m-b-5 ocultarImprimir"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
                                   </div>
                               </div>
                             </div>

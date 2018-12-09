@@ -43,7 +43,7 @@
                     <div class="row">
                       <div class="form-group col-md-2">
                             <label for="">Número de solicitud</label>
-                            <input type="text" class="form-control" id="numero_solicitud" name="numero_solicitud" placeholder="Numero de la solicitud">
+                            <input type="text" class="form-control" id="" name="numero_solicitud" placeholder="Numero de la solicitud" required data-parsley-required-message="Por favor, ingresa un codigo">
                       </div>
                       <div class="form-group col-md-8">
                       </div>
@@ -51,7 +51,7 @@
                         <div class="mar_che_cobrar">
                             <label for="cobra_mora">Cobrar mora</label><br>
                             <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                                <input type="checkbox" value="" id="cobra_moraC" name="">
                                 <label for="cobra_mora">Cobrar</label>
                             </div>
                         </div>  
@@ -62,6 +62,7 @@
                       <label for="">Cliente</label>
                         <div class="input-group">
                           <input type="text" class="form-control" id="nombre_cliente" name="nombre_cli" placeholder="Nombre del cliente" required data-parsley-required-message="Por favor, seleccione un nombre de cliente">
+                                <input type="hidden" id="cobra_mora" name="cobra_mora">
                           <a title="Agregar&nbsp;cliente" class="input-group-addon btn btn-success waves-light m-d-5" data-toggle="modal" data-target="#agregarCliente"><i class="fa fa-user-plus fa-lg"></i></a>
                         </div>
                       </div>
@@ -132,7 +133,7 @@
                     <div class="row">
                       <div class="form-group col-md-10">
                             <label for="observaciones">Observaciones</label>
-                            <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones" style="min-height: 101px;"></textarea>
+                            <textarea class="form-control resize" rows="3" id="observaciones" name="observaciones" style="min-height: 101px;" required data-parsley-required-message="Por favor, ingresa una descripción"></textarea>
                       </div>
                       <div class="form-group col-md-2 text-center">
                         <p><label for="">Operación</label></p>
@@ -294,7 +295,7 @@
                     </div>
                 </div>
                 <div align="center">
-                  <button class="btn btn-success waves-effect waves-light m-b-5" type="submit" onclick="agregarFiador()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
+                  <button id="btnAgregar" class="btn btn-success waves-effect waves-light m-b-5" type="submit" onclick="agregarFiador()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light m-b-5" ><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
@@ -357,6 +358,7 @@
   $(document).on("ready", main);
   function main()
   {
+    $("#btnAgregar").prop('disable', true);
     $("#numero_solicitud").prop('readonly', true);
     $("#nombre_cliente").prop('readonly', true);
     $("#tasa_interes").prop('readonly', true);
@@ -389,6 +391,7 @@ function agregarCliente(id, nombre, apellido, dui)
 // Funcion para desbloquear cajas de text para ingresar interes y monto de dinero
 function activarIP()
 {
+  mora()
   $("#tasa_interes").removeAttr("readonly");
   $("#monto_dinero").removeAttr("readonly");
 
@@ -411,6 +414,7 @@ function activarIP()
 }
 function calcularIntereses()
 {
+  mora()
   mesesD = $("#numero_meses").val();
   tipoPrestamo = $("#tipo_prestamo").val();
   tasaInteres = (parseFloat($("#tasa_interes").val()) / 100) * mesesD;
@@ -441,11 +445,52 @@ function calcularIntereses()
   // Probando calculos
   totalPagoConCuotas = cuotaDiaria*26;
 
-  $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
-  $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
-  $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
-  $("#total_pagar").attr("value", totalAPagar.toFixed(4));
-  $("#numero_cuotas").attr("value", numeroDePagos);
+  if (isNaN(cuotaDiaria))
+  {
+    $("#cuota_diaria").attr("value",  0);
+  }
+  else
+  {
+    $("#cuota_diaria").attr("value",  cuotaDiaria.toFixed(4));
+  }
+
+  if (isNaN(totalIvaAPagar))
+  {
+    $("#iva_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#iva_pagar").attr("value", totalIvaAPagar.toFixed(4));
+  }
+
+  if (isNaN(totalInteresesAPagar))
+  {
+    $("#intereses_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#intereses_pagar").attr("value", totalInteresesAPagar.toFixed(4));
+  }
+
+  if (isNaN(totalAPagar))
+  {
+    $("#total_pagar").attr("value", 0);
+  }
+  else
+  {
+    $("#total_pagar").attr("value", totalAPagar.toFixed(4));
+  }
+
+  if (isNaN(numeroDePagos))
+  {
+    $("#numero_cuotas").attr("value", 0);
+  }
+  else
+  {
+    $("#numero_cuotas").attr("value", numeroDePagos);
+  }
+
+
 }
 
 //Redondeo a dos decimales
@@ -469,38 +514,41 @@ function agregarFiador()
   ingreso = $("#ingreso_fiador").val();
   direccion = $("#direccion_fiador").val();
 
-  fila = '';
-  fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>';
-  fila += '<tr>';
-  fila +=  '<td><strong>Nombre:</strong> '+nombre +" "+ apellido +'</td>';
-  fila +=  '<td><strong>Ingreso:</strong> '+"$"+" "+ingreso+'</td>';
-  fila +=  '<td><strong>Dirección:</strong> '+direccion+'</td>';
-  fila += '</tr>';
-  fila += '</tbody></table></div></div></div><br>';
+  if (nombre != "" && apellido != "" && dui != "" && nit != "" && telefono != "" && email != "" && nacimiento != "" && genero != "" && ingreso != "" && direccion != "")
+  {
 
-  fila +=  '<td><input type="hidden" name="nombreFiador[]" class="form-control" value="'+nombre+'"></td>';
-  fila +=  '<td><input type="hidden" name="apellidoFiador[]" class="form-control" value="'+apellido+'"></td>';
-  fila +=  '<td><input type="hidden" name="duiFiador[]" class="form-control" value="'+dui+'"></td>';
-  fila +=  '<td><input type="hidden" name="nitFiador[]" class="form-control" value="'+nit+'"></td>';
-  fila +=  '<td><input type="hidden" name="telefonoFiador[]" class="form-control" value="'+telefono+'"></td>';
-  fila +=  '<td><input type="hidden" name="emailFiador[]" class="form-control" value="'+email+'"></td>';
-  fila +=  '<td><input type="hidden" name="nacimientoFiador[]" class="form-control" value="'+nacimiento+'"></td>';
-  fila +=  '<td><input type="hidden" name="generoFiador[]" class="form-control" value="'+genero+'"></td>';
-  fila +=  '<td><input type="hidden" name="ingresoFiador[]" class="form-control" value="'+ingreso+'"></td>';
-  fila +=  '<td><input type="hidden" name="direccionFiador[]" class="form-control" value="'+direccion+'"></td>';
+    fila = '';
+    fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>';
+    fila += '<tr>';
+    fila +=  '<td><strong>Nombre:</strong> '+nombre +" "+ apellido +'</td>';
+    fila +=  '<td><strong>Ingreso:</strong> '+"$"+" "+ingreso+'</td>';
+    fila +=  '<td><strong>Dirección:</strong> '+direccion+'</td>';
+    fila += '</tr>';
+    fila += '</tbody></table></div></div></div><br>';
 
-  $("#garantia").append(fila);
- 
-  $('#nombre_fiador').val("");
-  $('#apellido_fiador').val("");
-  $('#dui_fiador').val("");
-  $('#nit_fiador').val("");
-  $('#telefono_fiador').val("");
-  $('#email_fiador').val("");
-  $('#nacimiento_fiador').val("");
-  $('#genero_fiador').val("");
-  $('#ingreso_fiador').val("");
-  $('#direccion_fiador').val(""); 
+    fila +=  '<td><input type="hidden" name="nombreFiador[]" class="form-control" value="'+nombre+'"></td>';
+    fila +=  '<td><input type="hidden" name="apellidoFiador[]" class="form-control" value="'+apellido+'"></td>';
+    fila +=  '<td><input type="hidden" name="duiFiador[]" class="form-control" value="'+dui+'"></td>';
+    fila +=  '<td><input type="hidden" name="nitFiador[]" class="form-control" value="'+nit+'"></td>';
+    fila +=  '<td><input type="hidden" name="telefonoFiador[]" class="form-control" value="'+telefono+'"></td>';
+    fila +=  '<td><input type="hidden" name="emailFiador[]" class="form-control" value="'+email+'"></td>';
+    fila +=  '<td><input type="hidden" name="nacimientoFiador[]" class="form-control" value="'+nacimiento+'"></td>';
+    fila +=  '<td><input type="hidden" name="generoFiador[]" class="form-control" value="'+genero+'"></td>';
+    fila +=  '<td><input type="hidden" name="ingresoFiador[]" class="form-control" value="'+ingreso+'"></td>';
+    fila +=  '<td><input type="hidden" name="direccionFiador[]" class="form-control" value="'+direccion+'"></td>';
+    $("#garantia").append(fila);
+   
+  }
+    $('#nombre_fiador').val("");
+    $('#apellido_fiador').val("");
+    $('#dui_fiador').val("");
+    $('#nit_fiador').val("");
+    $('#telefono_fiador').val("");
+    $('#email_fiador').val("");
+    $('#nacimiento_fiador').val("");
+    $('#genero_fiador').val("");
+    $('#ingreso_fiador').val("");
+    $('#direccion_fiador').val(""); 
 
   // $('#agregarFiador').modal('hide');
      
@@ -512,26 +560,29 @@ function agregarPrenda()
   precio = $("#precio_valorado").val();
   descripcion = $("#descripcion_prenda").val();
 
-  fila = '';
-  fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>';
-  fila += '<tr>';
-  fila +=  '<td><strong>Nombre:</strong> '+nombre+'</p></td>';
-  fila +=  '<td><strong>Precio:</strong> '+"$"+" "+precio+'</p></td>';
-  fila +=  '<td><strong>Descripción:</strong> '+descripcion+'</p></td>';
-  fila += '</tr>';
-  fila += '</tbody></table></div></div></div><br>';
+if (nombre != "" && precio != "" && descripcion != "")
+  {
+    fila = '';
+    fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>';
+    fila += '<tr>';
+    fila +=  '<td><strong>Nombre:</strong> '+nombre+'</p></td>';
+    fila +=  '<td><strong>Precio:</strong> '+"$"+" "+precio+'</p></td>';
+    fila +=  '<td><strong>Descripción:</strong> '+descripcion+'</p></td>';
+    fila += '</tr>';
+    fila += '</tbody></table></div></div></div><br>';
 
-  fila += '<tr>';
-  fila +=  '<td><input type="hidden" name="nombrePrenda[]" class="form-control" value="'+nombre+'"></td>';
-  fila +=  '<td><input type="hidden" name="precioPrenda[]" class="form-control" value="'+precio+'"></td>';
-  fila +=  '<td><input type="hidden" name="descripcionPrenda[]" class="form-control" value="'+descripcion+'"></td>';
-  fila += '</tr>';
+    fila += '<tr>';
+    fila +=  '<td><input type="hidden" name="nombrePrenda[]" class="form-control" value="'+nombre+'"></td>';
+    fila +=  '<td><input type="hidden" name="precioPrenda[]" class="form-control" value="'+precio+'"></td>';
+    fila +=  '<td><input type="hidden" name="descripcionPrenda[]" class="form-control" value="'+descripcion+'"></td>';
+    fila += '</tr>';
 
-  $("#garantia").append(fila);
+    $("#garantia").append(fila);
 
-  $('#nombre_prenda').val("");
-  $('#precio_valorado').val("");
-  $('#descripcion_prenda').val("");
+  }
+    $('#nombre_prenda').val("");
+    $('#precio_valorado').val("");
+    $('#descripcion_prenda').val("");
 
   // $('#agregarPrenda').modal('hide');
 }
@@ -551,6 +602,19 @@ function limpiar(){
     $('#nombre_prenda').val("");
     $('#precio_valorado').val("");
     $('#descripcion_prenda').val("");
+}
+function mora()
+{
+  var mora;
+  if( $('#cobra_moraC').prop('checked') )
+  {
+    mora = 1;
+  }
+  else
+  {
+    mora = 0;
+  }
+  $("#cobra_mora").attr("value", mora);
 }
 
 $(document).ready(function () {
