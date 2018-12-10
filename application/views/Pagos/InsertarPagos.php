@@ -335,7 +335,7 @@ function calculos(){
         //alert(ta);
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
-        alert('Nuevo abonado: '+newAbono);
+        //alert('Nuevo abonado: '+newAbono);
         $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
           var abono = $('#totalAbonado').val();

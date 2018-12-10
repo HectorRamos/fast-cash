@@ -232,12 +232,21 @@ function calculos(){
     var diaspa = $('#diasPagados').val();
     var tasa = $('#tasa').val();
     var capitalpendiente1 = $('#capitalPendiente1').val();
-    if(totalp ==""){
+   if(totalp ==""){
       //alert('campo para pagos vacio')
+       $('#iva').val(0);
+        $('#interes').val(0);
+        $('#abonoCapital').val(0);
+        $('#capitalP').val(0);
+        $('#totalAbonado').val(0);
     }
     else{
       if(diaspa==""){
-        alert('vacio');
+        $('#iva').val(0);
+        $('#interes').val(0);
+        $('#abonoCapital').val(0);
+        $('#capitalP').val(0);
+        $('#totalAbonado').val(0);
       }
       else{
         var tasaI = tasa/100;
