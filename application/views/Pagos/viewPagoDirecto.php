@@ -222,6 +222,7 @@ $(document).on('ready', function(){
   //FUNCION PARA HACER LOS DEMAS CALCULOS----------------------
   $('#totalPago').on('change', function(){
     calculos();
+
   })
 });//cierre de la funcion principal
 //funcion general para realizar todos los calculos
@@ -248,6 +249,14 @@ function calculos(){
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
       }
+      else if($('#fechaPago').val()==""){
+        $('#iva').val(0);
+        $('#interes').val(0);
+        $('#abonoCapital').val(0);
+        $('#capitalP').val(0);
+        $('#totalAbonado').val(0);
+        $('#diasPagados').val("");
+      }
       else{
         var tasaI = tasa/100;
         //var TasaInteresDiario= tasaI/30;
@@ -266,7 +275,7 @@ function calculos(){
         //alert(ta);
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
-        alert('Nuevo abonado: '+newAbono);
+        //alert('Nuevo abonado: '+newAbono);
         $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
           var abono = $('#totalAbonado').val();

@@ -317,6 +317,14 @@ function calculos(){
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
       }
+      else if($('#fechaPago').val()==""){
+        $('#iva').val(0);
+        $('#interes').val(0);
+        $('#abonoCapital').val(0);
+        $('#capitalP').val(0);
+        $('#totalAbonado').val(0);
+        $('#diasPagados').val("");
+      }
       else{
         var tasaI = tasa/100;
         //var TasaInteresDiario= tasaI/30;
