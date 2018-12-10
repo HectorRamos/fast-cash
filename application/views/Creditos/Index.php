@@ -65,36 +65,47 @@
                                 <table id="datatable" class="table">
                                   <thead class="thead-dark thead thead1">
                                     <tr class="tr tr1">
-                                      <th class="th th1" scope="col">#</th>
                                       <th class="th th1" scope="col">Código de Cliente</th>
                                       <th class="th th1" scope="col">Cliente</th>
                                       <th class="th th1" >Tipo de Crédito</th>
                                       <th class="th th1" >Total a Pagar</th>
                                       <th class="th th1" >Total Abonado</th>
-                                      <th class="th th1">Acción</th>
+                                      <th  class="th th1">Acción</th>
                                     </tr>
                                   </thead>
                                   <tbody class="tbody tbody1">
-                                  <?php 
-                                  $i = 0;
-                                  if(!empty($registros)){
-                                  foreach ($registros->result() as $creditos) {
-                                    $i = $i +1;
+                                   <?php foreach ($registros->result() as $creditos) {
+                                    if($creditos->estadoCredito=="Finalizado"){
                                     ?>
-                                    <tr class="tr tr1">
-                                      <td class="td td1" data-label="#"><b><?= $i?></b></td>
-                                      <td class="td td1" data-label="Código del Cliente"><?= $creditos->Codigo_Cliente?></td>
-                                      <td class="td td1" data-label="Cliente"><?= $creditos->Nombre_Cliente?>  <?= $creditos->Apellido_Cliente?></td>
-                                      <td class="td td1" data-label="Tipo de crédito"><?= $creditos->tipoCredito?></td>
-                                      <td class="td td1" data-label="Total a pagar">$ <?= $creditos->ivaInteresCapital?></td>
-                                       <td class="td td1" data-label="Total Abonado">$ <?= $creditos->totalAbonado?></td>
-                                       <td class="td td1" data-label="Acción">
-
+                                    <tr style="background-color:#e0e0e0;">
+                                      <td><?= $creditos->Codigo_Cliente?></td>
+                                      <td><?= $creditos->Nombre_Cliente?>  <?=  $creditos->Apellido_Cliente?></td>
+                                      <td><?= $creditos->tipoCredito?></td>
+                                      <td><?= $creditos->capital?></td>
+                                      <td><?= $creditos->totalAbonado?></td>
+                                      <td class="td td1" data-label="Acción">
                                         <a href="<?= base_url()?>Creditos/DetalleCredito?id=<?= $creditos->idCredito?>&cc=<?= $creditos->codigoCredito?>" title='Ver crédito' data-toggle="tooltip" class='waves-effect waves-light ver'><i class='fa fa-folder'></i></a>
                                       </td>
                                     </tr>
                                     <?php
-                                  }} ?>
+                                  }
+                                  else{
+                                    ?>
+                                     <tr>
+                                      <td><?= $creditos->Codigo_Cliente?></td>
+                                      <td><?= $creditos->Nombre_Cliente?>  <?=  $creditos->Apellido_Cliente?></td>
+                                      
+                                      <td><?= $creditos->tipoCredito?></td>
+                                      <td><?= $creditos->capital?></td>
+                                      <td><?= $creditos->totalAbonado?></td>
+                                      <td class="td td1" data-label="Acción">
+                                        <a href="<?= base_url()?>Creditos/DetalleCredito?id=<?= $creditos->idCredito?>&cc=<?= $creditos->codigoCredito?>" title='Ver crédito' data-toggle="tooltip" class='waves-effect waves-light ver'><i class='fa fa-folder'></i></a>
+                                         <a href="<?= base_url()?>Pagos/PagarCredito?Id=<?= $creditos->idCredito?>" title='Realizar pago' data-toggle="tooltip" class='waves-effect waves-light ver'><i class='fa fa-money'></i></a>
+                                      </td>
+                                    </tr>
+                                    <?php
+                                  }
+                                  } ?>
                                   </tbody>
                                 </table>
                               </div>

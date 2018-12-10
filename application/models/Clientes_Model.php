@@ -77,6 +77,7 @@ class Clientes_Model extends CI_Model{
 		if($datos!=null){
 			$id = $datos['id_cliente'];
 			$data =array(
+				'Codigo_Cliente'=> $datos['Codigo_Cliente'],
 				'Nombre_Cliente' => $datos['Nombre_Cliente'],
 				'Apellido_Cliente' => $datos['Apellido_Cliente'],
 				//'Condicion_Actual_Cliente' => $datos['condicion'],

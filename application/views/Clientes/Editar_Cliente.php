@@ -364,6 +364,20 @@
 <script type="text/javascript">
 /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 $(document).ready(function(){
+    //editar el codigo del cliente
+    //funcion para sacar el codigo del cliente:
+    $('#Nombre_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
+    $('#Apellido_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
+    $('#Dui_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
    //*********************************CODIGO PARA VALIDAR BOTON ACTUALIZAR******************************************
    $('input, select, textarea').parsley();
     function curIndex() {
@@ -594,4 +608,22 @@ $(document).ready(function(){
              });
    });   
 });
+function generarCodigo(){
+    var Name = $('#Nombre_Cliente').val();
+    var apellido = $('#Apellido_Cliente').val();
+    var dui=$('#Dui_Cliente').val();
+    nombre = Name.trim();
+    Apllido = apellido.trim();
+    arregloNombre = nombre.split(" ");
+    arregloApellido = apellido.split(" ");
+    sizeName = arregloNombre.length;
+    sizeApellido = arregloApellido.length;
+    
+    newDui= dui.replace("-", "");
+    codigo = arregloNombre[0][0] + arregloNombre[sizeName-1][0] +arregloApellido[0][0]+arregloApellido[sizeApellido-1][0]+newDui;
+    if(Name!="" && apellido!="" && dui!=""){
+         alert('el codigo es: '+codigo);
+         $('#Codigo_Cliente').val(codigo);
+    }
+}
 </script>

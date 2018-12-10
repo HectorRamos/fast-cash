@@ -125,6 +125,11 @@
                                   <div class="row margn">
                                   <h4>Detalle de pagos</h4>
                                   <?php
+                                  if($detalle->estadoCredito=="Finalizado"){
+                                  }
+                                  else{
+                                    echo '<a href="'.base_url().'Pagos/PagarCredito?Id='.$detalle->idCredito.'" title="Pago" data-toggle="tooltip"  class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-money"></i> <span>Hacer pago<span></a>';
+                                  }
                                    if (sizeof($Pagos->result())>0){
                                   ?>
                                   <table id="datatable" class="table">

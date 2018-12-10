@@ -12,10 +12,9 @@ class Documentos_Model extends CI_Model{
 			}
 
 		}
-
 	}
 	public function ObtenerDocumentos($c){
-		$sql= "SELECT * FROM tbl_documentos WHERE codigo=$c AND estado =1";
+		$sql= "SELECT * FROM tbl_documentos WHERE codigo='$c' AND estado =1";
 		$datos= $this->db->query($sql);
 		return $datos;
 	}

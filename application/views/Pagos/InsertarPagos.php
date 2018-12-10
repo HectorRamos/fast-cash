@@ -106,7 +106,7 @@
                         <?php
                           foreach ($creditos->result() as $c) {
                             # code...
-                            if($c->estadoCredito=='Pendiente'){
+                            if($c->estadoCredito=='Proceso'){
                               echo '<option value="'.$c->idCredito.'">'.$c->Codigo_Cliente.' - '.$c->Nombre_Cliente.' '.$c->Apellido_Cliente.'
                                     </option>';
                             }
@@ -149,7 +149,8 @@
                             </div>
                         </div>
                     </div>
-                  <div class="row">
+                    <div id="DivDatosPagos" style="display:none;">
+                       <div class="row">
                   <div class="form-group col-md-4">
                         <label for="Nombre_Cliente">Fecha de pago</label>
                         <input type="text" class="form-control DateTime" id="fechaPago" name="fechaPago" placeholder="Fecha de nacimiento" data-mask="9999/99/99" required data-parsley-required-message="Por favor, seleccione  una fecha de pago">
@@ -162,7 +163,6 @@
                         <label for="Nombre_Cliente">iva</label>
                         <input type="text" class="form-control" id="iva" name="iva" readonly="true" placeholder="Nombre del cliente" required data-parsley-required-message="No puede guardar el pago sin seleccionar un credito">
                       </div>
-                      
                   </div>
                   <div class="row">
                       <div class="form-group col-md-4">
@@ -197,6 +197,7 @@
                   <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <a href="<?= base_url() ?>home/Main" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                 </div>
+                    </div>
               </form>
               <!-- Fin formulario Empleado -->
             </div>
@@ -241,6 +242,7 @@ $(document).on('ready', function(){
              var cpendiente = registro[i]['capital']-registro[i]['totalAbonado'];
              $('#capitalPendiente1').val(cpendiente);
              document.getElementById('infor').style.display='block';
+             document.getElementById('DivDatosPagos').style.display='block';
           }
         }
         else{
@@ -263,6 +265,7 @@ $(document).on('ready', function(){
                   var cpendiente = registro[i]['capital']-registro[i]['totalAbonado'];
                   $('#capitalPendiente1').val(cpendiente);
                   document.getElementById('infor').style.display='block';
+                  document.getElementById('DivDatosPagos').style.display='block';
                 }//fin del for
             }//fin del if
           }//fin de success

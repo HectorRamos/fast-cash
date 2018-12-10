@@ -22,7 +22,7 @@ class Pagos extends CI_Controller
 	public function CargarDetallePago(){
 		$id= $this->input->GET('Id');
 		$data = $this->Creditos_Model->obtenerDetalleCredito($id);
-		echo json_encode($data);
+		echo json_encode($data->result());
 	}
 	public function CargarUltimoPago(){
 		$id= $this->input->GET('Id');
@@ -42,5 +42,23 @@ class Pagos extends CI_Controller
 			redirect(base_url()."Creditos/");
 		}
 	}
+	public function PagarCredito(){
+		//$data = $this->Creditos_Model->ObtenerCreditos();
+		$data2 = $this->CajaChica_Model->ObtenerCajaActiva();
+		$id= $this->input->GET('Id');
+		$data = $this->Pagos_Model->obtenerUltimoPago($id);
+		
+		if(sizeof($data->result())==0){
+			$data = $this->Creditos_Model->obtenerDetalleCredito($id);
+			//echo json_encode($data);
+
+		}
+		$datos = array('creditos'=>$data, 'caja'=>$data2);
+		$this->load->view('Base/header');
+		$this->load->view('Base/nav');
+		$this->load->view('Pagos/viewPagoDirecto', $datos);
+		$this->load->view('Base/footer');
+	}
+	
 }
 ?>

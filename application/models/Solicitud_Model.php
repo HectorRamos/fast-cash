@@ -305,7 +305,7 @@ class Solicitud_Model extends CI_Model
 			$codigoTipoCredito = $datos['codigo_tipo_credito'];
 			$montoTotal = $datos['monto_dinero'];
 			$totalAbonado = 0;
-			$estadoCredito = "Pendiente";
+			$estadoCredito = "Proceso";
 			$fechaApertura = $datos['fecha_apertura'];
 			$fechaVencimiento = $datos['fecha_de_vencimiento'];
 			$estado = 1;

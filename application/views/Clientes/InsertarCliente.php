@@ -72,7 +72,7 @@
                                             <div class="row">
                                                  <div class="form-group col-md-4">
                                                     <label for="Codigo_Cliente">Código</label>
-                                                    <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código">
+                                                    <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código" readonly>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="Nombre_Cliente">Nombre</label>
@@ -337,10 +337,22 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 <!--FINAL DEL MODAL-->
 <script>
 $(document).ready( function() {
+    //funcion para sacar el codigo del cliente:
+    $('#Nombre_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
+    $('#Apellido_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
+    $('#Dui_Cliente').on('change', function(){
+        //alert('funciona');
+        generarCodigo();
+    });
    $('input, select, textarea').parsley();
    //*********************************CODIGO PARA VALIDAR BOTON GUARDAR************************************************
     function curIndex() {
@@ -573,4 +585,22 @@ $("#select").change( function() {
                 }
             });
 });
+function generarCodigo(){
+    var Name = $('#Nombre_Cliente').val();
+    var apellido = $('#Apellido_Cliente').val();
+    var dui=$('#Dui_Cliente').val();
+    nombre = Name.trim();
+    Apllido = apellido.trim();
+    arregloNombre = nombre.split(" ");
+    arregloApellido = apellido.split(" ");
+    sizeName = arregloNombre.length;
+    sizeApellido = arregloApellido.length;
+    
+    newDui= dui.replace("-", "");
+    codigo = arregloNombre[0][0] + arregloNombre[sizeName-1][0] +arregloApellido[0][0]+arregloApellido[sizeApellido-1][0]+newDui;
+    if(Name!="" && apellido!="" && dui!=""){
+         alert('el codigo es: '+codigo);
+         $('#Codigo_Cliente').val(codigo);
+    }
+}
 </script>

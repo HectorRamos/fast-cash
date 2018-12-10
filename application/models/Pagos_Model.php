@@ -24,7 +24,7 @@ class Pagos_Model extends CI_Model{
 				$id=$datos['idCredito'];
 				$capitalPendiente = $datos['capitalPendiente'];
 				if($capitalPendiente==0){
-					$sql = "UPDATE tbl_creditos SET totalAbonado = '$totalAbonado', estadoCredito='Cancelado' WHERE idCredito=$id";
+					$sql = "UPDATE tbl_creditos SET totalAbonado = '$totalAbonado', estadoCredito='Finalizado' WHERE idCredito=$id";
 				}
 				else{
 					$sql = "UPDATE tbl_creditos SET totalAbonado = '$totalAbonado' WHERE idCredito=$id";
