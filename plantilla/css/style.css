@@ -1581,9 +1581,9 @@ body.fixed-left .side-menu.left {
 #wrapper.enlarged .left.side-menu .user-details {
   display: none;
 }
-#wrapper.enlarged .left.side-menu {
+/*#wrapper.enlarged .left.side-menu {
   padding-top: 80px;
-}
+}*/
 .user-details {
   position: relative;
   min-height: 80px;

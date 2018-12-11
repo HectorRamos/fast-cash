@@ -120,12 +120,10 @@
         this.$FormClienteEmpresario.validate({
             rules: {
                 Nombre_Negocio: "required",
-                NRC: "required",
                 Direccion_Negocio: "required",
             },
             messages: {
                 Nombre_Negocio: "",
-                NRC: "",
                 Direccion_Negocio: "",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
@@ -151,12 +149,10 @@
         this.$FormClienteEmpresarioRe.validate({
             rules: {
                 Nombre_Negocio: "required",
-                NRC: "required",
                 Direccion_Negocio: "required",
             },
             messages: {
                 Nombre_Negocio: "Por favor, escriba un nombre",
-                NRC: "Por favor, digite un número NRC",
                 Direccion_Negocio: "Por favor, escriba una dirección",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },

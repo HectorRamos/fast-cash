@@ -41,9 +41,7 @@
       </div>
       <?php
       if (sizeof($caja->result())==0)
-              {
-
-              
+      {              
       ?>
       <div class="row">
         <div class="col-md-12">
@@ -52,15 +50,14 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Accion no permitida</h3>                 
+                    <h3 class="panel-title">Acción no permitida</h3>                 
                   </div>
                 </div>
               </div>
             </div>
             <div class="panel-body">
               <div class="alert alert-danger">
-                <h3>No se a realizado la apertura de caja o ya se hizo el cierre de caja, comuniquese con el administrador</h3>
-                
+                <h4>No se a realizado la apertura de caja o ya se hizo el cierre de caja, comuniquese con el administrador</h4>
               </div>
             </div>
           </div>
@@ -78,7 +75,7 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-                    <h3 class="panel-title">Pago de credito</h3>                 
+                    <h3 class="panel-title">Pago de crédito</h3>                 
                   </div>
                 </div>
               </div>
@@ -91,18 +88,15 @@
                   <!--CAMPOS OCULTOS-->
                   <?php 
                   foreach ($caja->result() as $caja) {
-                    # code...
                   }
-
                   ?>
-                  <input type="text" hidden name="idCajaChica" value="<?php echo $caja->idCajaChica?>">
-                  <input type="text" hidden name="fechaCajaChica" value="<?= $caja->fechaCajaChica?>">
-                  <input type="text" hidden name="cantidadApertura" value="<?= $caja->cantidadApertura?>">
+                  <input type="hidden" name="idCajaChica" value="<?php echo $caja->idCajaChica?>">
+                  <input type="hidden" name="fechaCajaChica" value="<?= $caja->fechaCajaChica?>">
+                  <input type="hidden" name="cantidadApertura" value="<?= $caja->cantidadApertura?>">
                   <!--FIN DE LOS CAMPOS OCULTOS-->
                     <div class="form-group col-md-12">
-                      
                       <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito..." required data-parsley-required-message="Por favor, seleccione un credito">
-                        <option value="">.::Seleccione un credito::.</option>
+                        <option value="">.::Seleccione un crédito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {
                             # code...
@@ -116,7 +110,7 @@
                     </div>                
                   </div>
                    <div id="infor" class="alert alert-success" style="display:none;">
-                      <h4>Informacion</h4>
+                      <h4>Información</h4>
                         <div class="row">
                           <div class="form-group col-md-4">
                             <label for="Cliente">Cliente</label>
