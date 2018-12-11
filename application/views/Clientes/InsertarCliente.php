@@ -72,7 +72,7 @@
                                             <div class="row">
                                                  <div class="form-group col-md-4">
                                                     <label for="Codigo_Cliente">Código</label>
-                                                    <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, digite un código" readonly>
+                                                    <input type="text" class="form-control" id="Codigo_Cliente" name="Codigo_Cliente" placeholder="Código del cliente" required data-parsley-required-message="Por favor, código requerido" readonly>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="Nombre_Cliente">Nombre</label>
@@ -271,7 +271,7 @@
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="NRC">Número de Registro del Contribuyente(NRC)</label>
-                                                                <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Número de Registro del Contibuyente" data-mask="9999-999999-999-9" required data-parsley-required-message="Por favor, digite un número NRC">
+                                                                <input type="text" class="form-control" id="NRC" name="NRC" placeholder="Número de Registro del Contibuyente" data-mask="9999-999999-999-9">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="Giro">Giro</label>
@@ -599,7 +599,7 @@ function generarCodigo(){
     newDui= dui.replace("-", "");
     codigo = arregloNombre[0][0] + arregloNombre[sizeName-1][0] +arregloApellido[0][0]+arregloApellido[sizeApellido-1][0]+newDui;
     if(Name!="" && apellido!="" && dui!=""){
-         alert('el codigo es: '+codigo);
+         // alert('el codigo es: '+codigo);
          $('#Codigo_Cliente').val(codigo);
     }
 }

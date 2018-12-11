@@ -59,7 +59,7 @@ class Pagos_Model extends CI_Model{
 		}
 	}
 	public function ObtenerPagosCredito($id){
-		$sql="SELECT * FROM tbl_detallepagos WHERE idCredito=$id";
+		$sql="SELECT * FROM tbl_detallepagos WHERE idCredito=$id ORDER BY idDetallePago DESC";
 		$data = $this->db->query($sql);
 		return $data;
 	}

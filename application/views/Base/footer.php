@@ -54,64 +54,52 @@
         <!-- Data table -->
         <script src="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.js"></script>
         <script src="<?= base_url() ?>plantilla/assets/datatables/dataTables.bootstrap.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                // $('#datatable').dataTable();
-                $('#datatable').dataTable( 
-                // {
-                    // "ordering": false,
-                    // "order": [[ 0,'desc' ]]
-                        // "aaSorting": [[ 0, "desc" ]],
-                        // "order": [
-                            // [0, "desc"]
-                        // ],
-                // } 
-                );
-            } );
-        </script>
-
-        <script type="text/javascript">
-            /* ==============================================
-            Counter Up
-            =============================================== */
-            jQuery(document).ready(function($) {
-                $('.counter').counterUp({
-                    delay: 100,
-                    time: 1200
-                });
-            });
-        </script>
         <script src="<?= base_url() ?>plantilla/js/tilt.jquery.min.js"></script>
-		<script >
-			$('.js-tilt').tilt({
-				scale: 1.0
-			})
-		</script>
 
         <footer class="footer text-right">
            Copyright © <?php echo date('Y');?> <font color="#0080FF">JIREH</font>.
         </footer>
     </body>
 </html>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".validaTel").keypress( function (e){
+
+
+<!-- SCRIPT CALENDARIO -->
+<script>
+    jQuery('.js-tilt').tilt({
+        scale: 1.0
+    });
+
+    jQuery(document).ready(function() {
+
+        // $('#datatable').dataTable();
+        $('#datatable').dataTable( 
+        // {
+            // "ordering": false,
+            // "order": [[ 0,'desc' ]]
+                // "aaSorting": [[ 0, "desc" ]],
+                // "order": [
+                    // [0, "desc"]
+                // ],
+        // } 
+        );
+
+        jQuery('.counter').counterUp({
+            delay: 100,
+            time: 1200
+        });
+
+        jQuery(".validaTel").keypress( function (e){
           telefo = (document.all) ? e.keyCode : e.which;
           telefo = String.fromCharCode(telefo)
           return /^[0-9\()\-\+]+$/.test(telefo);
         });
 
-        $(".validaDigit").keypress( function (e){
+        jQuery(".validaDigit").keypress( function (e){
           digits = (document.all) ? e.keyCode : e.which;
           digits = String.fromCharCode(digits)
           return /^[0-9\.]+$/.test(digits);
         });
-    });
-</script>
 
-<!-- SCRIPT CALENDARIO -->
-<script>
-    jQuery(document).ready(function() {
         !function(a){a.fn.datepicker.dates.es={
               days:["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
               daysShort:["Dom","Lun","Mar","Mie","Jue","Vie","Sab","Dom"],
@@ -130,7 +118,8 @@
               format: 'yyyy/mm/dd',
               todayHighlight: true,
               autoclose: true,
-              language: 'es'
+              language: 'es',
+              orientation: 'auto top'
         });
 
         // Select2

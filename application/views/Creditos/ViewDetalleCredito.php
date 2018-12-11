@@ -40,7 +40,7 @@
                                           <center>
                                         <?php 
                                           if($detalle->urlImg==""){
-                                            echo "<div style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom1' width='90' src='".base_url()."plantilla/images/user.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Sin foto</label>";
+                                            echo "<div style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom1' width='90' src='".base_url()."plantilla/images/user1.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Sin foto</label>";
                                           }
                                           else {
                                           ?>
@@ -123,14 +123,21 @@
                                   </div>
                                   <br>
                                   <div class="row margn">
-                                  <h4>Detalle de pagos</h4>
+                                    <div class="row">
+                                      <div class="col-md-8">
+                                        <h4>Detalle de pagos</h4>
+                                      </div>
+                                    <div class="col-md-4">
+                                  <span class="pull-right">
                                   <?php
-                                  if($detalle->estadoCredito=="Finalizado"){
-                                  }
-                                  else{
-                                    echo '<a href="'.base_url().'Pagos/PagarCredito?Id='.$detalle->idCredito.'" title="Pago" data-toggle="tooltip"  class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-money"></i> <span>Hacer pago<span></a>';
-                                  }
-                                   if (sizeof($Pagos->result())>0){
+                                    if($detalle->estadoCredito=="Finalizado"){
+                                      echo "<span class='label label-success' style='font-size: 1.5rem;'>Crédito Saldado <i class='fa fa-check fa-lg'></i></span>";
+                                    }
+                                    else{
+                                      echo '<a href="'.base_url().'Pagos/PagarCredito?Id='.$detalle->idCredito.'" title="Pago" data-toggle="tooltip"  class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-money fa-lg"></i> <span>Hacer pago<span></a>';
+                                    }
+                                    echo '</span></div></div>';
+                                  if (sizeof($Pagos->result())>0){
                                   ?>
                                   <table id="datatable" class="table">
                                     <thead class="thead-dark thead">
