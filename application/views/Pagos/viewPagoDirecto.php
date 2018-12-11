@@ -240,7 +240,7 @@ function calculos(){
         $('#abonoCapital').val(0);
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
-        $('#diasPagados').val("");
+        //$('#diasPagados').val("");
     }
     else{
       if(diaspa==""){
