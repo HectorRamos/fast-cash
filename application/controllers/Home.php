@@ -19,21 +19,10 @@ class Home extends CI_Controller
 
 	public function Main()
 	{
-		if(1 == 1)
-		{
-
-            // $dataP = array('acceso' => $this->LoginModel->obtenerPermisos());
-            // $dataP;
 			$this->load->view('Base/header');
 			$this->load->view('Base/nav');
 			$this->load->view('Base/content');
-			$this->load->view('Base/footer');	
-		}
-		else
-		{
-			redirect(base_url());
-		}
-		
+			$this->load->view('Base/footer');
 	}
 
 	public function validarLogin()

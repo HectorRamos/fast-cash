@@ -5,7 +5,7 @@ class Accesos_Model extends CI_Model{
 	public function obtenerAccesos()
 	{
 		$this->db->order_by("idAcceso", "desc");
-		$this->db->where('estado',1);
+		// $this->db->where('estado',1);
 		$departamentos = $this->db->get("tbl_accesos");
 		return $departamentos;
 	}
@@ -64,5 +64,20 @@ class Accesos_Model extends CI_Model{
 			}
 
 		}
+
+	public function HabilitarAcceso($idH){
+
+	
+	$data = array('estado'=>1);
+	$this->db->where('idAcceso', $idH);
+	if($this->db->update('tbl_accesos', $data))
+	{
+		return true;
+	}
+	else{
+		return false;
+	}
+
+}
 }
 ?>

@@ -237,7 +237,7 @@
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form name="frmeliminarcliente" action="<?= base_url();?>Accesos/Eliminar/" id="frmeliminarcliente" method="GET">
+            <form name="frmeliminarcliente" action="<?= base_url();?>User/Eliminar/" id="frmeliminarcliente" method="GET">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">

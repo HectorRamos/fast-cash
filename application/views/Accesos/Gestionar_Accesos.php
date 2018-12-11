@@ -72,26 +72,45 @@
                                                   </thead>
                                                   <tbody class="tbody tbody1">
                                                   <?php
-                                                  $i = 0;
-                                                  if(!empty($datos)){
-                                                  foreach ($datos->result() as  $accesos) {
-                                                    $i = $i +1;
-                                                    $accesoN="'".$accesos->tipoAcceso."'";
-                                                    $descripcionN="'".$accesos->descripcion."'";
-                                                      # code...
-                                                  ?>
-                                                  <tr class="tr tr1">
-                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
-                                                  <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
-                                                  <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
-                                                  <td class="td td1" data-label="Acción">
-                                                      <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
+                                                    $i = 0;
+                                                    if(!empty($datos)){
+                                                    foreach ($datos->result() as  $accesos) {
+                                                      $i = $i +1;
+                                                      $accesoN="'".$accesos->tipoAcceso."'";
+                                                      $descripcionN="'".$accesos->descripcion."'";
+                                                        # code...
+                                                      if($accesos->estado == 0)
+                                                      {
+                                                    ?>
+                                                        <tr class="tr tr1 alert alert-danger">
+                                                        <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
+                                                        <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
+                                                        <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
+                                                        <td class="td td1" data-label="Acción">
+                                                            <a onclick="Habilitar(<?= $accesos->idAcceso?>)" title="Habilitar" class="waves-effect waves-light ver"  data-toggle="modal" data-target=".modal_habilitar_estado">
+                                                              <!-- <span class="label label-success">Habilitar</span> -->
+                                                              <i class="fa fa-check-square"></i>
+                                                            </a>
+                                                            </td>
+                                                        </tr>
+                                                      <?php
+                                                      }
+                                                      else
+                                                      {
+                                                        ?>
+                                                        <tr class="tr tr1">
+                                                        <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
+                                                        <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
+                                                        <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
+                                                        <td class="td td1" data-label="Acción">
+                                                            <a onclick="Edit(<?= $accesos->idAcceso?>, <?= $accesoN?>,<?= $descripcionN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
 
-                                                      <a onclick="del(<?= $accesos->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
-                                                      </td>
-                                                  </tr>
-                                                  <?php
-                                                  }
+                                                            <a onclick="del(<?= $accesos->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                      }
+                                                    }
                                                   }
                                                   ?>
                                                       
@@ -181,7 +200,7 @@
 <div class="modal fade modal_eliminar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <form name="frmeliminarcliente" action="<?= base_url();?>Accesos/Eliminar/" id="frmeliminarcliente" method="GET">
+            <form name="frmeliminarRol" action="<?= base_url();?>Accesos/Eliminar/" id="frmeliminarRol" method="GET">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
@@ -194,6 +213,30 @@
                     </div>
                     <div  align="center">
                         <button type="submit" class="btn btn-danger block waves-effect waves-light m-b-5"><i class="fa fa-trash-o fa-lg"></i> Eliminar</button>
+                        <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                    </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+  <!--MODAL PARA HABILITAR ROL DATOS-->
+<div class="modal fade modal_habilitar_estado" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form name="frmHabilitar" action="<?= base_url();?>Accesos/Habilitar/" id="frmHabilitar" method="GET">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="mySmallModalLabel">
+                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                    </h4>
+                </div>
+                    <div class="modal-body">
+                      <input type="text" hidden id="idH" name='idH'>
+                      <p align="center">¿Está seguro de habilitar el acceso?</p>
+                    </div>
+                    <div  align="center">
+                        <button type="submit" class="btn btn-primary block waves-effect waves-light m-b-5"><i class="fa fa-check-square fa-lg"></i> Habilitar</button>
                         <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                     </div>
                     </form>
@@ -214,6 +257,9 @@
     }
    function del(id, estado){
         $('#id').val(id);
+   }
+   function Habilitar(id){
+        $('#idH').val(id);
    }
 </script>
 

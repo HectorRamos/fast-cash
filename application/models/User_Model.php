@@ -37,20 +37,32 @@ class User_Model extends CI_Model{
 	public function InsertarUser($datos=null){
 		if($datos!=null){
 			$fecha = date("Y/m/d");
-			$data =array(
-				'user' => $datos['txtUsuario'],
-				'pass' => $datos['txtpass'],
-				'idEmpleado' => $datos['cbbEmpleados'],
-				'idAcceso' => $datos['cbbRol'],
-				'estado'=>1,
-				'fechaRegistro' => $fecha
-				);
-			if($this->db->insert('tbl_users', $data)){
-				return true;
-			}
-			else{
+			$verificar = $datos['txtUsuario'];			
+			$this->db->where("tbl_users.user", $verificar);
+			$result = $this->db->get("tbl_users");
+			if($result->num_rows() > 0)
+			{				
 				return false;
+			}
+			else
+			{
+				$data =array(
+					'user' => $datos['txtUsuario'],
+					'pass' => $datos['txtpass'],
+					'idEmpleado' => $datos['cbbEmpleados'],
+					'idAcceso' => $datos['cbbRol'],
+					'estado'=>1,
+					'fechaRegistro' => $fecha
+					);
+				if($this->db->insert('tbl_users', $data))
+				{
+					return true;
 				}
+				else
+				{
+					return false;
+				}
+			}
 
 			}
 			else{

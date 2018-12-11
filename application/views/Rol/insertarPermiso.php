@@ -54,14 +54,14 @@
             </div>
             <div class="panel-body">
               <!-- Formulario del empleado  -->
-              <form method="post" action="<?= base_url()?>Rol/Guardar" autocomplete="off" id="FormNuevoPermiso">
+              <form method="post" action="<?= base_url()?>Rol/Guardar" autocomplete="off" id="FormNuevoPermiso" name="FormNuevoPermiso">
                 <div class="margn">  
                     <div class="row">
                        <div class="form-group col-md-5">
                          <div class="mar_che_cobrar2" style="padding: 15px;">                 
                            <label for="txtNombre">Seleccionar el tipo de acceso</label>
                             <select id="idPermiso" name="idPermiso" onchange="validar(this.value)" class="select" data-placeholder="Elige un credito...">
-                              <option value="">.::Seleccionar::.</option>
+                              <option value="1">.::Seleccionar::.</option>
                               <?php
                                 foreach ($datosRol->result() as $c) {
                                   # code...
@@ -77,6 +77,18 @@
                       </div>                
                     </div>                 
                   <div class="row">
+                    <div class="alert alert-warning" role="alert" id="msj" style="display: none;">
+                      <h4 class="alert-heading">Aviso!</h4>
+                      <hr>
+                      <p class="mb-0">El rol que ha seleccionado ya tiene permisos asignados.</p>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" id="msjSelect">
+                      <h4 class="alert-heading">Aviso!</h4>
+                      <hr>
+                      <p class="mb-0">Selecione un rol.</p>
+                    </div>
+                    
                     <div id="divPermiso" style="display: none;">
                       <!-- trabajando -->
                          <div class="col-md-12 col-sm-12 col-xs-12">
@@ -135,7 +147,7 @@
 
 $(document).ready(function() {
     $("#submit").on("click", function() {
-        var condiciones = $("#menu").is(":checked");
+        var condiciones = $('input[type="checkbox"]').is(":checked");        
         if (!condiciones) {
             $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Por favor seleccione un Permiso');
             event.preventDefault();
@@ -147,23 +159,34 @@ $(document).ready(function() {
 
     //alert('id'+$('#idCredito').val());
     ide = $('#idPermiso').val();
-    //cargar el ultimo pago si lo hay si no carga los datos del credito directamente
-    $.ajax({
-      url:"<?= base_url()?>Rol/validarPermisos",
-      type:"GET",
-      data:{Id:ide},
-      success:function(respuesta){
-        var registro = eval(respuesta);
-       // alert('aaaaa');
-        if (registro.length > 0)
-        {
-          $("#divPermiso").hide(); 
-        }
-        else
-        { 
-          $("#divPermiso").show(); 
-        }
-      }//cierre succes
-    }); //cierre de ajax
+    if(ide != "1")
+    {   
+      //cargar el ultimo pago si lo hay si no carga los datos del credito directamente
+      $.ajax({
+        url:"<?= base_url()?>Rol/validarPermisos",
+        type:"GET",
+        data:{Id:ide},
+        success:function(respuesta){
+          var registro = eval(respuesta);
+         // alert('aaaaa');
+          if (registro.length > 0)
+          {
+            $("#msjSelect").hide('slow/1000/slow');
+            $("#msj").show('slow/1000/slow');
+            $("#divPermiso").hide('slow/1000/slow'); 
+          }
+          else
+          { 
+            $("#msjSelect").hide('slow/1000/slow');
+            $("#msj").hide('slow/1000/slow');
+            $("#divPermiso").show('slow/1000/slow'); 
+          }
+        }//cierre succes
+      }); //cierre de ajax
+     }else{
+      $("#msj").hide('slow/1000/slow');
+      $("#divPermiso").hide('slow/1000/slow'); 
+      $("#msjSelect").show('slow/1000/slow');
+     }
   }//cierre de la funcion change
 </script>

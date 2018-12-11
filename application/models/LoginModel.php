@@ -14,6 +14,7 @@ class LoginModel extends CI_Model
 	{
 		$this->db->where("user", $user);
 		$this->db->where("pass", $pass);
+		$this->db->where("estado", 1);
 		$resultado = $this->db->get("tbl_users");
 		if($resultado->num_rows() > 0)
 		{
@@ -28,6 +29,7 @@ class LoginModel extends CI_Model
 			$this->db->join("tbl_accesos", "tbl_users.idAcceso = tbl_accesos.idAcceso");
 			$this->db->where("tbl_users.idEmpleado", $resultado->row()->idEmpleado);
 			$this->db->where("tbl_users.idAcceso", $resultado->row()->idAcceso);
+			$this->db->where("tbl_accesos.estado", 1);
 			$result = $this->db->get();
 			return $result->row();
 		}
@@ -35,12 +37,6 @@ class LoginModel extends CI_Model
 		{
 		 	return false;
 		}		
-	}
-	// public function Ac($acceso)
-	// {
-	// 	$consulta = "SELECT m.html FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu WHERE p.idAcceso = '$acceso' AND p.permiso = '1'";
-	// 	$datos =  $this->db->query($consulta);
-	// 	return $datos;			
-	// }	
+	}	
 }
 ?>
