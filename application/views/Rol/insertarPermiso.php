@@ -58,9 +58,9 @@
                 <div class="margn">  
                     <div class="row">
                        <div class="form-group col-md-5">
-                         <div class="mar_che_cobrar2" style="padding: 15px;">                 
+                         <div class="mar_che_cobrar2" style="padding: 15px; border-radius: 5px;">                 
                            <label for="txtNombre">Seleccionar el tipo de acceso</label>
-                            <select id="idPermiso" name="idPermiso" onchange="validar(this.value)" class="select" data-placeholder="Elige un credito...">
+                            <select id="idPermiso" name="idPermiso" onchange="validar(this.value)" class="select" data-placeholder="Elige un acceso...">
                               <option value="1">.::Seleccionar::.</option>
                               <?php
                                 foreach ($datosRol->result() as $c) {
@@ -71,24 +71,38 @@
                             </select>
                           </div>
                       </div>                
-                      <div class="col-md-4"></div>
-                      <div class="col-md-3" align="right">
-                          <img src="<?= base_url()?>plantilla/images/original.png" class="img-responsive ngg" alt="Logo">
+                      <div class="col-md-3"></div>
+                      <div class="col-md-4" align="right">
+                          <img src="<?= base_url()?>plantilla/images/prueba.png" class="img-thumbnail">
                       </div>                
                     </div>                 
-                  <div class="row">
                     <div class="alert alert-warning" role="alert" id="msj" style="display: none;">
-                      <h4 class="alert-heading">Aviso!</h4>
+                      <div class="row">
+                        <div class="col-md-11">
+                          <h4>Aviso!</h4> 
+                        </div>
+                        <div class="col-md-1" align="right">
+                            <i class="fa fa-ban fa-lg"></i>
+                        </div>
+                      </div>
                       <hr>
-                      <p class="mb-0">El rol que ha seleccionado ya tiene permisos asignados.</p>
+                      <p>El rol que ha seleccionado ya tiene permisos asignados.</p>
                     </div>
 
                     <div class="alert alert-info" role="alert" id="msjSelect">
-                      <h4 class="alert-heading">Aviso!</h4>
+                      <div class="row">
+                        <div class="col-md-11">
+                          <h4>Aviso!</h4> 
+                        </div>
+                        <div class="col-md-1" align="right">
+                            <i class="fa fa-info-circle fa-lg"></i>
+                        </div>
+                      </div>
                       <hr>
-                      <p class="mb-0">Selecione un rol.</p>
+                      <p>Por favor selecione un rol al cual desea asignarle permisos.</p>
                     </div>
                     
+                  <div class="row">
                     <div id="divPermiso" style="display: none;">
                       <!-- trabajando -->
                          <div class="col-md-12 col-sm-12 col-xs-12">

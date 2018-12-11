@@ -83,7 +83,7 @@
             <div class="panel-body">
               <!-- Formulario del empleado  -->
               <form method="post" action="<?= base_url()?>Pagos/InsertarPago" autocomplete="off" id="FrmPagos">
-                <div class="margn">
+                <div style="padding-left: 38px; padding-right: 38px; border: 1px solid #D5DBDB; border-radius: 5px;">
                   <div class="row">
                   <!--CAMPOS OCULTOS-->
                   <?php 
@@ -94,8 +94,10 @@
                   <input type="hidden" name="fechaCajaChica" value="<?= $caja->fechaCajaChica?>">
                   <input type="hidden" name="cantidadApertura" value="<?= $caja->cantidadApertura?>">
                   <!--FIN DE LOS CAMPOS OCULTOS-->
-                    <div class="form-group col-md-12">
-                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito..." required data-parsley-required-message="Por favor, seleccione un credito">
+                    <div class="form-group col-md-6">
+                      <div style="margin-top: 7px;">
+                        <label>Créditos</label>
+                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un crédito..." required data-parsley-required-message="Por favor, seleccione un crédito">
                         <option value="">.::Seleccione un crédito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {
@@ -107,7 +109,28 @@
                           }
                         ?>
                       </select>
+                    </div>
                     </div>                
+                    <div class="col-md-6" align="right">
+                      <div style="padding-bottom: 7px; padding-top: 7px;">
+                        <img src="<?= base_url()?>plantilla/images/tarjeta-de-credito.png" class="img-responsive img-thumbnail" alt="Pago" style="width: 70px;">
+                      </div>
+                    </div>                
+                  </div>
+                </div>
+                <br>
+                <div class="margn">
+                  <div id="AlertNada" class="alert alert-info" role="alert">
+                    <div class="row">
+                      <div class="col-md-11">
+                        <h4>Aviso!</h4> 
+                      </div>
+                      <div class="col-md-1" align="right">
+                          <i class="fa fa-info-circle fa-lg"></i>
+                      </div>
+                    </div>
+                    <hr>
+                    <p>Por favor selecione un crédito al cual desea asignar el pago.</p>
                   </div>
                    <div id="infor" class="alert alert-success" style="display:none;">
                       <h4>Información</h4>
@@ -216,6 +239,12 @@ $(document).on('ready', function(){
   $('#idCredito').on('change', function(){
     //alert('id'+$('#idCredito').val());
     ide = $('#idCredito').val();
+    if(ide == ""){
+     $('#AlertNada').show('slow/1000/slow');
+     $('#infor').hide('slow/1000/slow');
+     $('#DivDatosPagos').hide('slow/1000/slow');
+    }
+    else{
     //cargar el ultimo pago si lo hay si no carga los datos del credito directamente
     $.ajax({
       url:"<?= base_url()?>Pagos/CargarUltimoPago",
@@ -235,8 +264,9 @@ $(document).on('ready', function(){
              $('#totalAb').val(registro[i]['totalAbonado']);
              var cpendiente = registro[i]['capital']-registro[i]['totalAbonado'];
              $('#capitalPendiente1').val(cpendiente);
-             document.getElementById('infor').style.display='block';
-             document.getElementById('DivDatosPagos').style.display='block';
+              $('#AlertNada').hide('slow/1000/slow');
+              $('#infor').show('slow/1000/slow');
+              $('#DivDatosPagos').show('slow/1000/slow');
           }
         }
         else{
@@ -258,8 +288,9 @@ $(document).on('ready', function(){
                   $('#totalAb').val(registro[i]['totalAbonado']);
                   var cpendiente = registro[i]['capital']-registro[i]['totalAbonado'];
                   $('#capitalPendiente1').val(cpendiente);
-                  document.getElementById('infor').style.display='block';
-                  document.getElementById('DivDatosPagos').style.display='block';
+                    $('#AlertNada').hide('slow/1000/slow');
+                    $('#infor').show('slow/1000/slow');
+                    $('#DivDatosPagos').show('slow/1000/slow');
                 }//fin del for
             }//fin del if
           }//fin de success
@@ -267,6 +298,7 @@ $(document).on('ready', function(){
         }//fin del else
       }//cierre succes
     }); //cierre de ajax
+  }
   });//cierre de la funcion change
   //FUNCION PARA CALCULAR LOS DIAS------------------------------
   $('#fechaPago').on('change', function(){

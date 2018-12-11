@@ -46,13 +46,13 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
+                                                            <span class="input-group-addon"><img src="<?= base_url()?>plantilla/images/bloquear1.png"></span>
                                                             <input class="form-control input-lg" type="text" name="user" id="user" required="" placeholder="Usuario">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
+                                                            <span class="input-group-addon"><img src="<?= base_url()?>plantilla/images/bloquear.png"></span>
                                                             <input class="form-control input-lg" type="password" name="pass" id="pass" required="" placeholder="Contraseña">
                                                         </div>
                                                     </div>
@@ -61,7 +61,7 @@
                                             
                                             <div class="form-group text-center m-t-30">
                                                 <div class="col-xs-12">
-                                                    <button class="btn btn-default btn-lg w-lg waves-effect waves-light" type="submit"><i class="fa fa-sign-in fa-lg"></i> <b>ENTRAR</b></button>
+                                                    <button class="btn btn-default btn-lg w-lg waves-effect waves-light" type="submit"><img src="<?= base_url()?>plantilla/images/entrar.png"><b> ENTRAR</b></button>
                                                 </div>
                                             </div>
                                         </form> 

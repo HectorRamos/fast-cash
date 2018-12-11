@@ -34,7 +34,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><img src="<?= base_url() ?>plantilla/images/salida.png">  Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -67,7 +67,7 @@
                                 <a href="<?= base_url() ?>Home/Main" class="waves-effect active"><i class="fa fa-home fa-lg"></i><span> Inicio</span></a>
                             </li>
                         <?php
-                            $conn = mysqli_connect("localhost", "root", "123456", "db_fastcash");
+                            $conn = mysqli_connect("localhost", "root", "", "db_fastcash");
                             if (!$conn){die("Connection failed: " . mysqli_connect_error());}
                             else{
                                 mysqli_query($conn, "SET CHARACTER SET 'utf8'");

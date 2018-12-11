@@ -40,11 +40,11 @@
                                           <center>
                                         <?php 
                                           if($detalle->urlImg==""){
-                                            echo "<div style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom1' width='90' src='".base_url()."plantilla/images/user1.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Sin foto</label>";
+                                            echo "<div style='z-index: 999;'><img  class='img-thumbnail img-responsive zoom1' width='70' src='".base_url()."plantilla/images/user1.png' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Sin foto</label>";
                                           }
                                           else {
                                           ?>
-                                            <div style='z-index: 999;'><img class='img-thumbnail img-responsive zoom' width='90' src='<?=base_url()?><?= $detalle->urlImg?>' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Foto</label>
+                                            <div style='z-index: 999;'><img class='img-thumbnail img-responsive zoom' width='87' src='<?=base_url()?><?= $detalle->urlImg?>' alt='Imagen del Cliente' style='z-index: 99; position: relative;'></img></div><label>Foto</label>
                                         <?php
                                           }
                                         ?>
@@ -140,20 +140,20 @@
                                   if (sizeof($Pagos->result())>0){
                                   ?>
                                   <table id="datatable" class="table">
-                                    <thead class="thead-dark thead">
+                                    <thead class="thead-dark thead thead1">
                                       <tr class="tr tr1">
-                                        <th class="th" scope="col">#</th>
-                                        <th class="th" scope="col">Total Pago</th>
-                                        <th class="th" scope="col">IVA</th>
-                                        <th class="th" scope="col">Interes</th>
-                                        <th class="th" scope="col">Abono a capital</th>
-                                        <th class="th" scope="col">Capital pendiente</th>
-                                        <th class="th" scope="col">Días pagados</th>
-                                        <th class="th" scope="col">Fecha de pago</th>
-                                        <th class="th" scope="col">Acción</th>
+                                        <th class="th th1" scope="col">#</th>
+                                        <th class="th th1" scope="col">Total Pago</th>
+                                        <th class="th th1" scope="col">IVA</th>
+                                        <th class="th th1" scope="col">Interes</th>
+                                        <th class="th th1" scope="col">Abono a capital</th>
+                                        <th class="th th1" scope="col">Capital pendiente</th>
+                                        <th class="th th1" scope="col">Días pagados</th>
+                                        <th class="th th1" scope="col">Fecha de pago</th>
+                                        <th class="th th1" scope="col">Acción</th>
                                       </tr>
                                     </thead>
-                                    <tbody class="tbody">
+                                    <tbody class="tbody tbody1">
                                     <?php
                                     $i = 0;
                                     if(!empty($Pagos)){
@@ -161,14 +161,14 @@
                                     $i = $i +1;
                                       ?>
                                       <tr class="tr tr1">
-                                      <td class="td" data-label="#"><b><?= $i?></b></td>
-                                      <td class="td" data-label="Total Pago">$ <?= $listPagos->totalPago?></td>
-                                      <td class="td" data-label="IVA">$ <?= $listPagos->iva?></td>
-                                      <td class="td" data-label="Interes">$ <?= $listPagos->interes?></td>
-                                      <td class="td" data-label="Abono a capital">$ <?= $listPagos->abonoCapital?></td>
-                                      <td class="td" data-label="Capital pendiente">$ <?= $listPagos->capitalPendiente?></td>
-                                      <td class="td" data-label="Dias pagados"><?= $listPagos->diasPagados?></td>
-                                      <td class="td" data-label="Fecha de pago"><?= $listPagos->fechaPago?></td>
+                                      <td class="td td1" data-label="#"><b><?= $i?></b></td>
+                                      <td class="td td1" data-label="Total Pago">$ <?= $listPagos->totalPago?></td>
+                                      <td class="td td1" data-label="IVA">$ <?= $listPagos->iva?></td>
+                                      <td class="td td1" data-label="Interes">$ <?= $listPagos->interes?></td>
+                                      <td class="td td1" data-label="Abono a capital">$ <?= $listPagos->abonoCapital?></td>
+                                      <td class="td td1" data-label="Capital pendiente">$ <?= $listPagos->capitalPendiente?></td>
+                                      <td class="td td1" data-label="Dias pagados"><?= $listPagos->diasPagados?></td>
+                                      <td class="td td1" data-label="Fecha de pago"><?= $listPagos->fechaPago?></td>
                                       <td class="td td1" data-label="Imprimir comprobante">
                                         <a href="" title='Imprimir' data-toggle="tooltip" class='waves-effect waves-light ver'><i class='fa fa-print'></i></a>
                                       </td>
