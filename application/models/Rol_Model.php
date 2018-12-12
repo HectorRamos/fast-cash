@@ -20,7 +20,7 @@ class Rol_Model extends CI_Model{
 
 	public function obtenerPermisos()
 	{	
-		$query = "SELECT p.idPermiso, p.permiso,a.descripcion, a.tipoAcceso, a.idAcceso, m.idMenu, count(*) AS 'NumeroMenus' FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu GROUP BY a.idAcceso ORDER BY p.idPermiso DESC";
+		$query = "SELECT p.idPermiso, p.permiso,a.descripcion, a.tipoAcceso, a.idAcceso, a.estado, m.idMenu, count(*) AS 'NumeroMenus' FROM tbl_permisos as p INNER JOIN tbl_accesos as a ON p.idAcceso = a.idAcceso INNER JOIN tbl_menu as m ON p.idMenu = m.idMenu GROUP BY a.idAcceso ORDER BY p.idPermiso DESC";
 		$data =  $this->db->query($query);
 		return $data;
 	}

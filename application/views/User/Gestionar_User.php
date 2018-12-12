@@ -85,8 +85,9 @@
                                                      $tipoAccesoN = "'".$user->tipoAcceso."'";
                                                     $c = $c + 1;
                                                       # code...
+                                                      if($user->estadoAcceso == 0){echo '<tr class="tr tr1 alert alert-danger">';}else{echo '<tr class="tr tr1">';}
                                                   ?>
-                                                  <tr class="tr tr1">
+                                                  
                                                   <td class="td td1"  width="150"><b><?= $c ?></b></td>
                                                   <td class="td td1"><?= $user->nombreEmpleado." ".$user->apellidoEmpleado?></td>
                                                   <td class="td td1"><span class='label label-success'><?= $user->user?></span></td>

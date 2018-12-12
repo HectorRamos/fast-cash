@@ -78,8 +78,8 @@
                                                   foreach ($datosPermisos->result() as  $permiso) {
                                                     $c = $c + 1;
                                                       # code...
+                                                      if($permiso->estado == 0){echo '<tr class="tr tr1 alert alert-danger">';}else{echo '<tr class="tr tr1">';}
                                                   ?>
-                                                  <tr class="tr tr1">
                                                   <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $c ?></b></td>
                                                   <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
                                                   <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>

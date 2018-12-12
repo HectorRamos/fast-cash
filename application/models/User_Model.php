@@ -23,6 +23,7 @@ class User_Model extends CI_Model{
 		$this->db->select("
 							tbl_users.*, 
 							tbl_accesos.*,
+							tbl_accesos.estado as estadoAcceso,
 							tbl_empleados.*
 						");
 		$this->db->from("tbl_users");
