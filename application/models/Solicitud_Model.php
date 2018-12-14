@@ -302,7 +302,7 @@ class Solicitud_Model extends CI_Model
 		{
 			$idSolicitud = $datos['id_solicitud'];
 			$codigoCredito = $datos['codigo_credito'];
-			$tipoCredito = $datos['nombre_credito'];
+			$tipoCredito = $datos['tipo_credito'];
 			$codigoTipoCredito = " ";
 			$montoTotal = $datos['monto_dinero'];
 			$totalAbonado = 0;
