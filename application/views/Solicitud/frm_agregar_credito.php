@@ -181,7 +181,7 @@
       url:"<?= base_url()?>Documentos/SubirDocumentos",
       acceptedFiles : ".doc, .docx, .pdf",
       maxFilesize: 2,
-      maxFiles:2,
+      maxFiles:5,
       init:function(){
           var self = this;
           // config
@@ -237,7 +237,7 @@
     // Funciones para capturar el codigo del prestamo y calcular nueva fecha de vencimiento
 
     // Bloqueando las cajas de codigo de credito y fecha de vencimiento
-    //$("#codigo_credito").prop('readonly', true);
+    $("#codigo_credito").prop('readonly', true);
     $("#codigo_tipo_credito").prop('readonly', true);
     $("#fecha_de_vencimiento").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
