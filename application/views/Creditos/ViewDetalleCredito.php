@@ -258,7 +258,6 @@
         var totalPago = $(this).parents("tr").find("td")[1].innerHTML
         var iva = $(this).parents("tr").find("td")[2].innerHTML;
         var interes = $(this).parents("tr").find("td")[3].innerHTML;
-        alert(cliente+capitalp+abono+totalPago+iva+interes);
         var HTML="<img src='<?= base_url()?>plantilla/images/fast_cash.png' height='75' width='100'><div class='row text-center'><h1>FAST CASH</h1><p>Gocaaja group SA CV</p><p>Comprobante de pago</p></div>"
         ;
         HTML +="<p><b>cliente: </b></>"+cliente;
