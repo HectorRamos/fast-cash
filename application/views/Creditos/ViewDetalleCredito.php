@@ -54,7 +54,7 @@
                                   </div>
                                   <div class="row ">
                                     <div class="col-md-4">
-                                       <p><b>Nombre del cliente: </b><?= $detalle->Nombre_Cliente?> <?= $detalle->Apellido_Cliente?></p>
+                                       <p><b>Nombre del cliente: </b><p  id="NombreCliente"><?= $detalle->Nombre_Cliente?> <?= $detalle->Apellido_Cliente?></p></p>
                                     </div>
                                     <div class="col-md-4">
                                     <p><b>Numero de DUI: </b><?= $detalle->Dui_cliente?></p>
@@ -75,7 +75,7 @@
                                   <br>
                                   <!--========================= INFORMACION DEL CREDITO-->
                                   <div class="row margn">
-                                  <h4>Información del crédito</h4>
+                                  <h4>Información de las amortización</h4>
                                   <div class="row">
                                     <div class="col-md-4">
                                        <p><b>Capital: </b>$ <?= $detalle->capital?> </p>
@@ -100,7 +100,7 @@
                                   </div>
                                   <div class="row">
                                     <div class="col-md-4">
-                                      <p><b>Total abonado: </b>$ <?= $detalle->totalAbonado?></p>
+                                      <p id="totalAbonado"><b>Total abonado: </b>$ <?= $detalle->totalAbonado?></p>
                                     </div>
                                     <div class="col-md-4">
                                       <p><b>Saldo: </b>$ <?= $detalle->ivaInteresCapital-$detalle->totalAbonado?></p>
@@ -119,6 +119,10 @@
                                     <div class="col-md-4">
                                       <p><b>Fecha de vencimiento: </b><?= $detalle->fechaVencimiento?></p>
                                     </div>
+                                  </div>
+
+                                  <div class="row alert-success" style="margin: 10px; padding:10px">
+                                    <div class="col-md-12"><p><strong>Nota: </strong>Estos calculos es una estimación</p></div>
                                   </div>
                                   </div>
                                   <br>
@@ -170,7 +174,7 @@
                                       <td class="td td1" data-label="Dias pagados"><?= $listPagos->diasPagados?></td>
                                       <td class="td td1" data-label="Fecha de pago"><?= $listPagos->fechaPago?></td>
                                       <td class="td td1" data-label="Imprimir comprobante">
-                                        <a href="" title='Imprimir' data-toggle="tooltip" class='waves-effect waves-light ver'><i class='fa fa-print'></i></a>
+                                        <a title='Imprimir' data-toggle="tooltip" class='waves-effect waves-light ver boton'><i class='fa fa-print'></i></a>
                                       </td>
                                       </tr>
                                     <?php  
@@ -244,6 +248,35 @@
 <!-- ============================================================== -->
 
 <script>
+ $(document).ready(function() {
+
+
+      $(".boton").click(function() {
+        var cliente= $('#NombreCliente').text();
+        var capitalp=$(this).parents("tr").find("td")[5].innerHTML;
+        var abono=$(this).parents("tr").find("td")[4].innerHTML;
+        var totalPago = $(this).parents("tr").find("td")[1].innerHTML
+        var iva = $(this).parents("tr").find("td")[2].innerHTML;
+        var interes = $(this).parents("tr").find("td")[3].innerHTML;
+        var HTML="<img src='<?= base_url()?>plantilla/images/fast_cash.png' height='75' width='100'><div class='row text-center'><h1>FAST CASH</h1><p>Gocaaja group SA CV</p><p>Comprobante de pago</p></div>"
+        ;
+        HTML +="<p><b>cliente: </b></>"+cliente;
+        HTML +="<p><b>Por: </b></>"+totalPago;
+        HTML +="<p><b>Abono capital: </b></>"+abono;
+        HTML +="<p><b>Intereses: </b></>"+interes;
+        HTML +="<p><b>Iva: </b></>"+iva;
+        HTML +="<p><b>Capital pendiente: </b></>"+capitalp+"<br><br>";
+        //HTML +="<p><b>Total pagado: </b></>"+$('#totalAbonado').text();
+        //var elemento=document.getElementById('tablaImprimir');
+        var pantalla=window.open(' ','popimpr');
+        pantalla.document.write('<link href="<?= base_url() ?>plantilla/css/bootstrap.min.css" rel="stylesheet" />');
+        pantalla.document.write(HTML+HTML);
+        pantalla.document.close();
+        pantalla.print();
+        pantalla.close();
+       //$(".ocultarImprimir").show();
+        });
+    });
   function Update(id){
       document.getElementById('IdP').value=id;
     }
@@ -256,4 +289,5 @@
       document.getElementById('IdA').value=id;
       document.getElementById('Codigo').value=codigo;
     }
+
 </script>

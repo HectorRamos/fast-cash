@@ -298,12 +298,9 @@ $(document).on('ready', function(){
   });
     //FUNCION PARA CALCULAR LOS DIAS------------------------------
   $('#fechaPago').on('change', function(){
-    //alert($('#fechaA').val());
-    var fechaIncicio = new Date($('#fechaA').val()).getTime();
-    var fechaFin = new Date($('#fechaPago').val()).getTime();
-    //var fechaFin = new Date('2018-11-13').getTime();
-    //alert(fechaFin);
     if($('#fechaPago').val()!=""){
+      var fechaIncicio = new Date($('#fechaA').val()).getTime();
+      var fechaFin = new Date($('#fechaPago').val()).getTime();
       var dias = fechaFin - fechaIncicio;
       var diasp=Math.round(dias/(1000*60*60*24));
       $('#diasPagados').val(diasp);
@@ -382,6 +379,8 @@ function calculos(){
         $('#totalAbonado').val(newAbono.toFixed(4));
         $('#spanTotalAbonado').text(newAbono.toFixed(4));
         //alert('Nuevo abonado: '+newAbono);
+        $('#vuelto').val(0);
+        $('#spanVuelto').text(0);
         $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
           var abono = $('#totalAbonado').val();
@@ -394,8 +393,8 @@ function calculos(){
           var newTotalAbono= newAbonoCApital + parseFloat(ab); 
           $('#abonoCapital').val(newAbonoCApital);
           $('#spanAbonoCapital').text(newAbonoCApital);
-          $('#vuelto').val(vuelto);
-          $('#spanVuelto').text(vuelto);
+          $('#vuelto').val(vuelto.toFixed(4));
+          $('#spanVuelto').text(vuelto.toFixed(4));
           $('#capitalP').val(newCapitalPendiente);
           $('#spanCapitalP').text(newCapitalPendiente);
           $('#totalAbonado').val(newTotalAbono);

@@ -55,18 +55,20 @@
                       <div class="form-group col-md-6">
                       <label for="tipo_credito">Tipo de Crédito</label>
                         <div class="">
-                          <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de crédito" required data-parsley-required-message="">
-                                <option value="">Seleccione un tipo de crédito</option>
-                                <option value="CPFC">Crédito personal</option>
-                              </select>
+                          <!-- <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de crédito" required data-parsley-required-message="">
+                            <option value="">Seleccione un tipo de crédito</option>
+                            <option value="CPFC">Crédito personal</option>
+                          </select> -->
+                                
+                                <input type="text" class="form-control" id="tipo_credito" name="tipo_credito" value="<?= $amortizacion->tipoCredito ?>">
                         </div>
                       </div>
 <!--                     </div>                    
                     <div class="row"> -->
 
                       <div class="form-group col-md-6">
-                            <label for="">Código tipo de cŕedito</label>
-                            <input type="text" class="form-control" id="codigo_tipo_credito" name="codigo_tipo_credito" placeholder="Código del tipo de crédito">
+                           <label for="">Monto de dinero</label>
+                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->ivaInteresCapital ?>">
 
                             <input type="hidden" class="form-control" id="numero_meses" name="numero_meses" value="<?= $amortizacion->plazoMeses ?>">
                             <input type="hidden" class="form-control" id="nombre_credito" name="nombre_credito">
@@ -79,18 +81,15 @@
 
                     <!-- Segunda Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                             <label for="fecha_apertura">Fecha Apertura</label>
                             <input type="text" class="form-control DateTime" id="fecha_apertura" name="fecha_apertura" placeholder="Fecha de recibido de apertura" data-mask="9999/99/99"  required data-parsley-required-message="">
                       </div>
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                             <label for="">Fecha de vencimiento</label>
                             <input type="text" class="form-control" id="fecha_de_vencimiento" name="fecha_de_vencimiento" placeholder="Fecha de vencimiento">
                       </div>
-                      <div class="form-group col-md-4">
-                            <label for="">Monto de dinero</label>
-                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->ivaInteresCapital ?>">
-                      </div>
+
                     </div>
                     <!-- Fin de la segunda Linea del formulario-->
 
@@ -105,6 +104,7 @@
                <button hidden  type="submit" id="btnGuadar"></button>
               </form>
                   <!-- Subir documentos-->
+
                     <div class="row"  id="divDocs">
                       <div>
                       <form action="/" method="post" class="dropzone" enctype="multipart/form-data" id="dropzone">
@@ -181,7 +181,7 @@
       url:"<?= base_url()?>Documentos/SubirDocumentos",
       acceptedFiles : ".doc, .docx, .pdf",
       maxFilesize: 2,
-      maxFiles:2,
+      maxFiles:5,
       init:function(){
           var self = this;
           // config
@@ -237,7 +237,7 @@
     // Funciones para capturar el codigo del prestamo y calcular nueva fecha de vencimiento
 
     // Bloqueando las cajas de codigo de credito y fecha de vencimiento
-    //$("#codigo_credito").prop('readonly', true);
+    $("#tipo_credito").prop('readonly', true);
     $("#codigo_tipo_credito").prop('readonly', true);
     $("#fecha_de_vencimiento").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
