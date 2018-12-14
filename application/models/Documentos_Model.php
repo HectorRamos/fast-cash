@@ -5,7 +5,6 @@ class Documentos_Model extends CI_Model{
 		if($datos!=null){
 			if($this->db->Insert("tbl_documentos", $datos)){
 				return true;
-
 			}
 			else{
 				return false;

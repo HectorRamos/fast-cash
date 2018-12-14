@@ -104,7 +104,8 @@
                <button hidden  type="submit" id="btnGuadar"></button>
               </form>
                   <!-- Subir documentos-->
-                    <div class="row" style="" id="divDocs">
+
+                    <div class="row"  id="divDocs">
                       <div>
                       <form action="/" method="post" class="dropzone" enctype="multipart/form-data" id="dropzone">
                           <div class="fallback">
@@ -180,7 +181,7 @@
       url:"<?= base_url()?>Documentos/SubirDocumentos",
       acceptedFiles : ".doc, .docx, .pdf",
       maxFilesize: 2,
-      maxFiles:2,
+      maxFiles:5,
       init:function(){
           var self = this;
           // config
@@ -318,6 +319,7 @@
       //codigo = arregloNombre[0][0] + arregloNombre[1][0] + arregloNombre[2][0] + arregloNombre[3][0] + f.getFullYear()  + f.getDate()  + (f.getMonth() +1);
 
       $("#codigo_credito").attr("value", codigo);
+      $("#codigo").attr("value", codigo);
   }
 
 </script>

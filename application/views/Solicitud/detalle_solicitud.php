@@ -758,7 +758,6 @@
         $('#genero_fiador').val("");
         $('#ingreso_fiador').val("");
         $('#direccion_fiador').val("");
-
         $('#nombre_prenda').val("");
         $('#precio_valorado').val("");
         $('#descripcion_prenda').val("");
