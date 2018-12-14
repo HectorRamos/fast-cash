@@ -105,7 +105,7 @@
                <button hidden  type="submit" id="btnGuadar"></button>
               </form>
                   <!-- Subir documentos-->
-                    <div class="row" style="display:none;" id="divDocs">
+                    <div class="row"  id="divDocs">
                       <div>
                       <form action="/" method="post" class="dropzone" enctype="multipart/form-data" id="dropzone">
                           <div class="fallback">
@@ -237,7 +237,7 @@
     // Funciones para capturar el codigo del prestamo y calcular nueva fecha de vencimiento
 
     // Bloqueando las cajas de codigo de credito y fecha de vencimiento
-    $("#codigo_credito").prop('readonly', true);
+    //$("#codigo_credito").prop('readonly', true);
     $("#codigo_tipo_credito").prop('readonly', true);
     $("#fecha_de_vencimiento").prop('readonly', true);
     $("#monto_dinero").prop('readonly', true);
@@ -319,6 +319,7 @@
       //codigo = arregloNombre[0][0] + arregloNombre[1][0] + arregloNombre[2][0] + arregloNombre[3][0] + f.getFullYear()  + f.getDate()  + (f.getMonth() +1);
 
       $("#codigo_credito").attr("value", codigo);
+      $("#codigo").attr("value", codigo);
   }
 
 </script>

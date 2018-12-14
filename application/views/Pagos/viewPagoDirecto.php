@@ -296,25 +296,36 @@ $(document).on('ready', function(){
     $('.bs-callout-info').toggleClass('hidden', !ok);
     $('.bs-callout-warning').toggleClass('hidden', ok);
   });
-  //FUNCION PARA CALCULAR LOS DIAS------------------------------
+    //FUNCION PARA CALCULAR LOS DIAS------------------------------
   $('#fechaPago').on('change', function(){
     //alert($('#fechaA').val());
     var fechaIncicio = new Date($('#fechaA').val()).getTime();
     var fechaFin = new Date($('#fechaPago').val()).getTime();
     //var fechaFin = new Date('2018-11-13').getTime();
-    var dias = fechaFin - fechaIncicio;
-    var diasp=Math.round(dias/(1000*60*60*24));
-    $('#diasPagados').val(diasp);
-    $('#spanDiasPagados').text(diasp);
+    //alert(fechaFin);
+    if($('#fechaPago').val()!=""){
+      var dias = fechaFin - fechaIncicio;
+      var diasp=Math.round(dias/(1000*60*60*24));
+      $('#diasPagados').val(diasp);
+      $('#spanDiasPagados').text(diasp);
+    }
+    else{
+      //alert('entra al else');
+      $('#diasPagados').val(00);
+      $('#spanDiasPagados').text(00);
+    }
+    
     calculos();
   });//CIERRE DE LA FUNCION PARA CALCULAR LOS DIAS
   //FUNCION PARA HACER LOS DEMAS CALCULOS----------------------
   $('#totalPago').on('change', function(){
     calculos();
-
+    
   })
 });//cierre de la funcion principal
+
 //funcion general para realizar todos los calculos
+
 function calculos(){
     var capitalPendiente = $('#capitalPendiente1').val();
     //alert(capitalPendiente);
@@ -322,7 +333,7 @@ function calculos(){
     var diaspa = $('#diasPagados').val();
     var tasa = $('#tasa').val();
     var capitalpendiente1 = $('#capitalPendiente1').val();
-   if(totalp ==""){
+    if(totalp ==""){
       //alert('campo para pagos vacio')
        $('#iva').val(0);
         $('#interes').val(0);
@@ -360,13 +371,16 @@ function calculos(){
         $('#interes').val(Interes.toFixed(4));
         $('#spanInteres').text(Interes.toFixed(4));
         $('#abonoCapital').val(abonoCapital.toFixed(4));
+        $('#spanAbonoCapital').text(abonoCapital.toFixed(4));
         var capitalPen = capitalPendiente - abonoCapital;
         //alert(capitalPen);
         $('#capitalP').val(capitalPen.toFixed(4));
+        $('#spanCapitalP').text(capitalPen.toFixed(4));
         var ta=$('#totalAb').val();
         //alert(ta);
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
+        $('#spanTotalAbonado').text(newAbono.toFixed(4));
         //alert('Nuevo abonado: '+newAbono);
         $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
@@ -389,13 +403,11 @@ function calculos(){
           $('#pagoReal').val(parseFloat(newAbonoCApital)+parseFloat(Interes)+parseFloat(iva));
           swal("Mensaje de notificación!", "El credito seria saldado con este pago");
         }
-        
       } 
       //alert('asas');
     }
 
 }
-
     function limpiar(){
         $('#idCredito').val("");
         $('#fechaPago').val("");

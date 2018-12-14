@@ -210,7 +210,7 @@ class Solicitud extends CI_Controller {
 		$bool = $this->Solicitud_Model->GuardarCredito($datos);
 		if($bool){
 				$this->session->set_flashdata("guardar","El crédito de solicitud a sido <b>aprobado</b> con éxito.");
-				redirect(base_url()."Solicitud/"); 
+				redirect(base_url()."Creditos/"); 
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error el crédito de solicitud no se pudo <b>aprobar</b>.");

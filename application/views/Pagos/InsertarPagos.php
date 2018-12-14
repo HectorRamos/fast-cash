@@ -410,10 +410,19 @@ $(document).on('ready', function(){
     var fechaIncicio = new Date($('#fechaA').val()).getTime();
     var fechaFin = new Date($('#fechaPago').val()).getTime();
     //var fechaFin = new Date('2018-11-13').getTime();
-    var dias = fechaFin - fechaIncicio;
-    var diasp=Math.round(dias/(1000*60*60*24));
-    $('#diasPagados').val(diasp);
-    $('#spanDiasPagados').text(diasp);
+    //alert(fechaFin);
+    if($('#fechaPago').val()!=""){
+      var dias = fechaFin - fechaIncicio;
+      var diasp=Math.round(dias/(1000*60*60*24));
+      $('#diasPagados').val(diasp);
+      $('#spanDiasPagados').text(diasp);
+    }
+    else{
+      //alert('entra al else');
+      $('#diasPagados').val(00);
+      $('#spanDiasPagados').text(00);
+    }
+    
     calculos();
   });//CIERRE DE LA FUNCION PARA CALCULAR LOS DIAS
   //FUNCION PARA HACER LOS DEMAS CALCULOS----------------------
@@ -439,6 +448,7 @@ function calculos(){
         $('#abonoCapital').val(0);
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
+
     }
     else{
       if(diaspa==""){
@@ -469,13 +479,16 @@ function calculos(){
         $('#interes').val(Interes.toFixed(4));
         $('#spanInteres').text(Interes.toFixed(4));
         $('#abonoCapital').val(abonoCapital.toFixed(4));
+        $('#spanAbonoCapital').text(abonoCapital.toFixed(4));
         var capitalPen = capitalPendiente - abonoCapital;
         //alert(capitalPen);
         $('#capitalP').val(capitalPen.toFixed(4));
+        $('#spanCapitalP').text(capitalPen.toFixed(4));
         var ta=$('#totalAb').val();
         //alert(ta);
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
+        $('#spanTotalAbonado').text(newAbono.toFixed(4));
         //alert('Nuevo abonado: '+newAbono);
         $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
@@ -498,7 +511,6 @@ function calculos(){
           $('#pagoReal').val(parseFloat(newAbonoCApital)+parseFloat(Interes)+parseFloat(iva));
           swal("Mensaje de notificación!", "El credito seria saldado con este pago");
         }
-        
       } 
       //alert('asas');
     }
