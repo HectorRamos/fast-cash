@@ -20,11 +20,12 @@ class Solicitud extends CI_Controller {
 		$this->load->view('Base/footer');
 	}
 
-	public function CrearSolicitud()
+	public function CrearSolicitud($r)
 	{
+		$s = $r;
 		$plazos = $this->Solicitud_Model->obtenerPlazos();
 		$clientes = $this->Solicitud_Model->obtenerClientes();
-		$data = array('plazos' => $plazos,'clientes' => $clientes);
+		$data = array('plazos' => $plazos,'clientes' => $clientes, "tipoSolicitud" => $s);
 
 		$this->load->view('Base/header');
 		$this->load->view('Base/nav');
@@ -210,7 +211,7 @@ class Solicitud extends CI_Controller {
 		$bool = $this->Solicitud_Model->GuardarCredito($datos);
 		if($bool){
 				$this->session->set_flashdata("guardar","El crédito de solicitud a sido <b>aprobado</b> con éxito.");
-				redirect(base_url()."Solicitud/"); 
+				redirect(base_url()."Creditos/"); 
 		}
 		else{
 			$this->session->set_flashdata("errorr","Error el crédito de solicitud no se pudo <b>aprobar</b>.");

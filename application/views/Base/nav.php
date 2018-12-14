@@ -34,7 +34,7 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><img src="<?= base_url() ?>plantilla/images/salida.png">  Cerrar Sesión</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -85,6 +85,7 @@
                 </div>
             </div>
             <!-- Left Sidebar End --> 
+
             <!--MODAL PARA ELIMINAR DATOS-->
 <div class="modal fade modal_opcion_solicitud" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -100,7 +101,7 @@
                         <div class="margn">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <a href="<?= base_url() ?>Solicitud/CrearSolicitud" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #117864; border-color: #117864;"><font style="color: #fff;"><i class="fa fa-file-text-o fa-lg"></i> Credito Popular</font></a>
+                                    <a href="<?= base_url() ?>Solicitud/CrearSolicitud/1" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #117864; border-color: #117864;"><font style="color: #fff;"><i class="fa fa-file-text-o fa-lg"></i> Credito Popular</font></a>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <a href="#" title="Nuevo" data-toggle="tooltip" class="btn btn-success btn-block btn-lg waves-effect waves-light m-d-5" style="background-color: #006064; border-color: #006064;"><font style="color: #fff;"><i class="fa fa-paste fa-lg"></i> Credito Falta Nombre</font></a>

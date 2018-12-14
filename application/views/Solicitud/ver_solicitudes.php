@@ -134,6 +134,12 @@
                                         echo "<a title='Editar' data-toggle='tooltip' href='".base_url()."Solicitud/FrmActualizarSolicitud/".$solicitudes->idSolicitud."' class='waves-effect waves-light editar'><i class='fa fa-pencil-square'></i></a>";
                                         echo "<a title='Eliminar' onclick='Delete($idSolicitud)' class='waves-effect waves-light eliminar' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_eliminar_solicitud'><i class='fa fa-times-circle'></i></a>";
                                        }
+
+                                       if ($solicitudes->idEstadoSolicitud == 4)
+                                       {
+                                        echo "<a title='Eliminar' onclick='Delete($idSolicitud)' class='waves-effect waves-light eliminar' data-id='$idSolicitud' data-toggle='modal' data-target='.modal_eliminar_solicitud'><i class='fa fa-times-circle'></i></a>";
+                                       }
+
                                        ?>
                   											
                                         
