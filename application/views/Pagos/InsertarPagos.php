@@ -84,7 +84,7 @@
                     <div class="form-group col-sm-6">
                       <div style="margin-top: 7px;">
                         <label>Créditos</label>
-                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un crédito..." required data-parsley-required-message="Por favor, seleccione un crédito">
+                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Elige un credito...">
                         <option value="">.::Seleccione un crédito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {

@@ -162,7 +162,7 @@
                       </div>
                       <div class="form-group col-md-4">
                             <label for="rubro_empresa">Rubro</label>
-                            <select name="rubro_empresa" id="rubro_empresa" class="select">
+                            <select name="rubro_empresa" id="rubro_empresa" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                               <option value="">Seleccione un tipo de proceso</option>
                               <option value="Textil">Textil</option>
                               <option value="Construcción, estructuras metálicas">Construcción, estructuras metálicas</option>

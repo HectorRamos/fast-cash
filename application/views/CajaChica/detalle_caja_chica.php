@@ -47,69 +47,69 @@
                          	<?php
                          	$efectivo = 0; 
                          	$cheques = 0; 
-								foreach ($datos->result() as $cajaChica)
-								{
-									if ($cajaChica->idTipoPago==1)
-									{
-										if ($cajaChica->salida != 0)
-	                                	{
-											$efectivo = $efectivo - $cajaChica->salida;
-	                                	}
-	                                	else
-	                                	{
-	                                		if ($cajaChica->entrada != 0)
-	                                		{
-												$efectivo = $efectivo + $cajaChica->entrada;
-	                                		}
-	                                	}
-									}
-									else
-									{
-										if ($cajaChica->idTipoPago==2)
-										{
-											if ($cajaChica->salida != 0)
-		                                	{
-												$cheques = $cheques - $cajaChica->salida;
-		                                	}
-		                                	else
-		                                	{
-		                                		if ($cajaChica->entrada != 0)
-		                                		{
-													$cheques = $cheques + $cajaChica->entrada;
-		                                		}
-		                                	}
-										}
-									}
-									// echo "<br>";
-									// echo $cajaChica->fechaCajaChica."<br>";
-									// echo $cajaChica->cantidadApertura."<br>";
-									// echo $cajaChica->saldo."<br>";
-							?>
+            								foreach ($datos->result() as $cajaChica)
+            								{
+            									if ($cajaChica->idTipoPago==1)
+            									{
+            										if ($cajaChica->salida != 0)
+            	                                	{
+            											$efectivo = $efectivo - $cajaChica->salida;
+            	                                	}
+            	                                	else
+            	                                	{
+            	                                		if ($cajaChica->entrada != 0)
+            	                                		{
+            												$efectivo = $efectivo + $cajaChica->entrada;
+            	                                		}
+            	                                	}
+            									}
+            									else
+            									{
+            										if ($cajaChica->idTipoPago==2)
+            										{
+            											if ($cajaChica->salida != 0)
+            		                                	{
+            												$cheques = $cheques - $cajaChica->salida;
+            		                                	}
+            		                                	else
+            		                                	{
+            		                                		if ($cajaChica->entrada != 0)
+            		                                		{
+            													$cheques = $cheques + $cajaChica->entrada;
+            		                                		}
+            		                                	}
+            										}
+            									}
+            									// echo "<br>";
+            									// echo $cajaChica->fechaCajaChica."<br>";
+            									// echo $cajaChica->cantidadApertura."<br>";
+            									// echo $cajaChica->saldo."<br>";
+            							?>
                               <tr class="tr tr1">
-                                <td class="td td1" width="280"><?= $cajaChica->detalleProceso ?></td>
+                                <td class="td td1"><?= $cajaChica->detalleProceso ?></td>
                                 <?php 
                                 	if ($cajaChica->salida != 0)
                                 	{
-                                		echo '<td class="td td1" width="280">$ '.$cajaChica->salida.'</td>';
-                                		echo '<td class="td td1" width="280">Salida</td>';
+                                		echo '<td class="td td1">$ '.$cajaChica->salida.'</td>';
+                                		echo '<td class="td td1">Salida</td>';
                                 	}
                                 	else
                                 	{
                                 		if ($cajaChica->entrada != 0)
                                 		{
-                                			echo '<td class="td td1" width="280">$ '.$cajaChica->entrada.'</td>';
-                                			echo '<td class="td td1" width="280">Entrada</td>';
+                                			echo '<td class="td td1">$ '.$cajaChica->entrada.'</td>';
+                                			echo '<td class="td td1">Entrada</td>';
                                 		}
                                 		else
                                 		{
-                                			echo '<td class="td td1" width="280">---</td>';
-                                			echo '<td class="td td1" width="280">---</td>';
+                                			echo '<td class="td td1">---</td>';
+                                			echo '<td class="td td1">---</td>';
                                 		}
                                 	}
                                 ?>
                                 
-                                <td class="td td1" style="min-width: 80px; width: auto;"><?= $cajaChica->detalle ?></td>
-                                <td class="td td1" style="min-width: 80px; width: auto;">$&nbsp;<?= $cajaChica->saldo ?></td>
+                                <td class="td td1"><?= $cajaChica->detalle ?></td>
+                                <td class="td td1">$&nbsp;<?= $cajaChica->saldo ?></td>
                               </tr>
                             <?php } ?>
                           </tbody>

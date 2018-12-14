@@ -130,7 +130,7 @@
                 <div class="row">
                      <div class="form-group col-md-12">                    
                       <label for="cbbEmpleados">Empleados</label>
-                       <select id="cbbEmpleados" name="cbbEmpleados" class="select" data-placeholder="Elige un empleado ...">
+                       <select id="cbbEmpleados" name="cbbEmpleados" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                           <option value="">.::Seleccionar::.</option>
                           <?php 
                           foreach ($datosEmpleados->result() as $empleados) { 
@@ -213,7 +213,7 @@
                   <div class="row">
                     <div class="form-group col-md-12">                    
                       <label for="cbbRol1">Tipo de Acceso</label>
-                       <select id="cbbRol1" name="cbbRol1" class="form-control" data-placeholder="Elige el tipo de acceso ...">
+                       <select id="cbbRol1" name="cbbRol1" class="form-control">
                           <?php foreach ($datosRol->result() as $rol) { ?>
                            <option value="<?= $rol->idAcceso ?>"><?= $rol->tipoAcceso ?></option> 
                           <?php } ?> 

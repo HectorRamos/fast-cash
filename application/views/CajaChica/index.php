@@ -105,7 +105,7 @@
                     <div class="row">
                     <div class="form-group col-md-6">
                             <label for="cantidad_apertura">Tipo de proceso</label>
-                            <select name="tipo_proceso" id="" class="select">
+                            <select name="tipo_proceso" id="" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                               <option value="">Seleccione un tipo de proceso</option>
                               <option value="Entrada">Entrada de dinero</option>
                               <option value="Salida">Salida de dinero</option>
@@ -113,7 +113,7 @@
                       </div>
                       <div class="form-group col-md-6">
                             <label for="monto_dinero">Forma de pago</label><br>
-                            <select name="forma_pago" id="" class="select">
+                            <select name="forma_pago" id="" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                               <option value="">Seleccione una forma de pago</option>
                               <?php 
                                 foreach ($tipoPago->result() as $tipo)

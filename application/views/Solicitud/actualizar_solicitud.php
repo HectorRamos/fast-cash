@@ -61,7 +61,7 @@
 
                       <div class="form-group col-md-6">
                             <label for="tipo_prestamo">Linea</label>
-                              <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-value="Seleccione un tipo de prestamo">
+                              <select id="tipo_prestamo" name="tipo_prestamo" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                                 <option class="alert-danger" value="<?= $solicitud->id_plazo ?> ">Popular hasta <?= $solicitud->tiempo_plazo ?> meses</option>
                                 <?php 
                                     foreach ($plazos->result() as $plazos)
