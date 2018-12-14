@@ -75,7 +75,7 @@
                                   <br>
                                   <!--========================= INFORMACION DEL CREDITO-->
                                   <div class="row margn">
-                                  <h4>Información del crédito</h4>
+                                  <h4>Información de las amortización</h4>
                                   <div class="row">
                                     <div class="col-md-4">
                                        <p><b>Capital: </b>$ <?= $detalle->capital?> </p>
@@ -119,6 +119,10 @@
                                     <div class="col-md-4">
                                       <p><b>Fecha de vencimiento: </b><?= $detalle->fechaVencimiento?></p>
                                     </div>
+                                  </div>
+
+                                  <div class="row alert-success" style="margin: 10px; padding:10px">
+                                    <div class="col-md-12"><p><strong>Nota: </strong>Estos calculos es una estimación</p></div>
                                   </div>
                                   </div>
                                   <br>
