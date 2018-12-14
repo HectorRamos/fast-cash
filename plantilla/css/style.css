@@ -3903,3 +3903,73 @@ textarea.parsley-error:focus {
   color: #fff;
   background-color: #1E8449;
 }
+  /*********************************Diseño de InsertarPagos.php y viewPagoDirecto.php ********************************/
+  .marPago{
+  padding-left: 200px; 
+  padding-right: 200px; 
+  /*padding-top: 20px; */
+  padding-bottom: 20px;
+  /*border: 1px solid #D5DBDB; */
+  /*border-radius: 5px;*/
+}
+@media(max-width: 1300px){
+  .marPago{
+    padding-left: 0px; 
+    padding-right: 0px; 
+  }
+}
+
+.marPago2{
+  padding-left: 38px; 
+  padding-right: 38px; 
+  border: 1px solid #D5DBDB; 
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+}
+.marPago3{
+  padding-top: 15px; 
+  padding-left: 38px; 
+  padding-bottom: 5px;
+  padding-right: 38px; 
+  border: 1px solid #D5DBDB; 
+  border-radius: 5px;
+}
+.marPago4{
+  border-left: 1px solid #D5DBDB;
+}      
+.mostrLabel{
+    display: none;
+}
+@media(max-width: 800px){
+  .rejiaLabel{
+    display: none;
+  }
+  .marPago4{
+    border-left: none;
+  }
+  .mostrLabel{
+    display: block;
+    font-size: 1.5rem;
+  }
+}
+.margBotones{
+  padding-left: 10px; 
+  padding-right: 10px; 
+  padding-top: 16px; 
+  padding-bottom: 19px;
+  border: 1px solid #D5DBDB; 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+@media(max-width: 600px){
+  .margBotones{
+    border: none; 
+  }
+}
+@media(max-width: 768px){
+  .noneIMG{
+    display: none; 
+  }
+}

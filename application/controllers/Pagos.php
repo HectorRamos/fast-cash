@@ -34,12 +34,12 @@ class Pagos extends CI_Controller
 		$data2 = $this->CajaChica_Model->ObtenerCajaActiva();
 		$bool=$this->Pagos_Model->InsertarPago($datos);
 		if($bool){
-			$this->session->set_flashdata("guardar","Pago insertado con exito.");
+			$this->session->set_flashdata("guardar","El pago se <b>realizo</b> con éxito.");
 			redirect(base_url()."Creditos");
 		}
 		else{
-			$this->session->set_flashdata("errorr","Error el registro no se pudo guardar.");
-			redirect(base_url()."Creditos/");
+			$this->session->set_flashdata("errorr","Error el pago no se pudo <b>realizar</b>.");
+			redirect(base_url()."Creditos");
 		}
 	}
 	public function PagarCredito(){
