@@ -31,19 +31,7 @@
               <div class="table-title">
                 <div class="row">
                   <div class="col-md-5">
-
-                    <?php 
-                        $encabezado = '<h3 class="panel-title">Solicitud de prestamo ';
-                      if ($tipoSolicitud == 1)
-                      {
-                        $encabezado .= 'créditos Popular</h3>';
-                      }
-                      if ($tipoSolicitud == 2)
-                      {
-                        $encabezado .= 'otro crédito</h3>';
-                      }
-                        echo $encabezado;
-                    ?>                
+                    <h3 class="panel-title">Solicitud de prestamo</h3>                 
                   </div>
                 </div>
               </div>
@@ -51,13 +39,6 @@
             <div class="panel-body">
               <form id="formNuevaSolicitud" method="post" action="<?= base_url() ?>Solicitud/GuardarSolicitud" autocomplete="off">
                 <div class="margn">
-                <?php 
-                  if ($tipoSolicitud == 1)
-                      {
-                        $encabezado .= 'créditos Popular</h3>';
-                        echo '<input type="hidden" value="Crédito popular" name="tipoCredito">';
-                      }
-                ?>
                 <!-- Primera Linea del formulario-->
                     <div class="row">
                       <div class="form-group col-md-2">
@@ -90,7 +71,7 @@
 
                       <div class="form-group col-md-6">
                             <label for="tipo_prestamo">Linea</label>
-                              <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-placeholder="Seleccione un tipo de prestamo" >
+                              <select id="tipo_prestamo" name="tipo_prestamo" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
                                 <option value="">Seleccione un tipo de prestamo</option>
                                 <?php 
                                     foreach ($plazos->result() as $plazos)
@@ -122,7 +103,7 @@
                       </div>
                       <div class="form-group col-md-4">
                             <label for="monto_dinero">Monto de dinero</label>
-                            <input type="text" value="0" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" placeholder="Monto de dinero" required data-parsley-required-message="Por favor, ingrese una cantidad de dinero">
+                            <input type="text" value="0" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" placeholder="Monto de dinero">
                       </div>
                     </div>
                     <!-- Fin de la segunda Linea del formulario-->
@@ -159,31 +140,15 @@
                       <div class="btn-group-vertical">
                              <button title="Nuevo Fiador" type="button" class="btn btn-primary waves-effect waves-light m-d-5 btn-custom" id="fiador" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-user-plus fa-lg"></i> Fiador</button>
                              <button title="Nueva Prenda" type="button" class="btn btn-primary waves-effect waves-light m-d-5 btn-custom" id="prenda" data-toggle="modal" data-target="#agregarPrenda"><i class="fa fa-tags fa-lg"></i> Prenda</button>
-                             <?php
-                                if ($tipoSolicitud != 1) {
-                                  echo '<button title="Nueva Hipoteca" type="button" class="btn btn-primary waves-effect waves-light m-d-5 btn-custom" id="hipoteca" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-file-text fa-lg"></i> Hipoteca</button>';
-                                }
-                             ?>
+                             <button title="Nueva Hipoteca" type="button" class="btn btn-primary waves-effect waves-light m-d-5 btn-custom" id="hipoteca" data-toggle="modal" data-target="#agregarFiador"><i class="fa fa-file-text fa-lg"></i> Hipoteca</button>
                       </div>
                       </div>
                     </div>
                     <!-- Fin de la cuarta Linea del formulario-->
-                    <div id="">
-                  <!-- Agregar Fiador -->
-                  <div class="margn" style="display:none" id="mostrarF"><div class="row"><div class="col-md-12"><table class="table" id="fiadores"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>
-                  </tbody></table></div></div></div><br>
-                  <!--Fin Agregar Fiador -->
-
-
-      
-
-                    <!-- Agregar Garantia -->
-                    <div class="margn" style="display:none" id="mostrarG"><div class="row"><div class="col-md-12"><table class="table" id="garantia"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>
+                    <div id="garantia">
                             <!-- <label for="">Id Cliente(Este ira oculto, utual es solo para muestra)</label> -->
-                    </tbody></table></div></div></div><br>
                             <input type="hidden" value="1" class="form-control" id="id_cliente" name="id_cliente" placeholder="">
                             <input type="hidden" value="1" class="form-control" id="numero_cuotas" name="numero_cuotas" placeholder="">
-                    <!-- Fin Agregar Garantia -->
                     </div>
                     <button type="submit" onclick="validarCliente()" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</button>
                      <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
@@ -276,9 +241,6 @@
         <div class="modal-body">
             <form action="" autocomplete="off" id="FormNuevaSolicitudModalFiador">
               <div class="margn">
-              <div class="row alert-danger" style="margin-bottom:5px">
-                <div class="col-md-12" style="padding:5px"><p><strong>Nota: </strong>Todos los campos excepto el email son requeridos</p></div>
-              </div>
                 <div class="row">
                     <div class="form-group col-md-4">
                           <label for="">Nombre</label>
@@ -333,7 +295,7 @@
                     </div>
                 </div>
                 <div align="center">
-                  <button id="btnAgregar" class="btn btn-success waves-effect waves-light m-b-5" type="button" onclick="agregarFiador()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
+                  <button id="btnAgregar" class="btn btn-success waves-effect waves-light m-b-5" type="submit" onclick="agregarFiador()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light m-b-5" ><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
@@ -360,9 +322,6 @@
         <div class="modal-body">
             <form action="" autocomplete="off" id="FormNuevaSolicitudModalPrenda">
               <div class="margn">
-              <div class="row alert-danger" style="margin-bottom:5px">
-                <div class="col-md-12" style="padding:5px"><p><strong>Nota: </strong>Todos los campos son requeridos</p></div>
-              </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                           <label for="">Nombre de la prenda</label>
@@ -380,7 +339,7 @@
                     </div>
                 </div>
                 <div align="center">
-                  <button type="button" class="btn btn-success waves-effect waves-light m-b-5" onclick="agregarPrenda()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
+                  <button type="submit" class="btn btn-success waves-effect waves-light m-b-5" onclick="agregarPrenda()"><i class="fa fa-check-square-o fa-lg"></i> Agregar</button>
                   <button type="reset" class="btn btn-default waves-effect waves-light m-b-5" ><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                   <button type="button" class="btn btn-default waves-effect waves-light m-b-5" data-dismiss="modal" onclick="limpiar()"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
@@ -557,15 +516,15 @@ function agregarFiador()
 
   if (nombre != "" && apellido != "" && dui != "" && nit != "" && telefono != "" && email != "" && nacimiento != "" && genero != "" && ingreso != "" && direccion != "")
   {
-    $("#mostrarF").fadeIn();
+
     fila = '';
-    // fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>';
+    fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>';
     fila += '<tr>';
     fila +=  '<td><strong>Nombre:</strong> '+nombre +" "+ apellido +'</td>';
     fila +=  '<td><strong>Ingreso:</strong> '+"$"+" "+ingreso+'</td>';
     fila +=  '<td><strong>Dirección:</strong> '+direccion+'</td>';
     fila += '</tr>';
-    // fila += '</tbody></table></div></div></div><br>';
+    fila += '</tbody></table></div></div></div><br>';
 
     fila +=  '<td><input type="hidden" name="nombreFiador[]" class="form-control" value="'+nombre+'"></td>';
     fila +=  '<td><input type="hidden" name="apellidoFiador[]" class="form-control" value="'+apellido+'"></td>';
@@ -577,7 +536,7 @@ function agregarFiador()
     fila +=  '<td><input type="hidden" name="generoFiador[]" class="form-control" value="'+genero+'"></td>';
     fila +=  '<td><input type="hidden" name="ingresoFiador[]" class="form-control" value="'+ingreso+'"></td>';
     fila +=  '<td><input type="hidden" name="direccionFiador[]" class="form-control" value="'+direccion+'"></td>';
-    $("#fiadores").append(fila);
+    $("#garantia").append(fila);
    
   }
     $('#nombre_fiador').val("");
@@ -603,15 +562,14 @@ function agregarPrenda()
 
 if (nombre != "" && precio != "" && descripcion != "")
   {
-    $("#mostrarG").fadeIn();
     fila = '';
-    // fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>';
+    fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>';
     fila += '<tr>';
     fila +=  '<td><strong>Nombre:</strong> '+nombre+'</p></td>';
     fila +=  '<td><strong>Precio:</strong> '+"$"+" "+precio+'</p></td>';
     fila +=  '<td><strong>Descripción:</strong> '+descripcion+'</p></td>';
     fila += '</tr>';
-    // fila += '</tbody></table></div></div></div><br>';
+    fila += '</tbody></table></div></div></div><br>';
 
     fila += '<tr>';
     fila +=  '<td><input type="hidden" name="nombrePrenda[]" class="form-control" value="'+nombre+'"></td>';
@@ -661,14 +619,6 @@ function mora()
 
 $(document).ready(function () {
   $('#formNuevaSolicitud').parsley().on('field:validated', function() {
-    var ok = $('.parsley-error').length === 0;
-    $('.bs-callout-info').toggleClass('hidden', !ok);
-    $('.bs-callout-warning').toggleClass('hidden', ok);
-  });
-});
-
-$(document).ready(function () {
-  $('#FormNuevaSolicitudModalFiador').parsley().on('field:validated', function() {
     var ok = $('.parsley-error').length === 0;
     $('.bs-callout-info').toggleClass('hidden', !ok);
     $('.bs-callout-warning').toggleClass('hidden', ok);
