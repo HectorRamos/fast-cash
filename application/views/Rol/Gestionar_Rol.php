@@ -79,21 +79,35 @@
                                                     $c = $c + 1;
                                                     $rol = "'".$permiso->tipoAcceso."'";
                                                       # code...
-                                                      if($permiso->estado == 0){echo '<tr class="tr tr1 alert alert-danger">';}else{echo '<tr class="tr tr1">';}
-                                                  ?>
-                                                  <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $c ?></b></td>
-                                                  <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
-                                                  <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>
-                                                  <td class="td td1" data-label="Acción">
-                                                      
-
-                                                      <a onclick="detalle(<?= $permiso->idAcceso ?>, <?= $rol ?>)" title="Detalle" data-toggle="modal" data-target="#myModalDetalle" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
-
-                                                      <a onclick="del(<?= $permiso->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
-                                                      </td>
-                                                  </tr>
+                                                      if($permiso->estado == 0)
+                                                      {
+                                                      ?>
+                                                      <tr class="tr tr1" title="Permiso denegado" data-toggle="tooltip" style="background: #F9EBEA; text-decoration:line-through;">
+                                                        <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $c ?></b></td>
+                                                        <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
+                                                        <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>
+                                                        <td class="td td1" data-label="Acción">
+                                                          <a onclick="detalle(<?= $permiso->idAcceso ?>, <?= $rol ?>)" title="Detalle" data-toggle="modal" data-target="#myModalDetalle" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
+                                                          <a onclick="del(<?= $permiso->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                        </td>
+                                                      </tr>
+                                                     <?php 
+                                                      }
+                                                      else
+                                                      {
+                                                     ?>
+                                                      <tr class="tr tr1">
+                                                      <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $c ?></b></td>
+                                                      <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
+                                                      <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>
+                                                      <td class="td td1" data-label="Acción">
+                                                          <a onclick="detalle(<?= $permiso->idAcceso ?>, <?= $rol ?>)" title="Detalle" data-toggle="modal" data-target="#myModalDetalle" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
+                                                          <a onclick="del(<?= $permiso->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                        </td>
+                                                      </tr>
                                                   <?php
-                                                  }
+                                                      }
+                                                    }
                                                   }
                                                   ?>
                                                       
@@ -120,7 +134,7 @@
             <div class="modal-body">
             <form method="POST" action="<?= base_url()?>Rol/Detalle" autocomplete="off" id="FormDetalle">
               <div class="margn">
-              <table class="table table-striped" id="Table"></table>                 
+              <table class="table table-striped table-bordered" id="Table"></table>                 
                 <div  align="center">
                   <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
                 </div>
@@ -177,7 +191,7 @@
               {
                 $("#Table tr").remove(); 
                   $.each(dato, function(index, value){
-                      $("#Table").append("<tr><td>" + value.menu + "</td><td><i class='fa fa-check fa-lg' style='color:green;'></i></td></tr>");
+                      $("#Table").append("<tr><td><i class='fa fa-address-book fa-lg' style='color:#5D6D7E;'></i>&nbsp;" + value.menu + "</td><td align='center'><i class='fa fa-check fa-lg' style='color:green;'></i></td></tr>");
                   });
               }
               else

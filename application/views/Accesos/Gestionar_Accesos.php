@@ -82,13 +82,12 @@
                                                       if($accesos->estado == 0)
                                                       {
                                                     ?>
-                                                        <tr class="tr tr1 alert alert-danger">
+                                                        <tr class="tr tr1" title="Acceso denegado" data-toggle="tooltip" style="background: #F9EBEA; text-decoration:line-through;">
                                                         <td class="td td1" data-label="#" style="min-width: 50px; width: auto;"><b><?= $i;?></b></td>
                                                         <td class="td td1" data-label="Estados"><?= $accesos->tipoAcceso?></td>
                                                         <td class="td td1" data-label="Descripción"><?= $accesos->descripcion?></td>
                                                         <td class="td td1" data-label="Acción">
                                                             <a onclick="Habilitar(<?= $accesos->idAcceso?>)" title="Habilitar" class="waves-effect waves-light ver"  data-toggle="modal" data-target=".modal_habilitar_estado">
-                                                              <!-- <span class="label label-success">Habilitar</span> -->
                                                               <i class="fa fa-check-square"></i>
                                                             </a>
                                                             </td>
@@ -228,7 +227,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="mySmallModalLabel">
-                        <i class="fa fa-warning fa-lg text-danger"></i> 
+                        <i class="fa fa-ban fa-lg text-primary"></i> 
                     </h4>
                 </div>
                     <div class="modal-body">

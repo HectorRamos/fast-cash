@@ -85,22 +85,39 @@
                                                      $tipoAccesoN = "'".$user->tipoAcceso."'";
                                                     $c = $c + 1;
                                                       # code...
-                                                      if($user->estadoAcceso == 0){echo '<tr class="tr tr1 alert alert-danger">';}else{echo '<tr class="tr tr1">';}
-                                                  ?>
-                                                  
-                                                  <td class="td td1"  width="150"><b><?= $c ?></b></td>
-                                                  <td class="td td1"><?= $user->nombreEmpleado." ".$user->apellidoEmpleado?></td>
-                                                  <td class="td td1"><span class='label label-success'><?= $user->user?></span></td>
-                                                  <td class="td td1"><span style='color: #2E86C1; text-decoration: underline;'>***********</span></td>
-                                                  <td class="td td1"><?= $user->tipoAcceso?></td>
-                                                  <td class="td td1">
-                                                      <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
-
-                                                      <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
-                                                      </td>
-                                                  </tr>
+                                                      if($user->estadoAcceso == 0)
+                                                      {
+                                                      ?>
+                                                      <tr class="tr tr1" title="Usuario denegado" data-toggle="tooltip" style="background: #F9EBEA; text-decoration:line-through;">
+                                                        <td class="td td1"  width="150"><b><?= $c ?></b></td>
+                                                        <td class="td td1"><?= $user->nombreEmpleado." ".$user->apellidoEmpleado?></td>
+                                                        <td class="td td1"><span class='label label-danger'><?= $user->user?></span></td>
+                                                        <td class="td td1"><span style='color: #E74C3C; text-decoration: underline;'>***********</span></td>
+                                                        <td class="td td1"><?= $user->tipoAcceso?></td>
+                                                        <td class="td td1">
+                                                          <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
+                                                          <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                        </td>
+                                                      </tr>
+                                                      <?php
+                                                       }
+                                                       else
+                                                       {
+                                                      ?>
+                                                      <tr class="tr tr1">
+                                                        <td class="td td1"  width="150"><b><?= $c ?></b></td>
+                                                        <td class="td td1"><?= $user->nombreEmpleado." ".$user->apellidoEmpleado?></td>
+                                                        <td class="td td1"><span class='label label-success'><?= $user->user?></span></td>
+                                                        <td class="td td1"><span style='color: #2E86C1; text-decoration: underline;'>***********</span></td>
+                                                        <td class="td td1"><?= $user->tipoAcceso?></td>
+                                                        <td class="td td1">
+                                                          <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
+                                                          <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
+                                                        </td>
+                                                      </tr>
                                                   <?php
-                                                  }
+                                                      }
+                                                    }
                                                   }
                                                   ?>
                                                       

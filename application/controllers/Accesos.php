@@ -60,7 +60,7 @@ class Accesos extends CI_Controller {
 		$this->load->model('Accesos_Model');
 		$bool=$this->Accesos_Model->HabilitarAcceso($habilitar);
 		if($bool){
-			$this->session->set_flashdata("informa","El acceso a sido <b>habilitado</b> con éxito.");
+			$this->session->set_flashdata("guardar","El acceso a sido <b>habilitado</b> con éxito.");
 			redirect(base_url()."Accesos");
 		}
 		else{
