@@ -30,7 +30,7 @@
             <div class="panel-heading">
               <div class="table-title">
                 <div class="row">
-                  <div class="col-md-5">
+                  <div class="col-md-12">
 
                     <?php 
                         $encabezado = '<h3 class="panel-title">Solicitud de prestamo ';
@@ -90,7 +90,7 @@
 
                       <div class="form-group col-md-6">
                             <label for="tipo_prestamo">Linea</label>
-                              <select class="select" id="tipo_prestamo" name="tipo_prestamo" data-placeholder="Seleccione un tipo de prestamo" >
+                              <select id="tipo_prestamo" name="tipo_prestamo" class="select" data-placeholder="Seleccione un tipo de prestamo" data-live-search="true">
                                 <option value="">Seleccione un tipo de prestamo</option>
                                 <?php 
                                     foreach ($plazos->result() as $plazos)
@@ -276,9 +276,6 @@
         <div class="modal-body">
             <form action="" autocomplete="off" id="FormNuevaSolicitudModalFiador">
               <div class="margn">
-              <div class="row alert-danger" style="margin-bottom:5px">
-                <div class="col-md-12" style="padding:5px"><p><strong>Nota: </strong>Todos los campos excepto el email son requeridos</p></div>
-              </div>
                 <div class="row">
                     <div class="form-group col-md-4">
                           <label for="">Nombre</label>
@@ -310,11 +307,11 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                           <label for="">Fecha de Nacimiento</label>
-                          <input type="text" class="form-control DateTime" id="nacimiento_fiador" name="nacimiento_fiador" placeholder="Fecha de nacimiento">
+                          <input type="text" class="form-control DateTime" id="nacimiento_fiador" name="nacimiento_fiador" placeholder="Fecha de nacimiento" data-mask="999/99/99">
                     </div>
                     <div class="form-group col-md-4">
                           <label for="">Género</label>
-                          <select class="form-control" id="genero_fiador" name="genero_fiador" data-placeholder="Seleccione un género">
+                          <select class="form-control" id="genero_fiador" name="genero_fiador">
                                 <option value="">Seleccione un género</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
@@ -360,9 +357,6 @@
         <div class="modal-body">
             <form action="" autocomplete="off" id="FormNuevaSolicitudModalPrenda">
               <div class="margn">
-              <div class="row alert-danger" style="margin-bottom:5px">
-                <div class="col-md-12" style="padding:5px"><p><strong>Nota: </strong>Todos los campos son requeridos</p></div>
-              </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                           <label for="">Nombre de la prenda</label>
@@ -557,15 +551,17 @@ function agregarFiador()
 
   if (nombre != "" && apellido != "" && dui != "" && nit != "" && telefono != "" && email != "" && nacimiento != "" && genero != "" && ingreso != "" && direccion != "")
   {
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', 'Información agregada.');
+    });
+
     $("#mostrarF").fadeIn();
     fila = '';
-    // fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DEL FIADOR</strong></div></thead><tbody>';
     fila += '<tr>';
     fila +=  '<td><strong>Nombre:</strong> '+nombre +" "+ apellido +'</td>';
     fila +=  '<td><strong>Ingreso:</strong> '+"$"+" "+ingreso+'</td>';
     fila +=  '<td><strong>Dirección:</strong> '+direccion+'</td>';
     fila += '</tr>';
-    // fila += '</tbody></table></div></div></div><br>';
 
     fila +=  '<td><input type="hidden" name="nombreFiador[]" class="form-control" value="'+nombre+'"></td>';
     fila +=  '<td><input type="hidden" name="apellidoFiador[]" class="form-control" value="'+apellido+'"></td>';
@@ -579,7 +575,6 @@ function agregarFiador()
     fila +=  '<td><input type="hidden" name="direccionFiador[]" class="form-control" value="'+direccion+'"></td>';
     $("#fiadores").append(fila);
    
-  }
     $('#nombre_fiador').val("");
     $('#apellido_fiador').val("");
     $('#dui_fiador').val("");
@@ -590,9 +585,11 @@ function agregarFiador()
     $('#genero_fiador').val("");
     $('#ingreso_fiador').val("");
     $('#direccion_fiador').val(""); 
-
-  // $('#agregarFiador').modal('hide');
-     
+  }else{
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Todos los campos excepto el email son requeridos.');
+    });
+  }  
 }
 
 function agregarPrenda()
@@ -603,15 +600,17 @@ function agregarPrenda()
 
 if (nombre != "" && precio != "" && descripcion != "")
   {
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', 'Información agregada.');
+    });
+
     $("#mostrarG").fadeIn();
     fila = '';
-    // fila += '<div class="margn"><div class="row"><div class="col-md-12"><table class="table"><thead><div class="alert alert-success"><strong style="color: #424949;">DATOS DE LA GARANTIA</strong></div></thead><tbody>';
     fila += '<tr>';
     fila +=  '<td><strong>Nombre:</strong> '+nombre+'</p></td>';
     fila +=  '<td><strong>Precio:</strong> '+"$"+" "+precio+'</p></td>';
     fila +=  '<td><strong>Descripción:</strong> '+descripcion+'</p></td>';
     fila += '</tr>';
-    // fila += '</tbody></table></div></div></div><br>';
 
     fila += '<tr>';
     fila +=  '<td><input type="hidden" name="nombrePrenda[]" class="form-control" value="'+nombre+'"></td>';
@@ -621,12 +620,14 @@ if (nombre != "" && precio != "" && descripcion != "")
 
     $("#garantia").append(fila);
 
-  }
     $('#nombre_prenda').val("");
     $('#precio_valorado').val("");
     $('#descripcion_prenda').val("");
-
-  // $('#agregarPrenda').modal('hide');
+  }else{
+    $(document).ready(function(){
+    $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Todos los campos son requeridos.');
+    });
+  }
 }
 
 function limpiar(){

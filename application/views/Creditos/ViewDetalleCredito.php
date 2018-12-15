@@ -121,8 +121,8 @@
                                     </div>
                                   </div>
 
-                                  <div class="row alert-success" style="margin: 10px; padding:10px">
-                                    <div class="col-md-12"><p><strong>Nota: </strong>Estos calculos es una estimación</p></div>
+                                  <div class="alert alert-info" style="margin-top: 10px;">
+                                    <p style="font-size: 1.4rem; color: #000;"><strong>Nota: </strong>Estos calculos son de una estimación.</p>
                                   </div>
                                   </div>
                                   <br>

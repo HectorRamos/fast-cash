@@ -48,7 +48,7 @@
                                     <div class="table-title">
                                         <div class="row">
                                           <div class="col-sm-6">
-                                            <h5 class="panel-title">Gestión de permisos del sistema</h3>
+                                            <h3 class="panel-title">Gestión de permisos del sistema</h3>
                                           </div>
                                           <div class="col-sm-6">
                                               <a href="<?= base_url() ?>Rol/Crear" class="btn btn-primary waves-effect waves-light m-b-5" title="Nuevo" data-toggle="tooltip"><i class="fa fa-plus-circle"></i><span> Nuevo Permiso<span></a>

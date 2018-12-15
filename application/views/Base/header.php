@@ -30,9 +30,10 @@
         <!-- DataTables -->
         <link href="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- Plugins css-->
+        <!-- calendario-->
         <link href="<?= base_url() ?>plantilla/assets/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-        <link href="<?= base_url() ?>plantilla/bootstrap-select.css" rel="stylesheet" type="text/css" />
+        <!-- select -->
+        <link href="<?= base_url() ?>plantilla/assets/select2/select2.css" rel="stylesheet" type="text/css" />
 
         <!-- Modal-Effect -->
         <link href="<?= base_url() ?>plantilla/assets/modal-effect/css/component.css" rel="stylesheet">
@@ -49,7 +50,7 @@
         
         <script src="<?= base_url() ?>plantilla/js/modernizr.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/js/jquery-migrate-1.2.1.min.js"></script>
     </head>
         <body class="fixed-left nicescroll">
         

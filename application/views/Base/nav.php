@@ -32,9 +32,9 @@
                                     </div>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"> </a>
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?= base_url() ?>plantilla/images/user.png" alt="user-img" class="img-circle"></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url();?>Home/loginOut"><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</a></li>
+                                        <li><a href="<?php echo base_url();?>Home/loginOut"><img src="<?= base_url() ?>plantilla/images/salida.png" alt="user-img"> Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -39,7 +39,7 @@ $.notify.addStyle("metro", {
             "border": "1px solid #212121"
         },
         white: {
-            "background-color": "#e6eaed",
+            "background-color": "#FBFCFC",
             "border": "1px solid #ddd"
         }
     }
