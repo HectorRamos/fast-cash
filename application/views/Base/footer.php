@@ -38,10 +38,11 @@
         
         <!-- CUSTOM JS -->
         <script src="<?= base_url() ?>plantilla/js/jquery.app.js"></script>
-
+        <!-- Calendario -->
         <script src="<?= base_url() ?>plantilla/assets/timepicker/bootstrap-datepicker.js"></script>
-        <script src="<?= base_url() ?>plantilla/bootstrap-select.js" type="text/javascript"></script>
-        
+        <!-- SELECT -->
+        <script src="<?= base_url() ?>plantilla/assets/select2/select2.min.js" type="text/javascript"></script>
+        <!-- Mascaras -->
         <script src="<?= base_url() ?>plantilla/assets/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
         <!--Dropzone-->
         <script src="<?= base_url() ?>plantilla/js/dropzone.js"></script>
@@ -123,13 +124,8 @@
         });
 
         // Select2
-        // jQuery(".select").select2({
-        //     width: '100%'
-        // });
-
-        $('.select').selectpicker({
-          liveSearch: true,
-          maxOptions: 1
+        jQuery(".select").select2({
+            width: '100%'
         });
     });
 </script>

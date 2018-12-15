@@ -84,7 +84,7 @@
                     <div class="form-group col-sm-6">
                       <div style="margin-top: 7px;">
                         <label>Créditos</label>
-                      <select id="idCredito" name="idCredito" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
+                      <select id="idCredito" name="idCredito" class="select" data-placeholder="Seleccione un crédito">
                         <option value="">.::Seleccione un crédito::.</option>
                         <?php
                           foreach ($creditos->result() as $c) {

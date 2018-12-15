@@ -21,9 +21,10 @@
         this.$FormEditarEstadoSolicitud = $("#FormEditarEstadoSolicitud");
         this.$FormNuevaSolicitud = $("#formNuevaSolicitud");
         this.$FormNuevaSolicitudModalFiador = $("#FormNuevaSolicitudModalFiador");
-        this.$FormNuevaSolicitudModalPrenda = $("#FormNuevaSolicitudModalPrenda");
         this.$FormEditarSolicitudModalFiadorA = $("#FormEditarSolicitudModalFiadorA");
-        this.$FormEditarSolicitudModalPrendaA = $("#FormEditarSolicitudModalPrendaA");
+        
+        this.$FormNuevaSolicitudModalPrenda = $("#FormNuevaSolicitudModalPrenda");
+        this.$FormEditarSolicitudModalPrenda = $("#FormEditarSolicitudModalPrendaA");
         this.$validarFormAprobarCredito = $("#validarFormAprobarCredito");
         //##################### FIN FORMULARIO DE GESTION DE SOLICITUD #####################
 
@@ -238,6 +239,7 @@
                 nombre_fiador: "required",
                 apellido_fiador: "required",
                 dui_fiador: "required",
+                nit_fiador: "required",
                 telefono_fiador: "required",
                 email_fiador: { email: true },
                 nacimiento_fiador: "required",
@@ -249,8 +251,9 @@
                 nombre_fiador: "Por favor, escriba el nombre",
                 apellido_fiador: "Por favor, escriba el apellido",
                 dui_fiador: "Por favor, digite un número de DUI",
+                nit_fiador: "Por favor, digite un número de NIT",
                 telefono_fiador: "Por favor, digite un número de teléfono",
-                email_fiador: "Por favor, escriba el email del fiador correctamente",
+                email_fiador: "Escriba correctamente el email",
                 nacimiento_fiador: "Por favor, digite una fecha de nacimiento",
                 genero_fiador: "Por favor, seleccione un genero",
                 ingreso_fiador: "Por favor, digite una cantidad de ingreso",
@@ -264,10 +267,27 @@
             rules: {
                 nombre_prenda: "required",
                 precio_valorado: "required",
+                descripcion_prenda: "required",
             },
             messages: {
                 nombre_prenda: "Por favor, escriba el nombre de la prenda",
                 precio_valorado: "Por favor, digite el precio de la prenda",
+                descripcion_prenda: "Por favor, escriba una descripción de la prenda",
+            },
+            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
+            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
+        });
+
+        this.$FormEditarSolicitudModalPrenda.validate({
+            rules: {
+                nombre_prenda: "required",
+                precio_valorado: "required",
+                descripcion_prenda: "required",
+            },
+            messages: {
+                nombre_prenda: "Por favor, escriba el nombre de la prenda",
+                precio_valorado: "Por favor, digite el precio de la prenda",
+                descripcion_prenda: "Por favor, escriba una descripción de la prenda",
             },
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
@@ -278,6 +298,7 @@
                 nombre_fiador: "required",
                 apellido_fiador: "required",
                 dui_fiador: "required",
+                nit_fiador: "required",
                 telefono_fiador: "required",
                 email_fiador: { email: true },
                 nacimiento_fiador: "required",
@@ -289,8 +310,9 @@
                 nombre_fiador: "Por favor, escriba el nombre",
                 apellido_fiador: "Por favor, escriba el apellido",
                 dui_fiador: "Por favor, digite un número de DUI",
+                nit_fiador: "Por favor, digite un número de NIT",
                 telefono_fiador: "Por favor, digite un número de teléfono",
-                email_fiador: "Por favor, escriba el email del fiador correctamente",
+                email_fiador: "Escriba correctamente el email",
                 nacimiento_fiador: "Por favor, digite una fecha de nacimiento",
                 genero_fiador: "Por favor, seleccione un genero",
                 ingreso_fiador: "Por favor, digite una cantidad de ingreso",
@@ -299,20 +321,7 @@
             highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
             unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
         });
-        // VALIDACION DE FORMULARIO EDITAR SOLICITUD MODAL PRENDA
-        this.$FormEditarSolicitudModalPrendaA.validate({
-            rules: {
-                nombre_prenda: "required",
-                precio_valorado: "required",
-            },
-            messages: {
-                nombre_prenda: "Por favor, escriba el nombre de la prenda",
-                precio_valorado: "Por favor, digite el precio de la prenda",
-            },
-            highlight: function(element) { $(element).closest('.form-group').addClass('has-error'); },
-            unhighlight: function(element) { $(element).closest('.form-group').removeClass('has-error'); }
-        });
-        // VALIDACION DE FORMULARIO DETALLE DE SOLICITUD APROBAR CREDITO
+
         this.$validarFormAprobarCredito.validate({
             rules: {
                 codigo_credito: "required",

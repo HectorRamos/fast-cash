@@ -14,7 +14,7 @@
     Notification.prototype.notify = function(style,position, title, text) {
         var icon = 'fa fa-adjust';
         if(style == "error"){
-            icon = "fa fa-exclamation";
+            icon = "fa fa-exclamation-triangle";
         }else if(style == "warning"){
             icon = "fa fa-pencil-square-o";
         }else if(style == "success"){
@@ -44,7 +44,7 @@
     Notification.prototype.autoHideNotify = function (style,position, title, text) {
         var icon = "fa fa-adjust";
         if(style == "error"){
-            icon = "fa fa-exclamation";
+            icon = "fa fa-exclamation-triangle";
         }else if(style == "warning"){
             icon = "fa fa-pencil-square-o";
         }else if(style == "success"){
@@ -74,7 +74,7 @@
     Notification.prototype.confirm = function(style,position, title) {
         var icon = "fa fa-adjust";
         if(style == "error"){
-            icon = "fa fa-exclamation";
+            icon = "fa fa-exclamation-triangle";
         }else if(style == "warning"){
             icon = "fa fa-pencil-square-o";
         }else if(style == "success"){

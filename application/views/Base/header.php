@@ -30,9 +30,10 @@
         <!-- DataTables -->
         <link href="<?= base_url() ?>plantilla/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- Plugins css-->
+        <!-- calendario-->
         <link href="<?= base_url() ?>plantilla/assets/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-        <link href="<?= base_url() ?>plantilla/bootstrap-select.css" rel="stylesheet" type="text/css" />
+        <!-- select -->
+        <link href="<?= base_url() ?>plantilla/assets/select2/select2.css" rel="stylesheet" type="text/css" />
 
         <!-- Modal-Effect -->
         <link href="<?= base_url() ?>plantilla/assets/modal-effect/css/component.css" rel="stylesheet">

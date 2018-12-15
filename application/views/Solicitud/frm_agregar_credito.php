@@ -44,27 +44,24 @@
                 <div class="margn">
                 <!-- Primera Linea del formulario-->
                     <div class="row">
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-sm-3">
                         <div class="mar_che_cobrar2" style="padding: 13px;">
                             <label for="codigo_credito">Código del crédito</label>
                             <input type="text" class="form-control" id="codigo_credito" name="codigo_credito" placeholder="Código del crédito" required data-parsley-required-message="">
                         </div>  
                       </div>
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-6 noneIMG" align="right">
+                      <div style="padding-bottom: 7px; padding-top: 7px;">
+                        <img src="<?= base_url()?>plantilla/images/documento.png" class="img-responsive img-thumbnail" alt="Pago" >
+                      </div>
+                    </div> 
                     </div>
                     <div class="row">
                       <div class="form-group col-md-6">
                       <label for="tipo_credito">Tipo de Crédito</label>
-                        <div class="">
-                          <!-- <select class="select" id="tipo_credito" name="tipo_credito" data-placeholder="Seleccione un tipo de crédito" required data-parsley-required-message="">
-                            <option value="">Seleccione un tipo de crédito</option>
-                            <option value="CPFC">Crédito personal</option>
-                          </select> -->
-                                
-                                <input type="text" class="form-control" id="tipo_credito" name="tipo_credito" value="<?= $amortizacion->tipoCredito ?>">
-                        </div>
+                          <input type="text" class="form-control" id="tipo_credito" name="tipo_credito" value="<?= $amortizacion->tipoCredito ?>">
                       </div>
-<!--                     </div>                    
-                    <div class="row"> -->
 
                       <div class="form-group col-md-6">
                            <label for="">Monto de dinero</label>
@@ -121,7 +118,7 @@
                     </div>
                     <!-- Fin para subir documentos-->
                     <br>
-                        <a id="env" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Guardar</a>
+                        <a id="env" class="btn btn-success waves-effect waves-light m-d-5"><i class="fa fa-save fa-lg"></i> Aprobar crédito</a>
                        <button type="reset" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-refresh fa-lg"></i> Limpiar</button>
                        <a href="<?= base_url() ?>Solicitud/" class="btn btn-default waves-effect waves-light m-d-5"><i class="fa fa-close fa-lg"></i> Cancelar</a>
                </div>

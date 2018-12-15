@@ -60,8 +60,8 @@
                        <div class="form-group col-md-5">
                          <div class="mar_che_cobrar2" style="padding: 15px; border-radius: 5px;">                 
                            <label for="txtNombre">Seleccionar el tipo de acceso</label>
-                            <select id="idPermiso" name="idPermiso" onchange="validar(this.value)" class="selectpicker show-tick form-control" data-header="Seleccone un dato" data-live-search="true">
-                              <option value="1">.::Seleccionar::.</option>
+                            <select id="idPermiso" name="idPermiso" onchange="validar(this.value)" class="select" data-placeholder="Seleccionar acceso">
+                              <option value="1">.::Seleccionar acceso::.</option>
                               <?php
                                 foreach ($datosRol->result() as $c) {
                                   # code...
