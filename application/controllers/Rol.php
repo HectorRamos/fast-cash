@@ -44,6 +44,12 @@ class Rol extends CI_Controller {
 		$bool=$this->Rol_Model->validarPermiso($id);
 		echo json_encode($bool->result());
 	}
+
+	public function Detalle(){
+		$id=$this->input->GET("Id");
+		$bool=$this->Rol_Model->DetallePermisos($id);
+		echo json_encode($bool->result());
+	}
 	
 	// public function Editar(){
 	// 	$datos=$this->input->POST();

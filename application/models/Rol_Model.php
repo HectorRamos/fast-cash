@@ -31,6 +31,15 @@ class Rol_Model extends CI_Model{
 		$data =  $this->db->query($query);
 		return $data;
 	}
+	public function DetallePermisos($id)
+	{	
+		$query = "SELECT permiso.*, rol.*, menu.* FROM tbl_permisos as permiso 
+		INNER JOIN tbl_accesos as rol ON permiso.idAcceso = rol.idAcceso 
+		INNER JOIN tbl_menu as menu ON permiso.idMenu = menu.idMenu 
+		WHERE permiso.idAcceso = '$id'";
+		$data =  $this->db->query($query);
+		return $data;
+	}
 
 	public function InsertarPermisos($datos = null)
 	{	

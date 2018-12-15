@@ -77,6 +77,7 @@
                                                   {
                                                   foreach ($datosPermisos->result() as  $permiso) {
                                                     $c = $c + 1;
+                                                    $rol = "'".$permiso->tipoAcceso."'";
                                                       # code...
                                                       if($permiso->estado == 0){echo '<tr class="tr tr1 alert alert-danger">';}else{echo '<tr class="tr tr1">';}
                                                   ?>
@@ -84,7 +85,9 @@
                                                   <td class="td td1" data-label="Rol"><?= $permiso->tipoAcceso?></td>
                                                   <td class="td td1" data-label="Descripción"><?= $permiso->descripcion?></td>
                                                   <td class="td td1" data-label="Acción">
-                                                      <a onclick="Edit()" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
+                                                      
+
+                                                      <a onclick="detalle(<?= $permiso->idAcceso ?>, <?= $rol ?>)" title="Detalle" data-toggle="modal" data-target="#myModalDetalle" class="waves-effect waves-light ver"><i class="fa fa-info-circle"></i></a>
 
                                                       <a onclick="del(<?= $permiso->idAcceso?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                       </td>
@@ -105,6 +108,30 @@
                     </div>
                 </div>
             </div>
+
+<!-- MODAL PARA DETALLE --> 
+<div id="myModalDetalle" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Detalle de permisos asignados al rol <b><span id="tipoRol"></span><b></h4>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="<?= base_url()?>Rol/Detalle" autocomplete="off" id="FormDetalle">
+              <div class="margn">
+              <table class="table table-striped" id="Table"></table>                 
+                <div  align="center">
+                  <button type="button" class="btn btn-default block waves-effect waves-light m-b-5" data-dismiss="modal"><i class="fa fa-close fa-lg"></i> Cerrar</button>
+                </div>
+            </div>
+            </form>                                  
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal --> 
                               
 
 <!--MODAL PARA Eliminar DATOS-->
@@ -133,5 +160,31 @@
 <script type="text/javascript"> 
    function del(id){
         $('#id').val(id);
+   }
+
+    function detalle(id, rol){
+        document.getElementById("tipoRol").innerHTML = rol;
+          // cargar el ultimo pago si lo hay si no carga los datos del credito directamente
+          $.ajax({
+            url:"<?= base_url()?>Rol/Detalle",
+            type:"GET",
+            data:{Id:id},
+            dataType: "json",
+            success:function(dato){
+              var registro = eval(dato);
+             // alert('aaaaa');
+              if (registro.length > 0)
+              {
+                $("#Table tr").remove(); 
+                  $.each(dato, function(index, value){
+                      $("#Table").append("<tr><td>" + value.menu + "</td><td><i class='fa fa-check fa-lg' style='color:green;'></i></td></tr>");
+                  });
+              }
+              else
+              { 
+                // mensaje de advertencia
+              }
+            }//cierre succes
+          }); //cierre de ajax
    }
 </script>
