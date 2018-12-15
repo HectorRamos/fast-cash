@@ -86,39 +86,47 @@
             									// echo $cajaChica->saldo."<br>";
             							?>
                               <tr class="tr tr1">
-                                <td class="td td1"><?= $cajaChica->detalleProceso ?></td>
+                                <td class="td td1" data-label="Detalle"><?= $cajaChica->detalleProceso ?></td>
                                 <?php 
                                 	if ($cajaChica->salida != 0)
                                 	{
-                                		echo '<td class="td td1">$ '.$cajaChica->salida.'</td>';
-                                		echo '<td class="td td1">Salida</td>';
+                                		echo '<td class="td td1" data-label="Monto de dinero">$&nbsp;'.$cajaChica->salida.'</td>';
+                                		echo '<td class="td td1" data-label="Tipo de proceso">Salida</td>';
                                 	}
                                 	else
                                 	{
                                 		if ($cajaChica->entrada != 0)
                                 		{
-                                			echo '<td class="td td1">$ '.$cajaChica->entrada.'</td>';
-                                			echo '<td class="td td1">Entrada</td>';
+                                			echo '<td class="td td1" data-label="Monto de dinero">$ '.$cajaChica->entrada.'</td>';
+                                			echo '<td class="td td1" data-label="Tipo de proceso">Entrada</td>';
                                 		}
                                 		else
                                 		{
-                                			echo '<td class="td td1">---</td>';
-                                			echo '<td class="td td1">---</td>';
+                                			echo '<td class="td td1" data-label="Monto de dinero">---</td>';
+                                			echo '<td class="td td1" data-label="Tipo de proceso">---</td>';
                                 		}
                                 	}
                                 ?>
                                 
-                                <td class="td td1"><?= $cajaChica->detalle ?></td>
-                                <td class="td td1">$&nbsp;<?= $cajaChica->saldo ?></td>
+                                <td class="td td1" data-label="Forma de pago"><?= $cajaChica->detalle ?></td>
+                                <td class="td td1" data-label="Saldo">$&nbsp;<?= $cajaChica->saldo ?></td>
                               </tr>
                             <?php } ?>
                           </tbody>
                           <tfooter>
                               <tr class="tr tr1">
-                                <td class="td td1"><span class='label label-warning' style="font-size: 1.5rem;"><strong>Saldo en efectivo: </strong>$ <?= $efectivo ?></span></td>
-                                <td class="td td1"><span class='label label-info' style="font-size: 1.5rem;"><strong>Saldo en cheques: </strong>$ <?= $cheques ?></span></td>
-                                <td class="td td1"><span class='label label-default' style="font-size: 1.5rem;"><strong>Saldo total: </strong>$ <?= $efectivo + $cheques?></span>  </td>
-                              	<td class="td td1 text-right" colspan="4"><strong>SALDO FINAL: <span class='label label-success' style="font-size: 1.5rem;">$ <?= $cajaChica->saldo ?></span></strong></td>
+                                <td class="td td1">
+                                    <label style="font-size: 1.5rem; background: #FFA000; color: #fff; padding: 5px; border-radius: 5px;">Saldo en efectivo: <span style="font-weight: normal;">$&nbsp;<span id="spanCapital"><?= $efectivo ?></span></span></label>
+                                </td>
+                                <td class="td td1">
+                                  <label style="font-size: 1.5rem; background: #03A9F4; color: #fff; padding: 5px; border-radius: 5px;">Saldo en cheques: <span style="font-weight: normal;">$&nbsp;<span id="spanCapital"><?= $cheques ?></span></span></label>
+                                </td>
+                                <td class="td td1">
+                                  <label style="font-size: 1.5rem; background: #8D6E63; color: #fff; padding: 5px; border-radius: 5px;">Saldo total: <span style="font-weight: normal;">$&nbsp;<span id="spanCapital"><?= $efectivo + $cheques?></span></span></label>  
+                                </td>
+                              	<td class="td td1 text-right" colspan="4">
+                                  <label style="font-size: 1.5rem; background: #7CB342; color: #fff; padding: 5px; border-radius: 5px;">SALDO FINAL: <span style="font-weight: normal;">$&nbsp;<span id="spanCapital"><?= $cajaChica->saldo ?></span></span></label> 
+                                </td>
                               </tr>
                           </tfooter>
                         </table>
