@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-md-12">
           <ol class="breadcrumb pull-right">
-            <li><a href="<?= base_url() ?>Empleados/Index">Gestión de Permisos</a></li>
+            <li><a href="<?= base_url() ?>Rol/index">Gestión de Permisos</a></li>
             <li class="active">Asignar Permiso</li>
           </ol>
         </div>

@@ -50,7 +50,7 @@
         
         <script src="<?= base_url() ?>plantilla/js/modernizr.min.js"></script>
         <script src="<?= base_url() ?>plantilla/js/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="<?= base_url() ?>plantilla/js/jquery-migrate-1.2.1.min.js"></script>
     </head>
         <body class="fixed-left nicescroll">
         

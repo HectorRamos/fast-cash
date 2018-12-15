@@ -3620,6 +3620,14 @@ TABLAS
   -moz-box-shadow: none;
   box-shadow: none;
 }
+input.form-control[readonly]{
+  background-color: #F7F9F9;
+  border-color: #CACFD2;
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 input.style[readonly]{
   background-color: transparent;
 }
