@@ -734,17 +734,24 @@
       $("#precio_valoradoA").attr('value', valorado);
       $("#descripcion_prendaA").html(descripcion);
     }
-
     function imprimirTabla()
     {
        $(".ocultarImprimir").hide();
       var elemento=document.getElementById('tablaImprimir');
       var pantalla=window.open(' ','popimpr');
+
+      pantalla.document.write('<html><head><title>' + document.title + '</title>');
       pantalla.document.write('<link href="<?= base_url() ?>plantilla/css/bootstrap.min.css" rel="stylesheet" />');
+      pantalla.document.write('</head><body >');
+
       pantalla.document.write(elemento.innerHTML);
+      pantalla.document.write('</body></html>');
       pantalla.document.close();
-      pantalla.print();
-      pantalla.close();
+      pantalla.focus();
+      pantalla.onload = function() {
+        pantalla.print();
+        pantalla.close();
+      };
        $(".ocultarImprimir").show();
     }
     function limpiar(){

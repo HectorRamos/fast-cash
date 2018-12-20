@@ -267,9 +267,15 @@
       var day = dt.getDate();
       var year = dt.getFullYear();
       // document.write();
-
-      fechaVencimiento = year + '/' + month + '/' + day;
-      $("#fecha_de_vencimiento").attr("value", fechaVencimiento);
+      if (isNaN(month) || isNaN(day) || isNaN(year))
+        {
+          $("#fecha_de_vencimiento").attr("value", "");
+        }
+        else
+        {
+          fechaVencimiento = year + '/' + month + '/' + day;
+          $("#fecha_de_vencimiento").attr("value", fechaVencimiento);
+        }
       // alert(dt);
     });
       codigoCredito()
