@@ -19,10 +19,14 @@ class Home extends CI_Controller
 
 	public function Main()
 	{
+	    if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		}else{
 			$this->load->view('Base/header');
 			$this->load->view('Base/nav');
 			$this->load->view('Base/content');
 			$this->load->view('Base/footer');
+		}
 	}
 
 	public function validarLogin()
