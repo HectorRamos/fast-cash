@@ -6,6 +6,9 @@ class Pagos extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		}
 		$this->load->model("Pagos_Model");
 		$this->load->model("Creditos_Model");
 		$this->load->model("CajaChica_Model");		

@@ -315,7 +315,7 @@ $(document).on('ready', function(){
     calculos();
   });//CIERRE DE LA FUNCION PARA CALCULAR LOS DIAS
   //FUNCION PARA HACER LOS DEMAS CALCULOS----------------------
-  $('#totalPago').on('change', function(){
+  $('#totalPago').on('keyup', function(){
     calculos();
     
   })

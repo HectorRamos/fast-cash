@@ -1,28 +1,8 @@
-<?php if($this->session->flashdata("informa")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('info', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("informa")?>');
-    });
-  </script>
-<?php endif; ?>
-<?php if($this->session->flashdata("actualizado")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('warning', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("actualizado")?>');
-    });
-  </script>
-<?php endif; ?>
+
 <?php if($this->session->flashdata("errorr")):?>
   <script type="text/javascript">
     $(document).ready(function(){
     $.Notification.autoHideNotify('error', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("errorr")?>');
-    });
-  </script>
-<?php endif; ?>
-<?php if($this->session->flashdata("guardar")):?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $.Notification.autoHideNotify('success', 'top center', 'Aviso!', '<?php echo $this->session->flashdata("guardar")?>');
     });
   </script>
 <?php endif; ?>
@@ -160,11 +140,11 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $("#submit").on("click", function() {
+    $("#submit").on("click", function(e) {
         var condiciones = $('input[type="checkbox"]').is(":checked");        
         if (!condiciones) {
             $.Notification.autoHideNotify('error', 'top center', 'Aviso!', 'Por favor seleccione un Permiso');
-            event.preventDefault();
+            e.preventDefault();
         }
     });
 });

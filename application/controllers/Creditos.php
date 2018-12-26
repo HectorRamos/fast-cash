@@ -6,6 +6,9 @@ class Creditos extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+	    if (!$this->session->userdata("login")) {
+			redirect(base_url());
+		}
 		$this->load->model("Creditos_Model");
 		$this->load->model("Documentos_Model");
 		$this->load->model("Pagos_Model");
