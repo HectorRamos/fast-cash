@@ -142,8 +142,8 @@ class Solicitud_Model extends CI_Model
 					$sql4 = "INSERT INTO tbl_fiadores(nombre, apellido, dui, nit, telefono, email, direccion, genero, fechaNacimiento, ingreso, estado, idSolicitud)
 	    					VALUES('$nombreFiador[$i]', '$apellidoFiador[$i]', '$duiFiador[$i]', '$nitFiador[$i]', '$telefonoFiador[$i]', '$emailFiador[$i]', '$direccionFiador[$i]',
 	    			   		'$generoFiador[$i]', '$nacimientoFiador[$i]', '$ingresoFiador[$i]', '$estadoFiador', '$idSoli')";
+						$this->db->query($sql4);
 					}
-					$this->db->query($sql4);
 				}
 				if (isset($existePrenda))
 				{
