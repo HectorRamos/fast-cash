@@ -94,7 +94,7 @@
                                                         <td class="td td1"><span class='label label-danger'><?= $user->user?></span></td>
                                                         <td class="td td1"><span style='color: #E74C3C; text-decoration: underline;'>***********</span></td>
                                                         <td class="td td1"><?= $user->tipoAcceso?></td>
-                                                        <td class="td td1">
+                                                        <td class="td td1" style="min-width: 85px;">
                                                           <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
                                                           <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                         </td>
@@ -110,7 +110,7 @@
                                                         <td class="td td1"><span class='label label-success'><?= $user->user?></span></td>
                                                         <td class="td td1"><span style='color: #2E86C1; text-decoration: underline;'>***********</span></td>
                                                         <td class="td td1"><?= $user->tipoAcceso?></td>
-                                                        <td class="td td1">
+                                                        <td class="td td1" style="min-width: 85px;">
                                                           <a onclick="Edit(<?= $user->idUser?>, <?= $empleadoN?>, <?= $userN?>, <?= $passN?>, <?= $idAccesoN?>, <?= $tipoAccesoN?>)" title="Editar" data-toggle="modal" data-target="#myModalEdit" class="waves-effect waves-light editar"><i class="fa fa-pencil-square"></i></a>
                                                           <a onclick="del(<?= $user->idUser?>)" title="Eliminar" class="waves-effect waves-light eliminar"  data-toggle="modal" data-target=".modal_eliminar_estado"><i class="fa fa-times-circle"></i></a>
                                                         </td>

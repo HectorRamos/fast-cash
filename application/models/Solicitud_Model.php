@@ -82,7 +82,7 @@ class Solicitud_Model extends CI_Model
 	   $idEstadoSolicitud = '1';
 
 	   // Datos Amortizacion
-	   $tasaInteres = $datos['tasa_interes'];
+	   $tasaInteres = $datos['tasa_interes']*12;
 	   $capital = $datos['monto_dinero'];
 	   $totalInteres = $datos['intereses_pagar'];
 	   $totalIva = $datos['iva_pagar'];
@@ -142,8 +142,8 @@ class Solicitud_Model extends CI_Model
 					$sql4 = "INSERT INTO tbl_fiadores(nombre, apellido, dui, nit, telefono, email, direccion, genero, fechaNacimiento, ingreso, estado, idSolicitud)
 	    					VALUES('$nombreFiador[$i]', '$apellidoFiador[$i]', '$duiFiador[$i]', '$nitFiador[$i]', '$telefonoFiador[$i]', '$emailFiador[$i]', '$direccionFiador[$i]',
 	    			   		'$generoFiador[$i]', '$nacimientoFiador[$i]', '$ingresoFiador[$i]', '$estadoFiador', '$idSoli')";
+						$this->db->query($sql4);
 					}
-					$this->db->query($sql4);
 				}
 				if (isset($existePrenda))
 				{
@@ -246,10 +246,11 @@ class Solicitud_Model extends CI_Model
 	   $plazoMeses = $datos['numero_meses'];
 	   $pagoCuota = $datos['cuota_diaria'];
 	   $cantidadCuota = $datos['numero_cuotas'];
+	   $cobraMora = $datos['cobra_mora'];
 	   $estado = 1;
 
 	   // Guardando la solicitud
-	   $sql1 = "UPDATE tbl_solicitudes SET codigoSolicitud='$codigoSolicitud', fechaRecibido='$fechaRecibido', observaciones='$observaciones', idLineaPlazo = '$idLineaPlazo' WHERE idSolicitud= '$idSolicitud'";
+	   $sql1 = "UPDATE tbl_solicitudes SET codigoSolicitud='$codigoSolicitud', fechaRecibido='$fechaRecibido', observaciones='$observaciones', idLineaPlazo = '$idLineaPlazo', cobraMora='$cobraMora' WHERE idSolicitud= '$idSolicitud'";
 	   if ($this->db->query($sql1))
 		{
 			$sql2 = "UPDATE tbl_amortizaciones SET tasaInteres='$tasaInteres', capital='$capital', totalInteres='$totalInteres',

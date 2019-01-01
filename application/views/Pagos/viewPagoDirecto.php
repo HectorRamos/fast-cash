@@ -132,10 +132,15 @@
                             </div>
 <!--                             <hr style="border-color: #EAEDED;">
  -->                            <div class="row">
-                                <div class="col-md-12" style="font-size: 1.4rem;">
+                                <div class="col-md-6" style="font-size: 1.4rem;">
                                         <input type="hidden" id="capitalPendiente1" name="capitalPendiente1" value="<?php echo $pago->capital-$pago->totalAbonado;?>">
                                         <label style="background: #F2D7D5; color: #000; padding: 5px; border-radius: 5px;">Capital pendiente: <span style="font-weight: normal;">$&nbsp;<span id="spanCapitalPendiente1"><?php echo $pago->capital-$pago->totalAbonado;?></span></span></label>
                                         <input type="hidden" name="pagoReal" id="pagoReal">
+                                </div>
+                                <div class="col-md-6" style="font-size: 1.4rem;">
+                                        <input type="hidden" id="interesPendiente1" name="interesPendiente1" value="<?= $pago->i?>">
+                                        <label style="background: #F2D7D5; color: #000;  padding: 5px; border-radius: 5px;">Interes pendiente: <span style="font-weight: normal;">$&nbsp;<span id="spanInteresPendiente"><?php echo $pago->i;?></span></span></label>
+                                        
                                 </div>
                             </div>
                           </div>
@@ -190,6 +195,11 @@
                             </div>
                             <div class="row" style="margin-top: 14px;">
                               <div class="col-md-12" align="right">
+                                <b style="font-size: 1.5rem;">Nuevo interes pendiente: </b>
+                              </div>
+                            </div>
+                            <div class="row" style="margin-top: 14px;">
+                              <div class="col-md-12" align="right">
                                 <b style="font-size: 1.5rem;">Vuelto: </b>
                               </div>
                             </div>
@@ -235,6 +245,13 @@
                                   <input type="hidden" id="capitalP" name="capitalPendiente" >
                                   <label class="mostrLabel" style="color: #990000;">Capital pendiente:&nbsp;</label>
                                   <label class="label label-default"style="background: #F2D7D5; color: #000; font-weight: normal;">$ <span id="spanCapitalP">00.00</span></label>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12" style="font-size: 1.8rem; margin-bottom:10px;">
+                                  <input type="hidden" id="interesP" name="interesPendiente" >
+                                  <label class="mostrLabel" style="color: #990000;">Nuevo interes pendiente:&nbsp;</label>
+                                  <label class="label label-default"style="background: #F2D7D5; color: #000; font-weight: normal;">$ <span id="spanInteresP">00.00</span></label>
                               </div>
                             </div>
                             <div class="row">
@@ -337,7 +354,6 @@ function calculos(){
         $('#abonoCapital').val(0);
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
-
     }
     else{
       if(diaspa==""){
@@ -356,13 +372,24 @@ function calculos(){
         $('#diasPagados').val("");
       }
       else{
-        var tasaI = tasa/100;
+         var tasaI = tasa/100;
         //var TasaInteresDiario= tasaI/30;
         //var totalInteres = TasaInteresDiario*(capitalPendiente)*diaspa;
         var Interes=(capitalPendiente*diaspa*tasaI)/30;
         var iva = Interes*0.13;
         //alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
-        var abonoCapital = totalp-Interes-iva;
+        var Interesp = parseFloat($('#interesPendiente1').val());
+        var totalInteres = Interesp+Interes;
+
+        var abonoCapital = totalp-totalInteres-iva;
+        if(abonoCapital<0){
+          abonoCapital=0;
+
+          var newInteresPendiente = (Interesp+Interes+iva)-totalp;
+          $('#spanInteresP').text(newInteresPendiente.toFixed(4));
+          $('#interesP').val(newInteresPendiente.toFixed(4));
+
+        }
         $('#iva').val(iva.toFixed(4));
         $('#spanIva').text(iva.toFixed(4));
         $('#interes').val(Interes.toFixed(4));
@@ -378,10 +405,9 @@ function calculos(){
         var newAbono = abonoCapital+parseFloat(ta);
         $('#totalAbonado').val(newAbono.toFixed(4));
         $('#spanTotalAbonado').text(newAbono.toFixed(4));
-        //alert('Nuevo abonado: '+newAbono);
+        $('#pagoReal').val(totalp);
         $('#vuelto').val(0);
         $('#spanVuelto').text(0);
-        $('#pagoReal').val(totalp);
        if(parseFloat($('#totalAbonado').val()) >= parseFloat($('#capital').val())){
           var abono = $('#totalAbonado').val();
           var vuelto;
@@ -405,13 +431,11 @@ function calculos(){
       } 
       //alert('asas');
     }
-
 }
     function limpiar(){
         $('#idCredito').val("");
         $('#fechaPago').val("");
         $('#totalPago').val("");
-
         $('#spanDiasPagados').text("00");
         $('#spanIva').text("00.00");
         $('#spanInteres').text("00.00");

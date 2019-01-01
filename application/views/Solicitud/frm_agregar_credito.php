@@ -65,7 +65,7 @@
 
                       <div class="form-group col-md-6">
                            <label for="">Monto de dinero</label>
-                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->ivaInteresCapital ?>">
+                            <input type="text" class="form-control validaDigit" id="monto_dinero" name="monto_dinero" value="<?= $amortizacion->capital?>">
 
                             <input type="hidden" class="form-control" id="numero_meses" name="numero_meses" value="<?= $amortizacion->plazoMeses ?>">
                             <input type="hidden" class="form-control" id="nombre_credito" name="nombre_credito">

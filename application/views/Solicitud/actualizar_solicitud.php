@@ -43,10 +43,17 @@
                         <div class="mar_che_cobrar">
                             <label for="cobra_mora">Cobrar mora</label><br>
                             <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_mora" name="cobra_mora">
+                              <?php if($solicitud->cobraMora == 1){
+                                echo '<input type="checkbox" value="" id="cobra_moraC"  checked="true">';
+                                }else{
+                                echo '<input type="checkbox" value="" id="cobra_moraC" >';
+                                 } ?>
                                 <label for="cobra_mora">Cobrar</label>
+                                
                             </div>
+
                         </div>  
+                        <input type="hidden" id="cobra_mora" name="cobra_mora" value="<?= $solicitud->cobraMora?>">
                       </div>
                     </div>
                     <div class="row">
@@ -166,9 +173,28 @@
     $("#tipo_prestamo").on('change', activarIP);
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);
+    $("#cobra_moraC").on('change', mora);
   }
 
 // Funcion para calcular Intereses, IVA y toal a pagar, Funcion nueva esta en proceso aun
+
+function mora()
+{
+  
+ var mora;
+  if( $('#cobra_moraC').prop('checked') )
+  {
+    mora = 1;
+    //alert('mora');
+   
+  }
+  else
+  {
+    mora = 0;
+     //alert('mora');
+  }
+  $("#cobra_mora").attr("value", mora);
+}
 
 // Funcion para desbloquear cajas de text para ingresar interes y monto de dinero
 function activarIP()

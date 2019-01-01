@@ -110,6 +110,19 @@
                                     <table class="table">
                                       <tbody class="tbody">
                                             <div align="center"><strong>DATOS DEL CLIENTE SOLICITADO</strong></div>
+                                            <tr class="tr">
+                                               <?php
+                                                if($solicitud->cobraMora==1){
+                                                  echo '<label style="background: #F91409; color: #fff; padding: 5px; border-radius: 5px;"><span style="font-weight: normal;"><span id="spanCapital">Se cobrara mora</span></span></label>';
+
+                                                }
+                                                else{
+                                                  echo '<label style=" background: #FFA000; color: #fff; padding: 5px; border-radius: 5px;"><span style="font-weight: normal;"><span id="spanCapital"> No se cobrara mora</span></span></label>';
+
+                                                }
+
+                                                ?>
+                                            </tr>
                                             <tr class='tr'>
                                               <td colspan="" class='td'><p><strong>Código de la solicitud: </strong><?= $solicitud->codigoSolicitud ?></p></td>
                                               <td colspan="" class='td'><p><strong>Plazo: </strong><?= $solicitud->tiempo_plazo ." ".$mes?></p></td>

@@ -138,7 +138,7 @@
                                       echo "<span class='label label-success' style='font-size: 1.5rem;'>Crédito Saldado <i class='fa fa-check fa-lg'></i></span>";
                                     }
                                     else{
-                                      echo '<a href="'.base_url().'Pagos/PagarCredito?Id='.$detalle->idCredito.'" title="Pago" data-toggle="tooltip"  class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-money fa-lg"></i> <span>Hacer pago<span></a>';
+                                      //echo '<a href="'.base_url().'Pagos/PagarCredito?Id='.$detalle->idCredito.'" title="Pago" data-toggle="tooltip"  class="btn btn-success waves-effect waves-light m-b-5"><i class="fa fa-money fa-lg"></i> <span>Hacer pago<span></a>';
                                     }
                                     echo '</span></div></div>';
                                   if (sizeof($Pagos->result())>0){
@@ -232,6 +232,7 @@
                                   <div align="center">
                                     <a href="<?= base_url() ?>Creditos/" type="button" class="btn btn-default block waves-effect waves-light m-b-5"><i class="fa fa-chevron-left fa-lg"></i> Volver</a>
                                   </div>
+                                  
                               </div>
                             </div>
                         </div>
@@ -258,22 +259,62 @@
         var totalPago = $(this).parents("tr").find("td")[1].innerHTML
         var iva = $(this).parents("tr").find("td")[2].innerHTML;
         var interes = $(this).parents("tr").find("td")[3].innerHTML;
-        var HTML="<img src='<?= base_url()?>plantilla/images/fast_cash.png' height='75' width='100'><div class='row text-center'><h1>FAST CASH</h1><p>Gocaaja group SA CV</p><p>Comprobante de pago</p></div>"
+        var HTML="<img src='<?= base_url()?>plantilla/images/fast_cash.png'  width='100'><div class='row text-center'><h1>FAST CASH</h1><p> GOCAJAA GROUP, S.A.DE C.V.</p><p>Comprobante de pago</p></div>"
         ;
-        HTML +="<p><b>cliente: </b></>"+cliente;
+
+        HTML+= '<table  class="table table-bordered">';
+          HTML+= '<tr class="tr tr1">';
+            HTML+= '<td><strong>Cliente</strong> </td>';
+           HTML+= ' <td>'+cliente+'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+            HTML+= '<td><strong>Por</strong> </td>';
+            HTML+= '<td>'+totalPago+'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+            HTML+= '<td><strong>Abono capital</strong> </td>';
+            HTML+= '<td> '+abono+'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+            HTML+= '<td><strong>Intereses</strong> </td>';
+           HTML+= '<td>'+interes +'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+           HTML+= '<td><strong>Iva</strong> </td>';
+            HTML+= '<td>'+iva +'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+           HTML+= '<td><strong>Capital pendiente</strong> </td>';
+            HTML+= '<td>'+capitalp +'</td>';
+          HTML+= '</tr>';
+          HTML+= '<tr class="tr tr1">';
+           HTML+= '<td colspan="2" style="font-size:12px;" align="center"><strong>CON SU ESFUERZO Y NUESTRO APOYO PROSPERARÁ SU NEGOCIO</strong> </td>';
+          HTML+= '</tr>';
+        HTML+= '</table>';
+ 
+       /* HTML +="<p><b>cliente</strong> </b></>"+cliente;
         HTML +="<p><b>Por: </b></>"+totalPago;
         HTML +="<p><b>Abono capital: </b></>"+abono;
         HTML +="<p><b>Intereses: </b></>"+interes;
         HTML +="<p><b>Iva: </b></>"+iva;
-        HTML +="<p><b>Capital pendiente: </b></>"+capitalp+"<br><br>";
+        HTML +="<p><b>Capital pendiente: </b></>"+capitalp+"<br><br><br><br><br><br><br><br><br><br><br><br>";*/
         //HTML +="<p><b>Total pagado: </b></>"+$('#totalAbonado').text();
         //var elemento=document.getElementById('tablaImprimir');
         var pantalla=window.open(' ','popimpr');
         pantalla.document.write('<link href="<?= base_url() ?>plantilla/css/bootstrap.min.css" rel="stylesheet" />');
-        pantalla.document.write(HTML+HTML);
+        pantalla.document.write(HTML+"<p>Contabilidad</p><br>"+HTML+"<p>Cliente</p>");
         pantalla.document.close();
+        //pantalla.print();
+        //pantalla.close();
+
+        //pantalla.document.write(elemento.innerHTML);
+     // pantalla.document.write('</body></html>');
+      //pantalla.document.close();
+      pantalla.focus();
+      pantalla.onload = function() {
         pantalla.print();
         pantalla.close();
+      };
        //$(".ocultarImprimir").show();
         });
     });
@@ -291,3 +332,4 @@
     }
 
 </script>
+

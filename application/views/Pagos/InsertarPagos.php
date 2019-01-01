@@ -158,14 +158,19 @@
                                 </div>
                                 <div class="col-md-6" style="font-size: 1.4rem;">
                                         <input type="hidden" id="tasa" name="tasa">
-                                        <label style="background: #FCF3CF; color: #000;  padding: 5px; border-radius: 5px;">Tasa de interes del crédito: <span style="font-weight: normal;">$&nbsp;<span id="spanTasa"></span></span></label>
+                                        <label style="background: #FCF3CF; color: #000;  padding: 5px; border-radius: 5px;">Tasa de interes del crédito: <span style="font-weight: normal;"><span id="spanTasa"></span>%&nbsp;</span></label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12" style="font-size: 1.4rem;">
+                                <div class="col-md-6" style="font-size: 1.4rem;">
                                         <input type="hidden" id="capitalPendiente1" name="capitalPendiente1">
                                         <label style="background: #F2D7D5; color: #000;  padding: 5px; border-radius: 5px;">Capital pendiente: <span style="font-weight: normal;">$&nbsp;<span id="spanCapitalPendiente1"></span></span></label>
                                         <input type="hidden" name="pagoReal" id="pagoReal">
+                                </div> 
+                                <div class="col-md-6" style="font-size: 1.4rem;">
+                                        <input type="hidden" id="interesPendiente1" name="interesPendiente1">
+                                        <label style="background: #F2D7D5; color: #000;  padding: 5px; border-radius: 5px;">Interes pendiente: <span style="font-weight: normal;">$&nbsp;<span id="spanInteresPendiente"></span></span></label>
+                                        
                                 </div>
                             </div>
                           </div>
@@ -218,11 +223,17 @@
                                 <b style="font-size: 1.5rem; color: #990000;">Capital pendiente: </b>
                               </div>
                             </div>
+                             <div class="row" style="margin-top: 14px;">
+                              <div class="col-md-12" align="right">
+                                <b style="font-size: 1.5rem;">Nuevo interes pendiente: </b>
+                              </div>
+                            </div>
                             <div class="row" style="margin-top: 14px;">
                               <div class="col-md-12" align="right">
                                 <b style="font-size: 1.5rem;">Vuelto: </b>
                               </div>
                             </div>
+                           
                             <div class="row" style="margin-top: 64px;">
                               <div class="col-md-12" align="right">
                                 <b style="font-size: 1.5rem; margin-top: 20px;">Total abonado: </b>
@@ -269,11 +280,19 @@
                             </div>
                             <div class="row">
                               <div class="col-md-12" style="font-size: 1.8rem; margin-bottom:10px;">
+                                  <input type="hidden" id="interesP" name="interesPendiente" >
+                                  <label class="mostrLabel" style="color: #990000;">Nuevo interes pendiente:&nbsp;</label>
+                                  <label class="label label-default"style="background: #F2D7D5; color: #000; font-weight: normal;">$ <span id="spanInteresP">00.00</span></label>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12" style="font-size: 1.8rem; margin-bottom:10px;">
                                   <input type="hidden" id="vuelto" name="vuelto" >
                                   <label class="mostrLabel">Vuelto:&nbsp;</label>
                                   <label class="label label-default"style="background: #F0F4C3; color: #000; font-weight: normal;">$ <span id="spanVuelto">00.00</span></label>
                               </div>
                             </div>
+                            
                             <div class="row" style="margin-top: 50px;">
                               <div class="col-md-12" style="font-size: 1.8rem; margin-bottom:10px;">
                                   <input type="hidden" id="totalAbonado" name="totalAbonado" >
@@ -307,7 +326,9 @@
 ?>
 <script type="text/javascript"> 
   //Ver mas informacion
+    var plazoMeses;
 $(document).on('ready', function(){
+
   $('#MasMenos').toggle( 
       function(e){ 
           $('#MostrarMas').slideDown();
@@ -329,6 +350,7 @@ $(document).on('ready', function(){
   });
   //Fucion Change del select donde estan los datos de los clientes aqui vamos a cargar los datos que necesitemos------------
   $('#idCredito').on('change', function(){
+
     //alert('id'+$('#idCredito').val());
     ide = $('#idCredito').val();
     if(ide == ""){
@@ -365,6 +387,11 @@ $(document).on('ready', function(){
               $('#AlertNada').hide('fast/1000');
               $('#infor').show('fast/1000');
               $('#DivDatosPagos').show('fast/1000');
+              $('#spanInteresPendiente').text(registro[i]['i']);
+              $('#interesPendiente1').val(registro[i]['i']);
+              plazoMeses =registro[i]['plazoMeses'];
+              //alert(plazoMeses);
+
           }
         }
         else{
@@ -395,6 +422,10 @@ $(document).on('ready', function(){
                     $('#AlertNada').hide('fast/1000');
                     $('#infor').show('fast/1000');
                     $('#DivDatosPagos').show('fast/1000');
+                    $('#spanInteresPendiente').text(registro[i]['interesPendiente']);
+                    $('#interesPendiente1').val(registro[i]['interesPendiente']);
+                    plazoMeses =registro[i]['plazoMeses'];
+                    //alert(plazoMeses);
                 }//fin del for
             }//fin del if
           }//fin de success
@@ -407,7 +438,6 @@ $(document).on('ready', function(){
   //FUNCION PARA CALCULAR LOS DIAS------------------------------
   $('#fechaPago').on('change', function(){
     //alert($('#fechaA').val());
-    
     //var fechaFin = new Date('2018-11-13').getTime();
     //alert(fechaFin);
     if($('#fechaPago').val()!=""){
@@ -449,6 +479,13 @@ function calculos(){
         $('#abonoCapital').val(0);
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
+        $('#interesP').val(0);
+        //Haciendo cero los span
+        $('#spanInteres').text(0.00);
+        $('#spanInteresP').text(0.00);
+        $('#spanIva').text(0.00);
+        $('#spanAbonoCapital').text(0.00);
+        $('#spanCapitalP').text(0.00);
 
     }
     else{
@@ -458,6 +495,14 @@ function calculos(){
         $('#abonoCapital').val(0);
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
+        $('#interesP').val(0);
+        //haciendo cero los span
+        $('#spanInteresP').text(0);
+        $('#spanInteres').text(0.00);
+        $('#spanInteresP').text(0.00);
+        $('#spanIva').text(0.00);
+        $('#spanAbonoCapital').text(0.00);
+        $('#spanCapitalP').text(0.00);
       }
       else if($('#fechaPago').val()==""){
         $('#iva').val(0);
@@ -466,15 +511,42 @@ function calculos(){
         $('#capitalP').val(0);
         $('#totalAbonado').val(0);
         $('#diasPagados').val("");
+        $('#spanInteresP').text(0);
+        $('#interesP').val(0);
+        //haciendo cero los span
+        $('#spanInteresP').text(0);
+        $('#spanInteres').text(0.00);
+        $('#spanInteresP').text(0.00);
+        $('#spanIva').text(0.00);
+        $('#spanAbonoCapital').text(0.00);
+        $('#spanCapitalP').text(0.00);
       }
       else{
-        var tasaI = tasa/100;
+         var tasaI = tasa/100;
         //var TasaInteresDiario= tasaI/30;
         //var totalInteres = TasaInteresDiario*(capitalPendiente)*diaspa;
-        var Interes=(capitalPendiente*diaspa*tasaI)/30;
+
+        var Interes=(capitalPendiente*diaspa*tasaI)/(30*plazoMeses);
         var iva = Interes*0.13;
+        //alert(30*plazoMeses);
         //alert("Interes:"+Interes+" Iva: "+iva+"tasa: "+tasaI);
-        var abonoCapital = totalp-Interes-iva;
+        var Interesp = parseFloat($('#interesPendiente1').val());
+        var totalInteres = Interesp+Interes;
+
+        var abonoCapital = totalp-totalInteres-iva;
+
+        if(abonoCapital<0){
+          abonoCapital=0;
+          var newInteresPendiente = (Interesp+Interes+iva)-totalp;
+          $('#spanInteresP').text(newInteresPendiente.toFixed(4));
+          $('#interesP').val(newInteresPendiente.toFixed(4));
+
+        }
+        else{
+          $('#interesP').val(0);
+          $('#spanInteresP').text(0);
+
+        }
         $('#iva').val(iva.toFixed(4));
         $('#spanIva').text(iva.toFixed(4));
         $('#interes').val(Interes.toFixed(4));

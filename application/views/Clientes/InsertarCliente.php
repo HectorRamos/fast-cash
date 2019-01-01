@@ -86,7 +86,7 @@
                                                         <div class="row">
                                                             <div class="form-group col-md-4">
                                                                 <label for="Dui_Cliente">DUI</label>
-                                                                <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" data-mask="9999999-9" required data-parsley-required-message="Por favor, digite un DUI">
+                                                                <input type="text" class="form-control" id="Dui_Cliente" name="Dui_Cliente" placeholder="DUI del cliente" data-mask="99999999-9" required data-parsley-required-message="Por favor, digite un DUI">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label for="Nit_Cliente">NIT</label>
@@ -323,6 +323,9 @@
                 <div id="errorFoto" style="display:none;" class="alert alert-danger">
                 <h4>Por favor complete los campos requeridos para poder agregar la foto</h4> 
                 </div>
+                <div id="errorCamara" style="display:none;" class="alert alert-danger">
+                <h4>Al parecer no tiene configurada una camara en este equipo, contacte al administrador</h4> 
+                </div>
                 <video id="video" width="200" style="width: 100%; height: auto;"></video>
                 <br>
                 <div align="center">
@@ -510,6 +513,7 @@ $("#btnFoto").click(function(){
     document.getElementById('errorFoto').style.display='block';
    }else{
     document.getElementById('errorFoto').style.display='none';
+    document.getElementById('errorCamara').style.display='none';
     var $video = document.getElementById("video"),
     $canvas = document.getElementById("canvas"),
     $boton = document.getElementById("boton"),
@@ -554,7 +558,7 @@ $("#btnFoto").click(function(){
         }, 
         function (error) {
             console.log("Permiso denegado o error: ", error);
-            $estado.innerHTML = "No se puede acceder a la cámara, no dio clic en permitir.";
+            document.getElementById('errorCamara').style.display='block';
         });
     }
     else{

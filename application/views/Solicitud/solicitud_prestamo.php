@@ -70,7 +70,7 @@
                         <div class="mar_che_cobrar">
                             <label for="cobra_mora">Cobrar mora</label><br>
                             <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" value="" id="cobra_moraC" name="">
+                                <input onclick="mora()" type="checkbox" value="" id="cobra_moraC" name="">
                                 <label for="cobra_mora">Cobrar</label>
                             </div>
                         </div>  
@@ -287,7 +287,7 @@
                     </div>
                     <div class="form-group col-md-4">
                           <label for="">DUI</label>
-                          <input type="text" class="form-control" id="dui_fiador" name="dui_fiador" placeholder="DUI" data-mask="9999999-9">
+                          <input type="text" class="form-control" id="dui_fiador" name="dui_fiador" placeholder="DUI" data-mask="99999999-9">
                     </div>
                 </div>
                 <div class="row">
@@ -408,6 +408,7 @@
     $("#monto_dinero").on('change', calcularIntereses);
     $("#tasa_interes").on('change', calcularIntereses);
     $("#tipo_credito").on('change', mostrarOperacion);
+    $("#cobra_moraC").on('change', mora);
   }
 
 function agregarCliente(id, nombre, apellido, dui)
@@ -549,7 +550,7 @@ function agregarFiador()
   ingreso = $("#ingreso_fiador").val();
   direccion = $("#direccion_fiador").val();
 
-  if (nombre != "" && apellido != "" && dui != "" && nit != "" && telefono != "" && email != "" && nacimiento != "" && genero != "" && ingreso != "" && direccion != "")
+  if (nombre != "" && apellido != "" && dui != "" && nit != "" && telefono != ""  && nacimiento != "" && genero != "" && ingreso != "" && direccion != "")
   {
     $(document).ready(function(){
     $.Notification.autoHideNotify('success', 'top center', 'Aviso!', 'Información agregada.');
@@ -652,10 +653,12 @@ function mora()
   if( $('#cobra_moraC').prop('checked') )
   {
     mora = 1;
+    console.log(mora);
   }
   else
   {
     mora = 0;
+    console.log(mora);
   }
   $("#cobra_mora").attr("value", mora);
 }
