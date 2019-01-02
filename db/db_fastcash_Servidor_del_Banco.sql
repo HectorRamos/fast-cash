@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2018 a las 01:00:27
+-- Tiempo de generación: 26-12-2018 a las 23:56:03
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -41,12 +41,8 @@ CREATE TABLE `tbl_accesos` (
 --
 
 INSERT INTO `tbl_accesos` (`idAcceso`, `tipoAcceso`, `descripcion`, `estado`, `fechaRegistro`) VALUES
-(5, 'Administrador', 'Acceso total al sistema', 1, '2018-12-01 00:11:05'),
-(6, 'USUARIO BASICO', 'ESTE TIPO DE USUARIO TENDRA ACCESO A REPORTE DE CREDITOS', 0, '2018-12-01 06:00:00'),
-(7, 'Cajero', 'Este tipo de usuario solo tiene acceso ha los creditos', 0, '2018-12-08 06:00:00'),
-(8, 'Contador', 'Este Rol solo puede registrar y controlar estados contables etc', 0, '2018-12-15 06:00:00'),
-(9, 'test', 'test', 1, '2018-12-15 06:00:00'),
-(10, 'Auxiliar contador', 'descripcion', 1, '2018-12-15 06:00:00');
+(5, 'ADMINISTRADOR', 'ACCESO TOTAL AL SISTEMA', 1, '2018-12-01 00:11:05'),
+(10, 'AUXILIAR CONTABLE', 'ACCESO LIMITADO', 1, '2018-12-15 06:00:00');
 
 -- --------------------------------------------------------
 
@@ -68,6 +64,13 @@ CREATE TABLE `tbl_amortizaciones` (
   `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idSolicitud` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_amortizaciones`
+--
+
+INSERT INTO `tbl_amortizaciones` (`idAmortizacion`, `tasaInteres`, `capital`, `totalInteres`, `totalIva`, `ivaInteresCapital`, `plazoMeses`, `pagoCuota`, `cantidadCuota`, `estadoAmortizacion`, `fechaRegistro`, `idSolicitud`) VALUES
+(21, '36.00', '400.00', '96.00', '12.48', '508.48', 8, '2.12', 240, 1, '2018-12-26 20:18:29', 21);
 
 -- --------------------------------------------------------
 
@@ -100,6 +103,41 @@ CREATE TABLE `tbl_cajachica_procesos` (
   `idTipoPago` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tbl_cajachica_procesos`
+--
+
+INSERT INTO `tbl_cajachica_procesos` (`idProceso`, `detalleProceso`, `fechaProceso`, `entrada`, `salida`, `saldo`, `idCajaChica`, `idTipoPago`) VALUES
+(38, 'Apertura de caja chica', '2018-12-26', 20, 0, 20, 10, 1),
+(39, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(40, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(41, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(42, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(43, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(44, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(45, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(46, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 14.3766, NULL, 34.3766, 10, 1),
+(47, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(48, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(49, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(50, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(51, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(52, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(53, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(54, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(55, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 51.8905, NULL, 71.8905, 10, 1),
+(56, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(57, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(58, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(59, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(60, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(61, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(62, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(63, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(64, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(65, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 63.45, NULL, 83.45, 10, 1),
+(66, 'Pago de credito del cliente MARIO ALFREDO PERDOMO', '2018-12-26', 51.8905, NULL, 71.8905, 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +150,13 @@ CREATE TABLE `tbl_caja_chica` (
   `fechaCajaChica` date NOT NULL,
   `cantidadApertura` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_caja_chica`
+--
+
+INSERT INTO `tbl_caja_chica` (`idCajaChica`, `estadoCajaChica`, `fechaCajaChica`, `cantidadApertura`) VALUES
+(10, 1, '2018-12-26', 20);
 
 -- --------------------------------------------------------
 
@@ -150,9 +195,7 @@ CREATE TABLE `tbl_clientes` (
 --
 
 INSERT INTO `tbl_clientes` (`Id_Cliente`, `Codigo_Cliente`, `Nombre_Cliente`, `Apellido_Cliente`, `Estado_Civil_Cliente`, `Genero_Cliente`, `email`, `Telefono_Fijo_Cliente`, `Telefono_Celular_Cliente`, `Domicilio_Cliente`, `Fecha_Nacimiento_Cliente`, `Zona_Cliente`, `DUI_Cliente`, `NIT_Cliente`, `urlImg`, `ingreso`, `Observaciones_Cliente`, `Profesion_Cliente`, `estado`, `fechaRegistro`, `Fk_Id_Departamento`, `Fk_Id_Municipio`, `Tipo_Cliente`) VALUES
-(9, '1', 'Evelin Elizabeth ', 'Ortega de Granados', 'Casado/a', 'Femenino', '', '', '78931556', 'B. el centro 3. AV. SUR. ', '1979-02-27', 'Urbana', '0193733-8', '0601-270279-102-2', 'plantilla/Fotos/foto_0193733-8.png', '300.00', 'TRAVAJA INFORALMENTE.', 'Dr.en cirugia dental', 1, '2018-12-01 00:52:03', 11, 43, 'Empresario'),
-(10, 'INML047119052', 'Imelda Noemi', 'Morales Lopez', 'Soltero/a', 'Femenino', '', '', '78589652', 'Hacienda Santa Anita Mercedes Umaña', '1977-05-12', 'Rural', '04711905-2', '1219-120577-102-1', 'plantilla/Fotos/foto_04711905-2.png', '300.00', '', 'Comerciante', 1, '2018-12-15 20:18:18', 11, 52, 'Empresario'),
-(11, 'MMGG64654654', 'MARVIN', 'GOMEZ', 'Soltero/a', 'Masculino', 'marvin@gmail.com', '', '75869858', 'nada', '2018-12-25', 'Rural', '6465465-4', '4565-461929-894-9', '', '9000.00', 'nada', 'ING', 1, '2018-12-25 23:46:00', 1, 4, 'Otro');
+(12, 'MAPP017012814', 'MARIO ALFREDO', 'PERDOMO', 'Soltero/a', 'Masculino', '', '', '7888-5022', 'BARRIO CONCEPCION, CALLE GERARDO BARRIOS.', '1958-08-01', 'Urbana', '01701281-4', '1111-010856-101-9', '', '475.00', '', 'CONTADOR', 1, '2018-12-26 18:20:36', 11, 52, 'Empleado');
 
 -- --------------------------------------------------------
 
@@ -167,6 +210,7 @@ CREATE TABLE `tbl_creditos` (
   `codigoTipoCredito` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `montoTotal` decimal(10,2) NOT NULL,
   `totalAbonado` decimal(10,2) NOT NULL,
+  `interesPendiente` decimal(10,2) NOT NULL,
   `estadoCredito` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `fechaApertura` date NOT NULL,
   `fechaVencimiento` date NOT NULL,
@@ -174,6 +218,13 @@ CREATE TABLE `tbl_creditos` (
   `fechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `idAmortizacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_creditos`
+--
+
+INSERT INTO `tbl_creditos` (`idCredito`, `codigoCredito`, `tipoCredito`, `codigoTipoCredito`, `montoTotal`, `totalAbonado`, `interesPendiente`, `estadoCredito`, `fechaApertura`, `fechaVencimiento`, `estado`, `fechaRegistro`, `idAmortizacion`) VALUES
+(13, 'MAP20182612', 'Crédito popular', ' ', '400.00', '400.00', '0.00', 'Finalizado', '2018-12-01', '2019-08-01', 1, '2018-12-26 20:25:46', 21);
 
 -- --------------------------------------------------------
 
@@ -190,6 +241,14 @@ CREATE TABLE `tbl_datos_laborales` (
   `Observaciones` text COLLATE utf8_spanish_ci NOT NULL,
   `Fk_Id_Cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_datos_laborales`
+--
+
+INSERT INTO `tbl_datos_laborales` (`Cargo`, `Nombre_Empresa`, `Direccion`, `Telefono`, `Rubro`, `Observaciones`, `Fk_Id_Cliente`) VALUES
+('AUXILIAR DE LA UNIDAD DE MEDIO AMBIENTE', 'ALCALDIA MUNICIPAL DE MERCEDES UMAÑA', 'AV. ROOSVELT, BARRIO CONCEPCION, MERCEDES UMAÑA, USULUTAN', '2684-0707', 'GUBERNAMENTAL', '', 12),
+('AUXILIAR DE LA UNIDAD DE MEDIO AMBIENTE', 'ALCALDIA MUNICIPAL DE MERCEDES UMAÑA', 'AV. ROOSVELT, BARRIO CONCEPCION, MERCEDES UMAÑA, USULUTAN', '2684-0707', 'GUBERNAMENTAL', '', 12);
 
 -- --------------------------------------------------------
 
@@ -262,6 +321,20 @@ CREATE TABLE `tbl_detallepagos` (
   `idFactura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='tabla para registros de pagos de cada cliente';
 
+--
+-- Volcado de datos para la tabla `tbl_detallepagos`
+--
+
+INSERT INTO `tbl_detallepagos` (`idDetallePago`, `totalPago`, `iva`, `interes`, `abonoCapital`, `capitalPendiente`, `interesPendiente`, `diasPagados`, `mora`, `fechaPago`, `estado`, `fechaRegistro`, `idCredito`, `idFactura`) VALUES
+(21, '63.45', '2.42', '18.60', '42.43', '358', '0.00', 31, '0.00', '2019-01-01', 1, '2018-12-26 22:48:22', 13, 0),
+(22, '63.45', '2.16', '16.63', '44.66', '313', '0.00', 31, '0.00', '2019-02-01', 1, '2018-12-26 22:48:48', 13, 0),
+(23, '63.45', '1.71', '13.14', '48.60', '264', '0.00', 28, '0.00', '2019-03-01', 1, '2018-12-26 22:49:06', 13, 0),
+(24, '63.45', '1.60', '12.29', '49.56', '215', '0.00', 31, '0.00', '2019-04-01', 1, '2018-12-26 22:49:24', 13, 0),
+(25, '63.45', '1.26', '9.66', '52.53', '162', '0.00', 30, '0.00', '2019-05-01', 1, '2018-12-26 22:49:43', 13, 0),
+(26, '63.45', '0.98', '7.54', '54.93', '107', '0.00', 31, '0.00', '2019-06-01', 1, '2018-12-26 22:49:56', 13, 0),
+(27, '63.45', '0.63', '4.83', '57.99', '49', '0.00', 30, '0.00', '2019-07-01', 1, '2018-12-26 22:50:17', 13, 0),
+(28, '51.89', '0.30', '2.29', '49.30', '0', '0.00', 31, '0.00', '2019-08-01', 1, '2018-12-26 22:50:44', 13, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -277,6 +350,14 @@ CREATE TABLE `tbl_documentos` (
   `estado` int(1) NOT NULL,
   `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='tabla para gestinonar copiar de documentos y fotos de perfil';
+
+--
+-- Volcado de datos para la tabla `tbl_documentos`
+--
+
+INSERT INTO `tbl_documentos` (`idDocumento`, `nombre`, `url`, `tipoDocumento`, `codigo`, `estado`, `fechaRegistro`) VALUES
+(1, 'Pagaré Mario Alfredo Perdomo.doc', 'plantilla/Docs/MAP20182612Pagaré Mario Alfredo Perdomo.doc', '1', 'MAP20182612', 1, '2018-12-26 20:23:59'),
+(2, 'Mutuo Mario Alfredo Perdomo.doc', 'plantilla/Docs/MAP20182612Mutuo Mario Alfredo Perdomo.doc', '1', 'MAP20182612', 1, '2018-12-26 20:24:14');
 
 -- --------------------------------------------------------
 
@@ -306,7 +387,7 @@ CREATE TABLE `tbl_empleados` (
 --
 
 INSERT INTO `tbl_empleados` (`idEmpleado`, `nombreEmpleado`, `apellidoEmpleado`, `fechaNacimientoEmpleado`, `genero`, `dui`, `nit`, `direccion`, `telefono`, `email`, `cargo`, `profesion`, `estado`, `fechaRegistro`) VALUES
-(5, 'Elizardo', 'Alvarenga', '1990-10-02', 'Masculino', '45362598-2', '123-253565-265-1', 'Mercedes Umaña', '7586-5689', 'prueba@gmail.com', 'Gerente', 'Licenciado Contaduría Publica', 1, '2018-12-01 00:10:25'),
+(5, 'JOSE ELIZARDO', 'ALVARENGA IRAHETA', '1968-02-14', 'Masculino', '01412790-3', '1102-140268-102-0', '3 AV. SUR BARRIOS CONCEPCION MERCEDES UMAÑA.', '7909-2356', 'jeli_alvarenga@hotmail.com', 'JEFE ADMINISTRATIVO', 'CONTADOR', 1, '2018-12-01 00:10:25'),
 (6, 'JONATAN EDGARDO', 'ALVARENGA RIVAS', '1994-09-11', 'Masculino', '05058339-1', '1102-110994-102-5', 'BERLIN, USULUTAN', '74928029', 'JHONATANALVARENGA96@GMAIL.COM', 'EJECUTIVO DE CREDITOS', 'ESTUDIANTE', 1, '2018-12-01 00:26:14');
 
 -- --------------------------------------------------------
@@ -380,6 +461,13 @@ CREATE TABLE `tbl_fiadores` (
   `fechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla para los Fiadores';
 
+--
+-- Volcado de datos para la tabla `tbl_fiadores`
+--
+
+INSERT INTO `tbl_fiadores` (`idFiador`, `nombre`, `apellido`, `dui`, `nit`, `telefono`, `email`, `direccion`, `genero`, `fechaNacimiento`, `ingreso`, `idSolicitud`, `estado`, `fechaRegistro`) VALUES
+(1, 'ROSA AMINTA', 'MEJIA CRUZ', '02648844-6', '1111-271274-104-4', '2684-0707', 'alcaldiademercedesu@hotmail.com', 'COLONIA LAS FLORES, MERCEDES UMAÑA, USULUTAN', 'Femenino', '1974-12-27', '310.00', 21, 1, '2018-12-26 20:18:29');
+
 -- --------------------------------------------------------
 
 --
@@ -416,14 +504,15 @@ CREATE TABLE `tbl_menu` (
 --
 
 INSERT INTO `tbl_menu` (`idMenu`, `menu`, `html`, `estado`, `fechaRegistro`) VALUES
-(1, 'Clientes', '<li class=\'has_sub\'>                                 \r\n\r\n  <a href=\'#\' class=\'waves-effect\'><i class=\'fa fa-user-o fa-lg\'></i><span>Clientes</span><span class=\'pull-right\'><i class=\'md md-keyboard-arrow-down\'></i></span></a>                                 \r\n\r\n  <ul class=\'list-unstyled\'>                                     \r\n\r\n    <li><a href=\'http://localhost/Trabajo_Fast_Cash/fast-cash/Clientes/\'>Nuevo cliente</a></li>\r\n\r\n    <li><a href=\'http://localhost/Trabajo_Fast_Cash/fast-cash/Clientes/gestionarCliente\'>Clientes</a></li>                    \r\n\r\n  </ul>\r\n\r\n</li>', 1, '2018-11-21 20:56:45'),
-(2, 'Solicitud', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-book fa-lg\"></i><span>Solicitud</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"#\" data-toggle=\"modal\" data-target=\".modal_opcion_solicitud\">Nueva solicitud</a></li>\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Solicitud/\">Solicitudes</a></li>\r\n        <!-- <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/EstadosSolicitud/\">Gesctionar estados de la solicitud</a></li> -->\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Solicitud/gestionarPlazos\">Plazos</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:02:26'),
-(3, 'Creditos', '<li class=\"has_sub\">\r\n   <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-usd fa-lg\"></i><span>Créditos</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Creditos\">Créditos</a></li>\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Pagos/\">Pago</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:03:21'),
-(4, 'Empleados', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-user-plus fa-lg\" ></i><span>Empleados</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Empleados/ViewInsertarEmpleados\">Nuevo empleado</a></li>\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Empleados/Index\">Empleados</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:04:48'),
-(5, 'Caja Chica', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-cube fa-lg\" ></i><span>Caja chica</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/CajaChica/\" class=\"waves-effect\"><span>Realizar procesos</span></a></li>\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/CajaChica/HistorialCajas\" class=\"waves-effect\"><span>Historial</span></a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:19:25'),
-(6, 'Proveedores', '<li>\r\n    <a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Proveedores/\" class=\"waves-effect\"><i class=\"ion-android-contacts\"></i><span> Proveedores </span></a>\r\n</li>', 1, '2018-11-21 21:19:25'),
-(7, 'Configuración', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-cog\" ></i><span>Configuración</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/User/\">Usuarios</a></li>\r\n        <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Accesos/\">Roles</a></li>\r\n         <li><a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Rol/\">Permisos</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:05:53'),
-(8, 'Empresa', '<li>\r\n    <a href=\"http://localhost/Trabajo_Fast_Cash/fast-cash/Empresa/\" class=\"waves-effect\"><i class=\"fa fa-university fa-lg\"></i><span> Empresa </span></a>\r\n</li>', 1, '2018-11-21 21:19:45');
+(1, 'Clientes', '<li class=\'has_sub\'>                                 \r\n\r\n  <a href=\'#\' class=\'waves-effect\'><i class=\'fa fa-user-o fa-lg\'></i><span>Clientes</span><span class=\'pull-right\'><i class=\'md md-keyboard-arrow-down\'></i></span></a>                                 \r\n\r\n  <ul class=\'list-unstyled\'>                                     \r\n\r\n    <li><a href=\'http://192.168.1.100/fast-cash/Clientes/\'>Nuevo cliente</a></li>\r\n\r\n    <li><a href=\'http://192.168.1.100/fast-cash/Clientes/gestionarCliente\'>Clientes</a></li>                    \r\n\r\n  </ul>\r\n\r\n</li>', 1, '2018-11-21 20:56:45'),
+(2, 'Solicitud', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-book fa-lg\"></i><span>Solicitud</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"#\" data-toggle=\"modal\" data-target=\".modal_opcion_solicitud\">Nueva solicitud</a></li>\r\n        <li><a href=\"http://192.168.1.100/fast-cash/Solicitud/\">Solicitudes</a></li>\r\n        <!-- <li><a href=\"http://192.168.1.100/fast-cash/EstadosSolicitud/\">Gesctionar estados de la solicitud</a></li> -->\r\n        <li><a href=\"http://192.168.1.100/fast-cash/Solicitud/gestionarPlazos\">Plazos</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:02:26'),
+(3, 'Creditos', '<li>\r\n   <a href=\"http://192.168.1.100/fast-cash/Creditos\" class=\"waves-effect\"><i class=\"fa fa-list-alt fa-lg\"></i><span>Créditos</span></a>\r\n</li>', 1, '2018-11-21 21:03:21'),
+(4, 'Pagos', '<li>\r\n   <a href=\"http://192.168.1.100/fast-cash/Pagos/\" class=\"waves-effect\"><i class=\"fa fa-usd fa-lg\"></i><span>Pagos</span></a>\r\n</li>', 1, '2018-12-26 19:12:28'),
+(5, 'Empleados', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-user-plus fa-lg\" ></i><span>Empleados</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://192.168.1.100/fast-cash/Empleados/ViewInsertarEmpleados\">Nuevo empleado</a></li>\r\n        <li><a href=\"http://192.168.1.100/fast-cash/Empleados/Index\">Empleados</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:04:48'),
+(6, 'Caja Chica', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-cube fa-lg\" ></i><span>Caja chica</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://192.168.1.100/fast-cash/CajaChica/\" class=\"waves-effect\"><span>Realizar procesos</span></a></li>\r\n        <li><a href=\"http://192.168.1.100/fast-cash/CajaChica/HistorialCajas\" class=\"waves-effect\"><span>Historial</span></a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:19:25'),
+(7, 'Proveedores', '<li>\r\n    <a href=\"http://192.168.1.100/fast-cash/Proveedores/\" class=\"waves-effect\"><i class=\"ion-android-contacts\"></i><span> Proveedores </span></a>\r\n</li>', 1, '2018-11-21 21:19:25'),
+(8, 'Configuración', '<li class=\"has_sub\">\r\n    <a href=\"#\" class=\"waves-effect\"><i class=\"fa fa-cog\" ></i><span>Configuración</span><span class=\"pull-right\"><i class=\"md  md-keyboard-arrow-down\"></i></span></a>\r\n    <ul class=\"list-unstyled\">\r\n        <li><a href=\"http://192.168.1.100/fast-cash/User/\">Usuarios</a></li>\r\n        <li><a href=\"http://192.168.1.100/fast-cash/Accesos/\">Roles</a></li>\r\n         <li><a href=\"http://192.168.1.100/fast-cash/Rol/\">Permisos</a></li>\r\n    </ul>\r\n</li>', 1, '2018-11-21 21:05:53'),
+(10, 'Empresa', '<li>\r\n    <a href=\"http://192.168.1.100/fast-cash/Empresa/\" class=\"waves-effect\"><i class=\"fa fa-university fa-lg\"></i><span> Empresa </span></a>\r\n</li>', 1, '2018-11-21 21:19:45');
 
 -- --------------------------------------------------------
 
@@ -725,14 +814,18 @@ CREATE TABLE `tbl_permisos` (
 --
 
 INSERT INTO `tbl_permisos` (`idPermiso`, `permiso`, `estado`, `fechaRegistro`, `idMenu`, `idAcceso`) VALUES
-(19, 1, 1, '2018-12-01 00:12:26', 1, 5),
-(20, 1, 1, '2018-12-01 00:13:16', 5, 5),
-(21, 1, 1, '2018-12-01 00:16:05', 2, 5),
-(22, 1, 1, '2018-12-01 00:16:05', 3, 5),
-(23, 1, 1, '2018-12-01 00:16:05', 4, 5),
-(24, 1, 1, '2018-12-01 00:16:05', 6, 5),
-(25, 1, 1, '2018-12-01 00:16:05', 7, 5),
-(26, 1, 1, '2018-12-01 00:16:05', 8, 5);
+(27, 1, 1, '2018-12-26 18:01:31', 1, 10),
+(28, 1, 1, '2018-12-26 18:01:31', 2, 10),
+(29, 1, 1, '2018-12-26 18:01:31', 3, 10),
+(30, 1, 1, '2018-12-26 19:14:01', 1, 5),
+(31, 1, 1, '2018-12-26 19:14:01', 2, 5),
+(32, 1, 1, '2018-12-26 19:14:01', 3, 5),
+(33, 1, 1, '2018-12-26 19:14:01', 4, 5),
+(34, 1, 1, '2018-12-26 19:14:01', 5, 5),
+(35, 1, 1, '2018-12-26 19:14:01', 6, 5),
+(36, 1, 1, '2018-12-26 19:14:01', 7, 5),
+(37, 1, 1, '2018-12-26 19:14:01', 8, 5),
+(38, 1, 1, '2018-12-26 19:14:01', 10, 5);
 
 -- --------------------------------------------------------
 
@@ -757,7 +850,9 @@ INSERT INTO `tbl_plazos_prestamos` (`id_plazo`, `tiempo_plazo`, `fechaRegistro`,
 (3, 3, '2018-11-02', 1),
 (4, 4, '2018-11-02', 1),
 (5, 5, '2018-11-02', 1),
-(6, 6, '2018-11-02', 1);
+(6, 6, '2018-11-02', 1),
+(7, 7, '2018-12-26', 1),
+(8, 8, '2018-12-26', 1);
 
 -- --------------------------------------------------------
 
@@ -798,6 +893,13 @@ CREATE TABLE `tbl_solicitudes` (
   `idEstadoSolicitud` int(11) NOT NULL,
   `idDocumento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='tabla para la gestion de solicitudes';
+
+--
+-- Volcado de datos para la tabla `tbl_solicitudes`
+--
+
+INSERT INTO `tbl_solicitudes` (`idSolicitud`, `codigoSolicitud`, `fechaRecibido`, `observaciones`, `estadoSolicitud`, `fechaRegistro`, `cobraMora`, `tipoCredito`, `idCliente`, `idLineaPlazo`, `idEstadoSolicitud`, `idDocumento`) VALUES
+(21, '0861', '2018-11-30 00:00:00', 'SE CONSIDERA UNA DIFERENCIA POSITIVA DE $ 0.96', 1, '2018-12-26 20:18:29', 1, 'Crédito popular', 12, 8, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -840,7 +942,8 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`idUser`, `user`, `pass`, `idEmpleado`, `idAcceso`, `estado`, `fechaRegistro`) VALUES
-(4, 'admin', 'admin', 5, 5, 1, '2018-12-01 00:11:34');
+(4, 'JAIRAHETA', 'JU0312', 5, 5, 1, '2018-12-01 00:11:34'),
+(5, 'JONATAN', '123456', 6, 10, 1, '2018-12-26 06:00:00');
 
 --
 -- Índices para tablas volcadas
@@ -1036,7 +1139,7 @@ ALTER TABLE `tbl_accesos`
 -- AUTO_INCREMENT de la tabla `tbl_amortizaciones`
 --
 ALTER TABLE `tbl_amortizaciones`
-  MODIFY `idAmortizacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idAmortizacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_aranceles`
@@ -1048,25 +1151,25 @@ ALTER TABLE `tbl_aranceles`
 -- AUTO_INCREMENT de la tabla `tbl_cajachica_procesos`
 --
 ALTER TABLE `tbl_cajachica_procesos`
-  MODIFY `idProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `idProceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_caja_chica`
 --
 ALTER TABLE `tbl_caja_chica`
-  MODIFY `idCajaChica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idCajaChica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_clientes`
 --
 ALTER TABLE `tbl_clientes`
-  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_creditos`
 --
 ALTER TABLE `tbl_creditos`
-  MODIFY `idCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_departamentos`
@@ -1078,19 +1181,19 @@ ALTER TABLE `tbl_departamentos`
 -- AUTO_INCREMENT de la tabla `tbl_detallepagos`
 --
 ALTER TABLE `tbl_detallepagos`
-  MODIFY `idDetallePago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idDetallePago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_documentos`
 --
 ALTER TABLE `tbl_documentos`
-  MODIFY `idDocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idDocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_empleados`
 --
 ALTER TABLE `tbl_empleados`
-  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_empresa`
@@ -1108,19 +1211,19 @@ ALTER TABLE `tbl_estados_solicitud`
 -- AUTO_INCREMENT de la tabla `tbl_fiadores`
 --
 ALTER TABLE `tbl_fiadores`
-  MODIFY `idFiador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idFiador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_garantias`
 --
 ALTER TABLE `tbl_garantias`
-  MODIFY `idGarantia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idGarantia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `idMenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idMenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_municipios`
@@ -1132,13 +1235,13 @@ ALTER TABLE `tbl_municipios`
 -- AUTO_INCREMENT de la tabla `tbl_permisos`
 --
 ALTER TABLE `tbl_permisos`
-  MODIFY `idPermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idPermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_plazos_prestamos`
 --
 ALTER TABLE `tbl_plazos_prestamos`
-  MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_plazo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_proveedores`
@@ -1150,7 +1253,7 @@ ALTER TABLE `tbl_proveedores`
 -- AUTO_INCREMENT de la tabla `tbl_solicitudes`
 --
 ALTER TABLE `tbl_solicitudes`
-  MODIFY `idSolicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idSolicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipo_pago`
@@ -1162,7 +1265,7 @@ ALTER TABLE `tbl_tipo_pago`
 -- AUTO_INCREMENT de la tabla `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
